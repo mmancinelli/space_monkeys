@@ -1,77 +1,31 @@
-
-
-body {
-	font-family: 'Neuton', serif;
+h1{
+    font-size: 5em;
+    font-family: arial,helvetica;
+    color: #fff;
+    margin:0;
+}
+.intro p{
+    color: #fff;
 }
 
-h1 {
-	font-size: 36px;
-	color: #825a5a;
-	margin-top: 40px;
+/* Centered texts in each section
+* --------------------------------------- */
+.section{
+    text-align:center;
 }
 
-h2 {
-	color: #94a97a;
-	font-size: 24px;
-	margin-top: 10px;
-	margin-bottom: 30px;
+/* Overwriting styles for control arrows for slides
+* --------------------------------------- */
+.controlArrow.prev {
+    left: 50px;
 }
-/*#sections {*/
-/*	position: relative;*/
-/*	display: inline-block;*/
-/*	width: 250px;*/
-/*	top: 0px;*/
-/*	z-index: 90;*/
-/*}*/
-
-/*.step {*/
-/*	margin-bottom: 200px;*/
-/*}*/
-
-/*#vis {*/
-/*	!*in-line block sets up the side-by-side for sections and vis. We'll probably want to change this to have it alternating*!*/
-/*	display: inline-block;*/
-/*	position: fixed;*/
-/*	top: 60px;*/
-/*	z-index: 1;*/
-/*	margin-left: 0;*/
-
-/*	height: 600px;*/
-/*	width: 600px;*/
-/*	background-color: #ddd;*/
-}
-/*
-.brush {
-	fill: #ccc;
-	fill-opacity: .5;
-	pointer-events: none;
-}*/
-
-.axis line,
-.axis path {
-  fill: none;
-  stroke: #555;
-  shape-rendering: crispEdges;
+.controlArrow.next{
+    right: 50px;
 }
 
-.tick text {
-	font-family: sans-serif;
-	font-size: 11px;
-	fill: #555;
-}
 
-#priovis .x-axis text {
-	font-weight: 600;
-}
-
-.area {
-	fill: #825a5a;
-}
-
-.area.area-age {
-	fill: #94a97a;
-}
-
-.bar {
-	fill: #93bebf;
+/* Bottom menu
+* --------------------------------------- */
+#infoMenu li a {
+    color: #fff;
 }
