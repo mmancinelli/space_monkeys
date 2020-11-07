@@ -7,8 +7,8 @@ let dateParser = d3.timeParse("%Y-%m-%d");
 
 // (1) Load data with promises
 let promises = [
-    d3.json(DATAFILE1),
-    d3.json(DATAFILE2)
+    d3.json("../data/prepared_launch_data.csv"),
+    d3.json("../data/prepared_rocket_data.csv")
 ];
 
 Promise.all(promises)

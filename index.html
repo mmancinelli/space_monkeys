@@ -3,15 +3,14 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Vertical navigation dots - fullPage.js</title>
-	<meta name="author" content="Alvaro Trigo Lopez" />
-	<meta name="description" content="fullPage full-screen navigation and sections control menu." />
-	<meta name="keywords"  content="fullpage,jquery,demo,screen,fullscreen,navigation,control arrows, dots" />
-	<meta name="Resource-type" content="Document" />
+	<title>CS171 - Space Monkeys</title>
 
-
+<!--Code Sources:
+Fullpage library from https://github.com/alvarotrigo/fullPage.js
+Parallax CSS Stars modified from https://codepen.io/saransh/details/BKJun
+-->
 	<link rel="stylesheet" type="text/css" href="css/fullpage.css" />
-	<link rel="stylesheet" type="text/css" href="css/examples.css" />
+<!--	<link rel="stylesheet" type="text/css" href="css/examples.css" />-->
 	<link rel="stylesheet" type="text/css" href="css/stars.css" />
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<style>
@@ -31,8 +30,7 @@
 
 <div id="fullpage">
 	<div class="section " id="section0">
-		<div class="intro" id = "star-section">
-			<div id = "stars"></div>
+		<div class="intro" id = "star-intro">
 			<div id = "stars"></div>
 			<div id = "stars2"></div>
 			<div id = "stars3"></div>
@@ -43,7 +41,10 @@
 	</div>
 	<div class="section" id="section1">
 	    <div class="slide" id="slide1">
-			<div class="intro">
+			<div class="intro" id = "star-section">
+				<div id = "stars"></div>
+				<div id = "stars2"></div>
+				<div id = "stars3"></div>
 				<h1>Clickable</h1>
 				<p>
 					You can even click on the navigation and jump directly to another section.
@@ -57,14 +58,17 @@
 
 	</div>
 	<div class="section" id="section2">
-		<div class="intro">
+		<div class="intro"id = "star-end">
+			<div id = "stars"></div>
+			<div id = "stars2"></div>
+			<div id = "stars3"></div>
 			<h1>Enjoy it</h1>
 		</div>
 	</div>
 </div>
 
 <script type="text/javascript" src="js/libraries/fullpage.js"></script>
-<script type="text/javascript" src="js/libraries/examples.js"></script>
+<!--<script type="text/javascript" src="js/libraries/examples.js"></script>-->
 
 <script type="text/javascript">
     var myFullpage = new fullpage('#fullpage', {
