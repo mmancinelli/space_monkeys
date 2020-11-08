@@ -29,3 +29,44 @@ h1{
 #infoMenu li a {
     color: #fff;
 }
+
+/*.parallax [class*="bg__"] {*/
+/*    position: relative;*/
+/*    height: 300px;*/
+/*    text-indent: -9999px;*/
+/*    background-attachment: fixed;*/
+/*    background-position: top center;*/
+/*    background-size: cover;*/
+/*}*/
+/*.parallax [class*="bg__"]:nth-child(2n) {*/
+/*    box-shadow: inset 0 0 1em #111;*/
+/*}*/
+/*.parallax .bg__foo, .parallax .bg__bazz {*/
+/*    height: 100vh;*/
+/*}*/
+/*.parallax .bg__foo {*/
+/*    !*background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/30354/parallax1.jpg);*!*/
+/*}*/
+/*!*.parallax .bg__bar {*!*/
+/*!*    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/30354/parallax2.jpg);*!*/
+/*!*}*!*/
+/*!*.parallax .bg__baz {*!*/
+/*!*    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/30354/parallax3.jpg);*!*/
+/*!*}*!*/
+/*!*.parallax .bg__bazz {*!*/
+/*!*    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/30354/parallax1.jpg);*!*/
+/*!*}*!*/
+/*!*.parallax .bg__break {*!*/
+/*!*    box-shadow: inset 0 0 1em #111;*!*/
+/*!*    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/30354/parallax1.jpg);*!*/
+/*!*}*!*/
+/*.parallax .capture {*/
+/*    float: right;*/
+/*    width: 200px;*/
+/*    padding: 1em;*/
+/*    margin: -1.5em 1em 0 0;*/
+/*    text-indent: 0;*/
+/*    background: rgba(243, 243, 243, 0.75);*/
+/*    box-shadow: 0 1px 0.125em #333;*/
+/*    color:rgb(20,20,20);*/
+/*}*/

@@ -19,8 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b06c9b18-9efe-4184-8540-6d7e97b14315" name="Default Changelist" comment="Added gitignore to avoid committing WebStorm settings.">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="b06c9b18-9efe-4184-8540-6d7e97b14315" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/fullpage.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/fullpage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/stars.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/stars.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,13 +130,9 @@
       <screen x="0" y="0" width="1857" height="1080" />
     </state>
     <state x="1172" y="298" key="FileChooserDialogImpl/-1920.0.1857.1080/0.0.1857.1080@0.0.1857.1080" timestamp="1604759043975" />
-    <state x="427" y="158" key="SettingsEditor" timestamp="1604856168935">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state x="-1284" y="273" width="585" height="534" key="find.popup" timestamp="1604782330398">
+      <screen x="-1920" y="0" width="1857" height="1080" />
     </state>
-    <state x="427" y="158" key="SettingsEditor/0.23.1680.1027/1680.23.1920.1057@0.23.1680.1027" timestamp="1604856168935" />
-    <state x="525" y="259" key="Vcs.Push.Dialog.v2" timestamp="1604857276713">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state x="525" y="259" key="Vcs.Push.Dialog.v2/0.23.1680.1027/1680.23.1920.1057@0.23.1680.1027" timestamp="1604857276713" />
+    <state x="-1284" y="273" width="585" height="534" key="find.popup/-1920.0.1857.1080/0.0.1857.1080@-1920.0.1857.1080" timestamp="1604782330398" />
   </component>
 </project>
