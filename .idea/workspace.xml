@@ -19,11 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b06c9b18-9efe-4184-8540-6d7e97b14315" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
+    <list default="true" id="b06c9b18-9efe-4184-8540-6d7e97b14315" name="Default Changelist" comment="Added links to js files and corrected promises.">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,8 +71,16 @@
       <workItem from="1604326264115" duration="25099000" />
       <workItem from="1604673403674" duration="606000" />
       <workItem from="1604674233373" duration="11840000" />
-      <workItem from="1604856127619" duration="638000" />
+      <workItem from="1604856127619" duration="1014000" />
     </task>
+    <task id="LOCAL-00001" summary="Added links to js files and corrected promises.">
+      <created>1604856831841</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604856831841</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -97,12 +102,18 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/../../.." />
     </ignored-roots>
+    <MESSAGE value="Added links to js files and corrected promises." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added links to js files and corrected promises." />
   </component>
   <component name="WindowStateProjectService">
     <state x="692" y="342" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604674494982">
       <screen x="0" y="0" width="1857" height="1080" />
     </state>
     <state x="692" y="342" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1857.1080/0.0.1857.1080@0.0.1857.1080" timestamp="1604674494982" />
+    <state x="253" y="98" key="DiffContextDialog" timestamp="1604856884341">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="253" y="98" key="DiffContextDialog/0.23.1680.1027/1680.23.1920.1057@0.23.1680.1027" timestamp="1604856884341" />
     <state x="1172" y="298" key="FileChooserDialogImpl" timestamp="1604759043975">
       <screen x="0" y="0" width="1857" height="1080" />
     </state>
@@ -111,5 +122,9 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="427" y="158" key="SettingsEditor/0.23.1680.1027/1680.23.1920.1057@0.23.1680.1027" timestamp="1604856168935" />
+    <state x="525" y="259" key="Vcs.Push.Dialog.v2" timestamp="1604856890009">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="525" y="259" key="Vcs.Push.Dialog.v2/0.23.1680.1027/1680.23.1920.1057@0.23.1680.1027" timestamp="1604856890009" />
   </component>
 </project>
