@@ -7,8 +7,8 @@ let dateParser = d3.timeParse("%Y-%m-%d");
 
 // (1) Load data with promises
 let promises = [
-    d3.json("../data/prepared_launch_data.csv"),
-    d3.json("../data/prepared_rocket_data.csv")
+    d3.csv("data/prepared_launch_data.csv"),
+    d3.csv("data/prepared_rocket_data.csv")
 ];
 
 Promise.all(promises)
@@ -19,7 +19,7 @@ Promise.all(promises)
 	function createVis(data){
 
 	// (2) Make our data look nicer and more useful
-	// allData
+	allData = data;
 
 	// console.log(allData);
 
