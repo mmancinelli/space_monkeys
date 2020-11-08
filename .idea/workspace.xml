@@ -20,42 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b06c9b18-9efe-4184-8540-6d7e97b14315" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/stars.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/stars.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/bg1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/bg2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/bg3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/bg4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/bg5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/compatible.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/copyright.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/en-language-inactive.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/en-language.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/es-language-inactive.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/es-language.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/example.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/example2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/flowers.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/flowers.webm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/fullPage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/horse.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/horse.ogg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/intro.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/iphone-blue.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/iphone-green.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/iphone-red.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/iphone-two.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/iphone-yellow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/iphone1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/iphone2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/iphone3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/iphone4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/slider.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/tablets.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/imgs/used-by-fullpage.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
     </list>
@@ -86,8 +52,10 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -106,6 +74,7 @@
       <workItem from="1604326264115" duration="25099000" />
       <workItem from="1604673403674" duration="606000" />
       <workItem from="1604674233373" duration="11840000" />
+      <workItem from="1604856127619" duration="638000" />
     </task>
     <servers />
   </component>
@@ -124,6 +93,11 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/../../.." />
+    </ignored-roots>
+  </component>
   <component name="WindowStateProjectService">
     <state x="692" y="342" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604674494982">
       <screen x="0" y="0" width="1857" height="1080" />
@@ -133,5 +107,9 @@
       <screen x="0" y="0" width="1857" height="1080" />
     </state>
     <state x="1172" y="298" key="FileChooserDialogImpl/-1920.0.1857.1080/0.0.1857.1080@0.0.1857.1080" timestamp="1604759043975" />
+    <state x="427" y="158" key="SettingsEditor" timestamp="1604856168935">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="427" y="158" key="SettingsEditor/0.23.1680.1027/1680.23.1920.1057@0.23.1680.1027" timestamp="1604856168935" />
   </component>
 </project>
