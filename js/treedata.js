@@ -3,12 +3,13 @@
  *                  for the radial dendrogram visualization
  * author: Zane
  * date created: 11/09/2020
- * date last modified:
- * product:
+ * date last modified: 11/10/2020
+ * product: a stringified json array of the data in hierarchical form.
+ *          Which was then copied and pasted into a .json file because exporting files in this framework is stupid.
  */
 
 
-loadData();
+// loadData();
 
 function loadData() {
     d3.csv("data/prepared_launch_data.csv").then(csv => {
@@ -45,10 +46,10 @@ function loadData() {
 
         // need to convert map object into array
         let finalArray = arrayifyData(nestedMapObject);
-        // console.log("final array", finalArray)
+        console.log("final array", finalArray)
 
         let finalJSON = JSON.stringify(finalArray);
-        console.log(finalJSON);
+        // console.log(finalJSON);
 
         // write to file
         // fs.writeFile ("data/treeData.json", JSON.stringify(finalArray), function(err) {
