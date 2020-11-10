@@ -4,14 +4,14 @@
  * author: Zane
  * date created: 11/09/2020
  * date last modified:
- * product -
+ * product:
  */
 
 
 loadData();
 
-function loadData(){
-    d3.csv("data/prepared_launch_data.csv").then(csv=> {
+function loadData() {
+    d3.csv("data/prepared_launch_data.csv").then(csv => {
 
         // since the country data seems a bit weird (Florida, California, and US are all independent entries)
         // extracting the actual country from the location of launch
@@ -40,16 +40,52 @@ function loadData(){
 
         // replace info for each rocket with info collected in rocketdata
         let nestedMapObject = replaceData(byCompanyRocket, rocketData);
-        console.log(nestedMapObject)
+        // console.log(nestedMapObject)
 
 
         // need to convert map object into array
+        let finalArray = arrayifyData(nestedMapObject);
+        // console.log("final array", finalArray)
 
+        let finalJSON = JSON.stringify(finalArray);
+        console.log(finalJSON);
 
+        // write to file
+        // fs.writeFile ("data/treeData.json", JSON.stringify(finalArray), function(err) {
+        //         if (err) throw err;
+        //         console.log('complete');
+        //     }
+        // );
 
 
 
     })
+}
+function arrayifyData(data){
+    let countryArray = []
+    for (let [key, value] of data) {
+        let companyArray = []
+        for (let [key2, value2] of value) {
+            let rocketArray = []
+            for (let [key3, value3] of value2){
+                // console.log(key3)
+                rocketArray.push({
+                    name: key3,
+                    information: value3
+                })
+            }
+            companyArray.push({
+                name: key2,
+                children: rocketArray
+            })
+        }
+        countryArray.push({
+            name: key,
+            children: companyArray
+        })
+    }
+    return countryArray;
+
 }
 function replaceData(data, rocketdata){
     for (let [key,value] of data){
