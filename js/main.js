@@ -28,7 +28,7 @@ Promise.all(promises)
 
 	let atmoVis = new AtmoVis("atmovis", allData);
 	let launchVis = new LaunchVis("launchvis", allData);
-	let networkVis = new NetworkVis("networkvis", allData,);
+	let networkVis = new NetworkVis("network-vis", allData,);
 	let flightVis = new FlightVis("flightvis", allData);
 	let costVis = new CostVis("costvis", allData);
 
