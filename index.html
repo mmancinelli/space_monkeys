@@ -5,10 +5,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>CS171 - Space Monkeys</title>
 
-<!--Code Sources:
-Fullpage library from https://github.com/alvarotrigo/fullPage.js
-Parallax CSS Stars modified from https://codepen.io/saransh/details/BKJun
--->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<!--Code Sources:
+    Fullpage library from https://github.com/alvarotrigo/fullPage.js
+    Parallax CSS Stars modified from https://codepen.io/saransh/details/BKJun
+    -->
 	<link rel="stylesheet" type="text/css" href="css/fullpage.css" />
 <!--	<link rel="stylesheet" type="text/css" href="css/examples.css" />-->
 	<link rel="stylesheet" type="text/css" href="css/stars.css" />
@@ -29,41 +30,105 @@ Parallax CSS Stars modified from https://codepen.io/saransh/details/BKJun
 <body>
 
 <div id="fullpage">
+	<!-- Title Page -->
 	<div class="section " id="section0">
 		<div class="intro" id = "star-intro">
 			<div id = "stars"></div>
 			<div id = "stars2"></div>
 			<div id = "stars3"></div>
 			<div id = "title"><span> A History of Space Flight </span><br/> by the space monkeys</div>
-<!--			<h1>A History of Space Flight</h1>-->
-<!--			<p>by the space monkeys</p>-->
 		</div>
 	</div>
-	<div class="section" id="section1">
-	    <div class="slide" id="slide1">
-			<div class="intro" id = "">
-<!--				<div id = "stars"></div>-->
-<!--				<div id = "stars2"></div>-->
-<!--				<div id = "stars3"></div>-->
-				<h1>Clickable</h1>
-				<p>
-					You can even click on the navigation and jump directly to another section.
-				</p>
+
+	<!-- Orbits -->
+	<div class="section " id="section1">
+		<div class="container-fluid">
+			<div class="row justify-content-center header">
+				<div class="align-self-center">
+					<h3>What is the current state of satellites in orbit?</h3>
+				</div>
+			</div>
+			<div class="row main-body">
+				<div class="col one-col">
+					<div class="row justify-content-center center-center">
+						<div class="align-self-center vis-holder">
+							<div id="orbit-vis"></div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-
-	    <div class="slide" id="slide2">
-			<h1>Slide 2</h1>
-		</div>
-
 	</div>
-	<div class="section" id="section2">
-		<div class="intro"id = "star-end">
+
+	<!-- World Map -->
+	<div class="section " id="section2">
+		<div class="container-fluid">
+			<div class="row justify-content-center header">
+				<div class="align-self-center">
+					<h3>Which countries launch rockets? How has that changed over time?</h3>
+				</div>
+			</div>
+			<div class="row main-body">
+				<div class="col one-col">
+					<div class="row justify-content-center center-center">
+						<div class="align-self-center vis-holder">
+							<div id="world-map"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row footer"></div>
+		</div>
+	</div>
+
+	<!-- Network Diagram -->
+	<div class="section " id="section3">
+		<div class="container-fluid">
+			<div class="row justify-content-center header">
+				<div class="align-self-center">
+					<h3>How many companies and rockets are there?</h3>
+				</div>
+			</div>
+			<div class="row main-body">
+				<div class="col one-col">
+					<div class="row justify-content-center center-center">
+						<div class="align-self-center vis-holder">
+							<div id="network-vis"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Cumulative Launch Diagram -->
+	<div class="section " id="section4">
+		<div class="container-fluid">
+			<div class="row justify-content-center header">
+				<div class="align-self-center">
+					<h3>Which rocket has been launched the most?</h3>
+				</div>
+			</div>
+			<div class="row main-body">
+				<div class="col one-col">
+					<div class="row justify-content-center center-center">
+						<div class="align-self-center vis-holder">
+							<div id="launches-vis"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Endnotes -->
+	<div class="section" id="section5">
+		<div class="intro" id="star-end">
 			<div id = "stars"></div>
 			<div id = "stars2"></div>
 			<div id = "stars3"></div>
 
-			<h1>Enjoy it</h1>
+			<h1>End Notes</h1>
 		</div>
 	</div>
 </div>
