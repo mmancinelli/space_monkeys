@@ -8,7 +8,9 @@ let dateParser = d3.timeParse("%Y-%m-%d");
 // (1) Load data with promises
 let promises = [
     d3.csv("data/prepared_launch_data.csv"),
-    d3.csv("data/prepared_rocket_data.csv")
+    d3.csv("data/prepared_rocket_data.csv"),
+	d3.csv("data/prepared_satellite_data.csv"),
+	d3.json("data/treeData.json")
 ];
 
 Promise.all(promises)
