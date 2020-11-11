@@ -74,6 +74,19 @@ h3 {
     background: #C9ADA7;
 }
 
+.vis-holder {
+    height: 100%;
+    width: 100%;
+}
+
+#world-map, #orbit-vis, #network-vis, #launches-vis {
+    height: 100%;
+    width:  100%;
+}
+
+
+
+
 /*.parallax [class*="bg__"] {*/
 /*    position: relative;*/
 /*    height: 300px;*/
