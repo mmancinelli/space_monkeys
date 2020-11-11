@@ -12,6 +12,7 @@ h1{
 * --------------------------------------- */
 .section{
     text-align:center;
+    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
 }
 
 /* Overwriting styles for control arrows for slides
@@ -23,11 +24,54 @@ h1{
     right: 50px;
 }
 
-
 /* Bottom menu
 * --------------------------------------- */
 #infoMenu li a {
     color: #fff;
+}
+
+/* template css */
+body {
+    padding: 5vh;
+}
+
+.container-fluid {
+    border: thin solid grey;
+    border-radius: 5px;
+    padding: 5vh;
+}
+
+.header {
+    height: 12vh;
+    background: #22223b;
+}
+
+h1 {
+    color: #F2E9E4;
+}
+
+h3 {
+    font-size: 2em;
+    font-family: arial,helvetica;
+    color: #fff;
+    margin:0;
+}
+
+.main-body {
+    height: 50vh;
+}
+
+.one-col {
+    background: #4A4E69;
+}
+
+.center-center {
+    height: 100%;
+}
+
+.footer {
+    height: 20vh;
+    background: #C9ADA7;
 }
 
 /*.parallax [class*="bg__"] {*/
