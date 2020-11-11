@@ -1,0 +1,417 @@
+VarName1,Name,Cmp,Wiki,Status,LiftoffThrust,PayloadtoLEO,Stages,Strapons,RocketHeight,Price,PayloadtoGTO,FairingDiameter,FairingHeight,Rocket_Category
+0,"Tsyklon-3",Yuzhmash,https://en.wikipedia.org/wiki/Tsyklon-3,Retired,3032,4.1,3,0,39,NaN,0,NaN,NaN,Tsyklon
+1,"Tsyklon-4M",Yuzhnoye,https://en.wikipedia.org/wiki/Cyclone-4M,Planned,3130,5,2,0,38.7,45,0.91,4,NaN,Tsyklon
+2,"Unha-2",KCST,https://en.wikipedia.org/wiki/Unha,Retired,1192,0.2,3,0,28,NaN,0,NaN,NaN,Unha
+3,"Unha-3",KCST,https://en.wikipedia.org/wiki/Unha,Active,1192,0.2,3,0,32,NaN,0,1.3,NaN,Unha
+4,"Vanguard",US Navy,https://en.wikipedia.org/wiki/Vanguard_(rocket),Retired,135,0.01,3,0,23,NaN,0,NaN,NaN,Vanguard
+5,"Vector-H",Vector,https://en.wikipedia.org/wiki/Vector-H,Planned,175,0.15,2,0,18.3,3,0,0.6,0.8,Vector-H
+6,"Vector-R",Vector,https://en.wikipedia.org/wiki/Vector-R,Planned,81,0.065,2,0,13,2,0,0.6,0.8,Vector-R
+7,"Vega",ESA,https://en.wikipedia.org/wiki/Vega_(rocket),Active,2200,1.436,4,0,29.9,37,0,2.6,7.88,Vega
+8,"Vega C",ESA,https://en.wikipedia.org/wiki/Vega_(rocket),Planned,4500,2.2,4,0,35,NaN,0,NaN,NaN,Vega C
+9,"Vega E",ESA,https://en.wikipedia.org/wiki/Vega_(rocket),Planned,NaN,0,4,0,35,NaN,0,NaN,NaN,Vega E
+10,"VLS-1",AEB,https://en.wikipedia.org/wiki/VLS-1,Active,623,0.38,3,4,19,NaN,0,1,NaN,VLS-1
+11,"Volna",Makeyev,https://en.wikipedia.org/wiki/Volna,Retired,NaN,0.1,3,0,15,NaN,0,NaN,NaN,Volna
+12,"Voskhod",OKB-1,https://en.wikipedia.org/wiki/Voskhod_(rocket),Retired,NaN,5.9,2,4,31,NaN,0,3,NaN,Voskhod
+13,"Vostok",OKB-1,https://en.wikipedia.org/wiki/Vostok-K,Retired,3894,4.73,2,4,31,NaN,0,NaN,NaN,Vostok
+14,"Vostok-2",OKB-1,https://en.wikipedia.org/wiki/Vostok-2_(rocket),Retired,995,4.73,2,4,NaN,NaN,0,NaN,NaN,Vostok
+15,"Vostok-2A",OKB-1,https://en.wikipedia.org/wiki/Vostok_(rocket_family),Retired,NaN,4.5,3,4,NaN,NaN,0,NaN,NaN,Vostok
+16,"Vostok-2M",OKB-1,https://en.wikipedia.org/wiki/Vostok-2M,Retired,NaN,0,3,4,NaN,NaN,0,NaN,NaN,Vostok
+17,"Vulcan Centaur",ULA,https://en.wikipedia.org/wiki/Vulcan_%28rocket%29,Planned,NaN,17.8,2,NaN,58.3,NaN,15.3,5.4,NaN,Vulcan Centaur
+18,"Zenit-2",Yuzhmash,https://en.wikipedia.org/wiki/Zenit-2,Retired,8181,1.2,2,0,57,NaN,5,4.1,13.7,Zenit
+19,"Zenit-2 FG",Yuzhmash,https://en.wikipedia.org/wiki/Zenit_%28rocket_family%29,Active,7400,11.74,2,0,57,NaN,4,4.1,10.4,Zenit
+20,"Zenit-3 SL",Yuzhmash,https://en.wikipedia.org/wiki/Zenit_%28rocket_family%29,Active,8180,13.74,3,0,59.6,NaN,6,3.9,NaN,Zenit
+21,"Zenit-3 SLB",Yuzhmash,https://en.wikipedia.org/wiki/Zenit_%28rocket_family%29,Active,7400,13.74,3,0,57,NaN,5,4.1,10.4,Zenit
+22,"Zenit-3 SLBF",Yuzhmash,https://en.wikipedia.org/wiki/Zenit-3F,Active,8180,13.74,3,0,57,NaN,6,4.1,10.4,Zenit
+23,"Zéphyr",Venture OS,https://fr.wikipedia.org/wiki/Z%C3%A9phyr_(fus%C3%A9e),Planned,56,0.08,2,0,12.3,NaN,0,1,NaN,Zéphyr
+24,"ZhuQue-1",Landspace,https://en.wikipedia.org/wiki/LandSpace,Retired,450,0.3,3,0,19,NaN,0,NaN,NaN,ZhuQue-1
+25,"ZhuQue-2",Landspace,https://en.wikipedia.org/wiki/LandSpace#Zhuque-2,Planned,216,4,2,0,NaN,NaN,0,NaN,NaN,ZhuQue-2
+26,"Angara 1.1",Khrunichev,https://en.wikipedia.org/wiki/Angara_(rocket_family),Planned,196,2,2,0,35,NaN,0,NaN,NaN,Angara
+27,"Angara 1.2",Khrunichev,https://en.wikipedia.org/wiki/Angara_(rocket_family),Active,196,3.7,2,0,41.5,NaN,0,NaN,NaN,Angara
+28,"Angara A5/Briz-M",Khrunichev,https://en.wikipedia.org/wiki/Angara_(rocket_family)#Angara_A5,Active,7680,0,3,4,NaN,NaN,5.4,NaN,NaN,Angara
+29,"Angara A5/DM-03",Khrunichev,https://en.wikipedia.org/wiki/Angara_(rocket_family)#Angara_A5,Planned,7680,0,3,4,NaN,NaN,0,NaN,NaN,Angara
+30,"Angara A5M",Khrunichev,https://en.wikipedia.org/wiki/Angara_(rocket_family)#Angara_A5,Planned,7680,0,2,4,NaN,NaN,0,NaN,NaN,Angara
+31,"Antares 110",Yuzhnoye,https://en.wikipedia.org/wiki/Antares_(rocket),Retired,1630,0,2,0,40.5,80,0,3.94,4.87,Antares
+32,"Antares 120",Yuzhnoye,https://en.wikipedia.org/wiki/Antares_(rocket),Retired,1630,4.6,2,0,40.5,80,1.5,3.94,9.87,Antares
+33,"Antares 130",Yuzhnoye,https://en.wikipedia.org/wiki/Antares_(rocket),Retired,1630,5.1,2,0,40.5,80,0,3.94,9.87,Antares
+34,"Antares 230",Yuzhnoye,https://en.wikipedia.org/wiki/Antares_(rocket),Retired,1922,7,2,0,41.9,85,0,3.9,9.9,Antares
+35,"Antares 230+",Yuzhnoye,https://en.wikipedia.org/wiki/Antares_%28rocket%29#Antares_230+,Active,3265,8,2,0,42.5,85,0,3.9,9.9,Antares
+36,"Ares 1-X",NASA,https://en.wikipedia.org/wiki/Ares_I,Retired,15000,0,1,0,94,450,0,NaN,NaN,Ares 1-X
+37,"Ariane 1",ESA,https://en.wikipedia.org/wiki/Ariane_1,Retired,2772,1.4,4,0,50,NaN,1.85,NaN,NaN,Ariane 1
+38,"Ariane 2",ESA,https://en.wikipedia.org/wiki/Ariane_2,Retired,2580,0,3,0,49.13,NaN,2.175,NaN,NaN,Ariane 2
+39,"Ariane 3",ESA,https://en.wikipedia.org/wiki/Ariane_3,Retired,5100,0,3,2,49.13,NaN,2.7,NaN,NaN,Ariane 3
+40,"Ariane 40",ESA,https://en.wikipedia.org/wiki/Ariane_4,Retired,3034,5,3,0,58.72,NaN,2,NaN,NaN,Ariane 4
+41,"Ariane 42L",ESA,https://en.wikipedia.org/wiki/Ariane_4,Retired,4538,0,3,2,58.72,NaN,3.48,NaN,NaN,Ariane 4
+42,"Ariane 42P",ESA,https://en.wikipedia.org/wiki/Ariane_4,Retired,4334,0,3,2,58.72,NaN,2.93,NaN,NaN,Ariane 4
+43,"Ariane 44L",ESA,https://en.wikipedia.org/wiki/Ariane_4,Retired,6000,0,3,4,58.72,NaN,4.72,NaN,NaN,Ariane 4
+44,"Ariane 44LP",ESA,https://en.wikipedia.org/wiki/Ariane_4,Retired,5800,0,3,4,58.72,NaN,4.22,NaN,NaN,Ariane 4
+45,"Ariane 44P",ESA,https://en.wikipedia.org/wiki/Ariane_4,Retired,4334,0,3,4,58.72,NaN,3.46,NaN,NaN,Ariane 4
+46,"Ariane 5 ECA",ESA,https://en.wikipedia.org/wiki/Ariane_5,Active,15120,21,2,2,53,200,10.5,5.4,17,Ariane 5
+47,"Ariane 5 ES",ESA,https://en.wikipedia.org/wiki/Ariane_5,Retired,15120,21,2,2,50.5,NaN,0,5.4,17,Ariane 5
+48,"Ariane 5 G",ESA,https://en.wikipedia.org/wiki/Ariane_5,Retired,11400,0,2,2,52,NaN,6.9,NaN,NaN,Ariane 5
+49,"Ariane 5 G+",ESA,https://en.wikipedia.org/wiki/Ariane_5,Retired,NaN,6.2,2,2,NaN,190,6.95,NaN,NaN,Ariane 5
+50,"Ariane 5 GS",ESA,https://en.wikipedia.org/wiki/Ariane_5,Retired,NaN,0,2,2,NaN,NaN,6.6,NaN,NaN,Ariane 5
+51,"Ariane 62",ESA,https://en.wikipedia.org/wiki/Ariane_6,Planned,8370,10.35,2,2,63,88,5,5.4,20,Ariane 6
+52,"Ariane 64",ESA,https://en.wikipedia.org/wiki/Ariane_6,Planned,15370,21.65,2,4,63,106,11.5,5.4,20,Ariane 6
+53,"Ariane 64 / Icarus",ESA,https://en.wikipedia.org/wiki/Ariane_6,Planned,15370,25,2,4,63,100,15,5.4,20,Ariane 6
+54,"ASLV",ISRO,https://en.wikipedia.org/wiki/Augmented_Satellite_Launch_Vehicle,Retired,1005,0.15,5,2,24,NaN,0,1,NaN,ASLV
+55,"Athena I",Lockheed,https://en.wikipedia.org/wiki/Athena_I,Retired,1900,0.82,3,NaN,18.9,NaN,0,NaN,NaN,Athena I
+56,"Athena II",Lockheed,https://en.wikipedia.org/wiki/Athena_II,Retired,1900,0,4,NaN,28.2,NaN,0.593,NaN,NaN,Athena II
+57,"Atlas-D Able",General Dynamics,https://en.wikipedia.org/wiki/Atlas-Able,Retired,1587,0,3,0,35,NaN,0,NaN,NaN,Atlas-D
+58,"Atlas-D Mercury",NASA,https://en.wikipedia.org/wiki/Atlas_LV-3B,Retired,1517,1.36,2,0,28.7,NaN,0,NaN,NaN,Atlas-D
+59,"Atlas-D OV1",General Dynamics,https://en.wikipedia.org/wiki/SM-65D_Atlas,Retired,1601,0,2,0,NaN,NaN,0,NaN,NaN,Atlas-D
+60,"Atlas-E/F Agena D",General Dynamics,https://en.wikipedia.org/wiki/Atlas-Agena,Retired,NaN,0,2,0,NaN,NaN,0,NaN,NaN,Atlas-E
+61,"Atlas-E/F Altair",Lockheed,https://en.wikipedia.org/wiki/Atlas_E/F,Retired,NaN,0.21,2,0,NaN,NaN,0,NaN,NaN,Atlas-E
+62,"Atlas-E/F Burner",General Dynamics,<undefined>,Retired,NaN,0.95,2,0,NaN,NaN,0,NaN,NaN,Atlas-E
+63,"Atlas-E/F MSD",General Dynamics,https://en.wikipedia.org/wiki/Atlas_E/F#Atlas_E/F-MSD,Retired,NaN,0.8,2,0,NaN,NaN,0,NaN,NaN,Atlas-E
+64,"Atlas-E/F OIS",General Dynamics,https://en.wikipedia.org/wiki/Atlas_E/F#Atlas_E/F-OIS,Retired,NaN,0.87,2,0,NaN,NaN,0,NaN,NaN,Atlas-E
+65,"Atlas-E/F OV1",General Dynamics,https://en.wikipedia.org/wiki/Atlas_E/F#Atlas_E/F-OV1,Retired,NaN,0.363,2,0,NaN,NaN,0,NaN,NaN,Atlas-E
+66,"Atlas-E/F PTS",General Dynamics,https://en.wikipedia.org/wiki/Atlas_E/F#Atlas_E/F-PTS,Retired,NaN,0.295,2,0,NaN,NaN,0,NaN,NaN,Atlas-E
+67,"Atlas-E/F SGS-1",General Dynamics,https://en.wikipedia.org/wiki/Atlas_E/F#Atlas_E/F-SGS,Retired,NaN,0,3,0,NaN,NaN,0,NaN,NaN,Atlas-E
+68,"Atlas-E/F SGS-2",General Dynamics,https://en.wikipedia.org/wiki/Atlas_E/F#Atlas_E/F-SGS,Retired,NaN,0,3,0,NaN,NaN,0,NaN,NaN,Atlas-E
+69,"Atlas-E/F Star-17A",General Dynamics,https://en.wikipedia.org/wiki/Atlas_E/F#Atlas_E/F-Star,Retired,NaN,0,2,0,NaN,NaN,0,NaN,NaN,Atlas-E
+70,"Atlas-E/F Star-37S-ISS",General Dynamics,https://en.wikipedia.org/wiki/Atlas_E/F#Atlas_E/F-Star,Retired,NaN,0,2,0,NaN,NaN,0,NaN,NaN,Atlas-E
+71,"Atlas-G Centaur-D1AR",General Dynamics,https://en.wikipedia.org/wiki/Atlas_G,Retired,NaN,5.9,2,0,NaN,NaN,2.222,NaN,NaN,Atlas-G Centaur-D1AR
+72,"Atlas-H MSD",General Dynamics,https://en.wikipedia.org/wiki/Atlas_H,Retired,NaN,0,2,0,NaN,NaN,0,NaN,NaN,Atlas-H MSD
+73,"Atlas I",General Dynamics,https://en.wikipedia.org/wiki/Atlas_I,Retired,NaN,0,2,0,43.9,NaN,0,NaN,NaN,Atlas I
+74,"Atlas II",Lockheed,https://en.wikipedia.org/wiki/List_of_Atlas_launches_(1990–1999),Retired,2111,6.78,2,0,47.5,NaN,2.81,NaN,NaN,Atlas II
+75,"Atlas IIA",Lockheed,https://en.wikipedia.org/wiki/List_of_Atlas_launches_(1990–1999),Retired,21111,7.316,2,0,47.5,NaN,3.18,NaN,NaN,Atlas II
+76,"Atlas IIAS",Lockheed,https://en.wikipedia.org/wiki/List_of_Atlas_launches_(1990–1999),Retired,3068,8.618,2,4,47.5,NaN,3.933,NaN,NaN,Atlas II
+77,"Atlas IIIA",Lockheed,https://en.wikipedia.org/wiki/Atlas_III,Retired,4149,8.64,2,0,52.8,NaN,4.055,4.2,12.2,Atlas III
+78,"Atlas IIIB",Lockheed,https://en.wikipedia.org/wiki/Atlas_III,Retired,4149,10.218,2,0,52.8,NaN,4.5,4.2,12.2,Atlas III
+79,"Atlas-LV3 Agena-A",General Dynamics,https://en.wikipedia.org/wiki/Atlas-Agena,Retired,NaN,1.25,2,0,NaN,NaN,0,NaN,NaN,Atlas-LV3
+80,"Atlas-LV3 Agena-B",General Dynamics,https://en.wikipedia.org/wiki/Atlas-Agena,Retired,NaN,1.725,2,0,NaN,NaN,0,NaN,NaN,Atlas-LV3
+81,"Atlas-LV3 Agena-D",General Dynamics,https://en.wikipedia.org/wiki/Atlas-Agena,Retired,NaN,0,2,0,NaN,NaN,0,NaN,NaN,Atlas-LV3
+82,"Atlas-LV3C Centaur-A",General Dynamics,https://en.wikipedia.org/wiki/Atlas-Centaur,Retired,NaN,0,2,0,NaN,NaN,0,NaN,NaN,Atlas-LV3
+83,"Atlas-LV3C Centaur-B",General Dynamics,https://en.wikipedia.org/wiki/Atlas-Centaur,Retired,NaN,0,2,0,NaN,NaN,0,NaN,NaN,Atlas-LV3
+84,"Atlas-LV3C Centaur-C",General Dynamics,https://en.wikipedia.org/wiki/Atlas-Centaur,Retired,NaN,0,2,0,NaN,NaN,0,NaN,NaN,Atlas-LV3
+85,"Atlas-LV3C Centaur-D",General Dynamics,https://en.wikipedia.org/wiki/Atlas-Centaur,Retired,NaN,0,2,0,NaN,NaN,0,NaN,NaN,Atlas-LV3
+86,"Atlas SLV-3",General Dynamics,https://en.wikipedia.org/wiki/Atlas_SLV-3,Retired,NaN,0.8,NaN,0,NaN,NaN,0,NaN,NaN,Atlas SLV-3
+87,"Atlas-SLV3A Agena-D",General Dynamics,https://en.wikipedia.org/wiki/Atlas-Agena,Retired,NaN,0,2,0,NaN,NaN,0,NaN,NaN,Atlas-SLV
+88,"Atlas-SLV3 Agena-B",General Dynamics,https://en.wikipedia.org/wiki/Atlas-Agena,Retired,NaN,0,2,0,NaN,NaN,0,NaN,NaN,Atlas-SLV
+89,"Atlas-SLV3 Agena-D",General Dynamics,https://en.wikipedia.org/wiki/Atlas-Agena,Retired,NaN,1.825,2,0,NaN,NaN,0,NaN,NaN,Atlas-SLV
+90,"Atlas-SLV3B Agena-D",General Dynamics,https://en.wikipedia.org/wiki/Atlas-Agena,Retired,NaN,0,2,0,NaN,NaN,0,NaN,NaN,Atlas-SLV
+91,"Atlas-SLV3 Burner-2",General Dynamics,https://en.wikipedia.org/wiki/Atlas_SLV-3,Retired,NaN,0,2,0,NaN,NaN,0,NaN,NaN,Atlas-SLV
+92,"Atlas-SLV3C Centaur-D",General Dynamics,https://en.wikipedia.org/wiki/Atlas-Centaur,Retired,NaN,0,2,0,NaN,NaN,0,NaN,NaN,Atlas-SLV
+93,"Atlas-SLV3D Centaur-D1A",General Dynamics,https://en.wikipedia.org/wiki/Atlas-Centaur,Retired,NaN,0,2,0,NaN,NaN,0,NaN,NaN,Atlas-SLV
+94,"Atlas-SLV3D Centaur-D1AR",General Dynamics,https://en.wikipedia.org/wiki/Atlas-Centaur,Retired,NaN,0,2,0,NaN,NaN,0,NaN,NaN,Atlas-SLV
+95,"Atlas V 401",ULA,https://en.wikipedia.org/wiki/Atlas_V,Active,3826,9.797,2,0,58.3,109,4.75,4.2,13.8,Atlas V
+96,"Atlas V 411",ULA,https://en.wikipedia.org/wiki/Atlas_V,Active,5515,12.03,2,1,58.3,115,5.95,4.2,13.8,Atlas V
+97,"Atlas V 421",ULA,https://en.wikipedia.org/wiki/Atlas_V,Active,7204,13.6,2,2,58.3,123,6.89,4.2,13.8,Atlas V
+98,"Atlas V 431",ULA,https://en.wikipedia.org/wiki/Atlas_V,Active,8892,15.26,2,3,59.1,130,7.7,4.2,13.8,Atlas V
+99,"Atlas V 501",ULA,https://en.wikipedia.org/wiki/Atlas_V,Active,3826,8.21,2,0,62.2,120,3.78,5.4,26.5,Atlas V
+100,"Atlas V 511",ULA,https://en.wikipedia.org/wiki/Atlas_V,Active,5515,11,2,1,62.2,130,5.25,5.4,26.5,Atlas V
+101,"Atlas V 521",ULA,https://en.wikipedia.org/wiki/Atlas_V,Active,7204,13.5,2,2,62.2,135,6.48,5.4,26.5,Atlas V
+102,"Atlas V 531",ULA,https://en.wikipedia.org/wiki/Atlas_V,Active,8892,15.53,2,3,62.2,140,7.45,5.4,26.5,Atlas V
+103,"Atlas V 541",ULA,https://en.wikipedia.org/wiki/Atlas_V,Active,10581,17.41,2,4,62.2,145,8.29,5.4,26.5,Atlas V
+104,"Atlas V 551",ULA,https://en.wikipedia.org/wiki/Atlas_V,Active,12269,18.85,2,5,62.2,153,8.9,5.4,26.5,Atlas V
+105,"Atlas V 552",ULA,https://en.wikipedia.org/wiki/Atlas_V,Planned,12269,20.52,2,5,62.2,NaN,0,5.4,26.5,Atlas V
+106,"Atlas V N22",ULA,https://en.wikipedia.org/wiki/Atlas_V,Active,7204,13,2,2,NaN,NaN,0,NaN,NaN,Atlas V
+107,"Black Arrow",RAE,https://en.wikipedia.org/wiki/Black_Arrow,Retired,256,0.135,3,NaN,13,NaN,0,NaN,NaN,Black Arrow
+108,"Blue Scout II",Vought,https://en.wikipedia.org/wiki/RM-90_Blue_Scout_II,Retired,471,0,4,0,24,NaN,0,NaN,NaN,Scout
+109,"Ceres-1",Galactic Energy,<undefined>,Planned,588,0.35,4,0,19,4.9,0,1.28,2.6,Ceres-1
+110,"Commercial Titan III",Martin Marietta,https://en.wikipedia.org/wiki/Commercial_Titan_III,Retired,12450,14.515,2,2,47,136.6,0,NaN,NaN,Titan III
+111,"Conestoga-1620",EER,https://en.wikipedia.org/wiki/Conestoga_(rocket),Retired,NaN,1.179,4,6,NaN,20,0,NaN,NaN,Conestoga-1620
+112,"Cosmos-1 (65S3)",OKB-586,https://en.wikipedia.org/wiki/Kosmos_(rocket_family),Retired,NaN,0.4,2,0,31,NaN,0,1.6,NaN,Cosmos
+113,"Cosmos-2I (63S1)",OKB-586,https://en.wikipedia.org/wiki/Kosmos_(rocket_family),Retired,NaN,0.4,2,0,31,NaN,0,1.6,NaN,Cosmos
+114,"Cosmos-2I (63SM)",OKB-586,https://en.wikipedia.org/wiki/Kosmos-2I,Retired,NaN,0.45,2,0,31,NaN,0,1.6,NaN,Cosmos
+115,"Cosmos-3 (11K65)",OKB-586,https://en.wikipedia.org/wiki/Kosmos-3,Retired,1740,1.4,2,0,26,NaN,0,1.6,NaN,Cosmos
+116,"Cosmos-3M (11K65M)",OKB-586,https://en.wikipedia.org/wiki/Kosmos-3M,Retired,1485,1.5,2,0,32,NaN,0,2.4,NaN,Cosmos
+117,"Cosmos-3MRB (65MRB)",OKB-586,https://en.wikipedia.org/wiki/Kosmos-3,Retired,1740,1.4,2,0,26,NaN,0,1.4,NaN,Cosmos
+118,"Delta 3920-8",Douglas,https://en.wikipedia.org/wiki/Delta_3000,Retired,3188,0,2,9,NaN,NaN,0,2.9,NaN,Delta
+119,"Delta 4925-8",Boeing,https://en.wikipedia.org/wiki/Delta_(rocket_family)#Delta_4000-Series,Retired,3469,3.4,3,9,34,NaN,1.2,2.44,NaN,Delta
+120,"Delta A",US Air Force,https://en.wikipedia.org/wiki/Delta_A,Retired,NaN,0.32,3,0,NaN,NaN,0.068,NaN,NaN,Delta
+121,"Delta B",US Air Force,https://en.wikipedia.org/wiki/Delta_B,Retired,NaN,0.375,3,0,NaN,NaN,0.068,NaN,NaN,Delta
+122,"Delta C",US Air Force,https://en.wikipedia.org/wiki/Delta_C,Retired,667,0.41,3,0,31,NaN,0.082,NaN,NaN,Delta
+123,"Delta II 6920-10",Boeing,https://en.wikipedia.org/wiki/Delta_II,Retired,3481,3.95,2,9,38.9,NaN,0,3,8.9,Delta II
+124,"Delta II 6920-8",Boeing,https://en.wikipedia.org/wiki/Delta_II,Retired,3481,3.983,2,9,38.1,NaN,0,2.4,8.49,Delta II
+125,"Delta II 6925",Boeing,https://en.wikipedia.org/wiki/Delta_II,Retired,3481,0,3,9,38.1,NaN,1.447,2.9,8.49,Delta II
+126,"Delta II 6925-8",Boeing,https://en.wikipedia.org/wiki/Delta_II,Retired,3481,0,3,9,38.1,NaN,1.46,2.4,8.49,Delta II
+127,"Delta II 7320-10C",ULA,https://en.wikipedia.org/wiki/Delta_II,Retired,2533,2.703,2,3,38.9,NaN,0,3,8.9,Delta II
+128,"Delta II 7326",ULA,https://en.wikipedia.org/wiki/Delta_II,Retired,2533,0,3,3,38.1,NaN,0.934,2.9,8.49,Delta II
+129,"Delta II 7420-10C",ULA,https://en.wikipedia.org/wiki/Delta_II,Retired,3020,3.099,2,4,38.9,NaN,0,3,8.9,Delta II
+130,"Delta II 7425",ULA,https://en.wikipedia.org/wiki/Delta_II,Retired,3020,0,3,4,38.1,NaN,1.11,2.9,8.49,Delta II
+131,"Delta II 7425-10C",ULA,https://en.wikipedia.org/wiki/Delta_II,Retired,3020,0,3,4,38.9,NaN,1.073,3,8.9,Delta II
+132,"Delta II 7426",ULA,https://en.wikipedia.org/wiki/Delta_II,Retired,3020,0,4,3,38.1,NaN,1.058,2.9,8.49,Delta II
+133,"Delta II 7920-10",Boeing,https://en.wikipedia.org/wiki/Delta_II,Retired,3511,4.8,2,9,38.9,NaN,0,3,8.9,Delta II
+134,"Delta II 7920-10C",ULA,https://en.wikipedia.org/wiki/Delta_II,Retired,3511,4.844,2,9,38.9,NaN,0,3,8.9,Delta II
+135,"Delta II 7920-10L",ULA,https://en.wikipedia.org/wiki/Delta_II,Retired,3511,4.805,2,9,39.3,NaN,0,3,9.3,Delta II
+136,"Delta II 7920-8",ULA,https://en.wikipedia.org/wiki/Delta_II,Retired,3511,5,2,9,38.1,NaN,0,2.4,8.49,Delta II
+137,"Delta II 7920H",ULA,https://en.wikipedia.org/wiki/Delta_II,Retired,4398,6.097,2,9,38.1,NaN,0,2.9,8.49,Delta II
+138,"Delta II 7920H-10C",ULA,https://en.wikipedia.org/wiki/Delta_II,Retired,4398,5.959,2,9,38.9,NaN,0,3,8.9,Delta II
+139,"Delta II 7925",ULA,https://en.wikipedia.org/wiki/Delta_II,Retired,3511,0,3,9,38.1,NaN,1.819,2.9,8.49,Delta II
+140,"Delta II 7925-10",Boeing,https://en.wikipedia.org/wiki/Delta_II,Retired,3511,0,3,9,38.9,NaN,1.73,3,8.9,Delta II
+141,"Delta II 7925-10C",ULA,https://en.wikipedia.org/wiki/Delta_II,Retired,3511,0,3,9,38.9,NaN,1.747,3,8.9,Delta II
+142,"Delta II 7925-10L",ULA,https://en.wikipedia.org/wiki/Delta_II,Retired,3511,0,3,9,39.3,NaN,1.739,3,9.3,Delta II
+143,"Delta II 7925-8",ULA,https://en.wikipedia.org/wiki/Delta_II,Retired,3511,0,3,9,38.1,NaN,1.78,2.4,8.49,Delta II
+144,"Delta II 7925H",ULA,https://en.wikipedia.org/wiki/Delta_II,Retired,4398,0,3,9,38.1,NaN,2.171,2.9,8.49,Delta II
+145,"Delta III 8930",Boeing,https://en.wikipedia.org/wiki/Delta_III,Retired,628,8.29,2,9,35,NaN,3.81,4,10.84,Delta II
+146,"Delta IV Heavy",ULA,https://en.wikipedia.org/wiki/Delta_IV_Heavy,Active,9411,28.37,2,2,72,350,13.81,5.1,19.1,Delta IV
+147,"Delta IV Medium",Boeing,https://en.wikipedia.org/wiki/Delta_(rocket_family)#Delta_M,Retired,3137,8.8,2,0,62.5,133,4.54,4,11.75,Delta IV
+148,"Delta IV Medium+ (4,2)",ULA,https://en.wikipedia.org/wiki/Delta_IV,Retired,4895,10.44,2,2,62.5,164,6.39,4,11.75,Delta IV
+149,"Delta IV Medium+ (5,2)",ULA,https://en.wikipedia.org/wiki/Delta_IV,Retired,4895,9.61,2,2,66.4,NaN,5.08,5.1,19.1,Delta IV
+150,"Delta IV Medium+ (5,4)",ULA,https://en.wikipedia.org/wiki/Delta_IV,Retired,6653,11.6,2,4,66.4,NaN,6.89,5.1,19.1,Delta IV
+151,"Diamant A",Aérospatiale,https://en.wikipedia.org/wiki/Diamant,Retired,274,0.08,3,0,16.95,NaN,0,0.65,2.16,Diamant
+152,"Diamant B",Aérospatiale,https://en.wikipedia.org/wiki/Diamant,Retired,348,0.115,3,0,24.2,NaN,0,0.85,2.8,Diamant
+153,"Diamant BP4",Aérospatiale,https://en.wikipedia.org/wiki/Diamant,Retired,317,0.112,3,0,21.64,NaN,0,1.45,4.5,Diamant
+154,"Dnepr",Yuzhnoye,https://en.wikipedia.org/wiki/Dnepr_(rocket),Retired,4520,4.5,3,0,34.3,29,0,3,NaN,Dnepr
+155,"Electron",Rocket Lab,https://en.wikipedia.org/wiki/Electron_(rocket),Active,162,0.3,2,0,17,7.5,0,1.2,NaN,Electron
+156,"Electron/Curie",Rocket Lab,https://en.wikipedia.org/wiki/Electron_(rocket),Active,162,0.3,3,0,17,7.5,0,1.2,2.5,Electron
+157,"Electron/Photon",Rocket Lab,https://en.wikipedia.org/wiki/Electron_(rocket),Planned,162,0.3,3,0,17,NaN,0,1.2,NaN,Electron
+158,"Energiya/Buran",RKK Energiya,https://en.wikipedia.org/wiki/Energia#Development,Retired,394723,100.05,1,4,59,5000,30,NaN,NaN,Energiya
+159,"Energiya/Polyus",RKK Energiya,https://en.wikipedia.org/wiki/Energia#Development,Retired,39473,100.05,1,4,59,5000,30,NaN,NaN,Energiya
+160,"Epsilon",JAXA,https://en.wikipedia.org/wiki/Epsilon_(rocket),Active,1612,0,3,0,26,NaN,0,2.5,9.19,Epsilon
+161,"Epsilon Demo",JAXA,https://en.wikipedia.org/wiki/Epsilon_(rocket),Retired,1621,0.49,4,0,24,NaN,0,2.5,9.19,Epsilon
+162,"Epsilon PBS",JAXA,https://en.wikipedia.org/wiki/Epsilon_(rocket),Active,1612,0.7,4,0,26,39,0,2.5,9.19,Epsilon
+163,"Epsilon S",JAXA,https://en.wikipedia.org/wiki/Epsilon_(rocket),Planned,1612,1.4,4,0,27,NaN,0,2.5,9.19,Epsilon
+164,"Europa 1",CECLES,https://en.wikipedia.org/wiki/Europa_(rocket),Retired,3962,1.44,3,0,31.68,NaN,0.2,2,NaN,Europa 1
+165,"Europa 2",CECLES,https://en.wikipedia.org/wiki/Europa_(rocket),Retired,8372,0,4,0,31.68,NaN,0.36,2,NaN,Europa 2
+166,"Falcon 1",SpaceX,https://en.wikipedia.org/wiki/Falcon_1,Retired,343,0.47,2,0,22.25,7,0,1.5,3.5,Falcon 1
+167,"Falcon 9 Block 3",SpaceX,https://en.wikipedia.org/wiki/Falcon_9,Retired,6804,22.8,2,0,70,62,8.3,5.2,13,Falcon 9
+168,"Falcon 9 Block 4",SpaceX,https://en.wikipedia.org/wiki/Falcon_9,Retired,6804,22.8,2,0,70,62,8.3,5.2,13,Falcon 9
+169,"Falcon 9 Block 5",SpaceX,https://en.wikipedia.org/wiki/Falcon_9,Active,7607,22.8,2,0,70,50,8.3,5.2,13,Falcon 9
+170,"Falcon 9 v1.0",SpaceX,https://en.wikipedia.org/wiki/Falcon_9_v1.0,Retired,4940,10.45,2,0,54.9,59.5,4.54,5.2,13,Falcon 9
+171,"Falcon 9 v1.1",SpaceX,https://en.wikipedia.org/wiki/Falcon_9_v1.1,Retired,5885,13.15,2,0,68.4,56.5,4.85,5.2,13,Falcon 9
+172,"Falcon Heavy",SpaceX,https://en.wikipedia.org/wiki/Falcon_Heavy,Active,22819,63.8,2,2,70,90,26.7,5.2,13,Falcon Heavy
+173,"Feng Bao 1",CASC,https://en.wikipedia.org/wiki/Feng_Bao_1,Retired,268,2.5,2,0,33,NaN,0,3.35,NaN,Feng Bao 1
+174,"Firefly Alpha",Firefly,https://en.wikipedia.org/wiki/Firefly_Alpha,Planned,736,1,2,0,29,15,0,2,5,Firefly Alpha
+175,"Firefly Beta",Firefly,https://en.wikipedia.org/wiki/Firefly_Beta,Planned,2208,4,2,2,31,NaN,0.4,2.8,5.5,Firefly Beta
+176,"GSLV Mk I",ISRO,https://en.wikipedia.org/wiki/Geosynchronous_Satellite_Launch_Vehicle,Retired,NaN,0,3,4,49.13,47,1.5,3.4,7.8,GSLV
+177,"GSLV Mk II",ISRO,https://en.wikipedia.org/wiki/Geosynchronous_Satellite_Launch_Vehicle,Active,7887,5,3,4,51.7,47,2.5,4,7.8,GSLV
+178,"GSLV Mk III",ISRO,https://en.wikipedia.org/wiki/Geosynchronous_Satellite_Launch_Vehicle_Mark_III,Active,11898,10,3,2,43.4,62,4,5,NaN,GSLV
+179,"H-I (9 SO)",MHI,https://en.wikipedia.org/wiki/H-I,Retired,NaN,3.2,2,9,42,NaN,1.1,2.44,NaN,H-I
+180,"H-II",MHI,https://en.wikipedia.org/wiki/H-II,Retired,NaN,10.06,2,2,49,NaN,3.93,NaN,NaN,H-II
+181,"H-II (2 SSB)",MHI,https://en.wikipedia.org/wiki/H-II,Retired,NaN,10.06,2,4,49,NaN,3.93,NaN,NaN,H-II
+182,"H-IIA 202",MHI,https://en.wikipedia.org/wiki/H-IIA,Active,NaN,10,2,2,53,90,4.1,4.07,12,H-II
+183,"H-IIA 2022",MHI,https://en.wikipedia.org/wiki/H-IIA,Retired,NaN,0,2,2,53,NaN,4.5,4.07,12,H-II
+184,"H-IIA 2024",MHI,https://en.wikipedia.org/wiki/H-IIA,Retired,NaN,0,2,4,53,NaN,5,4.07,12,H-II
+185,"H-IIA 204",MHI,https://en.wikipedia.org/wiki/H-IIA,Active,NaN,15,2,4,NaN,NaN,6,4.07,12,H-II
+186,"H-IIB",MHI,https://en.wikipedia.org/wiki/H-IIB,Retired,NaN,16.5,2,4,56.6,112.5,8,5.1,15,H-II
+187,"H-III 22",MHI,https://en.wikipedia.org/wiki/H3_(rocket),Planned,2158,0,2,2,63,50,4,5.27,NaN,H-II
+188,"H-III 24",MHI,https://en.wikipedia.org/wiki/H3_(rocket),Planned,NaN,0,2,4,50,50,6.5,5.27,NaN,H-II
+189,"H-III 30",MHI,https://en.wikipedia.org/wiki/H3_(rocket),Planned,1472,0,2,0,63,50,2.1,5.27,NaN,H-II
+190,"H-IIS",MHI,https://en.wikipedia.org/wiki/H-II,Retired,NaN,10.06,2,2,49,NaN,3.93,NaN,NaN,H-II
+191,"H-I UM-129A (6SO)",MHI,https://en.wikipedia.org/wiki/H-I,Retired,NaN,3.2,3,6,42,NaN,1.1,2.44,NaN,H-I
+192,"H-I UM-129A (9SO)",MHI,https://en.wikipedia.org/wiki/H-I,Retired,NaN,3.2,3,9,42,NaN,1.1,2.44,NaN,H-I
+193,"Hyperbola-1",i-Space,https://en.wikipedia.org/wiki/I-Space_(Chinese_company)#Hyperbola-1,Active,557,0.3,4,0,21,NaN,0,1,1.4,Hyperbola-1
+194,"Jielong-1",CASC,<undefined>,Active,NaN,0.25,4,0,NaN,7.5,0,1.2,NaN,Jielong-1
+195,"Juno I",AMBA,https://en.wikipedia.org/wiki/Juno_I,Retired,416,0.011,4,0,21.2,NaN,0,NaN,NaN,Juno I
+196,"Juno II",AMBA,https://en.wikipedia.org/wiki/Juno_II,Retired,667,0.041,4,0,24,NaN,0,NaN,NaN,Juno II
+197,"Kaituozhe 1",CASIC,https://en.wikipedia.org/wiki/Kaituozhe_(rocket_family),Retired,NaN,0.1,4,0,NaN,NaN,0,NaN,NaN,Kaituozhe
+198,"Kaituozhe 2",CASIC,https://en.wikipedia.org/wiki/Kaituozhe_(rocket_family)#KT-2,Active,NaN,0.35,3,0,NaN,NaN,0,NaN,NaN,Kaituozhe
+199,"Kuaizhou 1",CASIC,https://en.wikipedia.org/wiki/Kuaizhou,Retired,NaN,0,3,0,NaN,NaN,0,1.4,4,Kuaizhou
+200,"Kuaizhou 11",CASIC,https://en.wikipedia.org/wiki/Kuaizhou,Active,NaN,1.5,3,0,25,28.3,0,2.2,NaN,Kuaizhou
+201,"Kuaizhou 1A",CASIC,https://en.wikipedia.org/wiki/Kuaizhou,Active,NaN,0.3,3,0,19.4,NaN,0,1.4,4,Kuaizhou
+202,"Lambda-IV S",UT,https://en.wikipedia.org/wiki/Lambda_(rocket_family),Retired,NaN,0.012,4,2,16.5,NaN,0,NaN,NaN,Lambda-IV S
+203,"LauncherOne",Virgin Orbit,https://en.wikipedia.org/wiki/LauncherOne,Active,NaN,0.5,2,0,16,12,0,1.3,NaN,LauncherOne
+204,"Long March 1",CASC,https://en.wikipedia.org/wiki/Long_March_1,Retired,1101,0.3,3,0,30.45,NaN,0,NaN,NaN,Long March 1
+205,"Long March 11",CASC,https://en.wikipedia.org/wiki/Long_March_11,Active,1200,0.53,4,0,20.8,5.3,0,2,NaN,Long March 11
+206,"Long March 11A",CASC,https://en.wikipedia.org/wiki/Long_March_11,Planned,NaN,0,4,0,NaN,NaN,0,2.64,NaN,Long March 11
+207,"Long March 11H",CASC,https://en.wikipedia.org/wiki/Long_March_11,Active,1176,0.7,4,0,20.8,5.3,0,2,3,Long March 11
+208,"Long March 2",CASC,https://en.wikipedia.org/wiki/Long_March_2A,Retired,2786,2,2,0,32,NaN,0,NaN,NaN,Long March 2
+209,"Long March 2C",CASC,https://en.wikipedia.org/wiki/Long_March_2C,Active,2962,3.85,2,0,42,30.8,1.25,NaN,NaN,Long March 2
+210,"Long March 2C/E",CASC,https://en.wikipedia.org/wiki/Long_March_2C,Active,2962,3.85,3,0,42,30.8,0,NaN,NaN,Long March 2
+211,"Long March 2C/SMA",CASC,https://en.wikipedia.org/wiki/Long_March_2C,Active,NaN,0,3,0,NaN,NaN,0,NaN,NaN,Long March 2
+212,"Long March 2C/YZ-1S",CASC,https://en.wikipedia.org/wiki/Long_March_2C,Active,2962,3.85,3,0,42,30.8,0,NaN,NaN,Long March 2
+213,"Long March 2D",CASC,https://en.wikipedia.org/wiki/Long_March_2D,Active,2962,3.5,2,0,41.06,29.75,0,3.35,10.9,Long March 2
+214,"Long March 2D/YZ-3",CASC,https://en.wikipedia.org/wiki/Long_March_2D,Active,2962,0,3,0,NaN,NaN,0,3.35,10.9,Long March 2
+215,"Long March 2E",CASC,https://en.wikipedia.org/wiki/Long_March_2E,Retired,5923,9.5,2,4,49.7,NaN,3.5,4.2,3.4,Long March 2
+216,"Long March 2F",CASC,https://en.wikipedia.org/wiki/Long_March_2F,Active,6512,8.4,2,4,62,NaN,0,NaN,NaN,Long March 2
+217,"Long March 2F/G",CASC,https://en.wikipedia.org/wiki/Long_March_2F,Active,NaN,8.4,2,4,62,NaN,0,NaN,NaN,Long March 2
+218,"Long March 2F/T",CASC,https://en.wikipedia.org/wiki/Long_March_2F,Active,NaN,8.4,2,4,58,NaN,0,NaN,NaN,Long March 2
+219,"Long March 3",CASC,https://en.wikipedia.org/wiki/Long_March_3,Retired,2962,5,3,0,43.25,NaN,1.5,NaN,NaN,Long March 3
+220,"Long March 3A",CASC,https://en.wikipedia.org/wiki/Long_March_3A,Active,2962,8.5,3,0,52.52,69.7,2.6,3.35,8.89,Long March 3
+221,"Long March 3B",CASC,https://en.wikipedia.org/wiki/Long_March_3B,Active,5924,11.5,3,4,54.8,NaN,5.1,4,9.56,Long March 3
+222,"Long March 3B/E",CASC,https://en.wikipedia.org/wiki/Long_March_3B,Active,5922,11.5,3,4,56.3,29.15,5.5,4.2,9.56,Long March 3
+223,"Long March 3B/YZ-1",CASC,https://en.wikipedia.org/wiki/Long_March_3B,Active,5924,0,4,4,NaN,NaN,0,4,9.56,Long March 3
+224,"Long March 3C",CASC,https://en.wikipedia.org/wiki/Long_March_3C,Active,5923,0,3,2,55.64,20.14,3.8,4.2,9.78,Long March 3
+225,"Long March 3C/E",CASC,https://en.wikipedia.org/wiki/Long_March_3C,Active,5923,0,3,4,54.8,NaN,3.9,4.2,9.8,Long March 3
+226,"Long March 3C/YZ-1",CASC,https://en.wikipedia.org/wiki/Long_March_3C,Active,5923,0,4,2,NaN,NaN,0,4.2,9.78,Long March 3
+227,"Long March 4A",CASC,https://en.wikipedia.org/wiki/Long_March_4A,Retired,2962,4,3,0,41.9,NaN,0,NaN,NaN,Long March 4
+228,"Long March 4B",CASC,https://en.wikipedia.org/wiki/Long_March_4B,Active,2971,4.2,3,0,44.1,64.68,1.5,NaN,NaN,Long March 4
+229,"Long March 4C",CASC,https://en.wikipedia.org/wiki/Long_March_4C,Active,2971,4.2,3,0,45.8,64.68,1.5,NaN,NaN,Long March 4
+230,"Long March 5",CASC,https://en.wikipedia.org/wiki/Long_March_5,Active,10565,25,3,4,57,NaN,14,5,NaN,Long March 5
+231,"Long March 5B",CASC,https://en.wikipedia.org/wiki/Long_March_5,Active,10565,23,2,4,53.66,NaN,0,5.2,20.5,Long March 5
+232,"Long March 5/YZ-2",CASC,https://en.wikipedia.org/wiki/Long_March_5,Active,10565,25,3,4,57,NaN,0,5,NaN,Long March 5
+233,"Long March 6",CASC,https://en.wikipedia.org/wiki/Long_March_6,Active,1188,1.08,3,0,29.24,NaN,0,2.6,5.7,Long March 6
+234,"Long March 6A",CASC,https://en.wikipedia.org/wiki/Long_March_6,Planned,NaN,0,3,4,29.24,NaN,0,2.6,5.7,Long March 6
+235,"Long March 7",CASC,https://en.wikipedia.org/wiki/Long_March_7,Active,7200,13.5,2,4,53.1,NaN,5.5,4.2,12.4,Long March 7
+236,"Long March 7A",CASC,https://en.wikipedia.org/wiki/Long_March_7,Active,7200,0,3,4,NaN,NaN,7,4.2,12.4,Long March 7
+237,"Long March 7/YZ-1A",CASC,https://en.wikipedia.org/wiki/Long_March_7,Active,7200,13.5,3,4,53.1,NaN,5.5,4.2,12.4,Long March 7
+238,"Long March 8",CASC,https://en.wikipedia.org/wiki/Long_March_(rocket_family)#Long_March_8,Planned,NaN,7.6,3,2,NaN,NaN,2.5,NaN,NaN,Long March 8
+239,"Long March 9",CASC,https://en.wikipedia.org/wiki/Long_March_(rocket_family)#Variants,Planned,NaN,140,3,4,110,NaN,50,NaN,NaN,Long March 9
+240,"Mercury-Redstone",NASA,https://en.wikipedia.org/wiki/Mercury-Redstone_Launch_Vehicle,Retired,350,0,1,0,25.4,NaN,0,NaN,NaN,Mercury-Redstone
+241,"Minotaur C (Taurus)",Northrop,https://en.wikipedia.org/wiki/Minotaur-C,Active,1607,1.32,4,0,27.9,45,0,2.34,NaN,Minotaur
+242,"Minotaur I",Northrop,https://en.wikipedia.org/wiki/Minotaur_I,Active,792,0.58,4,0,19.21,40,0.331,1.27,3.79,Minotaur
+243,"Minotaur IV",Northrop,https://en.wikipedia.org/wiki/Minotaur_IV,Active,2200,1.375,4,0,23.88,46,0,2.34,6.4,Minotaur
+244,"Minotaur V",Northrop,https://en.wikipedia.org/wiki/Minotaur_V,Active,2224,0.64,5,0,24.56,55,0.532,2.34,6.4,Minotaur
+245,"Miura 5",PLD,https://en.wikipedia.org/wiki/PLD_Space#Miura_5,Planned,NaN,0.3,3,0,20.7,NaN,0,NaN,NaN,Miura 5
+246,"Molniya",RKK Energiya,https://en.wikipedia.org/wiki/Molniya_(rocket),Retired,3692,0,4,4,43.4,NaN,0,2.6,NaN,Molniya
+247,"Molniya-M /Block 2BL",RKK Energiya,https://en.wikipedia.org/wiki/Molniya-M,Retired,4016,0,3,4,43.4,NaN,0,NaN,7.81,Molniya
+248,"Molniya-M /Block L",RKK Energiya,https://en.wikipedia.org/wiki/Molniya-M,Retired,4016,0,3,4,43.4,NaN,0,NaN,7.81,Molniya
+249,"Molniya-M /Block ML",RKK Energiya,https://en.wikipedia.org/wiki/Molniya-M,Retired,4016,0,3,4,43.4,NaN,0,NaN,7.81,Molniya
+250,"Molniya-M /Block NVL",RKK Energiya,https://en.wikipedia.org/wiki/Molniya-M,Retired,4016,0,3,4,43.4,NaN,0,NaN,7.81,Molniya
+251,"Molniya-M /Block SO-L",RKK Energiya,https://en.wikipedia.org/wiki/Molniya-M,Retired,4016,0,3,4,43.4,NaN,0,NaN,7.81,Molniya
+252,"Molniya-M /Block VL",RKK Energiya,https://en.wikipedia.org/wiki/Molniya-M,Retired,4016,0,3,4,43.4,NaN,0,NaN,7.81,Molniya
+253,"MOMO",IST,https://en.wikipedia.org/wiki/Interstellar_Technologies#MOMO_sounding_rocket,Active,83,0,1,0,10,0.44,0,0.5,0.8,MOMO
+254,"Mu-III C",ISAS,https://en.wikipedia.org/wiki/Mu_(rocket_family),Retired,NaN,0.195,3,8,NaN,NaN,0,NaN,NaN,Mu-III
+255,"Mu-III H",ISAS,https://en.wikipedia.org/wiki/Mu_(rocket_family),Retired,NaN,0.27,4,8,NaN,NaN,0,NaN,NaN,Mu-III
+256,"Mu-III S",ISAS,https://en.wikipedia.org/wiki/Mu_(rocket_family),Retired,NaN,0.29,3,8,NaN,NaN,0,NaN,NaN,Mu-III
+257,"Mu-III S2",ISAS,https://en.wikipedia.org/wiki/Mu_(rocket_family),Retired,NaN,0.77,4,2,NaN,NaN,0,NaN,NaN,Mu-III
+258,"Mu-IV S",ISAS,https://en.wikipedia.org/wiki/Mu_(rocket_family),Retired,NaN,0.18,4,8,23.6,NaN,0,NaN,NaN,Mu-IV S
+259,"Mu-V / M-24",ISAS,https://en.m.wikipedia.org/wiki/M-V,Retired,3780,1.8,4,0,30.7,NaN,0,NaN,NaN,Mu-V
+260,"Mu-V / M-25",ISAS,https://en.m.wikipedia.org/wiki/M-V,Retired,3780,1.8,4,0,30.7,NaN,0,NaN,NaN,Mu-V
+261,"N1-L3",OKB-1,https://en.wikipedia.org/wiki/N1_(rocket),Retired,45400,95,5,0,105,NaN,0,NaN,NaN,N1-L3
+262,"N1-L3 M",OKB-1,https://en.wikipedia.org/wiki/N1_(rocket),Retired,45400,95,5,0,105,NaN,0,NaN,NaN,N1-L3 M
+263,"Naro-1",KARI,https://en.wikipedia.org/wiki/Naro-1,Retired,83,0,2,0,33,NaN,0,3,NaN,Naro-1
+264,"New Glenn",Blue Origin,https://en.wikipedia.org/wiki/New_Glenn,Planned,17100,45,2,0,82,NaN,13,7,5.4,New Glenn
+265,"New Shepard",Blue Origin,https://en.wikipedia.org/wiki/New_Shepard,Active,490,0,2,0,18,NaN,0,NaN,NaN,New Shepard
+266,"N-I",MHI,https://en.wikipedia.org/wiki/N-I_(rocket),Retired,NaN,1.2,2,3,34,NaN,0.36,NaN,NaN,N-I
+267,"N-II",MHI,https://en.wikipedia.org/wiki/N-II_(rocket),Retired,NaN,2,2,9,35,NaN,0.73,NaN,NaN,N-II
+268,"N-II Star-37E",MHI,https://en.wikipedia.org/wiki/N-II_(rocket),Retired,NaN,2,3,9,35,NaN,0.73,NaN,NaN,N-II
+269,"N-I Star-37E",MHI,https://en.wikipedia.org/wiki/N-I_(rocket),Retired,NaN,1.2,3,3,34,NaN,0.36,NaN,NaN,N-I
+270,"NOTS-EV-1 Pilot II",US Navy,https://en.wikipedia.org/wiki/NOTS-EV-1_Pilot,Retired,NaN,0.001,5,0,4,NaN,0,NaN,NaN,NOTS-EV-1 Pilot II
+271,"NSL-A",Gotospace,https://gotospaceindustries.com/programmi-spaziali/lanciatori-orbitali/nanosatellite-launcher/,Planned,210,0.2,3,0,18,4,0,1.2,NaN,NSL-A
+272,"OS-M1",OneSpace,https://en.wikipedia.org/wiki/OneSpace#OS-M,Active,NaN,0.205,4,0,NaN,NaN,0,0.7,1.26,OS-M1
+273,"Palas 1",Galactic Energy,<undefined>,Planned,2746,4,2,0,42,NaN,0,3.15,6.3,Palas 1
+274,"Pegasus",Northrop,https://en.wikipedia.org/wiki/Pegasus_(rocket),Retired,487,0.375,3,0,16.9,40,0,1.15,2.13,Pegasus
+275,"Pegasus/HAPS",Northrop,https://en.wikipedia.org/wiki/Pegasus_(rocket),Retired,487,0,4,0,16.9,40,0,1.15,2.13,Pegasus
+276,"Pegasus XL",Northrop,https://en.wikipedia.org/wiki/Pegasus_(rocket),Active,561,0.443,4,0,17.6,40,0,1.15,2.13,Pegasus XL
+277,"Pegasus XL/HAPS",Northrop,https://en.wikipedia.org/wiki/Pegasus_(rocket),Active,561,0,4,0,17.6,40,0,1.15,2.13,Pegasus XL
+278,"Poliot",OKB-1,<undefined>,Retired,NaN,0,2,4,NaN,NaN,0,NaN,NaN,Poliot
+279,"Proton",Khrunichev,https://en.wikipedia.org/wiki/Proton_(rocket_family),Retired,8360,8.4,2,NaN,39.8,NaN,0,4.15,8.5,Proton
+280,"Proton K",Khrunichev,https://en.wikipedia.org/wiki/Proton-K,Retired,8681,18.9,3,0,58.46,NaN,0,4.15,16.12,Proton K
+281,"Proton K/Block D",Khrunichev,https://en.wikipedia.org/wiki/Proton-K,Retired,8840,18.9,4,0,56.14,NaN,0,3.9,8.9,Proton K
+282,"Proton K/Block D-1",Khrunichev,https://en.wikipedia.org/wiki/Proton-K,Retired,9468,0,4,0,56.14,NaN,0,3.9,10.4,Proton K
+283,"Proton K/Block D-2",Khrunichev,https://en.wikipedia.org/wiki/Proton-K,Retired,9548,0,4,0,56.14,NaN,0,3.9,10.4,Proton K
+284,"Proton K/Block-DM",Khrunichev,https://en.wikipedia.org/wiki/Proton-K,Retired,9468,0,4,0,54.89,NaN,2.2,3.9,7.65,Proton K
+285,"Proton K/Block DM-1",Khrunichev,https://en.wikipedia.org/wiki/Proton-K,Retired,9468,0,4,0,57.24,NaN,2.2,3.9,7.65,Proton K
+286,"Proton K/Block DM2",Khrunichev,https://en.wikipedia.org/wiki/Proton-K,Retired,9548,0,4,0,57.64,NaN,2.5,4.35,10.4,Proton K
+287,"Proton K/Block DM-2",Khrunichev,https://en.wikipedia.org/wiki/Proton-K,Retired,9548,0,4,0,57.64,NaN,2.4,4.35,10.4,Proton K
+288,"Proton K/Block DM-2M",Khrunichev,https://en.wikipedia.org/wiki/Proton-K,Retired,9548,0,4,NaN,57.64,NaN,2.5,4.35,10.4,Proton K
+289,"Proton K/Block DM-3",Khrunichev,https://en.wikipedia.org/wiki/Proton-K,Retired,9548,0,4,NaN,57.64,NaN,2.5,4.35,10.4,Proton K
+290,"Proton K/Block DM-4",Khrunichev,https://en.wikipedia.org/wiki/Proton-K,Retired,9548,0,4,NaN,57.64,NaN,2.5,4.35,10.4,Proton K
+291,"Proton K/Block DM-5",Khrunichev,https://en.wikipedia.org/wiki/Proton-K,Retired,9548,0,4,NaN,57.64,NaN,2.5,4.35,10.4,Proton K
+292,"Proton K/Briz-M",Khrunichev,https://en.wikipedia.org/wiki/Proton-K,Retired,9548,0,4,NaN,54.54,NaN,2.2,4.35,11.6,Proton K
+293,"Proton M",Khrunichev,https://en.wikipedia.org/wiki/Proton-M,Planned,10532,0,3,0,58.2,65,6,4.35,15.26,Proton M
+294,"Proton-M/Briz-M",Khrunichev,https://en.wikipedia.org/wiki/Proton-M,Active,10532,0,4,0,58.2,65,6,4.35,15.26,Proton-M
+295,"Proton-M/DM-2",Khrunichev,https://en.wikipedia.org/wiki/Proton-M,Active,10532,0,4,0,53,65,0,4.35,15.26,Proton-M
+296,"Proton-M/DM-3",Khrunichev,https://en.wikipedia.org/wiki/Proton-M,Active,10532,0,4,0,53,65,6,4.35,15.26,Proton-M
+297,"PSLV-CA",ISRO,https://en.wikipedia.org/wiki/Polar_Satellite_Launch_Vehicle#Variants,Active,4847,0,4,0,44,21,0,3.2,8.3,PSLV
+298,"PSLV-DL",ISRO,https://en.wikipedia.org/wiki/Polar_Satellite_Launch_Vehicle,Active,5867,0,4,2,44,NaN,0,3.2,8.3,PSLV
+299,"PSLV-G",ISRO,https://en.wikipedia.org/wiki/Polar_Satellite_Launch_Vehicle#Variants,Retired,6887,3.25,4,6,44.5,25,1.41,3.2,8.3,PSLV
+300,"PSLV-QL",ISRO,https://en.wikipedia.org/wiki/Polar_Satellite_Launch_Vehicle#Variants,Active,7661,0,4,4,44,21,0,3.2,8.3,PSLV
+301,"PSLV-XL",ISRO,https://en.wikipedia.org/wiki/Polar_Satellite_Launch_Vehicle#Variants,Active,7661,3.25,4,6,44,31,1.41,3.2,8.3,PSLV
+302,"Qased",ISA,https://fr.wikipedia.org/wiki/Qased,Active,255,0,3,0,18.6,NaN,0,1,2.6,Qased
+303,"Redstone Sparta",AMBA,https://en.wikipedia.org/wiki/PGM-11_Redstone,Retired,350,2.86,3,0,21,NaN,0,NaN,NaN,Redstone Sparta
+304,"Rocket 3",Astra,https://fr.wikipedia.org/wiki/Rocket_(fus%C3%A9e),Active,133,0.204,2,0,11.6,2.5,0,NaN,NaN,Rocket 3
+305,"Rokot/Briz K",Khrunichev,https://en.wikipedia.org/wiki/Rokot,Retired,NaN,0,3,0,NaN,NaN,0,NaN,NaN,Rokot/Briz K
+306,"Rokot/Briz KM",Khrunichev,https://en.wikipedia.org/wiki/Rokot,Retired,NaN,2.14,3,0,29,41.8,0,NaN,NaN,Rokot/Briz K
+307,"Rokot-M/Briz KM-2",Khrunichev,https://en.wikipedia.org/wiki/Rokot,Planned,NaN,2.14,3,0,29,41.8,0,NaN,NaN,Rokot-M/Briz KM-2
+308,"Safir-1",ISA,https://en.wikipedia.org/wiki/Safir_(rocket),Retired,284,0.027,2,0,26,NaN,0,NaN,NaN,Safir
+309,"Safir-1A",ISA,https://en.wikipedia.org/wiki/Safir_(rocket),Retired,314,0.015,2,0,26,NaN,0,NaN,NaN,Safir
+310,"Safir-1B",ISA,https://en.wikipedia.org/wiki/Safir_(rocket),Retired,314,0.05,2,0,26,NaN,0,NaN,NaN,Safir
+311,"Safir-1B+",ISA,https://en.wikipedia.org/wiki/Safir_(rocket),Active,337,0.05,2,0,26,NaN,0,NaN,NaN,Safir
+312,"SARGE",Exos,https://en.wikipedia.org/wiki/Exos_Aerospace#SARGE,Active,NaN,0,1,0,11,NaN,0,0.51,0.91,SARGE
+313,"Saturn I",NASA,https://en.wikipedia.org/wiki/Saturn_I,Retired,6700,9.07,2,0,55,NaN,0,NaN,NaN,Saturn I
+314,"Saturn IB",NASA,https://en.wikipedia.org/wiki/Saturn_IB,Retired,7100,21,2,0,43.2,NaN,0,NaN,NaN,Saturn IB
+315,"Saturn V",NASA,https://en.wikipedia.org/wiki/Saturn_V,Retired,35100,140,3,0,110.6,1160,0,NaN,NaN,Saturn V
+316,"Scout B",Vought,https://en.wikipedia.org/wiki/Scout_(rocket_family),Retired,622,0.143,4,0,21,NaN,0,NaN,NaN,Scout
+317,"Scout B1",Vought,https://en.wikipedia.org/wiki/Scout_(rocket_family),Retired,622,0.129,4,0,21,NaN,0,NaN,NaN,Scout
+318,"Scout D1",Vought,https://en.wikipedia.org/wiki/Scout_(rocket_family),Retired,622,0.185,4,0,21,NaN,0,NaN,NaN,Scout
+319,"Scout F1",Vought,https://en.wikipedia.org/wiki/Scout_(rocket_family),Retired,622,0.193,4,0,21,NaN,0,NaN,NaN,Scout
+320,"Scout G1",Vought,https://en.wikipedia.org/wiki/Scout_(rocket_family),Retired,622,0.21,4,0,21,NaN,0,NaN,NaN,Scout
+321,"Scout X-1",NASA,https://en.wikipedia.org/wiki/Scout_X-1,Retired,NaN,0,4,NaN,25,NaN,0,NaN,NaN,Scout
+322,"Scout X-2",NASA,https://en.wikipedia.org/wiki/Scout_X-2,Retired,440,0.076,4,NaN,25,NaN,0,NaN,NaN,Scout
+323,"Scout X-2B",NASA,https://en.wikipedia.org/wiki/Scout_X-2B,Retired,NaN,0,4,NaN,22,NaN,0,NaN,NaN,Scout
+324,"Scout X-2M",NASA,https://en.wikipedia.org/wiki/Scout_X-2M,Retired,440,0,4,NaN,22,NaN,0,NaN,NaN,Scout
+325,"Scout X-3",NASA,<undefined>,Retired,NaN,0.087,NaN,NaN,NaN,NaN,0,NaN,NaN,Scout
+326,"Scout X-3M",NASA,<undefined>,Retired,NaN,0,4,NaN,22,NaN,0,NaN,NaN,Scout
+327,"Scout X-4",NASA,<undefined>,Retired,NaN,0.103,4,NaN,25,NaN,0,NaN,NaN,Scout
+328,"Shavit",IAI,https://en.wikipedia.org/wiki/Shavit,Retired,413,0.16,3,0,18,NaN,0,1.3,4.37,Shavit
+329,"Shavit-1",IAI,https://en.wikipedia.org/wiki/Shavit,Retired,554,0.225,3,0,20,NaN,0,1.35,4.37,Shavit
+330,"Shavit-2",IAI,https://en.wikipedia.org/wiki/Shavit,Active,554,0.35,3,0,22,NaN,0,1.35,4.37,Shavit
+331,"Shtil'",Makeyev,https://en.wikipedia.org/wiki/Shtil%27,Retired,NaN,0.1,3,0,15,NaN,0,NaN,NaN,Shtil'
+332,"Simorgh",ISA,https://en.wikipedia.org/wiki/Simorgh_(rocket),Active,1300,0.35,2,0,27,NaN,0,NaN,NaN,Simorgh
+333,"SLS Block 1",NASA,https://en.wikipedia.org/wiki/Space_Launch_System,Planned,39440,95,2,2,98.1,1500,0,5.1,14.3,SLS Block 1
+334,"SLV-3",ISRO,https://en.wikipedia.org/wiki/Satellite_Launch_Vehicle,Retired,503,0.04,4,0,22,NaN,0,1,NaN,SLV-3
+335,"SM-65B Atlas",US Air Force,https://en.wikipedia.org/wiki/SM-65B_Atlas,Retired,NaN,0.07,2,0,26,NaN,0,NaN,NaN,SM-65B Atlas
+336,"Soyuz",OKB-1,https://en.wikipedia.org/wiki/Soyuz_(rocket),Retired,994,6.45,2,4,45.6,NaN,0,NaN,NaN,Soyuz
+337,"Soyuz 2.1a",RKK Energiya,https://en.wikipedia.org/wiki/Soyuz-2,Active,4150,7.02,3,4,NaN,48.5,0,3.7,7.7,Soyuz 2.1
+338,"Soyuz 2.1a/Fregat",RKK Energiya,https://en.wikipedia.org/wiki/Soyuz-2,Active,4150,0,4,4,42.5,48.5,2.81,3.7,7.7,Soyuz 2.1
+339,"Soyuz 2.1a/Fregat-M",RKK Energiya,https://en.wikipedia.org/wiki/Soyuz-2#Soyuz-2.1a,Active,4150,0,4,4,42.5,48.5,2.81,3.7,7.7,Soyuz 2.1
+340,"Soyuz 2.1a/Volga",RKK Energiya,https://en.wikipedia.org/wiki/Soyuz-2,Active,4150,0,4,4,NaN,NaN,0,3.7,7.7,Soyuz 2.1
+341,"Soyuz 2.1b",RKK Energiya,https://en.wikipedia.org/wiki/Soyuz-2,Active,4150,8.02,3,4,NaN,35,0,3.7,7.7,Soyuz 2.1
+342,"Soyuz 2.1b/Fregat",RKK Energiya,https://en.wikipedia.org/wiki/Soyuz-2,Active,4150,0,4,4,42.5,48.5,3.25,3.7,7.7,Soyuz 2.1
+343,"Soyuz 2.1b/Fregat-M",RKK Energiya,https://en.wikipedia.org/wiki/Soyuz-2,Active,4150,0,4,4,42.5,NaN,3.25,3.7,7.7,Soyuz 2.1
+344,"Soyuz 2.1v",RKK Energiya,https://en.wikipedia.org/wiki/Soyuz-2-1v,Active,NaN,2.85,3,0,NaN,NaN,0,3.7,7.7,Soyuz 2.1
+345,"Soyuz 2.1v/Volga",RKK Energiya,https://en.wikipedia.org/wiki/Soyuz-2-1v,Active,NaN,2.85,4,0,NaN,NaN,0,3.7,7.7,Soyuz 2.1
+346,"Soyuz 5",RKK Energiya,https://en.wikipedia.org/wiki/Irtysh_(rocket),Planned,7257,17,2,0,61.9,NaN,5,4.1,NaN,Soyuz 5
+347,"Soyuz 5/Fregat SBU",RKK Energiya,https://en.wikipedia.org/wiki/Irtysh_(rocket),Planned,7257,17,3,0,61.9,NaN,5,4.1,NaN,Soyuz 5/Fregat SBU
+348,"Soyuz 6",Roscosmos,<undefined>,Planned,NaN,9,NaN,0,NaN,NaN,0,NaN,NaN,Soyuz 6
+349,"Soyuz 7",Roscosmos,https://en.m.wikipedia.org/wiki/Soyuz-7_(rocket),Planned,NaN,13,NaN,0,NaN,NaN,0,NaN,NaN,Soyuz 7
+350,"Soyuz FG",RKK Energiya,https://en.wikipedia.org/wiki/Soyuz-FG,Retired,4056,6.9,3,4,49.5,NaN,0,NaN,NaN,Soyuz FG
+351,"Soyuz FG/Fregat",RKK Energiya,https://en.wikipedia.org/wiki/Soyuz-FG,Retired,NaN,7.8,3,4,42.5,NaN,0,NaN,NaN,Soyuz FG
+352,"Soyuz L",OKB-1,https://en.wikipedia.org/wiki/Soyuz-L,Retired,4054,5.5,2,4,50,NaN,0,3.8,NaN,Soyuz L
+353,"Soyuz M",OKB-1,https://en.wikipedia.org/wiki/Soyuz-M,Retired,995,6.6,2,4,50,NaN,0,NaN,NaN,Soyuz M
+354,"Soyuz ST-A/Fregat",RKK Energiya,https://en.wikipedia.org/wiki/Soyuz-2,Active,4150,0,4,4,46.2,80,2.81,4.11,11.4,Soyuz ST
+355,"Soyuz ST-A/Fregat-M",RKK Energiya,https://en.wikipedia.org/wiki/Soyuz-2,Active,4150,0,4,4,46.2,NaN,2.81,4.11,11.4,Soyuz ST
+356,"Soyuz ST-B/Fregat-M",RKK Energiya,https://en.wikipedia.org/wiki/Soyuz-2#Soyuz-2.1b,Active,4150,0,4,4,46.2,NaN,3.25,4.11,11.4,Soyuz ST
+357,"Soyuz ST-B/Fregat-MT",RKK Energiya,https://en.wikipedia.org/wiki/Soyuz-2#Soyuz-2.1b,Active,NaN,0,4,4,46.2,NaN,3.25,4.11,11.4,Soyuz ST
+358,"Soyuz U",RKK Energiya,https://en.wikipedia.org/wiki/Soyuz-U,Retired,4147,6.9,3,4,51.1,NaN,0,3.7,7.7,Soyuz U
+359,"Soyuz U2",RKK Energiya,https://en.wikipedia.org/wiki/Soyuz-U2,Retired,NaN,7.05,2,4,34.5,NaN,0,NaN,NaN,Soyuz U2
+360,"Soyuz U/Fregat",RKK Energiya,https://en.wikipedia.org/wiki/Soyuz-U,Retired,NaN,6.9,3,4,46.7,NaN,0,NaN,NaN,Soyuz U/Fregat
+361,"Soyuz U/Ikar",RKK Energiya,https://en.wikipedia.org/wiki/Soyuz-U,Retired,NaN,6.9,3,4,47.3,NaN,0,NaN,NaN,Soyuz U/Ikar
+362,"Space Shuttle Atlantis",NASA,https://en.wikipedia.org/wiki/Space_Shuttle_Atlantis,Retired,30250,27.5,2,2,56.1,450,3.81,NaN,NaN,Space Shuttle
+363,"Space Shuttle Challenger",NASA,https://en.wikipedia.org/wiki/Space_Shuttle_Challenger,Retired,30250,27.5,2,2,56.1,450,3.81,NaN,NaN,Space Shuttle
+364,"Space Shuttle Columbia",NASA,https://en.wikipedia.org/wiki/Space_Shuttle_Columbia,Retired,30250,27.5,2,2,56.1,450,3.81,NaN,NaN,Space Shuttle
+365,"Space Shuttle Discovery",NASA,https://en.wikipedia.org/wiki/Space_Shuttle_Discovery,Retired,30250,27.5,2,2,56.1,450,3.81,NaN,NaN,Space Shuttle
+366,"Space Shuttle Endeavour",NASA,https://en.wikipedia.org/wiki/Space_Shuttle_Endeavour,Retired,30250,27.5,2,2,56.1,450,3.81,NaN,NaN,Space Shuttle
+367,"Sputnik 8A91",OKB-1,https://en.wikipedia.org/wiki/Sputnik_(rocket),Retired,3784,1.327,2,4,31,NaN,0,3,3,Sputnik
+368,"Sputnik 8K71PS",OKB-1,https://en.wikipedia.org/wiki/Sputnik_(rocket),Retired,3903,0.5,2,4,29.1,NaN,0,2.95,3,Sputnik
+369,"SS-520",JAXA,https://en.wikipedia.org/wiki/S-Series_(rocket_family)#SS-520,Active,NaN,0.004,3,0,9.54,NaN,0,0.52,NaN,SS-520
+370,"SSLV",ISRO,https://en.wikipedia.org/wiki/Small_Satellite_Launch_Vehicle,Planned,NaN,0.5,4,0,34,NaN,0,2,NaN,SSLV
+371,"Starship Prototype",SpaceX,https://en.wikipedia.org/wiki/SpaceX_Starship,Active,6000,0,1,0,50,NaN,0,NaN,NaN,Starship Prototype
+372,"Starship-Super Heavy",SpaceX,https://en.wikipedia.org/wiki/BFR_(rocket),Planned,61800,100,2,0,118,NaN,0,9,NaN,Starship-Super Heavy
+373,"Start",MITT,https://en.wikipedia.org/wiki/Start-1#Variants,Retired,NaN,0.85,5,0,NaN,NaN,0,NaN,NaN,Start
+374,"Start-1",MITT,https://en.wikipedia.org/wiki/Start-1,Active,980,0.532,4,0,23,NaN,0.167,NaN,NaN,Start
+375,"Strela",NPO Mach,https://en.wikipedia.org/wiki/Strela_(rocket),Retired,2080,1.5,3,0,29.2,NaN,0,1.55,5.4,Strela
+376,"Super Stripy",Sandia,https://en.wikipedia.org/wiki/SPARK_(rocket),Active,134,0.25,3,0,18,15,0,1.32,NaN,Super Stripy
+377,"Taepodong-1",KCST,https://en.wikipedia.org/wiki/Taepodong-1,Retired,525,0,3,0,26,NaN,0,1,NaN,Taepodong-1
+378,"Terran-1",Relativity,https://en.wikipedia.org/wiki/Relativity_Space#Terran_1_launch_vehicle,Planned,NaN,1.25,2,0,NaN,10,0,NaN,NaN,Terran-1
+379,"Thor-DM 18 Able I",US Air Force,https://en.wikipedia.org/wiki/Thor-Able,Retired,NaN,0.12,3,0,27,NaN,0,NaN,NaN,Thor
+380,"Thor DM-18 Able-II",US Air Force,https://en.wikipedia.org/wiki/Thor-Able,Retired,NaN,0,3,0,NaN,NaN,0,NaN,NaN,Thor
+381,"Thor DM-18 Able-III",US Air Force,https://en.wikipedia.org/wiki/Thor-Able,Retired,NaN,0,3,0,NaN,NaN,0,NaN,NaN,Thor
+382,"Thor DM-18 Able-IV",US Air Force,https://en.wikipedia.org/wiki/Thor-Able,Retired,NaN,0,3,0,NaN,NaN,0,NaN,NaN,Thor
+383,"Thor-DM18 Agena-A",US Air Force,https://en.wikipedia.org/wiki/Thor-Agena,Retired,NaN,0,3,0,NaN,NaN,0,NaN,NaN,Thor
+384,"Thor DM-19 Delta",US Air Force,https://en.wikipedia.org/wiki/Thor-Delta,Retired,NaN,0,0,3,NaN,NaN,0,NaN,NaN,Thor
+385,"Thor-DM21 Ablestar",US Air Force,https://en.wikipedia.org/wiki/Thor-Ablestar,Retired,760,0.15,0,2,29,NaN,0,NaN,NaN,Thor
+386,"Thor DM-21 Agena-B",US Air Force,https://en.wikipedia.org/wiki/Thor-Agena,Retired,NaN,0,3,0,NaN,NaN,0,NaN,NaN,Thor
+387,"Thor DM-21 Agena-D",US Air Force,https://en.wikipedia.org/wiki/Thor-Agena,Retired,NaN,0,3,0,NaN,NaN,0,NaN,NaN,Thor
+388,"Thor-DSV2A Ablestar",US Air Force,https://en.wikipedia.org/wiki/Thor-Ablestar,Retired,NaN,0,2,0,NaN,NaN,0,NaN,NaN,Thor
+389,"Thor-SLV2A Agena-D",US Air Force,https://en.wikipedia.org/wiki/Thor-Agena,Retired,1571,0,2,3,31,NaN,0,NaN,NaN,Thor
+390,"Titan 34D",Martin Marietta,https://en.wikipedia.org/wiki/Titan_34D#Specification,Retired,11279,14.515,3,2,50,NaN,5,3.05,NaN,Titan
+391,"Titan II(23)G",Lockheed,https://en.wikipedia.org/wiki/Titan_23G,Retired,1900,3.6,2,NaN,42.9,35,0,3.05,9.1,Titan II
+392,"Titan II GLV",NASA,https://en.wikipedia.org/wiki/Titan_II_GLV,Retired,1913,3.58,2,0,33.2,NaN,0,NaN,NaN,Titan II
+393,"Titan III(23)B",US Air Force,https://en.wikipedia.org/wiki/Titan_IIIB#Titan_23B,Retired,2300,3.3,3,0,45,NaN,0,1.5,NaN,Titan III
+394,"Titan III(23)C",US Air Force,https://en.wikipedia.org/wiki/Titan_IIIC,Retired,13642,13.1,3,2,42,NaN,3,3,NaN,Titan III
+395,"Titan III(24)B",US Air Force,https://en.wikipedia.org/wiki/Titan_IIIB#Titan_24B,Retired,2410,4,3,0,50,NaN,0,3.05,NaN,Titan III
+396,"Titan-III(33)B Agena-D",Martin Marietta,https://en.wikipedia.org/wiki/Titan_IIIB#Titan_33B,Retired,2300,0,3,NaN,45,NaN,0,3.05,NaN,Titan
+397,"Titan III(34)B Agena-D",Martin Marietta,https://en.wikipedia.org/wiki/Titan_IIIB#Titan_34B,Retired,2300,0,3,NaN,45,NaN,0,3.05,NaN,Titan III
+398,"Titan IIIA",US Air Force,https://en.wikipedia.org/wiki/Titan_IIIA,Retired,1936,3.1,3,0,42,63.23,0,NaN,NaN,Titan III
+399,"Titan IIIB",US Air Force,https://en.wikipedia.org/wiki/Titan_IIIB,Retired,2300,3.3,3,0,45,59,0,1.52,NaN,Titan III
+400,"Titan IIIC",US Air Force,https://en.wikipedia.org/wiki/Titan_IIIC,Retired,13642,13.1,3,2,42,NaN,3,3,NaN,Titan III
+401,"Titan IIID",Martin Marietta,https://en.wikipedia.org/wiki/Titan_IIID,Retired,10587,12.3,2,2,36,NaN,0,NaN,NaN,Titan III
+402,"Titan IIIE",Martin Marietta,https://en.wikipedia.org/wiki/Titan_IIIE,Retired,12769,15.4,3,2,48.8,NaN,0,NaN,NaN,Titan III
+403,"Titan IV(401)A",Lockheed,https://en.wikipedia.org/wiki/Titan_IV#Titan_IV-A,Retired,14200,0,3,2,63,NaN,0,5.1,NaN,Titan IV
+404,"Titan IV(401)B",Lockheed,https://en.wikipedia.org/wiki/Titan_IV#Titan_IV-B,Retired,15000,0,3,2,62,NaN,0,5.1,NaN,Titan IV
+405,"Titan IV(402)A",Martin Marietta,https://en.wikipedia.org/wiki/Titan_IV#Titan_IV-A,Retired,14200,0,4,2,54,NaN,4.944,5.1,NaN,Titan IV
+406,"Titan IV(402)B",Lockheed,https://en.wikipedia.org/wiki/Titan_IV#Titan_IV-B,Retired,15000,0,4,2,54,NaN,0,5.1,NaN,Titan IV
+407,"Titan IV(403)A",Lockheed,https://en.wikipedia.org/wiki/Titan_IV#Titan_IV-A,Retired,14200,17.7,2,2,54,NaN,0,5.1,NaN,Titan IV
+408,"Titan IV(403)B",Lockheed,https://en.wikipedia.org/wiki/Titan_IV#Titan_IV-B,Retired,15000,21.68,2,2,54,NaN,0,5.1,NaN,Titan IV
+409,"Titan IV(404)A",Lockheed,https://en.wikipedia.org/wiki/Titan_IV#Titan_IV-A,Retired,14200,17.7,2,2,54,NaN,0,5.1,NaN,Titan IV
+410,"Titan IV(404)B",Lockheed,https://en.wikipedia.org/wiki/Titan_IV#Titan_IV-B,Retired,15000,21.68,2,2,54,NaN,0,5.1,NaN,Titan IV
+411,"Titan IV(405)A",Lockheed,https://en.wikipedia.org/wiki/Titan_IV#Titan_IV-A,Retired,14200,17.7,2,2,54,NaN,0,5.1,NaN,Titan IV
+412,"Titan IV(405)B",Lockheed,https://en.wikipedia.org/wiki/Titan_IV#Titan_IV-B,Retired,15000,21.68,2,2,54,NaN,0,5.1,NaN,Titan IV
+413,"Tsyklon",Yuzhmash,https://en.wikipedia.org/wiki/Tsyklon,Retired,2640,3,2,0,40,NaN,0,2,NaN,Tsyklon
+414,"Tsyklon-2",Yuzhmash,https://en.wikipedia.org/wiki/Tsyklon-2,Retired,2640,2.82,3,0,NaN,NaN,0,2,NaN,Tsyklon
+415,"Tsyklon-2A",Yuzhmash,https://en.wikipedia.org/wiki/Tsyklon,Retired,2640,3,2,0,NaN,NaN,0,2,NaN,Tsyklon

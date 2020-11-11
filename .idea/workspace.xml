@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b06c9b18-9efe-4184-8540-6d7e97b14315" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1jjnF5tt89ScX5w5Z8QzDuuTTa4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Zane\Documents\School\Classes\Harvard\CS_171_Data_Vis\Final_Project\space_monkeys\js" />
+      <recent name="C:\Users\Zane\Documents\School\Classes\Harvard\CS_171_Data_Vis\Final_Project\space_monkeys\images" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b06c9b18-9efe-4184-8540-6d7e97b14315" name="Default Changelist" comment="" />
+      <created>1604326262090</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604326262090</updated>
+      <workItem from="1604326264115" duration="25099000" />
+      <workItem from="1604673403674" duration="606000" />
+      <workItem from="1604674233373" duration="11840000" />
+<<<<<<< HEAD
+      <workItem from="1604864341983" duration="466000" />
+=======
+      <workItem from="1604856127619" duration="1156000" />
+>>>>>>> 7a1da8cf9383442e8285be35f6546d327c32be48
+    </task>
+    <task id="LOCAL-00001" summary="Added links to js files and corrected promises.">
+      <created>1604856831841</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604856831841</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added gitignore to avoid committing WebStorm settings.">
+      <created>1604857213401</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1604857213401</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/../../.." />
+    </ignored-roots>
+    <MESSAGE value="Added links to js files and corrected promises." />
+    <MESSAGE value="Added gitignore to avoid committing WebStorm settings." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added gitignore to avoid committing WebStorm settings." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="692" y="342" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604674494982">
+      <screen x="0" y="0" width="1857" height="1080" />
+    </state>
+    <state x="692" y="342" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1857.1080/0.0.1857.1080@0.0.1857.1080" timestamp="1604674494982" />
+    <state x="253" y="98" key="DiffContextDialog" timestamp="1604856884341">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="253" y="98" key="DiffContextDialog/0.23.1680.1027/1680.23.1920.1057@0.23.1680.1027" timestamp="1604856884341" />
+    <state x="1172" y="298" key="FileChooserDialogImpl" timestamp="1604759043975">
+      <screen x="0" y="0" width="1857" height="1080" />
+    </state>
+    <state x="1172" y="298" key="FileChooserDialogImpl/-1920.0.1857.1080/0.0.1857.1080@0.0.1857.1080" timestamp="1604759043975" />
+    <state x="-1284" y="273" width="585" height="534" key="find.popup" timestamp="1604782330398">
+      <screen x="-1920" y="0" width="1857" height="1080" />
+    </state>
+    <state x="-1284" y="273" width="585" height="534" key="find.popup/-1920.0.1857.1080/0.0.1857.1080@-1920.0.1857.1080" timestamp="1604782330398" />
+  </component>
+</project>
