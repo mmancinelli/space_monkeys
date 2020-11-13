@@ -10,7 +10,8 @@ let promises = [
     d3.csv("data/prepared_launch_data.csv"),
     d3.csv("data/prepared_rocket_data.csv"),
 	d3.csv("data/prepared_satellite_data.csv"),
-	d3.json("data/treeData.json")
+	d3.json("data/treeData.json"),
+	d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_dendrogram.json") //practice data for the dendrogram
 ];
 
 Promise.all(promises)

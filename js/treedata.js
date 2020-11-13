@@ -46,10 +46,15 @@ function loadData() {
 
         // need to convert map object into array
         let finalArray = arrayifyData(nestedMapObject);
-        console.log("final array", finalArray)
+        // console.log("final array", finalA/rray)
 
-        let finalJSON = JSON.stringify(finalArray);
-        // console.log(finalJSON);
+        let finalTree=[];
+        finalTree = {name: "Rockets", children: finalArray}
+
+        console.log(finalTree)
+
+        let finalJSON = JSON.stringify(finalTree);
+        console.log(finalJSON);
 
         // write to file
         // fs.writeFile ("data/treeData.json", JSON.stringify(finalArray), function(err) {
@@ -63,11 +68,11 @@ function loadData() {
     })
 }
 function arrayifyData(data){
-    let countryArray = []
+    let countryArray = [];
     for (let [key, value] of data) {
-        let companyArray = []
+        let companyArray = [];
         for (let [key2, value2] of value) {
-            let rocketArray = []
+            let rocketArray = [];
             for (let [key3, value3] of value2){
                 // console.log(key3)
                 rocketArray.push({
