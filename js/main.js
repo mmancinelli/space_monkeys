@@ -1,4 +1,8 @@
 let launchData, rocketData, satelliteData, treeData, geoData
+let launchVis, brushVis, networkVis, flightVis, atmoVis, costVis
+
+// init global time selction for map vis
+let mapvis_selectedTime = []
 
 // Function to convert date objects to strings or reverse
 let dateFormatter = d3.timeFormat("%Y-%m-%d");
@@ -32,7 +36,8 @@ function createVis(data){
 
 
 	//let atmoVis = new AtmoVis("orbit-vis", allData);
-	let launchVis = new LaunchVis("world-map", launchData, geoData);
+	launchVis = new LaunchVis("world-map", launchData, geoData);
+	brushVis   = new Brushvis("brush-plot", launchData);
 	//let networkVis = new NetworkVis("network-vis", allData,);
 	//let flightVis = new FlightVis("launches-vis", allData);
 	//let costVis = new CostVis("costvis", allData);

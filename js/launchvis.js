@@ -11,7 +11,24 @@ class LaunchVis {
         this.parentElement = _parentElement;
         this.data = _data;
         this.geoData = _geoData;
-        this.filteredData = this.data;
+        this.filteredData = [];
+
+        // convert to js Date object
+        this.data.forEach(d => d.date = new Date(d.Datum));
+
+        // pull out the country names and exclude bad data
+        function onlyUnique(value, index, self) {
+            return self.indexOf(value) === index;
+        }
+        // make list of countries
+        let countries = [];
+        this.data.forEach(d => countries.push(d.Country));
+        let unique_countries = countries.filter(onlyUnique);
+        this.countries_list = unique_countries.filter(function (d) {
+            return (d !== "Sea") && (d !== "Site") && (d  !== "Facility") && (d !== "Ocean")
+        });
+
+        console.log("Unique Countries/States: " + this.countries_list)
 
         this.initVis();
     }
@@ -84,9 +101,9 @@ class LaunchVis {
         // append and call tooltip
         vis.tooltip = d3.tip()
             .attr("class", "d3-tip")
-            .offset([-8, 0])
+            .offset([200, 0])
             .html(function(d) {
-                return "<p>" + d.Country + "</p>";
+                return "<p>" + d.name + "</p><p>Launches: " + d.launches + "</p>";
             });
         vis.circle_group.call(vis.tooltip);
 
@@ -103,6 +120,31 @@ class LaunchVis {
     wrangleData() {
         let vis = this;
 
+        // filter data on brushed range
+        if (mapvis_selectedTime.length !== 0){
+            vis.filteredData = vis.data.filter(function (d) {
+                return (d.date.getFullYear() <= mapvis_selectedTime[1].getFullYear()) && (d.date.getFullYear() >= mapvis_selectedTime[0].getFullYear());
+            })
+        } else {
+            vis.filteredData = vis.data;
+        }
+
+        // create data
+        vis.displayData = [];
+
+        // count launches per country/state for filtered data
+        vis.countries_list.forEach(function (c) {
+            let country_data = vis.filteredData.filter(d => d.Country === c)
+
+            let country_index = vis.data.findIndex(d => d.Country == c);
+
+            vis.displayData.push( { name:     c,
+                                    launches: country_data.length,
+                                    lat:      vis.data[country_index].lat,
+                                    lon:      vis.data[country_index].lon}
+            );
+        })
+
         // Update the visualization
         vis.updateVis();
     }
@@ -118,7 +160,7 @@ class LaunchVis {
 
         // Data-join
         vis.circle = vis.circle_group.selectAll("circle")
-            .data(vis.filteredData);
+            .data(vis.displayData);
 
         // Enter (initialize the newly added elements)
         vis.circle.enter().append("circle")
@@ -138,7 +180,7 @@ class LaunchVis {
             .transition()
             .duration(200)
             .attr("transform", d => `translate(${vis.projection([d.lon, d.lat])})`)
-            .attr("r", 14)
+            .attr("r", d => Math.sqrt(d.launches))
             .attr("fill", "black");
 
 

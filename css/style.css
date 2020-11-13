@@ -79,11 +79,35 @@ h3 {
     width: 100%;
 }
 
-#world-map, #orbit-vis, #network-vis, #launches-vis {
+#world-map, #orbit-vis, #network-vis, #launches-vis, #brush-plot {
     height: 100%;
     width:  100%;
 }
 
+
+/* Map Vis CSS */
+.circle {
+    stroke: slategray;
+    stroke-width: 2;
+    fill: #1B2735;
+    opacity: 85%;
+}
+
+.d3-tip {
+    position: absolute;
+    text-align: center;
+    width: 100px;
+    height: 50px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border-radius: 8px;
+}
+
+/* Brush Vis CSS */
+.x-axis {
+    fill: black;
+}
 
 
 
