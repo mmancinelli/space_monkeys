@@ -1,4 +1,4 @@
-
+let launchData, rocketData, satelliteData, treeData, geoData
 
 // Function to convert date objects to strings or reverse
 let dateFormatter = d3.timeFormat("%Y-%m-%d");
@@ -10,7 +10,8 @@ let promises = [
     d3.csv("data/prepared_launch_data.csv"),
     d3.csv("data/prepared_rocket_data.csv"),
 	d3.csv("data/prepared_satellite_data.csv"),
-	d3.json("data/treeData.json")
+	d3.json("data/treeData.json"),
+	d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json")
 ];
 
 Promise.all(promises)
@@ -18,19 +19,23 @@ Promise.all(promises)
     .catch( function (err){console.log(err)} );
 
 
-	function createVis(data){
+function createVis(data){
 
 	// (2) Make our data look nicer and more useful
-	allData = data;
+	launchData    = data[0];
+	rocketData    = data[1];
+	satelliteData = data[2];
+	treeData      = data[3];
+	geoData       = data[4];
 
 	// console.log(allData);
 
 
-	let atmoVis = new AtmoVis("atmovis", allData);
-	let launchVis = new LaunchVis("launchvis", allData);
-	let networkVis = new NetworkVis("networkvis", allData,);
-	let flightVis = new FlightVis("flightvis", allData);
-	let costVis = new CostVis("costvis", allData);
+	//let atmoVis = new AtmoVis("orbit-vis", allData);
+	let launchVis = new LaunchVis("world-map", launchData, geoData);
+	//let networkVis = new NetworkVis("network-vis", allData,);
+	//let flightVis = new FlightVis("launches-vis", allData);
+	//let costVis = new CostVis("costvis", allData);
 
 
 
