@@ -39,7 +39,7 @@ function loadData() {
                 d.Country = "USA"
             }else if (d.Country =="Canaria"){
                 d.Country = "USA"
-            }else if (d.CompanyName =="Kosmotras"| d.CompanyName =="Land Launch"|d.CompanyName =="OKB-586"|d.CompanyName =="Roscosmos"|d.CompanyName =="RSVN USSR"|d.CompanyName =="Starsem"|d.CompanyName =="VKS RF"|d.CompanyName =="Yuzhmash"){
+            }else if (d.CompanyName =="Kosmotras"| d.CompanyName =="Land Launch"|d.CompanyName =="OKB-586"|d.CompanyName =="Roscosmos"|d.CompanyName =="RVSN USSR"|d.CompanyName =="Starsem"|d.CompanyName =="VKS RF"|d.CompanyName =="Yuzhmash"){
                 d.Country = "Russia"
             }else if (d.CompanyName =="Arianespace"){
                 d.Country = "Europe (ESA)"
