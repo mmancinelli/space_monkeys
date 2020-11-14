@@ -4,6 +4,7 @@
 let dateFormatter = d3.timeFormat("%Y-%m-%d");
 let dateParser = d3.timeParse("%Y-%m-%d");
 
+let atmoVis, launchVis, networkVis, flightVis, costVis;
 
 // (1) Load data with promises
 let promises = [
@@ -27,12 +28,25 @@ Promise.all(promises)
 	// console.log(allData);
 
 
-	let atmoVis = new AtmoVis("atmovis", allData);
-	let launchVis = new LaunchVis("launchvis", allData);
-	let networkVis = new NetworkVis("network-vis", allData,);
-	let flightVis = new FlightVis("flightvis", allData);
-	let costVis = new CostVis("costvis", allData);
+	atmoVis = new AtmoVis("atmovis", allData);
+	launchVis = new LaunchVis("launchvis", allData);
+	networkVis = new NetworkVis("network-vis", allData,);
+	flightVis = new FlightVis("flightvis", allData);
+	costVis = new CostVis("costvis", allData);
 
 
 
+}
+
+function toggleButton(button) {
+	if (document.getElementById("labelToggle").value == "OFF") {
+		document.getElementById("labelToggle").value = "ON";
+		// document.getElementById("labelToggle").class = "rgb(255,145,0)";
+		networkVis.updateVis();
+
+	} else if (document.getElementById("labelToggle").value == "ON") {
+		document.getElementById("labelToggle").value = "OFF";
+		// document.getElementById("labelToggle").style.background = "rgb(26,255,0)";
+		networkVis.updateVis();
+	}
 }

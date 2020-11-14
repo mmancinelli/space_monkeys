@@ -105,9 +105,25 @@
 <!--			</div>-->
 			<div class="row main-body">
 				<div class="col">
-					<div class="row justify-content-center center-center">
-						<div class="align-self-center vis-holder">
-							<div id="network-vis"></div>
+					<div class="row">
+						<div class="col-2" style="height: 5vh; padding-left: 20pt; padding-top: 10pt;" >
+								<div class="row" >
+									<button id = "labelToggle" class="btn btn-light" type="button" value="OFF" onclick="toggleButton(this);" style="border: thin solid grey;";>Labels</button>
+								</div>
+								<div class="row" style="height: 5vh; padding-top: 5pt">
+									<select id='categorySelector' class="custom-select" style="width: 75%" onchange="categoryChange()">
+										<option value="default" selected>Default (none)</option>
+										<option value="country">by Country</option>
+										<option value="status">by Status</option>
+										<option value="success">by Success</option>
+										<option value="total">by Total Launches</option>
+									</select>
+								</div>
+						</div>
+						<div class="col-8">
+							<div class="align-self-center vis-holder">
+								<div id="network-vis"></div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -182,6 +198,10 @@
         navigationPosition: 'right',
         navigationTooltips: ['First page', 'Second page', 'Third and last page']
     });
+
+
+
+
 </script>
 
 </body>
