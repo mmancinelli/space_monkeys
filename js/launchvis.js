@@ -123,7 +123,7 @@ class LaunchVis {
         // filter data on brushed range
         if (mapvis_selectedTime.length !== 0){
             vis.filteredData = vis.data.filter(function (d) {
-                return (d.date.getFullYear() <= mapvis_selectedTime[1].getFullYear()) && (d.date.getFullYear() >= mapvis_selectedTime[0].getFullYear());
+                return (d.date.getFullYear() <= mapvis_selectedTime[1]) && (d.date.getFullYear() >= mapvis_selectedTime[0]);
             })
         } else {
             vis.filteredData = vis.data;
