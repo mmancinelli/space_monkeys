@@ -36,14 +36,14 @@ body {
 }
 
 .container-fluid {
-    border: thin solid grey;
+    border: none;
     border-radius: 5px;
     padding: 5vh;
 }
 
 .header {
     height: 12vh;
-    background: #22223b;
+    background: none;
 }
 
 h1 {
@@ -62,7 +62,7 @@ h3 {
 }
 
 .one-col {
-    background: #4A4E69;
+    background: none;
 }
 
 .center-center {
@@ -71,7 +71,7 @@ h3 {
 
 .footer {
     height: 20vh;
-    background: #C9ADA7;
+    background: none;
 }
 
 .vis-holder {
@@ -79,51 +79,81 @@ h3 {
     width: 100%;
 }
 
-#world-map, #orbit-vis, #network-vis, #launches-vis {
+#world-map, #orbit-vis, #network-vis, #launches-vis, #brush-plot {
     height: 100%;
     width:  100%;
 }
 
+/* NETWORK VIS CSS */
+#network-vis{
+    border: none;
+    border-radius: 5px;
+    height: 100vh;
+}
+
+#networkTooltip h3 {
+    text-align: center;
+    padding-bottom: 5px;
+    color: black;
+}
+
+#networkTooltip div> p{
+    font-size:15pt;
+    text-align: left;
+    color: black;
+}
+
+/* Map Vis CSS */
+.circle {
+    stroke: #d61111;
+    stroke-width: 2;
+    fill: #d61111;
+    fill-opacity: 50%;
+}
+
+.d3-tip {
+    position: absolute;
+    text-align: center;
+    width: 100px;
+    height: 50px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border-radius: 8px;
+}
+
+.map-title {
+    fill: white;
+}
+
+/* Brush Vis CSS */
+.x-axis {
+    fill: black;
+}
+
+#brush-plot {
+    fill: white;
+}
+
+#brush-plot text {
+    fill: white;
+}
+
+#brush-plot .axis path {
+    fill: none;
+    stroke: white;
+}
+
+#brush-plot .axis line {
+    fill: none;
+    stroke: white;
+}
+
+.pathGroup path {
+    stroke: lightslategrey;
+    fill: white;
+    opacity: 80%;
+}
 
 
 
-/*.parallax [class*="bg__"] {*/
-/*    position: relative;*/
-/*    height: 300px;*/
-/*    text-indent: -9999px;*/
-/*    background-attachment: fixed;*/
-/*    background-position: top center;*/
-/*    background-size: cover;*/
-/*}*/
-/*.parallax [class*="bg__"]:nth-child(2n) {*/
-/*    box-shadow: inset 0 0 1em #111;*/
-/*}*/
-/*.parallax .bg__foo, .parallax .bg__bazz {*/
-/*    height: 100vh;*/
-/*}*/
-/*.parallax .bg__foo {*/
-/*    !*background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/30354/parallax1.jpg);*!*/
-/*}*/
-/*!*.parallax .bg__bar {*!*/
-/*!*    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/30354/parallax2.jpg);*!*/
-/*!*}*!*/
-/*!*.parallax .bg__baz {*!*/
-/*!*    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/30354/parallax3.jpg);*!*/
-/*!*}*!*/
-/*!*.parallax .bg__bazz {*!*/
-/*!*    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/30354/parallax1.jpg);*!*/
-/*!*}*!*/
-/*!*.parallax .bg__break {*!*/
-/*!*    box-shadow: inset 0 0 1em #111;*!*/
-/*!*    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/30354/parallax1.jpg);*!*/
-/*!*}*!*/
-/*.parallax .capture {*/
-/*    float: right;*/
-/*    width: 200px;*/
-/*    padding: 1em;*/
-/*    margin: -1.5em 1em 0 0;*/
-/*    text-indent: 0;*/
-/*    background: rgba(243, 243, 243, 0.75);*/
-/*    box-shadow: 0 1px 0.125em #333;*/
-/*    color:rgb(20,20,20);*/
-/*}*/
