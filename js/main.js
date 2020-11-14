@@ -32,6 +32,7 @@ function createVis(data){
 	satelliteData = data[2];
 	treeData      = data[3];
 	geoData       = data[4];
+	practiceData  = data[5];
 
 	// console.log(allData);
 
@@ -39,7 +40,7 @@ function createVis(data){
 	atmoVis = new AtmoVis("atmovis", data);
 	launchVis = new LaunchVis("world-map", launchData, geoData);
 	brushVis   = new Brushvis("brush-plot", launchData);
-	networkVis = new NetworkVis("network-vis", data);
+	networkVis = new NetworkVis("network-vis", data, treeData, practiceData);
 	flightVis = new FlightVis("flightvis", data);
 	costVis = new CostVis("costvis", data);
 

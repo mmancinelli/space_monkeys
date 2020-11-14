@@ -14,13 +14,13 @@
 class NetworkVis {
 
 
-    constructor(_parentElement, _data) {
+    constructor(_parentElement, _data, treeData, practiceData) {
         this.parentElement = _parentElement;
         this.data = _data;
         this.filteredData = this.data;
         // data[3] is the hierarchical array
-        this.treeData = this.data[3];
-        this.practiceData = this.data[4];
+        this.treeData = treeData;
+        this.practiceData = practiceData;
         // console.log(this.data[4])
 
         this.initVis();
