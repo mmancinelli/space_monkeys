@@ -33,15 +33,19 @@
 	<!-- Title Page -->
 	<div class="section " id="section0">
 		<div class="intro" id = "star-intro">
-			<div id = "stars"></div>
-			<div id = "stars2"></div>
-			<div id = "stars3"></div>
+			<div class = "stars"></div>
+			<div class = "stars2"></div>
+			<div class = "stars3"></div>
 			<div id = "title"><span> A History of Space Flight </span><br/> by the space monkeys</div>
 		</div>
 	</div>
 
 	<!-- Orbits -->
 	<div class="section " id="section1">
+		<div id="star-section">
+			<div class = "stars"></div>
+			<div class = "stars2"></div>
+			<div class = "stars3"></div>
 		<div class="container-fluid">
 			<div class="row justify-content-center header">
 				<div class="align-self-center">
@@ -58,10 +62,15 @@
 				</div>
 			</div>
 		</div>
+		</div>
 	</div>
 
 	<!-- World Map -->
 	<div class="section " id="section2">
+		<div id="star-section1">
+			<div class = "stars"></div>
+			<div class = "stars2"></div>
+			<div class = "stars3"></div>
 		<div class="container-fluid">
 			<div class="row justify-content-center header">
 				<div class="align-self-center">
@@ -83,30 +92,56 @@
 				</div>
 			</div>
 		</div>
+		</div>
 	</div>
 
 	<!-- Network Diagram -->
 	<div class="section " id="section3">
+		<div id="star-section2">
+			<div class = "stars"></div>
+			<div class = "stars2"></div>
+			<div class = "stars3"></div>
 		<div class="container-fluid">
-			<div class="row justify-content-center header">
-				<div class="align-self-center">
-					<h3>How many companies and rockets are there?</h3>
-				</div>
-			</div>
+<!--			<div class="row justify-content-center header">-->
+<!--				<div class="align-self-center">-->
+<!--					<h3>How many companies and rockets are there?</h3>-->
+<!--				</div>-->
+<!--			</div>-->
 			<div class="row main-body">
-				<div class="col one-col">
-					<div class="row justify-content-center center-center">
-						<div class="align-self-center vis-holder">
-							<div id="network-vis"></div>
+				<div class="col">
+					<div class="row">
+						<div class="col-2" style="height: 5vh; padding-left: 20pt; padding-top: 10pt;" >
+								<div class="row" >
+									<button id = "labelToggle" class="btn btn-light" type="button" value="OFF" onclick="toggleButton(this);" style="border: thin solid grey;";>Labels</button>
+								</div>
+								<div class="row" style="height: 5vh; padding-top: 5pt">
+									<select id='categorySelector' class="custom-select" style="width: 75%" onchange="categoryChange()">
+										<option value="default" selected>Default (none)</option>
+										<option value="country">by Country</option>
+										<option value="status">by Status</option>
+										<option value="success">by Success</option>
+										<option value="total">by Total Launches</option>
+									</select>
+								</div>
+						</div>
+						<div class="col-8">
+							<div class="align-self-center vis-holder">
+								<div id="network-vis"></div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		</div>
 	</div>
 
 	<!-- Cumulative Launch Diagram -->
 	<div class="section " id="section4">
+		<div id="star-section3">
+			<div class = "stars"></div>
+			<div class = "stars2"></div>
+			<div class = "stars3"></div>
 		<div class="container-fluid">
 			<div class="row justify-content-center header">
 				<div class="align-self-center">
@@ -123,14 +158,15 @@
 				</div>
 			</div>
 		</div>
+		</div>
 	</div>
 
 	<!-- Endnotes -->
 	<div class="section" id="section5">
 		<div class="intro" id="star-end">
-			<div id = "stars"></div>
-			<div id = "stars2"></div>
-			<div id = "stars3"></div>
+			<div class = "stars"></div>
+			<div class = "stars2"></div>
+			<div class = "stars3"></div>
 
 			<h1>End Notes</h1>
 		</div>
@@ -146,6 +182,10 @@
 <!--<script type="text/javascript" src="js/libraries/examples.js"></script>-->
 
 <!-- d3 -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
 <script src="https://d3js.org/d3.v6.min.js"></script>
 
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
@@ -178,6 +218,10 @@
         navigationPosition: 'right',
         navigationTooltips: ['First page', 'Second page', 'Third and last page']
     });
+
+
+
+
 </script>
 
 </body>

@@ -15,7 +15,8 @@ let promises = [
     d3.csv("data/prepared_rocket_data.csv"),
 	d3.csv("data/prepared_satellite_data.csv"),
 	d3.json("data/treeData.json"),
-	d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json")
+	d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json"),
+	d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_dendrogram.json") //practice data for the dendrogram
 ];
 
 Promise.all(promises)
@@ -35,13 +36,26 @@ function createVis(data){
 	// console.log(allData);
 
 
-	//let atmoVis = new AtmoVis("orbit-vis", allData);
+	atmoVis = new AtmoVis("atmovis", data);
 	launchVis = new LaunchVis("world-map", launchData, geoData);
 	brushVis   = new Brushvis("brush-plot", launchData);
-	//let networkVis = new NetworkVis("network-vis", allData,);
-	//let flightVis = new FlightVis("launches-vis", allData);
-	//let costVis = new CostVis("costvis", allData);
+	networkVis = new NetworkVis("network-vis", data);
+	flightVis = new FlightVis("flightvis", data);
+	costVis = new CostVis("costvis", data);
 
 
 
+}
+
+function toggleButton(button) {
+	if (document.getElementById("labelToggle").value == "OFF") {
+		document.getElementById("labelToggle").value = "ON";
+		// document.getElementById("labelToggle").class = "rgb(255,145,0)";
+		networkVis.updateVis();
+
+	} else if (document.getElementById("labelToggle").value == "ON") {
+		document.getElementById("labelToggle").value = "OFF";
+		// document.getElementById("labelToggle").style.background = "rgb(26,255,0)";
+		networkVis.updateVis();
+	}
 }
