@@ -36,14 +36,14 @@ body {
 }
 
 .container-fluid {
-    border: thin solid grey;
+    border: none;
     border-radius: 5px;
     padding: 5vh;
 }
 
 .header {
     height: 12vh;
-    background: #22223b;
+    background: none;
 }
 
 h1 {
@@ -62,7 +62,7 @@ h3 {
 }
 
 .one-col {
-    background: #4A4E69;
+    background: none;
 }
 
 .center-center {
@@ -71,7 +71,7 @@ h3 {
 
 .footer {
     height: 20vh;
-    background: #C9ADA7;
+    background: none;
 }
 
 .vis-holder {
@@ -87,10 +87,10 @@ h3 {
 
 /* Map Vis CSS */
 .circle {
-    stroke: slategray;
+    stroke: #d61111;
     stroke-width: 2;
-    fill: #1B2735;
-    opacity: 85%;
+    fill: #d61111;
+    fill-opacity: 50%;
 }
 
 .d3-tip {
@@ -104,9 +104,37 @@ h3 {
     border-radius: 8px;
 }
 
+.map-title {
+    fill: white;
+}
+
 /* Brush Vis CSS */
 .x-axis {
     fill: black;
+}
+
+#brush-plot {
+    fill: white;
+}
+
+#brush-plot text {
+    fill: white;
+}
+
+#brush-plot .axis path {
+    fill: none;
+    stroke: white;
+}
+
+#brush-plot .axis line {
+    fill: none;
+    stroke: white;
+}
+
+.pathGroup path {
+    stroke: lightslategrey;
+    fill: white;
+    opacity: 80%;
 }
 
 
