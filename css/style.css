@@ -87,14 +87,21 @@ h3 {
 /* NETWORK VIS CSS */
 #network-vis{
     border: none;
-    border-radius: none;
+    border-radius: 5px;
     height: 100vh;
 }
 
-#networkTooltip h3{
+#networkTooltip h3 {
     text-align: center;
     padding-bottom: 5px;
     color: black;
+}
+
+#networkTooltip div> p{
+    font-size:15pt;
+    text-align: left;
+    color: black;
+}
 
 /* Map Vis CSS */
 .circle {
@@ -147,13 +154,6 @@ h3 {
     fill: white;
     opacity: 80%;
 }
-
-#networkTooltip div> p{
-    font-size:15pt;
-    text-align: left;
-    color: black;
-}
-
 
 
 
