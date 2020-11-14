@@ -90,6 +90,18 @@ h3 {
     height: 100vh;
 }
 
+#networkTooltip h3{
+    text-align: center;
+    padding-bottom: 5px;
+
+}
+
+#networkTooltip p{
+    font-size:15pt;
+    text-align: left;
+
+}
+
 
 
 
