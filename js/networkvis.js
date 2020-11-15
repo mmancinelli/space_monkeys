@@ -259,7 +259,7 @@ class NetworkVis {
 
         // TODO Get labels on right side of tree to rotate
         if ($(`#labelToggle`).val() == "ON"){
-            console.log("labels are on");
+            // console.log("labels are on");
             vis.networkLabels
                 .join('text')
                 .text(d => d.data.name)
@@ -276,7 +276,7 @@ class NetworkVis {
                 .attr("text-anchor", d => d.x < Math.PI === !d.children ? "start" : "end")
                 .clone(true).lower();
         } else {
-            console.log("labels are off")
+            // console.log("labels are off")
             vis.svg.selectAll(".networkCirclesLabels").selectAll("text").remove()
         }
 
