@@ -60,3 +60,13 @@ function toggleButton(button) {
 		networkVis.updateVis();
 	}
 }
+
+var selectedCategory = $('#categorySelector').val();
+
+function categoryChange() {
+	selectedCategory = $('#categorySelector').val();
+	networkVis.wrangleData();
+
+}
+
+
