@@ -155,5 +155,34 @@ h3 {
     opacity: 80%;
 }
 
+/* Flight Vis CSS */
+.x-axis {
+    fill: black;
+}
+
+#launches-vis {
+    fill: white;
+}
+
+#launches-vis text {
+    fill: white;
+}
+
+#launches-vis .axis path {
+    fill: none;
+    stroke: white;
+}
+
+#launches-vis .axis line {
+    fill: none;
+    stroke: white;
+}
+
+.pathGroup path {
+    stroke: lightslategrey;
+    fill: white;
+    opacity: 80%;
+}
+
 
 

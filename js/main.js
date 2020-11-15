@@ -41,7 +41,7 @@ function createVis(data){
 	launchVis = new LaunchVis("world-map", launchData, geoData);
 	brushVis   = new Brushvis("brush-plot", launchData);
 	networkVis = new NetworkVis("network-vis", treeData, practiceData);
-	flightVis = new FlightVis("flightvis", data);
+	flightVis = new FlightVis("launches-vis", data);
 	costVis = new CostVis("costvis", data);
 
 
