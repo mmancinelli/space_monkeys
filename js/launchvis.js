@@ -101,7 +101,7 @@ class LaunchVis {
         // append and call tooltip
         vis.tooltip = d3.tip()
             .attr("class", "d3-tip")
-            .offset([200, 0])
+            .offset([0, 0])
             .html(function(d) {
                 return "<p>" + d.name + "</p><p>Launches: " + d.launches + "</p>";
             });

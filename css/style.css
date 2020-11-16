@@ -114,12 +114,14 @@ h3 {
 .d3-tip {
     position: absolute;
     text-align: center;
-    width: 100px;
-    height: 50px;
+    width: 150px;
+    height: 70px;
     padding: 2px;
-    font: 12px sans-serif;
-    background: lightsteelblue;
+    font: 20px sans-serif;
+    color: white;
+    background: #262729;
     border-radius: 8px;
+    stroke: grey;
 }
 
 .map-title {
