@@ -50,11 +50,27 @@ h1 {
     color: #F2E9E4;
 }
 
+h2 {
+    font-size: 3em;
+    font-family: arial,helvetica;
+    color: #fff;
+    margin:0;
+}
+
 h3 {
     font-size: 2em;
     font-family: arial,helvetica;
     color: #fff;
     margin:0;
+}
+
+p {
+    color: white;
+}
+
+.story-line {
+    height: 80%;
+    width:  80vw;
 }
 
 .main-body {
