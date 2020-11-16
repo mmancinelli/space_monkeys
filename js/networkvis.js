@@ -62,6 +62,10 @@ class NetworkVis {
         }
         // var root = vis.tree(vis.practiceData)
         vis.rootData = vis.tree(vis.treeData)
+        // console.log(vis.rootData.descendants())
+
+        // vis.rootData.descendants().forEach((d,i)=>)
+
 
         // Features of the links between nodes:
         vis.linksGenerator = d3.linkRadial()
@@ -72,9 +76,19 @@ class NetworkVis {
                 return d.y;
             });
 
-        vis.circles = vis.svg.selectAll("g")
-            .data(vis.rootData.descendants())
-            .attr("class", "circles");
+        // vis.circles = vis.svg.selectAll("g")
+        //     .data(vis.rootData.descendants()
+        //     )
+        //     .attr("class", "circles");
+
+        vis.nodeGroups = vis.svg.selectAll("g")
+            .data(vis.rootData.descendants(), (d,i)=>{return i})
+            .enter()
+            .append("g")
+            .attr("class", (d,i)=>`nodeGroup-${i}`)
+            .attr("transform", function (d) {
+                return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")";
+            });
 
         // set up tooltip
         vis.tooltip = d3.select("body").append('div')
@@ -114,7 +128,7 @@ class NetworkVis {
 
                 // console.log(d)
             })
-            console.log(vis.rootData)
+            // console.log(vis.rootData)
             var setStatus = [];
             vis.rootData.descendants().forEach((d,i)=> {
 
@@ -174,7 +188,8 @@ class NetworkVis {
         console.log("update triggered");
         // console.log(vis.rootData.descendants())
 
-        // TODO if vis.circles is defined in updatevis, then I don't draw more circles every time updateVis is called. But then the colors don't update. However, if vis.circles is defined in initVis, the colors update - but new circles are created every time.
+
+
 
         vis.links=vis.svg.selectAll("path")
             .data(vis.rootData.links())
@@ -187,164 +202,177 @@ class NetworkVis {
             .style("fill", 'none')
             .attr("stroke", '#ccc');
 
-
-
-        // draw circles
-        vis.circles
-            .enter()
-            .append("g")
-            .attr("transform", function (d) {
-                return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")";
-            })
-            .append("circle")
-            .attr("r", 5)
-            //need to create function for linking circle fill color to information
-            .style("fill", d=> {
-                // console.log(d.color);
-                return d.color;})
-            .attr("stroke", "black")
-            .style("stroke-width", 2)
-            .on('mouseover', function (event, d) {
-                // console.log(d)
-                d3.select(this)
-                    .attr('stroke-width', '2px')
-                    .attr('stroke', 'black')
-                    .attr('fill', 'white')
-
-                vis.tooltip
-                    .style("opacity", 1)
-                    .style("left", event.pageX + 20 + "px")
-                    .style("top", event.pageY + "px");
-
-                if (d.height == 0) {
-                    // rocket type tooltip
-                    vis.tooltip
-                        .html(`
-                     <div style="border: thin solid grey; border-radius: 5px; background: darkgray; padding: 20px">
-                         <p> <strong>Rocket Type: </strong>${d.data.name}</p>
-                         <p> <strong>Company: </strong>${d.data.information.company}</p>
-                         <p> <strong>Country: </strong>${d.data.information.country}</p>
-                         <p> <strong>Total Launches: </strong>${d.data.information.total}</p>
-                     </div>`);
-                } else if (d.height == 1) {
-                    // company tooltip
-
-                    // calculate totals
-                    let totalRockets = 0;
-                    let totalLaunches = 0;
-                    let totalSuccesses = 0;
-                    let totalFailures = 0;
-                    d.data.children.forEach((d, i) => {
-                        totalRockets++;
-                        totalLaunches += d.information.total;
-                        totalSuccesses += d.information.successes;
-                        totalFailures += d.information.failures;
-                    })
-                    let ratio = totalSuccesses / totalLaunches * 100;
-
-                    vis.tooltip
-                        .html(`
-                     <div style="border: thin solid grey; border-radius: 5px; background: darkgray; padding: 20px">
-                         <h3>${d.data.name}<h3>
-                         <hr>
-                         <p> <strong>Total Launches: </strong>${totalLaunches}</p>
-                         <p> <strong>Success Ratio: </strong>${ratio.toFixed(1)}%</p>
-                     </div>`);
-                } else if (d.height == 2) {
-
-                    // country tooltip
-                    // console.log(d)
-
-                    //calculate totals
-                    let totalRockets = 0;
-                    let isActive = 'No';
-                    d.data.children.forEach((d, i) => {
-                        // console.log(d)
-                        d.children.forEach((d, i) => {
-                            // console.log(d)
-                            totalRockets++;
-                            if (d.information.status == "StatusActive") {
-                                isActive = "Yes";
-                            }
-
-                        })
-                    })
-
-                    vis.tooltip
-                        .html(`
-                     <div style="border: thin solid grey; border-radius: 5px; background: darkgray; padding: 20px">
-                         <h3>${d.data.name}<h3>
-                         <hr>
-                         <p> <strong>Total Rocket Types: </strong>${totalRockets}</p>
-                         <p> <strong>Currently Active?: </strong>${isActive}</p>
-                     </div>`);
-                } else if (d.height == 3) {
-                    //potential easter egg. However, I get a 404 error file not found
-                    // need to find the correct way to link to images
-                    // var myImagePath = "spacemonkey.png";
-                    // // var string = '<img src= + "images/spacemonkey.png" + />`;
-                    // vis.tooltip
-                    //     .html(`<img src = +" myImagePath + />"`)
-                    //     // .html(`img src={\`${API_URL}/${myImagePath}\`}`)//this will add the image on mouseover
-                    //     .style("left", (event.pageX + 10) + "px")
-                    //     .style("top", (event.pageY + 50) + "px")
-                    //     .style("font-color", "white");
-
-                }
-            })
-            .on('mouseout', function (event, d) {
-                d3.select(this)
-                    .attr('stroke-width', '0px')
-                    .attr("fill", "#20bac5")
-                vis.tooltip
-                    .style("opacity", 0)
-                    .style("left", 0)
-                    .style("top", 0)
-                    .html(``);
-            })
-            .transition().duration(500)
-        ;
-
-        vis.circles.selectAll(".circles").exit().remove();
         vis.links.exit().remove();
 
 
-        // create label objects
-        vis.networkLabels = vis.svg.append("g")
-            .attr("class", "networkCirclesLabels")
-            .attr("font-family", "sans-serif")
-            .attr("font-size", 12)
-            .attr("fill", "white")
-            .attr("stroke-width", 0.3)
+        let j = 0
+        vis.circles = vis.nodeGroups
+            .selectAll(".networkCircle")
+            .data(d=>{j++; return d}, (d,i)=>i); //no duplicates here
+
+        vis.circles.exit().remove();
+
+        console.log("j", j)
+        console.log("before", vis.circles)
+        // draw circles
+        let i = 0;
+        vis.circles
+            .enter()
+            .append("circle")
+            .attr("class", "networkCircle")
+            .attr("r", 5 )
+            .merge(vis.circles)
+            // .on('mouseover', function (event, d) {
+            //     console.log(d)
+            //     d3.select(this)
+            //         .attr('stroke-width', '2px')
+            //         .attr('stroke', 'black')
+            //         .attr('fill', 'white')
+            //
+            //     vis.tooltip
+            //         .style("opacity", 1)
+            //         .style("left", event.pageX + 20 + "px")
+            //         .style("top", event.pageY + "px");
+            //
+            //     if (d.height == 0) {
+            //         // rocket type tooltip
+            //         vis.tooltip
+            //             .html(`
+            //          <div style="border: thin solid grey; border-radius: 5px; background: darkgray; padding: 20px">
+            //              <p> <strong>Rocket Type: </strong>${d.data.name}</p>
+            //              <p> <strong>Company: </strong>${d.data.information.company}</p>
+            //              <p> <strong>Country: </strong>${d.data.information.country}</p>
+            //              <p> <strong>Total Launches: </strong>${d.data.information.total}</p>
+            //          </div>`);
+            //     } else if (d.height == 1) {
+            //         // company tooltip
+            //
+            //         // calculate totals
+            //         let totalRockets = 0;
+            //         let totalLaunches = 0;
+            //         let totalSuccesses = 0;
+            //         let totalFailures = 0;
+            //         d.data.children.forEach((d, i) => {
+            //             totalRockets++;
+            //             totalLaunches += d.information.total;
+            //             totalSuccesses += d.information.successes;
+            //             totalFailures += d.information.failures;
+            //         })
+            //         let ratio = totalSuccesses / totalLaunches * 100;
+            //
+            //         vis.tooltip
+            //             .html(`
+            //          <div style="border: thin solid grey; border-radius: 5px; background: darkgray; padding: 20px">
+            //              <h3>${d.data.name}<h3>
+            //              <hr>
+            //              <p> <strong>Total Launches: </strong>${totalLaunches}</p>
+            //              <p> <strong>Success Ratio: </strong>${ratio.toFixed(1)}%</p>
+            //          </div>`);
+            //     } else if (d.height == 2) {
+            //
+            //         // country tooltip
+            //         // console.log(d)
+            //
+            //         //calculate totals
+            //         let totalRockets = 0;
+            //         let isActive = 'No';
+            //         d.data.children.forEach((d, i) => {
+            //             // console.log(d)
+            //             d.children.forEach((d, i) => {
+            //                 // console.log(d)
+            //                 totalRockets++;
+            //                 if (d.information.status == "StatusActive") {
+            //                     isActive = "Yes";
+            //                 }
+            //
+            //             })
+            //         })
+            //
+            //         vis.tooltip
+            //             .html(`
+            //          <div style="border: thin solid grey; border-radius: 5px; background: darkgray; padding: 20px">
+            //              <h3>${d.data.name}<h3>
+            //              <hr>
+            //              <p> <strong>Total Rocket Types: </strong>${totalRockets}</p>
+            //              <p> <strong>Currently Active?: </strong>${isActive}</p>
+            //          </div>`);
+            //     } else if (d.height == 3) {
+            //         //potential easter egg. However, I get a 404 error file not found
+            //         // need to find the correct way to link to images
+            //         // var myImagePath = "spacemonkey.png";
+            //         // // var string = '<img src= + "images/spacemonkey.png" + />`;
+            //         // vis.tooltip
+            //         //     .html(`<img src = +" myImagePath + />"`)
+            //         //     // .html(`img src={\`${API_URL}/${myImagePath}\`}`)//this will add the image on mouseover
+            //         //     .style("left", (event.pageX + 10) + "px")
+            //         //     .style("top", (event.pageY + 50) + "px")
+            //         //     .style("font-color", "white");
+            //
+            //     }
+            // })
+            // .on('mouseout', function (event, d) {
+            //     d3.select(this)
+            //         .attr('stroke-width', '0px')
+            //         .attr("fill", "#20bac5")
+            //     vis.tooltip
+            //         .style("opacity", 0)
+            //         .style("left", 0)
+            //         .style("top", 0)
+            //         .html(``);
+            // })
+            //need to create function for linking circle fill color to information
+            .transition().duration(1000)
+            .style("fill", d=> {
+                i++
+                return d.color;})
             .attr("stroke", "black")
-            .selectAll("text")
-            .data(vis.rootData.descendants());
-        // .text(d=>{return (d.data.name+ ", "+ d.x.toFixed(1))})
+            .style("stroke-width", 2)
 
-        // toggle labels
-        // TODO Get labels on right side of tree to rotate
-        if ($(`#labelToggle`).val() == "ON"){
-            // console.log("labels are on");
-            vis.networkLabels
-                .join('text')
-                .text(d => d.data.name)
-                .attr("transform", d => `
-                rotate(${(d.x * 180 / Math.PI) >= 90 ? d.x - 90 : d.x + 90})        
-                translate(${d.y},0)
-                rotate(${d.x > Math.PI ? 180 : 0})
-              `)
-                // first rotate spreads the texts around the circle of the tree, with the angle matching the angle of the circle the label is attached to
-                // translate pushes the labels from the center out to the correct distance from the center of the tree
-                // the second rotate pushes the edge circles' labels from the inside of the circle radius to the outside
-                .attr("dy", "0.31em")
-                .attr("x", d => d.x < Math.PI === !d.children ? 6 : -6)
-                .attr("text-anchor", d => d.x < Math.PI === !d.children ? "start" : "end")
-                .clone(true).lower();
-        } else {
-            // console.log("labels are off")
-            vis.svg.selectAll(".networkCirclesLabels").selectAll("text").remove()
-        }
+        console.log("i", i)
+        console.log("after", vis.circles)
 
+        // vis.circles
+
+
+
+
+        // // create label objects
+        // vis.networkLabels = vis.svg.append("g")
+        //     .attr("class", "networkCirclesLabels")
+        //     .attr("font-family", "sans-serif")
+        //     .attr("font-size", 12)
+        //     .attr("fill", "white")
+        //     .attr("stroke-width", 0.3)
+        //     .attr("stroke", "black")
+        //     .selectAll("text")
+        //     .data(vis.rootData.descendants());
+        // // .text(d=>{return (d.data.name+ ", "+ d.x.toFixed(1))})
+        //
+        // // toggle labels
+        // // TODO Get labels on right side of tree to rotate
+        // if ($(`#labelToggle`).val() == "ON"){
+        //     // console.log("labels are on");
+        //     vis.networkLabels
+        //         .join('text')
+        //         .text(d => d.data.name)
+        //         .attr("transform", d => `
+        //         rotate(${(d.x * 180 / Math.PI) >= 90 ? d.x - 90 : d.x + 90})
+        //         translate(${d.y},0)
+        //         rotate(${d.x > Math.PI ? 180 : 0})
+        //       `)
+        //         // first rotate spreads the texts around the circle of the tree, with the angle matching the angle of the circle the label is attached to
+        //         // translate pushes the labels from the center out to the correct distance from the center of the tree
+        //         // the second rotate pushes the edge circles' labels from the inside of the circle radius to the outside
+        //         .attr("dy", "0.31em")
+        //         .attr("x", d => d.x < Math.PI === !d.children ? 6 : -6)
+        //         .attr("text-anchor", d => d.x < Math.PI === !d.children ? "start" : "end")
+        //         .clone(true).lower();
+        // } else {
+        //     // console.log("labels are off")
+        //     vis.svg.selectAll(".networkCirclesLabels").selectAll("text").remove()
+        // }
+
+        // vis.networkLabels.remove();
 
     }
 
