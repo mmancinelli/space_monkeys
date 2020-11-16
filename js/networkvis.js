@@ -31,9 +31,9 @@ class NetworkVis {
     initVis() {
         let vis = this;
 
-        //set up SVG drawing area
+        // set up SVG drawing area
         // define margins
-        vis.margin = {top: 10, right: 20, bottom: 20, left: 20};
+        vis.margin = {top: 0, right: 20, bottom: 20, left: 0};
         vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
         vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
 
@@ -51,14 +51,14 @@ class NetworkVis {
             vis.root = d3.hierarchy(data, function(d) {
                 return d.children;
             });
-            //this option sorts alphabetically, but then the USA link looks weird, imo
+            // this option sorts alphabetically, but then the USA link looks weird, imo
             // vis.root = d3.hierarchy(data).sort((a, b) => d3.ascending(a.height, b.height) || d3.ascending(a.data.name, b.data.name));
             // console.log(vis.root)
             vis.root.x0 =vis.height/2;
             vis.root.y0=vis.width/2;
             vis.root.dx = 0;
             vis.root.dy = vis.width / (vis.root.height + 1);
-            return d3.cluster().size([360, vis.radius-60])(vis.root);
+            return d3.cluster().size([360, vis.radius-45])(vis.root);
         }
         // var root = vis.tree(vis.practiceData)
         vis.rootData = vis.tree(vis.treeData)
@@ -72,50 +72,11 @@ class NetworkVis {
                 return d.y;
             });
 
-        // Add the links between nodes
-        // won't be updated
-        vis.links = vis.svg.selectAll('path')
-            .attr("class", "links")
-            .data(vis.rootData.links())
-            .enter()
-            .append('path')
-            .attr("d", vis.linksGenerator)
-            .style("fill", 'none')
-            .attr("stroke", '#ccc');
-
-
-
-
-        // Add a circle for each node.
-        // won't be updated
         vis.circles = vis.svg.selectAll("g")
-            .attr("class", "circles")
             .data(vis.rootData.descendants())
-            .enter()
-            .append("g")
-            .attr("transform", function (d) {
-                return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")";
-            })
-            .append("circle")
-            .attr("r", 4)
-            //need to create function for linking circle fill color to information
-            .attr("stroke", "black")
-            .style("stroke-width", 2)
+            .attr("class", "circles");
 
-
-        //create labels
-        vis.networkLabels = vis.svg.append("g")
-            .attr("class", "networkCirclesLabels")
-            .attr("font-family", "sans-serif")
-            .attr("font-size", 12)
-            .attr("fill", "white")
-            .attr("stroke-width", 0.3)
-            .attr("stroke", "black")
-            .selectAll("text")
-            .data(vis.rootData.descendants())
-        // .text(d=>{return (d.data.name+ ", "+ d.x.toFixed(1))})
-
-        // TODO add tooltip
+        // set up tooltip
         vis.tooltip = d3.select("body").append('div')
             .attr('class', "tooltip")
             .attr('id', 'networkTooltip');
@@ -133,6 +94,71 @@ class NetworkVis {
 
     wrangleData() {
         let vis = this;
+        vis.selectedCategory = selectedCategory;
+        console.log(vis.selectedCategory);
+        vis.legendStatus = false;
+
+        if (vis.selectedCategory == "default"){
+            vis.legendStatus = false;
+            vis.rootData.descendants().forEach((d,i)=>{
+                // console.log(d)
+                d["color"]="#00ffd4";
+                // })
+            })
+        }
+        else if (vis.selectedCategory == "status"){
+            console.log(vis.legendStatus, vis.selectedCategory)
+            vis.legendStatus=true;
+            vis.rootData.descendants().forEach((d,i)=>{
+                d["color"]="#00ffd4";
+
+                // console.log(d)
+            })
+            console.log(vis.rootData)
+            var setStatus = [];
+            vis.rootData.descendants().forEach((d,i)=> {
+
+                if (d.height == 0) {
+                    // // d.children.forEach((d, j) => {
+                    //
+                    //     // d.children.forEach((d, k) => {
+                    //
+                    //         // console.log(d)
+                            if (d.data.information.status == "StatusActive") {
+                                // console.log("Active")
+                                d.color = "#e416fe"
+                                // setStatus[j] = true;
+                            }
+                    //     // })
+                    //     // if (setStatus[j] = "true") {
+                    //     //     console.log(setStatus)
+                    //     //     d.color = "green"
+                    //     // }
+                    //
+                    // // })
+                } else {
+                    d.color="#00ffd4"
+                }
+            })
+
+            // console.log(vis.rootData.descendants())
+        }
+                // if (d.height == 0 && d.data.information.status=="StatusActive"){
+                //     d.color="green"
+                //     d.parent.color="green"
+                //     d.parent.parent.color="green"
+                // }
+         else {
+            vis.legendStatus = false;
+            vis.rootData.descendants().forEach((d,i)=>{
+                // console.log(d)
+                d["color"]="blue";
+
+                // d.children.forEach((d,i)=>{
+                //     console.log(d)
+                // })
+            })
+        }
 
         // Update the visualization
         vis.updateVis();
@@ -145,18 +171,45 @@ class NetworkVis {
 
     updateVis() {
         let vis = this;
+        console.log("update triggered");
+        // console.log(vis.rootData.descendants())
+
+        // TODO if vis.circles is defined in updatevis, then I don't draw more circles every time updateVis is called. But then the colors don't update. However, if vis.circles is defined in initVis, the colors update - but new circles are created every time.
+
+        vis.links=vis.svg.selectAll("path")
+            .data(vis.rootData.links())
+            .attr("class", "networkLinks")
+
+        vis.links
+            .enter()
+            .append("path")
+            .attr("d", vis.linksGenerator)
+            .style("fill", 'none')
+            .attr("stroke", '#ccc');
 
 
 
         // draw circles
         vis.circles
-            .style("fill", "#69b3a2")
+            .enter()
+            .append("g")
+            .attr("transform", function (d) {
+                return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")";
+            })
+            .append("circle")
+            .attr("r", 5)
+            //need to create function for linking circle fill color to information
+            .style("fill", d=> {
+                // console.log(d.color);
+                return d.color;})
+            .attr("stroke", "black")
+            .style("stroke-width", 2)
             .on('mouseover', function (event, d) {
                 // console.log(d)
                 d3.select(this)
                     .attr('stroke-width', '2px')
                     .attr('stroke', 'black')
-                    .attr('fill', 'grey')
+                    .attr('fill', 'white')
 
                 vis.tooltip
                     .style("opacity", 1)
@@ -242,18 +295,33 @@ class NetworkVis {
             .on('mouseout', function (event, d) {
                 d3.select(this)
                     .attr('stroke-width', '0px')
-                    .attr("fill", "#69b3a2")
+                    .attr("fill", "#20bac5")
                 vis.tooltip
                     .style("opacity", 0)
                     .style("left", 0)
                     .style("top", 0)
                     .html(``);
-            });
+            })
+            .transition().duration(500)
+        ;
 
-
-        vis.circles.exit().remove();
+        vis.circles.selectAll(".circles").exit().remove();
         vis.links.exit().remove();
 
+
+        // create label objects
+        vis.networkLabels = vis.svg.append("g")
+            .attr("class", "networkCirclesLabels")
+            .attr("font-family", "sans-serif")
+            .attr("font-size", 12)
+            .attr("fill", "white")
+            .attr("stroke-width", 0.3)
+            .attr("stroke", "black")
+            .selectAll("text")
+            .data(vis.rootData.descendants());
+        // .text(d=>{return (d.data.name+ ", "+ d.x.toFixed(1))})
+
+        // toggle labels
         // TODO Get labels on right side of tree to rotate
         if ($(`#labelToggle`).val() == "ON"){
             // console.log("labels are on");
@@ -276,7 +344,6 @@ class NetworkVis {
             // console.log("labels are off")
             vis.svg.selectAll(".networkCirclesLabels").selectAll("text").remove()
         }
-
 
 
     }

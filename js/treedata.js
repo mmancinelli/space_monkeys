@@ -61,7 +61,7 @@ function loadData() {
         // for some reason, byCompanyRocket outputs asynchronously as the finished product.
         // making an unused duplicate to compare/contrast final product
         let byCountryCompanyRocket = d3.group(csv, d => d.Country, d => d.CompanyName, d => d.Rocket_Category);
-        // console.log(byCountryCompanyRocket)
+        console.log(byCountryCompanyRocket)
 
 
         // moved these sections of code to their own functions below
@@ -157,19 +157,27 @@ function summarizeData(data){
             var rocketCounter = 0;
             var successCounter = 0;
             var failureCounter = 0;
+            var date= '';
 
             d.forEach((d, i) => {
                 // d is an array of all rocket launches per rocket
 
                 // collect information for each rocket
+                rocketStatus = "StatusRetired";
                 d.forEach((d, i) => {
                     // d is every single rocket launch for each rocket type
 
                     rocketName = d.Rocket_Category;
-                    rocketStatus = d.StatusRocket;
+                    if (d.StatusRocket=="StatusActive"){
+                        rocketStatus = "StatusActive"
+                    }
+
                     companyName = d.CompanyName;
                     countryName = d.Country;
+                    date = d.Datum;
                     rocketCounter++;
+
+                    // console.log(rocketName, rocketStatus)
 
                     // count number of successes and failures per rocket type
                     if (d.StatusMission == "Success") {
@@ -189,11 +197,13 @@ function summarizeData(data){
                     successes: successCounter,
                     country: countryName,
                     company: companyName,
-                    total: rocketCounter
+                    total: rocketCounter,
+                    date: date
                 })
             })
         })
     })
+    // console.log(rocketdata)
     return rocketdata;
 }
 function splitWords(location){
