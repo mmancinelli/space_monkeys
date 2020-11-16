@@ -44,7 +44,7 @@ class Brushvis {
             .append("rect");
 
         vis.clip_path
-            .attr("width", vis.width)
+            .attr("width", 0) // start hidden
             .attr("height", vis.height);
 
         // add title

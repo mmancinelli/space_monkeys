@@ -112,8 +112,8 @@ class LaunchVis {
             animateMap();
         });
 
-        // (Filter, aggregate, modify data)
-        vis.wrangleData();
+        // // (Filter, aggregate, modify data)
+        // vis.wrangleData();
     }
 
 
@@ -183,7 +183,7 @@ class LaunchVis {
                 console.log(d);
             })
             .transition()
-            .duration(200)
+            .duration(100)
             .attr("transform", d => `translate(${vis.projection([d.lon, d.lat])})`)
             .attr("r", d => Math.sqrt(d.launches))
             .attr("fill", "black");
