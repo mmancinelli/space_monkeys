@@ -66,7 +66,36 @@ var selectedCategory = $('#categorySelector').val();
 function categoryChange() {
 	selectedCategory = $('#categorySelector').val();
 	networkVis.wrangleData();
+}
 
+function animateMap () {
+	console.log("Button Pressed. Starting Animation");
+	let animation_steps = 100;
+	let step_delay      = 100; // [ms]
+
+	// clear launches over time plot.
+	brushVis.clip_path
+		.attr("width", 0);
+
+	//find min and max year
+	let min_year = d3.min(brushVis.data, d => d.date).getFullYear();
+	let max_year = d3.max(brushVis.data, d => d.date).getFullYear();
+
+	//steps.forEach(function (d) {
+	for (let ii = 1; ii <= animation_steps; ii++) {
+		setTimeout(function() {
+			let brush_width = brushVis.width / animation_steps * ii;
+			brushVis.clip_path
+				.transition()
+				.ease(d3.easeLinear)
+				.duration(step_delay)
+				.attr("width", brush_width);
+			mapvis_selectedTime = [min_year, (min_year + (max_year - min_year) / animation_steps * ii)];
+			launchVis.wrangleData();
+			console.log("wrangled " + ii + " with " + mapvis_selectedTime + " and width: " + brush_width);
+
+		}, (ii * step_delay));
+	}
 }
 
 

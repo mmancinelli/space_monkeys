@@ -107,6 +107,11 @@ class LaunchVis {
             });
         vis.circle_group.call(vis.tooltip);
 
+        // add listener to push button
+        d3.select("#map_animation").on("click", function() {
+            animateMap();
+        });
+
         // (Filter, aggregate, modify data)
         vis.wrangleData();
     }
@@ -187,20 +192,6 @@ class LaunchVis {
         // Exit
         vis.circle.exit().remove();
 
-
-
     }
 
-
-    onSelectionChange(selectionStart, selectionEnd) {
-        let vis = this;
-
-
-        // Filter data depending on selected time period (brush)
-
-        // *** TO-DO ***
-
-
-        vis.wrangleData();
-    }
 }
