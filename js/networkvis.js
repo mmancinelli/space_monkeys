@@ -72,9 +72,9 @@ class NetworkVis {
                 return d.y;
             });
 
-        vis.circles = vis.svg.selectAll("g")
-            .data(vis.rootData.descendants())
-            .attr("class", "circles");
+        // vis.circles = vis.svg.selectAll("g")
+        //     .data(vis.rootData.descendants())
+        //     .attr("class", "circles");
 
         // set up tooltip
         vis.tooltip = d3.select("body").append('div')
@@ -187,7 +187,9 @@ class NetworkVis {
             .style("fill", 'none')
             .attr("stroke", '#ccc');
 
-
+        vis.circles = vis.svg.selectAll("g")
+            .data(vis.rootData.descendants())
+            .attr("class", "circles");
 
         // draw circles
         vis.circles
@@ -197,7 +199,7 @@ class NetworkVis {
                 return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")";
             })
             .append("circle")
-            .attr("r", 5)
+            .attr("r", 5 )
             //need to create function for linking circle fill color to information
             .style("fill", d=> {
                 // console.log(d.color);
@@ -345,6 +347,7 @@ class NetworkVis {
             vis.svg.selectAll(".networkCirclesLabels").selectAll("text").remove()
         }
 
+        // vis.networkLabels.remove();
 
     }
 
