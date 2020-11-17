@@ -101,14 +101,19 @@ class LaunchVis {
         // append and call tooltip
         vis.tooltip = d3.tip()
             .attr("class", "d3-tip")
-            .offset([200, 0])
+            .offset([0, 0])
             .html(function(d) {
                 return "<p>" + d.name + "</p><p>Launches: " + d.launches + "</p>";
             });
         vis.circle_group.call(vis.tooltip);
 
-        // (Filter, aggregate, modify data)
-        vis.wrangleData();
+        // add listener to push button
+        d3.select("#map_animation").on("click", function() {
+            animateMap();
+        });
+
+        // // (Filter, aggregate, modify data)
+        // vis.wrangleData();
     }
 
 
@@ -178,7 +183,7 @@ class LaunchVis {
                 console.log(d);
             })
             .transition()
-            .duration(200)
+            .duration(100)
             .attr("transform", d => `translate(${vis.projection([d.lon, d.lat])})`)
             .attr("r", d => Math.sqrt(d.launches))
             .attr("fill", "black");
@@ -187,20 +192,6 @@ class LaunchVis {
         // Exit
         vis.circle.exit().remove();
 
-
-
     }
 
-
-    onSelectionChange(selectionStart, selectionEnd) {
-        let vis = this;
-
-
-        // Filter data depending on selected time period (brush)
-
-        // *** TO-DO ***
-
-
-        vis.wrangleData();
-    }
 }

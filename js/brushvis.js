@@ -38,11 +38,13 @@ class Brushvis {
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
         // clip path
-        vis.svg.append("defs")
+        vis.clip_path = vis.svg.append("defs")
             .append("clipPath")
             .attr("id", "clip-brush")
-            .append("rect")
-            .attr("width", vis.width)
+            .append("rect");
+
+        vis.clip_path
+            .attr("width", 0) // start hidden
             .attr("height", vis.height);
 
         // add title
