@@ -16,6 +16,21 @@ class LaunchVis {
         // convert to js Date object
         this.data.forEach(d => d.date = new Date(d.Datum));
 
+        // condense country_list
+        this.data.forEach(function (d) {
+            if (d.Country === "Florida" | d.Country === "California" | d.Country === "Canaria") {
+                d.Country = "USA";
+                d.lat = 39.75;
+                d.lon = -98.3;
+            }
+            if (d.Country === "Kazakhstan") {
+                d.Country = "Russia";
+                d.lat = 60;
+                d.lon = 100;
+            }
+
+        });
+
         // pull out the country names and exclude bad data
         function onlyUnique(value, index, self) {
             return self.indexOf(value) === index;
@@ -27,6 +42,7 @@ class LaunchVis {
         this.countries_list = unique_countries.filter(function (d) {
             return (d !== "Sea") && (d !== "Site") && (d  !== "Facility") && (d !== "Ocean")
         });
+
 
         console.log("Unique Countries/States: " + this.countries_list)
 

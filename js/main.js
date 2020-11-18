@@ -44,8 +44,6 @@ function createVis(data){
 	flightVis = new FlightVis("launches-vis", data);
 	costVis = new CostVis("costvis", data);
 
-
-
 }
 
 function toggleButton(button) {
