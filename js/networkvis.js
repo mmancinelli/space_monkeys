@@ -318,7 +318,7 @@ class NetworkVis {
             .attr("class", "networkCircle")
             .attr("r", 5)
             .on('mouseover', function (event, d) {
-                console.log(event.pageY)
+                // console.log(event.pageY)
                 d3.select(this)
                     .attr('stroke-width', '2px')
                     .attr('stroke', 'black')
@@ -358,17 +358,30 @@ class NetworkVis {
                     // company tooltip
 
                     // calculate totals
-                    let totalRockets = 0;
+                    // let totalRockets = 0;
                     let totalLaunches = 0;
-                    let totalSuccesses = 0;
-                    let totalFailures = 0;
+                    // let totalSuccesses = 0;
+                    // let totalFailures = 0;
+                    let daterange=[];
                     d.data.children.forEach((d, i) => {
-                        totalRockets++;
+                        // totalRockets++;
                         totalLaunches += d.information.total;
-                        totalSuccesses += d.information.successes;
-                        totalFailures += d.information.failures;
+                        // totalSuccesses += d.information.successes;
+                        // totalFailures += d.information.failures;
+                        daterange.push(d.information.date)
                     })
-                    let ratio = totalSuccesses / totalLaunches * 100;
+
+                    console.log(daterange)
+                    let dateFormatter = d3.timeFormat("%Y");
+                    var parseTime = d3.timeParse("%a %b %e, %Y %I:%M");
+                    let parseTime2 = d3.timeParse("%a %b %e, %Y");
+
+                    var firstDate=dateFormatter(parseTime(d3.min(daterange, d=>d).slice(0,22)));
+                    if (firstDate==null){
+                        firstDate=dateFormatter(parseTime2(d3.min(daterange,d=>d)));
+                    }
+
+
 
                     vis.tooltip
                         .html(`
@@ -376,6 +389,7 @@ class NetworkVis {
                          <h3>${d.data.name}<h3>
                          <hr>
                          <p> <strong>Total Launches: </strong>${totalLaunches}</p>
+                         <p><strong> First Launch: </strong> ${firstDate}</p>
                      </div>`);
                 } else if (d.height == 2) {
 
