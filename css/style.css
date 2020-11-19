@@ -95,7 +95,7 @@ p {
     width: 100%;
 }
 
-#world-map, #orbit-vis, #network-vis, #launches-vis, #brush-plot {
+#world-map, #orbit-vis, #network-vis, #launches-vis, #brush-plot,#networkLegend-vis {
     height: 100%;
     width:  100%;
 }
@@ -106,6 +106,8 @@ p {
     border-radius: 5px;
     height: 100vh;
 }
+
+
 
 #networkTooltip h3 {
     text-align: center;
@@ -201,6 +203,51 @@ p {
     fill: white;
     opacity: 80%;
 }
+#scroll {
+    position: relative;
+}
 
+.scroll__graphic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: auto;
+    width: 100%;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.scroll__graphic.is-fixed {
+    position: fixed;
+}
+
+.scroll__graphic.is-bottom {
+    bottom: 0;
+    top: auto;
+}
+
+.scroll__graphic .chart {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.scroll__text {
+    padding: 0 1rem;
+    max-width: 30rem;
+}
+
+.step {
+    opacity: 0;
+    padding: 1rem;
+}
+
+.step.is-active {
+    opacity: 1;
+}
 
 

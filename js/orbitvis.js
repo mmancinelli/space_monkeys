@@ -1,10 +1,10 @@
 /*
- * AtmoVis - Object constructor function
+ * Orbitvis - Object constructor function
  * @param _parentElement 	-- the HTML element in which to draw the visualization
  * @param _data						-- the actual data
  */
 
-class AtmoVis {
+class Orbitvis {
 
 
     constructor(_parentElement, _data) {
