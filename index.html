@@ -301,20 +301,46 @@
 			<div class = "stars2"></div>
 			<div class = "stars3"></div>
 			<div class="container-fluid">
-				<div class="row justify-content-center header">
-					<div class="align-self-center">
-						<h3>What is the current state of satellites in orbit?</h3>
-					</div>
-				</div>
-				<div class="row main-body">
-					<div class="col one-col">
-						<div class="row justify-content-center center-center">
-							<div class="align-self-center vis-holder">
-								<div id="orbit-vis"></div>
-							</div>
+				<section id='scroll'>
+					<!--  graphic container  -->
+					<div class='scroll__graphic'>
+						<!--   actual graphic/chart   -->
+						<div id='orbitvis'>
+<!--							<p>0</p>-->
 						</div>
 					</div>
-				</div>
+
+					<!--  step/text container  -->
+					<div class='scroll__text'>
+						<div class='step' data-step='1'>
+							<p>STEP 1</p>
+						</div>
+						<div class='step' data-step='2'>
+							<p>STEP 2</p>
+						</div>
+						<div class='step' data-step='3'>
+							<p>STEP 3</p>
+						</div>
+						<div class='step' data-step='4'>
+							<p>STEP 4</p>
+						</div>
+					</div>
+				</section>
+
+<!--				<div class="row justify-content-center header">-->
+<!--					<div class="align-self-center">-->
+<!--						<h3>What is the current state of satellites in orbit?</h3>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="row main-body">-->
+<!--					<div class="col one-col">-->
+<!--						<div class="row justify-content-center center-center">-->
+<!--							<div class="align-self-center vis-holder">-->
+<!--								<div id="orbit-vis"></div>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
 			</div>
 		</div>
 	</div>
@@ -362,9 +388,11 @@
 <script src="js/brushvis.js"></script>
 <script src="js/flightvis.js"></script>
 <script src="js/costvis.js"></script>
-<script src="js/atmovis.js"></script>
+<script src="js/orbitvis.js"></script>
 <script src="js/networkvis.js"></script>
 <script src="js/treedata.js"></script>
+<!--<script src="js/scroll.js"></script>-->
+<!--<script src="js/matrix.js"></script>-->
 
 <script src="js/main.js"></script>
 

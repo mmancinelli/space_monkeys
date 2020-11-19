@@ -80,7 +80,7 @@ function loadData() {
 
         // need to convert map object into array
         let finalArray = arrayifyData(nestedMapObject);
-        console.log("final array", finalArray)
+        // console.log("final array", finalArray)
 
         let finalTree=[];
         finalTree = {name: "Rockets", children: finalArray}
@@ -219,7 +219,7 @@ function summarizeData(data){
         })
     })
 
-    console.log(totalLaunches)
+    // console.log(totalLaunches)
     // console.log(d3.min(totalLaunches, d=>d.ratio))
     return rocketdata;
 

@@ -170,7 +170,7 @@ class NetworkVis {
         }
         else if (vis.selectedCategory == "country") {
             vis.legendStatus = true;
-            console.log(vis.legendStatus);
+            // console.log(vis.legendStatus);
 
             vis.legendData=vis.myCountries
 
@@ -318,17 +318,28 @@ class NetworkVis {
             .attr("class", "networkCircle")
             .attr("r", 5)
             .on('mouseover', function (event, d) {
-                console.log(d)
+                console.log(event.pageY)
                 d3.select(this)
                     .attr('stroke-width', '2px')
                     .attr('stroke', 'black')
-                    .attr('fill', 'white')
+                    .attr('fill', 'white');
+                let yplacement=0;
+                if (event.pageY >620){
+                    yplacement=event.pageY-250;
+                } else {
+                    yplacement=event.pageY;
+                }
 
-
+                let xplacement=0;
+                if (event.pageX > 1000){
+                    xplacement= event.pageX-320;
+                } else {
+                    xplacement=event.pageX+10;
+                }
                 vis.tooltip
                     .style("opacity", 1)
-                    .style("left", event.pageX + 20 + "px")
-                    .style("top", event.pageY + "px");
+                    .style("left", xplacement + "px")
+                    .style("top", yplacement + "px");
 
                 if (d.height === 0) {
                     // rocket type tooltip
@@ -339,6 +350,9 @@ class NetworkVis {
                          <p> <strong>Company: </strong>${d.data.information.company}</p>
                          <p> <strong>Country: </strong>${d.data.information.country}</p>
                          <p> <strong>Total Launches: </strong>${d.data.information.total}</p>
+                         <p> <strong>Status: </strong>${d.data.information.status}</p>
+                         <p> <strong>Successful Launches: </strong>${d.data.information.successRatio}%</p>
+                         
                      </div>`);
                 } else if (d.height === 1) {
                     // company tooltip
@@ -362,7 +376,6 @@ class NetworkVis {
                          <h3>${d.data.name}<h3>
                          <hr>
                          <p> <strong>Total Launches: </strong>${totalLaunches}</p>
-                         <p> <strong>Success Ratio: </strong>${ratio.toFixed(1)}%</p>
                      </div>`);
                 } else if (d.height == 2) {
 
@@ -390,7 +403,6 @@ class NetworkVis {
                          <h3>${d.data.name}<h3>
                          <hr>
                          <p> <strong>Total Rocket Types: </strong>${totalRockets}</p>
-                         <p> <strong>Currently Active?: </strong>${isActive}</p>
                      </div>`);
                 } else if (d.height == 3) {
                     //potential easter egg. However, I get a 404 error file not found
@@ -495,7 +507,7 @@ class NetworkVis {
             vis.legendLabels.exit().remove()
 
         } else if (vis.legendStatus == false){
-            console.log(vis.legendStatus);
+            // console.log(vis.legendStatus);
             vis.legendLabels.remove()
             vis.legendSquares.remove();
         }
