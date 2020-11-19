@@ -37,7 +37,8 @@ function createVis(data){
 	// console.log(allData);
 
 
-	atmoVis = new Orbitvis("orbitvis", data);
+	// orbitVis = new Orbitvis("orbitvis", data);
+	orbitVis = new Orbitvis("scroll",data);
 	launchVis = new LaunchVis("world-map", launchData, geoData);
 	brushVis   = new Brushvis("brush-plot", launchData);
 	networkVis = new NetworkVis("network-vis", "networkLegend-vis",treeData, practiceData);
