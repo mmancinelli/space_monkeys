@@ -136,10 +136,9 @@ class FlightVis {
         //console.log(vis.filteredData)
         vis.yScale.domain([d3.min(vis.filteredData,d=>d.total), d3.max(vis.filteredData,d=>d.total)])
 
-       // function line { d3.line()
-       //     .defined(d => !isNaN(d))
-       //     .x((d, i) => x(data.dates[i]))
-       //     .y(d => y(d)) }
+        vis.line = d3.line()
+            .x(d => vis.xScale(d.year))
+            .y(d => vis.yScale(d.flights));
 
         let row = vis.filteredData[10];
         console.log(row)
@@ -148,17 +147,31 @@ class FlightVis {
 
         console.log(vis.dataRocket)
 
-        vis.svg.selectAll()
-            .datum(vis.dataRocket)
-            .append('path')
+        vis.line_group = vis.svg.append("g").attr("class","path-group-jc");
+
+        vis.line_group.selectAll('path')
+            .data([vis.dataRocket])
             .enter()
-            .attr("d", d3.line()
-                //.x(function(d) { return vis.xScale(d.year) })
-                .x(function(d) { return vis.xScale(d.flights) })
-                .y(function(d) { return vis.yScale(d.flights) })
-            )
-            .attr("stroke", "#e2efef")
-            .style("stroke-width", 4)
+            .append("path")
+            .attr("class","test")
+            .attr("stroke","white")
+            .attr("d", d => vis.line(d));
+
+        // vis.svg.selectAll('path')
+        //     .datum(vis.dataRocket)
+        //     .append('path')
+        //     .enter()
+        //     .attr("d", d3.line()
+        //         //.x(function(d) { return vis.xScale(d.year) })
+        //         .x(function(d) {
+        //             return vis.xScale(d.flights)
+        //         })
+        //         .y(function(d) {
+        //             return vis.yScale(d.flights)
+        //         })
+        //     )
+        //     .attr("stroke", "#e2efef")
+        //     .style("stroke-width", 4)
 
         //vis.line = d3.line()
         //    .defined(d => !isNaN(d))
