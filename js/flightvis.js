@@ -47,10 +47,7 @@ class FlightVis {
         vis.xAxis = d3.axisBottom()
             .scale(vis.xScale)
 
-        vis.svg.append("g")
-            .attr("class", "axis axis--x")
-            .attr("transform", "translate(0," + (vis.height-vis.margin.bottom) + ")")
-            .call(vis.xAxis)
+
 
         vis.yScale = d3.scaleLinear()
             .range([vis.height-vis.margin.top, vis.margin.bottom]);
@@ -59,9 +56,13 @@ class FlightVis {
             .scale(vis.yScale)
 
         vis.svg.append("g")
+            .attr("class", "axis axis--x")
+            .attr("transform", "translate(0," + (vis.height-vis.margin.bottom) + ")")
+            .call(vis.xAxis)
+
+        vis.yAxis_Pointer = vis.svg.append("g")
             .attr("class", "axis y-axis")
-            .attr("transform", "translate(" + vis.margin.left + ",0)")
-            .call(vis.yAxis)
+            .attr("transform", "translate(" + vis.margin.left + ",0)");
 
         // (Filter, aggregate, modify data)
         vis.wrangleData();
@@ -214,6 +215,7 @@ class FlightVis {
         ///        .style("fill", "none")
         ///});
 
+        vis.yAxis_Pointer.call(vis.yAxis);
     }
 
     onSelectionChange(selectionStart, selectionEnd) {
