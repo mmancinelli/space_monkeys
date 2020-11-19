@@ -8,6 +8,11 @@ h1{
     color: #fff;
 }
 
+.image-block {
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+
 /* Centered texts in each section
 * --------------------------------------- */
 .section{
