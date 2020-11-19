@@ -39,30 +39,27 @@ class FlightVis {
             .attr("stroke-linejoin", "round")
             .attr("stroke-linecap", "round")
 
-        vis.xScale = d3.scaleTime()
+        vis.xScale = d3.scaleLinear()
             //.domain([d3.min(vis.data,d=>d.date), d3.max(vis.data,d=>d.date)])
-            .domain(d3.extent(vis.data, d=> d.date))
-            .range([vis.margin.left,vis.width-vis.margin.right]);
+            .domain(d3.extent(vis.data, d=> d.date.getFullYear()))
+            .range([0,vis.width]);
 
         vis.xAxis = d3.axisBottom()
-            .scale(vis.xScale)
-
-
+            .scale(vis.xScale);
 
         vis.yScale = d3.scaleLinear()
-            .range([vis.height-vis.margin.top, vis.margin.bottom]);
+            .range([vis.height, 0]);
 
         vis.yAxis = d3.axisLeft()
             .scale(vis.yScale)
 
         vis.svg.append("g")
             .attr("class", "axis axis--x")
-            .attr("transform", "translate(0," + (vis.height-vis.margin.bottom) + ")")
-            .call(vis.xAxis)
+            .attr("transform", "translate(0," + (vis.height) + ")")
+            .call(vis.xAxis.tickFormat(d3.format("d")))
 
         vis.yAxis_Pointer = vis.svg.append("g")
-            .attr("class", "axis y-axis")
-            .attr("transform", "translate(" + vis.margin.left + ",0)");
+            .attr("class", "axis y-axis");
 
         // (Filter, aggregate, modify data)
         vis.wrangleData();
@@ -155,6 +152,7 @@ class FlightVis {
             .append("path")
             .attr("class","test")
             .attr("stroke","white")
+            .attr("fill","none")
             .attr("d", d => vis.line(d));
 
         // vis.svg.selectAll('path')
