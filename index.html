@@ -111,7 +111,7 @@
 			<div class = "stars"></div>
 			<div class = "stars2"></div>
 			<div class = "stars3"></div>
-			<div class="container-fluid"  style = "padding-top: 0%;">
+			<div class="container-fluid"  style = "padding-top: 0%;height: 100%">
 				<!--			<div class="row justify-content-center header">-->
 				<!--				<div class="align-self-center">-->
 				<!--					<h3>How many companies and rockets are there?</h3>-->
@@ -120,7 +120,7 @@
 				<div class="row main-body">
 					<div class="col">
 						<div class="row">
-							<div class="col-2" style="height: 5vh; padding-left: 20pt; padding-top: 5vh;" >
+							<div class="col-2" style="height: 15vh; padding-left: 20pt; padding-top: 5vh;" >
 								<div class="row" >
 									<button id = "labelToggle" class="btn btn-light" type="button" value="OFF" onclick="toggleButton(this);" style="border: thin solid grey;";>Labels</button>
 								</div>
@@ -129,12 +129,16 @@
 										<option value="default" selected>Default (none)</option>
 										<option value="country">by Country</option>
 										<option value="status">by Status</option>
-										<option value="success">by Success</option>
+										<option value="success">by Success Percentage</option>
 										<option value="total">by Total Launches</option>
 									</select>
 								</div>
+								<div class="row" style="height: 75vh; padding-top: 5pt">
+									<div id="networkLegend-vis">
+									</div>
+								</div>
 							</div>
-							<div class="col-10">
+							<div class="col-10" style="padding-top: 1vh;">
 								<div class="align-self-center vis-holder">
 									<div id="network-vis"></div>
 								</div>

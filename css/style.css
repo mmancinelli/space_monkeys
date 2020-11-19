@@ -95,7 +95,7 @@ p {
     width: 100%;
 }
 
-#world-map, #orbit-vis, #network-vis, #launches-vis, #brush-plot {
+#world-map, #orbit-vis, #network-vis, #launches-vis, #brush-plot,#networkLegend-vis {
     height: 100%;
     width:  100%;
 }
@@ -106,6 +106,8 @@ p {
     border-radius: 5px;
     height: 100vh;
 }
+
+
 
 #networkTooltip h3 {
     text-align: center;

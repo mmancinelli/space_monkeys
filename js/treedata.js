@@ -3,7 +3,7 @@
  *                  for the radial dendrogram visualization
  * author: Zane
  * date created: 11/09/2020
- * date last modified: 11/13/2020
+ * date last modified: 11/18/2020
  * product: a stringified json array of the data in hierarchical form.
  *          Which was then copied and pasted into a .json file because exporting files in this framework is stupid.
  */
@@ -33,8 +33,6 @@ function loadData() {
                 d.Country = "USA";
             }else if (d.Country =="Zealand"){
                 d.Country = "New Zealand";
-            }else if (d.Country =="Zealand"){
-                d.Country = "New Zealand";
             }else if (d.Country =="Facility"){
                 d.Country = "USA"
             }else if (d.Country =="Canaria"){
@@ -42,7 +40,9 @@ function loadData() {
             }else if (d.CompanyName =="Kosmotras"| d.CompanyName =="Land Launch"|d.CompanyName =="OKB-586"|d.CompanyName =="Roscosmos"|d.CompanyName =="RVSN USSR"|d.CompanyName =="Starsem"|d.CompanyName =="VKS RF"|d.CompanyName =="Yuzhmash"){
                 d.Country = "Russia"
             }else if (d.CompanyName =="Arianespace"){
-                d.Country = "Europe (ESA)"
+                d.Country = "France"
+            }else if (d.CompanyName =="ULA"){
+                d.CompanyName = "Boeing"
             }
         })
 
@@ -61,7 +61,7 @@ function loadData() {
         // for some reason, byCompanyRocket outputs asynchronously as the finished product.
         // making an unused duplicate to compare/contrast final product
         let byCountryCompanyRocket = d3.group(csv, d => d.Country, d => d.CompanyName, d => d.Rocket_Category);
-        console.log(byCountryCompanyRocket)
+        // console.log(byCountryCompanyRocket)
 
 
         // moved these sections of code to their own functions below
@@ -135,7 +135,7 @@ function replaceData(data, rocketdata){
                 myArray =data.get(myCountryName).get(myCompanyName)
                 rocketdata.forEach((d,i)=> {
                     // console.log(d)
-                    if (d.name==myRocketName){
+                    if (d.name==myRocketName & d.company ==myCompanyName){
                         myArray.set(myRocketName, d)
                     }
                 })

@@ -14,8 +14,9 @@
 class NetworkVis {
 
 
-    constructor(_parentElement, treeData, practiceData) {
+    constructor(_parentElement, _legendElement,treeData, practiceData) {
         this.parentElement = _parentElement;
+        this.legendElement= _legendElement;
         this.treeData = treeData;
         //this.practiceData = practiceData;
         // console.log(this.data[4])
@@ -33,9 +34,13 @@ class NetworkVis {
 
         // set up SVG drawing area
         // define margins
-        vis.margin = {top: 0, right: 20, bottom: 20, left: 0};
+        vis.margin = {top: 0, right: 20, bottom: 0, left: 0};
         vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
         vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
+
+        vis.marginLegend = {top: 10, right: 0, bottom: 0, left: 0};
+        vis.widthLegend = $("#" + vis.legendElement).width() - vis.marginLegend.left - vis.marginLegend.right;
+        vis.heightLegend = $("#" + vis.legendElement).height() - vis.marginLegend.top - vis.marginLegend.bottom;
 
         // init drawing area
         vis.svg = d3.select("#" + vis.parentElement).append("svg")
@@ -43,9 +48,16 @@ class NetworkVis {
             .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
             .append('g')
             .attr('transform', `translate (${vis.width / 2}, ${vis.height / 2})`);
+        //
+        // // init legend area
+        vis.svg2 = d3.select("#" + vis.legendElement).append("svg")
+            .attr("width", vis.widthLegend + vis.marginLegend .left + vis.marginLegend .right)
+            .attr("height", vis.heightLegend  + vis.marginLegend .top + vis.marginLegend .bottom)
+            .append('g')
+            // .attr('transform', `translate (${vis.widthLegend  / 2}, ${vis.heightLegend  / 2})`);
 
         // console.log(vis.height)
-        vis.radius = vis.height / 2.2;
+        vis.radius = vis.height / 2.3;
 
         vis.tree = data => {
             vis.root = d3.hierarchy(data, function (d) {
@@ -76,39 +88,20 @@ class NetworkVis {
                 return d.y;
             });
 
-        // vis.circles = vis.svg.selectAll("g")
-        //     .data(vis.rootData.descendants()
-        //     )
-        //     .attr("class", "circles");
-
-        // vis.svg.selectAll("g")
-        //     .data(vis.rootData.descendants(), (d,i)=> {
-        //         // console.log(i);
-        //         return i
-        //     })
-        //     .enter()
-        //     .append("g")
-        //     .attr("class", (d,i)=>`nodeGroup-${i}`)
-        //     .attr("transform", function (d) {
-        //         return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")";
-        //     });
-
-        vis.nodeGroups = vis.svg.selectAll("g")
-            .data(vis.rootData.descendants(), (d, i) => {
-                // console.log(i);
-                return i
-            })
-        // .enter()
-        // .append("g")
-        // .attr("class", (d,i)=>`nodeGroup-${i}`)
-        // .attr("transform", function (d) {
-        //     return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")";
-        // });
-
         // set up tooltip
         vis.tooltip = d3.select("body").append('div')
             .attr('class', "tooltip")
             .attr('id', 'networkTooltip');
+
+        // create legend item
+        vis.legend = vis.svg2.append("g")
+            .attr("class", "networkLegend")
+
+        vis.legendData=[];
+
+        vis.myCountries=["USA", "China", "Russia", "Japan","Israel", "New Zealand", "Iran", "France", "India", "Mexico", "Kazakhstan","North Korea", "Brazil", "Kenya","Australia"]
+
+
 
 
         // (Filter, aggregate, modify data)
@@ -123,69 +116,94 @@ class NetworkVis {
     wrangleData() {
         let vis = this;
         vis.selectedCategory = selectedCategory;
-        console.log(vis.selectedCategory);
         vis.legendStatus = false;
+
+        // give everything a color
+        vis.rootData.descendants().forEach((d, i) => {
+            d["color"] = "#00ffd4";
+        })
 
         if (vis.selectedCategory == "default") {
             vis.legendStatus = false;
-            vis.rootData.descendants().forEach((d, i) => {
-                // console.log(d)
-                d["color"] = "#00ffd4";
-                // })
-            })
         } else if (vis.selectedCategory == "status") {
-            console.log(vis.legendStatus, vis.selectedCategory)
+            // console.log(vis.legendStatus, vis.selectedCategory)
             vis.legendStatus = true;
-            vis.rootData.descendants().forEach((d, i) => {
-                d["color"] = "#00ffd4";
 
-                // console.log(d)
-            })
-            // console.log(vis.rootData)
-            var setStatus = [];
-            vis.rootData.descendants().forEach((d, i) => {
+            vis.legendData = ["StatusActive", "StatusRetired"];
+            vis.color = d3.scaleOrdinal()
+                .range(["#07b80f","#0327e9"])
+                .domain(vis.legendData)
 
+            // set default color
+            let countryStatus = [];
+            let companyStatus=[]
+
+            vis.rootData.descendants().forEach((d, i) => {
+                d.color = vis.color(vis.legendData[1])
                 if (d.height == 0) {
-                    // // d.children.forEach((d, j) => {
-                    //
-                    //     // d.children.forEach((d, k) => {
-                    //
-                    //         // console.log(d)
                     if (d.data.information.status == "StatusActive") {
-                        // console.log("Active")
-                        d.color = "#e416fe"
-                        // setStatus[j] = true;
+                        d.color = vis.color(vis.legendData[0])
+                        countryStatus[d.data.information.country]=true;
+                        companyStatus[d.data.information.company]=true;
+                    } else {
+                        d.color = vis.color(vis.legendData[1])
                     }
-                    //     // })
-                    //     // if (setStatus[j] = "true") {
-                    //     //     console.log(setStatus)
-                    //     //     d.color = "green"
-                    //     // }
-                    //
-                    // // })
-                } else {
-                    d.color = "#00ffd4"
                 }
             })
 
-            // console.log(vis.rootData.descendants())
-        }
-            // if (d.height == 0 && d.data.information.status=="StatusActive"){
-            //     d.color="green"
-            //     d.parent.color="green"
-            //     d.parent.parent.color="green"
-        // }
-        else {
-            vis.legendStatus = false;
             vis.rootData.descendants().forEach((d, i) => {
                 // console.log(d)
-                d["color"] = "blue";
-
-                // d.children.forEach((d,i)=>{
-                //     console.log(d)
-                // })
+                if (d.height==2){
+                    let thisCountry = d.data.name
+                    if (countryStatus[thisCountry]==true){
+                        d.color = vis.color(vis.legendData[0])
+                    }
+                } else if (d.height==1){
+                    let thisCompany = d.data.name;
+                    if (companyStatus[thisCompany]==true){
+                        d.color = vis.color(vis.legendData[0])
+                    }
+                }
+                vis.rootData.descendants()[0].color=vis.color(vis.legendData[0]);
             })
-        }
+        } else if (vis.selectedCategory == "country") {
+            vis.legendStatus = true;
+            console.log(vis.legendStatus);
+
+            vis.legendData=vis.myCountries
+
+            vis.rootData.descendants()[0].color="#fff"
+            vis.color = d3.scaleOrdinal()
+                .range([ "#0e3860", "#7431c4", "#9f0797", "#640345","#800000","#ee6666","#ec7805", "#d49953", "#ffeb04","#8eac07", "#364e05", "#0b3701", "#08e2b0", "#2f96e7", "#3559e0"])
+                .domain(vis.legendData)
+
+            vis.rootData.children.forEach((d,i)=>{
+                let myCountry = d.data.name;
+                d.children.forEach((d,i)=>{
+                    d.children.forEach((d,i)=>{
+                        d.color = vis.color(myCountry)
+                        })
+                    d.color=vis.color(myCountry)
+                })
+                d.color=vis.color(myCountry)
+
+            })
+
+
+        } else {
+            vis.legendStatus = false;
+            console.log(vis.legendStatus);
+
+                vis.rootData.descendants().forEach((d, i) => {
+                    // console.log(d)
+                    d["color"] = "blue";
+
+                    // d.children.forEach((d,i)=>{
+                    //     console.log(d)
+                    // })
+                })
+            }
+        // }
 
         // Update the visualization
         vis.updateVis();
@@ -198,7 +216,7 @@ class NetworkVis {
 
     updateVis() {
         let vis = this;
-        console.log("update triggered");
+        // console.log("update triggered");
         // console.log(vis.rootData.descendants())
 
 
@@ -237,11 +255,12 @@ class NetworkVis {
             .attr("class", "networkCircle")
             .attr("r", 5)
             .on('mouseover', function (event, d) {
-                // console.log(d)
+                console.log(d)
                 d3.select(this)
                     .attr('stroke-width', '2px')
                     .attr('stroke', 'black')
                     .attr('fill', 'white')
+
 
                 vis.tooltip
                     .style("opacity", 1)
@@ -327,7 +346,7 @@ class NetworkVis {
             .on('mouseout', function (event, d) {
                 d3.select(this)
                     .attr('stroke-width', '0px')
-                    .attr("fill", "#20bac5")
+                    .attr("fill", d=>d.color)
                 vis.tooltip
                     .style("opacity", 0)
                     .style("left", 0)
@@ -341,9 +360,76 @@ class NetworkVis {
             .attr("stroke", "black")
             .style("stroke-width", 2)
 
-        console.log("circles", vis.circles)
+        // console.log("circles", vis.circles)
 
         vis.circleGroups.exit().remove();
+
+        // vis.legendSquares = vis.legend.selectAll(".myRects")
+        //     .data(vis.legendData);
+
+        vis.legendSquares = vis.legend
+            .attr("class", "legendSquares")
+            .selectAll(".legendSquare")
+            .data(vis.legendData);
+
+        vis.legendLabels = vis.legend
+            .attr("class", "legendLabels")
+            .selectAll(".legendLabel")
+            .data(vis.legendData);
+
+        // vis.legendLabels = vis.legend.selectAll(".mylabels")
+        //     .data(vis.legendData);
+
+        //toggle legend
+        if (vis.legendStatus==true){
+            var size = 20;
+
+            vis.legendSquares
+                .enter()
+                .append("rect")
+                .attr("class", "legendSquare")
+                .merge(vis.legendSquares)
+                .attr("x", 20)
+                .attr("y", function(d,i){ return 100 + i*(size+5)}) // 100 is where the first dot appears. 25 is the distance between dots
+                .attr("width", size)
+                .attr("height", size)
+                .style("fill", function(d){return vis.color(d)});
+
+
+            vis.legendLabels
+                .enter()
+                .append("text")
+                .attr("class", "legendLabel")
+                .merge(vis.legendLabels)
+                .attr("x", 60)
+                .attr("y", function(d,i){ return 100 + i*(size+5) + (size/2)})
+                .style("fill", function(d){ return vis.color(d)})
+                .text(function(d){
+                    if (vis.selectedCategory=="status"){
+                        if (d == "StatusActive") {
+                            return "Active"
+                        } else {
+                            return "Retired"
+                        }
+                    } else {
+                        return d
+                        }
+                    })
+                .attr("text-anchor", "left")
+                .style("alignment-baseline", "middle")
+
+            vis.legendSquares.exit().remove();
+            vis.legendLabels.exit().remove()
+
+        } else if (vis.legendStatus == false){
+            console.log(vis.legendStatus);
+            vis.legendLabels.remove()
+            vis.legendSquares.remove();
+        }
+
+        vis.legendSquares.exit().remove();
+        vis.legendLabels.exit().remove();
+
 
         // create label objects
         vis.networkLabels = vis.svg
@@ -403,7 +489,7 @@ class NetworkVis {
                     // (d.x >Math.PI & d.x < 180 & d.y>270) ? "start" : "end"})
 
         } else {
-            console.log("labels are off")
+            // console.log("labels are off")
             // vis.nodeGroups.selectAll(".networkCirclesLabel").remove();
             vis.networkLabels.remove();
         }
