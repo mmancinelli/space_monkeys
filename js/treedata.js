@@ -9,7 +9,9 @@
  */
 
 
-// loadData();
+loadData();
+
+var totalLaunches=[];
 
 function loadData() {
     d3.csv("data/prepared_launch_data.csv").then(csv => {
@@ -78,7 +80,7 @@ function loadData() {
 
         // need to convert map object into array
         let finalArray = arrayifyData(nestedMapObject);
-        // console.log("final array", finalA/rray)
+        console.log("final array", finalArray)
 
         let finalTree=[];
         finalTree = {name: "Rockets", children: finalArray}
@@ -86,7 +88,8 @@ function loadData() {
         // console.log(finalTree)
 
         let finalJSON = JSON.stringify(finalTree);
-        console.log(finalJSON);
+        // console.log(finalJSON);
+
 
         // write to file
         // fs.writeFile ("data/treeData.json", JSON.stringify(finalArray), function(err) {
@@ -146,6 +149,7 @@ function replaceData(data, rocketdata){
 }
 function summarizeData(data){
     let rocketdata=[];
+    var successRatioArray=[];
     data.forEach((d, i) => {
         // d returns a map of all companies in country
 
@@ -157,6 +161,8 @@ function summarizeData(data){
             var rocketCounter = 0;
             var successCounter = 0;
             var failureCounter = 0;
+            var successratio = 0;
+
             var date= '';
 
             d.forEach((d, i) => {
@@ -187,6 +193,13 @@ function summarizeData(data){
                     }
                 })
 
+
+                let successRatio = (successCounter / rocketCounter * 100).toFixed(1)
+                successRatioArray.push({
+                    name: rocketName,
+                    ratio: successRatio
+                })
+                totalLaunches.push(rocketCounter)
                 // push collected information to rocketData
                 // length: 182
                 // one entry for each rocket type
@@ -198,13 +211,18 @@ function summarizeData(data){
                     country: countryName,
                     company: companyName,
                     total: rocketCounter,
-                    date: date
+                    date: date,
+                    successRatio:successRatio
                 })
             })
+
         })
     })
-    // console.log(rocketdata)
+
+    console.log(totalLaunches)
+    // console.log(d3.min(totalLaunches, d=>d.ratio))
     return rocketdata;
+
 }
 function splitWords(location){
     var n = location.split(", ")

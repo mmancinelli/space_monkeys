@@ -125,7 +125,8 @@ class NetworkVis {
 
         if (vis.selectedCategory == "default") {
             vis.legendStatus = false;
-        } else if (vis.selectedCategory == "status") {
+        }
+        else if (vis.selectedCategory == "status") {
             // console.log(vis.legendStatus, vis.selectedCategory)
             vis.legendStatus = true;
 
@@ -166,7 +167,8 @@ class NetworkVis {
                 }
                 vis.rootData.descendants()[0].color=vis.color(vis.legendData[0]);
             })
-        } else if (vis.selectedCategory == "country") {
+        }
+        else if (vis.selectedCategory == "country") {
             vis.legendStatus = true;
             console.log(vis.legendStatus);
 
@@ -190,13 +192,74 @@ class NetworkVis {
             })
 
 
-        } else {
+        }
+        else if (vis.selectedCategory == "success") {
+            vis.legendStatus = true;
+            // console.log(vis.legendStatus);
+            //
+            // console.log(vis.rootData)
+
+            vis.legendData=([0,10,20,30,40,50,60,70,80,90,100])
+
+
+            vis.color = d3.scaleLinear()
+                .range(["white", "blue"])
+                .domain([0, 100])
+
+            vis.rootData.descendants().forEach((d, i) => {
+                console.log(d)
+                if (d.height==0){
+                    d.color=vis.color(d.data.information.successRatio)
+                }
+            })
+
+
+
+        } else if (vis.selectedCategory == "total") {
+            vis.legendStatus = true;
+            // console.log(vis.legendStatus);
+            //
+            // console.log(vis.rootData)
+
+            vis.legendData=([16, 57,124])
+
+            // vis.logScale = d3.scaleLog()
+            //     .domain([0, 1800])
+            // vis.color = d3.scaleSequential()
+            //     .interpolator(d3.interpolateReds)
+            //     .domain([0,1800])
+            // vis.color = d3.scaleOrdinal()
+            //     .range(["white", "light red", "pink", "red"])
+            //     .domain([0, 1777])
+            // console.log(totalLaunches)
+            vis.color = d3.scaleQuantile()
+                .domain(totalLaunches)
+                .range(["fff","#FFCD06", "#BE1013"])
+
+            // vis.color = d3.scaleQuantize()
+            //     .domain([0,1777])
+            //     .range(["fff","FFCD06", "#BE1013"])
+            // console.log(vis.color(16))
+            // console.log(vis.color(122))
+            // console.log(vis.color(160))
+            //     .range(["fff","FFCD06","#E45323", "#BE1013", "black"])
+
+            vis.rootData.descendants().forEach((d, i) => {
+                // console.log(d)
+                if (d.height==0){
+                    d.color=vis.color(d.data.information.total)
+                }
+            })
+
+
+
+        }else {
             vis.legendStatus = false;
             console.log(vis.legendStatus);
 
                 vis.rootData.descendants().forEach((d, i) => {
                     // console.log(d)
-                    d["color"] = "blue";
+                    d.color = "blue";
 
                     // d.children.forEach((d,i)=>{
                     //     console.log(d)
@@ -411,6 +474,16 @@ class NetworkVis {
                         } else {
                             return "Retired"
                         }
+                    } else if (vis.selectedCategory == "total"){
+                        console.log(d)
+                        if (d===16){
+                            return "0-16"
+                        } else if (d===57){
+                            return "17-57"
+                        } else{
+                            return "124-1777"
+                        }
+
                     } else {
                         return d
                         }
