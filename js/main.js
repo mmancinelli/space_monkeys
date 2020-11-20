@@ -16,8 +16,7 @@ let promises = [
 	d3.csv("data/prepared_satellite_data.csv"),
 	d3.json("data/treeData.json"),
 	d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json"),
-	d3.json("https://gist.githubusercontent.com/mbostock/4090846/raw/d534aba169207548a8a3d670c9c2cc719ff05c47/world-110m.json"),
-	d3.json("data/airports.json")
+	d3.json("https://gist.githubusercontent.com/mbostock/4090846/raw/d534aba169207548a8a3d670c9c2cc719ff05c47/world-110m.json")
 ];
 
 Promise.all(promises)
@@ -33,14 +32,12 @@ function createVis(data){
 	satelliteData = data[2];
 	treeData      = data[3];
 	geoData       = data[4];
-	globeData	  = data[5];
-	airportData   = data[6];
 
-	// console.log(satelliteData);
+	console.log(satelliteData);
 
 
 	// orbitVis = new Orbitvis("orbitvis", data);
-	orbitVis = new Orbitvis("orbit-vis",airportData, geoData);
+	orbitVis = new Orbitvis("orbit-vis", satelliteData, geoData);
 	launchVis = new LaunchVis("world-map", launchData, geoData);
 	brushVis   = new Brushvis("brush-plot", launchData);
 	networkVis = new NetworkVis("network-vis", "networkLegend-vis",treeData);
