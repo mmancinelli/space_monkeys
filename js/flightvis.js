@@ -47,7 +47,8 @@ class FlightVis {
         vis.xAxis = d3.axisBottom()
             .scale(vis.xScale);
 
-        vis.yScale = d3.scaleLinear()
+        //vis.yScale = d3.scaleLinear()
+        vis.yScale = d3.scaleLog()
             .range([vis.height, 0]);
 
         vis.yAxis = d3.axisLeft()
@@ -60,6 +61,7 @@ class FlightVis {
 
         vis.yAxis_Pointer = vis.svg.append("g")
             .attr("class", "axis y-axis");
+
 
         // (Filter, aggregate, modify data)
         vis.wrangleData();
@@ -77,9 +79,9 @@ class FlightVis {
         console.log(vis.data)
 
         //Filter data by Selected Country
-        vis.dataCountry = vis.data.filter(function(country) {return country.Country == "USA";});
+        //vis.dataCountry = vis.data.filter(function(country) {return country.Country == "USA";});
 
-        vis.data=vis.dataCountry
+        //vis.data=vis.dataCountry
 
         console.log(vis.data)
 
@@ -137,23 +139,31 @@ class FlightVis {
             .x(d => vis.xScale(d.year))
             .y(d => vis.yScale(d.flights));
 
-        let row = vis.filteredData[10];
-        console.log(row)
-        vis.dataRocket = []
-        row.years.forEach((jj,i) => {vis.dataRocket.push({year: row.years[i], flights: row.cumsum[i]});});
+        //let row = vis.filteredData[10];
+        //console.log(row)
+        //vis.dataRocket = []
+        //row.years.forEach((jj,i) => {vis.dataRocket.push({year: row.years[i], flights: row.cumsum[i]});});
 
-        console.log(vis.dataRocket)
+        //console.log(vis.dataRocket)
 
         vis.line_group = vis.svg.append("g").attr("class","path-group-jc");
 
-        vis.line_group.selectAll('path')
-            .data([vis.dataRocket])
-            .enter()
-            .append("path")
-            .attr("class","test")
-            .attr("stroke","white")
-            .attr("fill","none")
-            .attr("d", d => vis.line(d));
+        vis.filteredData.forEach(row => {
+            console.log(row)
+            vis.dataRocket = []
+            row.years.forEach((jj,i) => {vis.dataRocket.push({year: row.years[i], flights: row.cumsum[i]});});
+            console.log(vis.dataRocket)
+
+            vis.line_group.append("path")//selectAll('path')
+                .data([vis.dataRocket])
+                //.enter()
+                //.append("path")
+                .attr("class","test")
+                .attr("stroke","white")
+                .attr("fill","none")
+                .attr("d", d => vis.line(d));
+        });
+
 
         // vis.svg.selectAll('path')
         //     .datum(vis.dataRocket)
@@ -187,7 +197,7 @@ class FlightVis {
         //        )
         //    .attr("stroke", "#e2efef")
         //    .style("stroke-width", 4)
-                //.attr("d", d => vis.line(d.years));
+        //.attr("d", d => vis.line(d.years));
 
 
         console.log('JCL')
@@ -227,6 +237,7 @@ class FlightVis {
         ///});
 
         vis.yAxis_Pointer.call(vis.yAxis);
+        vis.svg.call(vis.hover, vis.svg);
     }
 
     onSelectionChange(selectionStart, selectionEnd) {
@@ -234,6 +245,61 @@ class FlightVis {
 
 
         vis.wrangleData();
+    }
+
+    hover(svg, path) {
+
+        let vis = this;
+
+        let x = d3.scaleLinear()
+            //.domain([d3.min(vis.data,d=>d.date), d3.max(vis.data,d=>d.date)])
+            .domain(d3.extent(vis.data, d=> d.date.getFullYear()))
+            .range([0,vis.width]);
+
+        if ("ontouchstart" in document) svg
+            .style("-webkit-tap-highlight-color", "transparent")
+            .on("touchmove", moved)
+            .on("touchstart", entered)
+            .on("touchend", left)
+        else svg
+            .on("mousemove", moved)
+            .on("mouseenter", entered)
+            .on("mouseleave", left);
+
+        const dot = svg.append("g")
+            .attr("display", "none");
+
+        dot.append("circle")
+            .attr("r", 2.5);
+
+        dot.append("text")
+            .attr("font-family", "sans-serif")
+            .attr("font-size", 10)
+            .attr("text-anchor", "middle")
+            .attr("y", -8);
+
+        function moved(event) {
+            event.preventDefault();
+            const pointer = d3.pointer(event, this);
+            console.log(pointer)
+            console.log(x(5))
+            const ym = vis.yScale.invert(pointer[1]);
+            const i = d3.bisectCenter(data.dates, xm);
+            const s = d3.least(data.series, d => Math.abs(d.values[i] - ym));
+            path.attr("stroke", d => d === s ? null : "#ddd").filter(d => d === s).raise();
+            dot.attr("transform", `translate(${x(data.dates[i])},${y(s.values[i])})`);
+            dot.select("text").text(s.name);
+        }
+
+        function entered() {
+            path.style("mix-blend-mode", null).attr("stroke", "#ddd");
+            dot.attr("display", null);
+        }
+
+        function left() {
+            path.style("mix-blend-mode", "multiply").attr("stroke", null);
+            dot.attr("display", "none");
+        }
     }
 
 }
