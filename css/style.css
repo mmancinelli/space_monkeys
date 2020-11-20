@@ -203,51 +203,84 @@ p {
     fill: white;
     opacity: 80%;
 }
-#scroll {
+
+.container {
+    width: 890px;
+}
+
+#graphic {
+    padding-top: 60px;
+}
+
+
+#sections {
     position: relative;
-}
-
-.scroll__graphic {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: auto;
-    width: 100%;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-}
-
-.scroll__graphic.is-fixed {
-    position: fixed;
-}
-
-.scroll__graphic.is-bottom {
-    bottom: 0;
-    top: auto;
-}
-
-.scroll__graphic .chart {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    -moz-transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
-
-.scroll__text {
-    padding: 0 1rem;
-    max-width: 30rem;
+    display: inline-block;
+    width: 250px;
+    top: 0px;
+    z-index: 90;
+    padding-bottom: 200px;
 }
 
 .step {
-    opacity: 0;
-    padding: 1rem;
+    margin-bottom: 200px;
+    font-family: "TiemposTextWeb-Regular","Georgia";
+    font-size: 16px;
+    line-height: 23px;
+    color: #767678;
 }
 
-.step.is-active {
-    opacity: 1;
+#sections .title {
+    font-family: Arial,Helvetica,"san-serif";
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 2px;
+    color: #262626;
+    line-height: 1.2em;
 }
+
+#extra-space {
+    height: 300px;
+}
+
+#vis {
+    display: inline-block;
+    position: fixed;
+    top: 60px;
+    z-index: 1;
+    margin-left: 0;
+    /* height: 600px; */
+    /* width: 600px; */
+    /* background-color: #ddd; */
+}
+
+#vis .title {
+    font-size:120px;
+    text-anchor: middle;
+}
+
+#vis .sub-title {
+    font-size:80px;
+    text-anchor: middle;
+}
+
+.matrixaxis path,
+.matrixaxis line {
+    fill: none;
+    stroke: #666;
+    shape-rendering: crispEdges;
+}
+
+.highlight {
+    fill: #008080;
+    font-weight: bold;
+}
+
+.cough-arrow {
+    stroke: #000;
+    stroke-width: 4px;
+
+}
+
 
 

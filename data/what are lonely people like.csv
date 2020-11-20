@@ -1,0 +1,48 @@
+﻿category,division,Lonely,Not Lonely,Total
+prevalence,major problem,123,0,123
+prevalence,minor problem,93,0,93
+prevalence,isn't really a problem,84,0,84
+age,18-29,68,54,122
+age,30-49,102,95,197
+age,50-64,68,72,140
+age,65+,62,79,141
+gender,male,148,50,198
+gender,female,152,50,202
+income,lower income,164,49,213
+income,middle income,77,21,98
+income,higher income,39,10,49
+education,High school or less/secondary or less,147,129,276
+education,Some college/ post-secondary/junior college,93,84,177
+education,College/university or more,59,84,143
+employment,Employed full time,93,138,231
+employment,Employed part time,45,44,89
+employment,unemployed,50,20,70
+employment,other,112,96,208
+marital status,"single, that is never married",106,65,172
+marital status,"single, living with a partner",16,26,42
+marital status,married,74,151,225
+marital status,divorced/Separated,64,29,93
+marital status,widowed,39,27,64
+specific events,The death of a close family member or friend,61,20,81
+specific events,A change in living situation,49,16,65
+specific events,A negative change in financial status,44,16,60
+specific events,A serious illness or injury in their family,43,15,58
+specific events,A serious illness or injury themselves,35,14,49
+specific events,A loss of a job,22,7,29
+specific events,A death of a spouse or partner,11,5,16
+specific events,Marital separation or divorce,9,4,13
+specific events,Other,26,3,29
+impact,mental health,84,30,114
+impact,physical health,74,25,99
+impact,personal relationships,71,27,98
+impact,ability to do their job,49,16,65
+impact,other,22,2,24
+Dissatisfaction with the Number of Meaningful Personal Connections,family members,86,30,116
+Dissatisfaction with the Number of Meaningful Personal Connections,friends,84,30,114
+Dissatisfaction with the Number of Meaningful Personal Connections,neighbors,92,35,127
+Dissatisfaction with the Number of Meaningful Personal Connections,other,38,5,43
+Fewer Confidants,>6,43,18,61
+Fewer Confidants,3-5',113,38,151
+Fewer Confidants,1-2',106,33,139
+,0,37,11,48
+,,299,,
