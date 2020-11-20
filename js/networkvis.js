@@ -14,7 +14,7 @@
 class NetworkVis {
 
 
-    constructor(_parentElement, _legendElement,treeData, practiceData) {
+    constructor(_parentElement, _legendElement,treeData) {
         this.parentElement = _parentElement;
         this.legendElement= _legendElement;
         this.treeData = treeData;

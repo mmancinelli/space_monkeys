@@ -1,7 +1,12 @@
-//https://github.com/vlandham/scroll_demo/blob/gh-pages/js/scroller.js
-
-function scroller() {
-    var container = d3.select('#section6');
+/**
+ * scroll - handles the details
+ * of figuring out which section
+ * the user is currently scrolled
+ * to.
+ *
+ */
+function scroll() {
+    var container = d3.select('body');
     // event dispatcher
     var dispatch = d3.dispatch('active', 'progress');
 
@@ -20,7 +25,7 @@ function scroller() {
 
     /**
      * scroll - constructor function.
-     * Sets up scroller to monitor
+     * Sets up scroll to monitor
      * scrolling of els selection.
      *
      * @param els - d3 selection of
@@ -34,12 +39,12 @@ function scroller() {
         // position. When it is resized
         // call resize.
         d3.select(window)
-            .on('scroll.scroller', position)
-            .on('resize.scroller', resize);
+            .on('scroll.scroll', position)
+            .on('resize.scroll', resize);
 
         // manually call resize
         // initially to setup
-        // scroller.
+        // scroll.
         resize();
 
         // hack to get position

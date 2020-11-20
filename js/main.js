@@ -32,16 +32,15 @@ function createVis(data){
 	satelliteData = data[2];
 	treeData      = data[3];
 	geoData       = data[4];
-	practiceData  = data[5];
 
-	// console.log(allData);
+	console.log(satelliteData);
 
 
 	// orbitVis = new Orbitvis("orbitvis", data);
 	orbitVis = new Orbitvis("scroll",data);
 	launchVis = new LaunchVis("world-map", launchData, geoData);
 	brushVis   = new Brushvis("brush-plot", launchData);
-	networkVis = new NetworkVis("network-vis", "networkLegend-vis",treeData, practiceData);
+	networkVis = new NetworkVis("network-vis", "networkLegend-vis",treeData);
 	flightVis = new FlightVis("launches-vis", data);
 	costVis = new CostVis("costvis", data);
 
