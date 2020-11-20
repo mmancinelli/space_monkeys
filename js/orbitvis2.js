@@ -8,7 +8,7 @@
  * date last modified: 11/20/2020
  */
 
-class Orbitvis {
+class Orbitvis2 {
 
 
     constructor(_parentElement, satelliteData, geoData) {
@@ -72,78 +72,17 @@ class Orbitvis {
             horizontalTilt: 0
         }
 
+        // trying the orbital trajectory code
 
-
-        // draw satellites
-
-
+        vis.satWidth = 2;
         vis.originX = vis.width/2;
         vis.originY = vis.height/2;
         vis.innerCircleRadius = 50;
         vis.outerCircleRadius = 66;
 
-        // vis.innerCircle=vis.svg.append("circle")
-        //     .attr("r", vis.innerCircleRadius)
-        //     .attr("cx", vis.originX)
-        //     .attr("cy", vis.originY)
-        //     .style("fill", "none")
-        //     .style("stroke", "red")
-        //     .attr("class", "orbitCircle1")
-
-
-        // vis.outerCircle=vis.svg.append("circle")
-        //     .attr("r", vis.outerCircleRadius)
-        //     .attr("cx", vis.originX)
-        //     .attr("cy", vis.originY)
-        //     .style("fill", "none")
-        //     .style("stroke", "red")
-        //     .attr("class", "orbitCircle2")
-
-
-
         vis.satOriginX = vis.originX+ ((vis.outerCircleRadius) * Math.sin(0)) ;
         //+ ((vis.outerCircleRadius) * Math.sin(0))
         vis.satOriginY = vis.originY- ((vis.outerCircleRadius) * Math.cos(0));
-
-        // vis.satPath= vis.svg.append("path")
-        //     .arcTo(vis.satOriginX, vis.satOriginY,vis.satOriginX, vis.satOriginY)
-            // .attr("class", "satpath")
-
-        vis.satPath = d3.path();
-        vis.satPath.moveTo(vis.satOriginX, vis.satOriginY)
-        vis.satPath.arcTo(vis.satOriginX, vis.satOriginY,vis.satOriginX, vis.satOriginY)
-
-        // vis.line = d3.linkRadial()
-        //     .angle(d=>d.x)
-        //     .radius(d=>d.y)
-        // vis.lineData={source:{x:vis.satOriginX, y:vis.satOriginY},target:{x:vis.satOriginX, y:vis.satOriginY}}
-
-        // vis.lineData
-        // vis.path = vis.svg.append("path")
-        //     .attr("d", vis.line)
-        //     .attr("stroke", "red")
-        //
-
-        // console.log(vis.path)
-        vis.satWidth = 2;
-        // vis.sat = vis.svg.append("circle").attr({
-        //     cx: vis.satOriginX - (vis.satWidth / 2),
-        //     cy: vis.satOriginY - (vis.satWidth / 2),
-        //     r: vis.satWidth,
-        //     width: vis.satWidth,
-        //     opacity: 1,
-        //     height: 20,
-        //     fill: "white",
-        //     stroke: "red"
-        // });
-
-        // vis.sat=vis.svg.append("circle")
-        //     .attr("r", vis.satWidth)
-        //     .attr("cx", vis.satOriginX)
-        //     .attr("cy", vis.satOriginY)
-        //     .style("fill", "red")
-        //     .style("stroke", "red")
-        //     .attr("class", "orbitSat1")
 
         vis.sat=vis.svg.append("circle")
             .attr("r", vis.satWidth)
@@ -151,36 +90,92 @@ class Orbitvis {
             .attr("cy", vis.satOriginY)
             .style("fill", "red")
             .style("stroke", "red")
-            .attr("class", "orbitSat1")
-            .transition()
-            .delay(250)
-            .duration(1000)
-        //     .tween("pathTween", function(){return pathTween(vis.path)})
-        // // .tween("pathTween", pathTween); //Custom tween to set the cx and cy attributes
-        //
-        // function pathTween(path){
-        //     var length = path.node().getTotalLength(); // Get the length of the path
-        //     var r = d3.interpolate(0, length); //Set up interpolation from 0 to the path length
-        //     return function(t){
-        //         var point = path.node().getPointAtLength(r(t)); // Get the next point along the path
-        //         d3.select(this) // Select the circle
-        //             .attr("cx", point.x) // Set the cx
-        //             .attr("cy", point.y) // Set the cy
-        //     }
-        // }
+            .attr("class", "orbitSat3")
 
-        // vis.sat.attr("transform", `rotate(45, ${vis.originX}, ${vis.originY})`);
-        // rotating the chair
-        vis.tween = function (d, i, a) {
-            return d3.interpolateString(`rotate(0, ${vis.originX}, ${vis.originY})`, `rotate(359, ${vis.originX}, ${vis.originY})`);
+
+        vis.orbitDistance = vis.height / 4,
+            vis.G = 1e-3 * Math.pow(vis.orbitDistance, 3), // Proportional to cube of orbit distance to maintain behavior over different heights
+            vis.centralMass = 1,
+            vis.orbitalV = Math.sqrt(vis.G * vis.centralMass / vis.orbitDistance);
+
+        vis.initialV = vis.orbitalV
+        vis.numPnts = 5000;
+
+// Draw scaffold canvas
+
+       vis.sat.attr('cy', -vis.orbitDistance);
+
+        simulateTrajectory(vis.orbitalV, vis.numPnts);
+
+//
+
+        function simulateTrajectory(initV, numTicks) {
+            vis.satellite = {
+                    mass: 0,
+                    x: 0,
+                    y: -vis.orbitDistance,
+                    vx: initV,
+                    vy: 0
+                }
+            vis.forceSim = d3.forceSimulation()
+                    .alphaDecay(0)
+                    .velocityDecay(0)
+                    .stop()
+                    .force('gravity', d3.forceMagnetic()
+                        .strength(vis.G)
+                        .charge(d => d.mass)
+                    )
+                    .nodes([
+                        { mass: vis.centralMass },
+                        vis.satellite
+                    ]);
+
+            // Clear canvas
+            const ctx = d3.select('canvas#trails')
+                .attr('width', vis.width)
+                .attr('height', vis.height)
+                .node()
+                .getContext('2d');
+
+            ctx.translate(vis.width/2, vis.height/2);
+            ctx.fillStyle = 'rgba(0, 0, 75, .35)';
+
+            d3.range(numTicks).forEach(() => {
+                vis.forceSim.tick();
+
+                ctx.beginPath();
+                ctx.fillRect(vis.satellite.x, vis.satellite.y, 1, 1);
+                ctx.fill();
+            });
+
+            // Animate satellite
+            vis.elSatellite = vis.sat;
+            vis.satellite.x = 0;
+            vis.satellite.y = -vis.orbitDistance;
+            vis.satellite.vx = initV;
+            vis.satellite.vy = 0;
+
+            vis.forceSim.restart()
+                .on('tick', () => {
+                    vis.elSatellite.attr('cx', d => d.x)
+                        .attr('cy', d => d.y);
+                });
         }
 
-        vis.sat.transition().delay(2000).duration(4000).attrTween("transform", vis.tween);
 
-
-// // fading out the intermediate objects
-//         pointOnOuterCircle.transition().delay(4000).duration(500).style("opacity", 0);
-//         outerCircle.transition().delay(4000).duration(500).style("opacity", 0);
+// // Event handlers
+//         function onVelocityChange(relV) {
+//             d3.select('#velocity-val').text(relV);
+//             initialV = relV * vis.orbitalV;
+//             simulateTrajectory(initialV, numPnts);
+//         }
+//
+//         function onNumSamplesChange(num) {
+//             d3.select('#samples-val').text(num);
+//             vis.numPnts = num;
+//             simulateTrajectory(vis.initialV, vis.numPnts);
+//         }
+        // draw satellites
 
 
 
@@ -224,9 +219,6 @@ class Orbitvis {
                 .attr("d", vis.globePath)
                 .transition()
                 .duration(100);
-
-            // vis.sat.transition().delay(2000).duration(4000).attrTween("transform", vis.tween);
-
         });
 
 

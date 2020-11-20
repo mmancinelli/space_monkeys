@@ -95,13 +95,13 @@ p {
     width: 100%;
 }
 
-#world-map, #orbit-vis, #network-vis, #launches-vis, #brush-plot,#networkLegend-vis {
+#world-map, #orbit-vis, #network-vis, #orbit-vis2, #launches-vis, #brush-plot,#networkLegend-vis {
     height: 100%;
     width:  100%;
 }
 
 /* NETWORK VIS CSS */
-#network-vis, #orbit-vis{
+#network-vis, #orbit-vis, #orbit-vis2{
     border: none;
     border-radius: 5px;
     height: 100vh;

@@ -11,6 +11,8 @@
     Parallax CSS Stars modified from https://codepen.io/saransh/details/BKJun
     -->
 	<link rel="stylesheet" type="text/css" href="css/fullpage.css" />
+	<script src="//unpkg.com/d3-force-magnetic"></script>
+
 <!--	<link rel="stylesheet" type="text/css" href="css/examples.css" />-->
 	<link rel="stylesheet" type="text/css" href="css/stars.css" />
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -318,6 +320,32 @@
 		</div>
 	</div>
 
+	<!-- Orbits -->
+	<div class="section " id="section15">
+		<div class="star-section">
+			<div class = "stars"></div>
+			<div class = "stars2"></div>
+			<div class = "stars3"></div>
+			<div class="container-fluid">
+				<div class="row main-body">
+					<div class="col">
+						<!--						<div class="col" style="padding-top: 1vh;">-->
+						<!--							<div class="align-self-center vis-holder">-->
+						<!--								<div id="orbit-vis"></div>-->
+						<!--							</div>-->
+						<!--						</div>-->
+						<div class="row justify-content-center center-center">
+							<div class="align-self-center vis-holder">
+								<div id="orbit-vis2"></div>
+							</div>
+							<canvas id="trails"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!-- Endnotes -->
 	<div class="section" id="section14">
 		<div class="intro" id="star-end">
@@ -368,8 +396,9 @@
 <script src="js/orbitvis.js"></script>
 <script src="js/networkvis.js"></script>
 <script src="js/treedata.js"></script>
+<script src="js/orbitvis2.js"></script>
 <!--<script src="js/scroll.js"></script>-->
-<!--<script src="js/matrix.js"></script>-->
+<!--<script src="js/orbitvis2.js"></script>-->
 <!--<script src="js/sections.js"></script>-->
 <!--<script src="jquery.scrollstory.js"></script>-->
 
