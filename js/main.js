@@ -1,5 +1,5 @@
-let launchData, rocketData, satelliteData, treeData, geoData
-let launchVis, brushVis, networkVis, flightVis, atmoVis, costVis
+let launchData, rocketData, satelliteData, treeData, geoData, globeData, airportData
+let launchVis, brushVis, networkVis, flightVis, costVis, orbitVis
 
 // init global time selction for map vis
 let mapvis_selectedTime = []
@@ -16,7 +16,8 @@ let promises = [
 	d3.csv("data/prepared_satellite_data.csv"),
 	d3.json("data/treeData.json"),
 	d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json"),
-	d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_dendrogram.json") //practice data for the dendrogram
+	d3.json("https://gist.githubusercontent.com/mbostock/4090846/raw/d534aba169207548a8a3d670c9c2cc719ff05c47/world-110m.json"),
+	d3.json("data/airports.json")
 ];
 
 Promise.all(promises)
@@ -32,17 +33,18 @@ function createVis(data){
 	satelliteData = data[2];
 	treeData      = data[3];
 	geoData       = data[4];
+	globeData	  = data[5];
+	airportData   = data[6];
 
-	console.log(satelliteData);
+	// console.log(satelliteData);
 
 
 	// orbitVis = new Orbitvis("orbitvis", data);
-	orbitVis = new Orbitvis("scroll",data);
+	orbitVis = new Orbitvis("orbit-vis",airportData, geoData);
 	launchVis = new LaunchVis("world-map", launchData, geoData);
 	brushVis   = new Brushvis("brush-plot", launchData);
 	networkVis = new NetworkVis("network-vis", "networkLegend-vis",treeData);
 	flightVis = new FlightVis("launches-vis", data);
-	costVis = new CostVis("costvis", data);
 
 }
 

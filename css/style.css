@@ -101,7 +101,7 @@ p {
 }
 
 /* NETWORK VIS CSS */
-#network-vis{
+#network-vis, #orbit-vis{
     border: none;
     border-radius: 5px;
     height: 100vh;
