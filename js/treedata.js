@@ -12,6 +12,7 @@
 loadData();
 
 var totalLaunches=[];
+var successRatiosList=[];
 
 function loadData() {
     d3.csv("data/prepared_launch_data.csv").then(csv => {
@@ -199,6 +200,7 @@ function summarizeData(data){
                     name: rocketName,
                     ratio: successRatio
                 })
+                successRatiosList.push(successRatio)
                 totalLaunches.push(rocketCounter)
                 // push collected information to rocketData
                 // length: 182

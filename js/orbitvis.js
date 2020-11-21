@@ -79,8 +79,12 @@ class Orbitvis {
 
         vis.originX = vis.width/2;
         vis.originY = vis.height/2;
-        vis.innerCircleRadius = 50;
-        vis.outerCircleRadius = 66;
+        vis.innerCircleRadius = 60;
+        // vis.outerCircleRadius = 66;
+        // 1 km = 0.00768px
+        vis.outerCircleRadius = vis.innerCircleRadius+vis.satData[0]["Apogee (km)"]*0.0078;
+        console.log(vis.outerCircleRadius)
+
 
         // vis.innerCircle=vis.svg.append("circle")
         //     .attr("r", vis.innerCircleRadius)

@@ -6,7 +6,7 @@ let mapvis_selectedTime = []
 
 // Function to convert date objects to strings or reverse
 let dateFormatter = d3.timeFormat("%Y-%m-%d");
-let dateParser = d3.timeParse("%Y-%m-%d");
+let dateParser = d3.timeParse("%m/%d/%y");
 
 
 // (1) Load data with promises
@@ -20,7 +20,17 @@ let promises = [
 ];
 
 Promise.all(promises)
-    .then( function(data){ createVis(data)})
+    .then( function(data){
+    	// clean up satellite data
+    	data[2].forEach(d=>{
+    		d["Apogee (km)"]=+d["Apogee (km)"];
+			d["Expected Lifetime (yrs.)"]=+d["Expected Lifetime (yrs.)"];
+			d["Period (minutes)"]=+d["Period (minutes)"];
+			d["Launch Mass (kg.)"]=+d["Launch Mass (kg.)"];
+			d["Date of Launch"] = dateParser(d["Date of Launch"])
+		})
+
+		createVis(data)})
     .catch( function (err){console.log(err)} );
 
 
@@ -38,7 +48,7 @@ function createVis(data){
 
 	// orbitVis = new Orbitvis("orbitvis", data);
 	orbitVis = new Orbitvis("orbit-vis", satelliteData, geoData);
-	orbitVis2 = new Orbitvis2("orbit-vis2", satelliteData, geoData);
+	// orbitVis2 = new Orbitvis2("orbit-vis2", satelliteData, geoData);
 	launchVis = new LaunchVis("world-map", launchData, geoData);
 	brushVis   = new Brushvis("brush-plot", launchData);
 	networkVis = new NetworkVis("network-vis", "networkLegend-vis",treeData);

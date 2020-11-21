@@ -122,7 +122,7 @@
 				<div class="row main-body">
 					<div class="col">
 						<div class="row">
-							<div class="col-2" style="height: 15vh; padding-left: 20pt; padding-top: 5vh;" >
+							<div class="col-3" style="height: 15vh; padding-left: 20pt; padding-top: 1vh;" >
 								<div class="row" >
 									<button id = "labelToggle" class="btn btn-light" type="button" value="OFF" onclick="toggleButton(this);" style="border: thin solid grey;";>Labels</button>
 								</div>
@@ -135,15 +135,21 @@
 										<option value="total">by Total Launches</option>
 									</select>
 								</div>
-								<div class="row" style="height: 75vh; padding-top: 5pt">
+								<div class="row" style="height: 50vh; padding-top: 5pt">
 									<div id="networkLegend-vis">
 									</div>
 								</div>
+								<div class ="row" style="height:40vh; padding-top: 10pt; text-align: left;">
+									<div id = "legendText">
+									</div>
+
+								</div>
 							</div>
-							<div class="col-10" style="padding-top: 1vh;">
+							<div class="col-9" style="padding-top: 1vh;">
 								<div class="align-self-center vis-holder">
 									<div id="network-vis"></div>
 								</div>
+
 							</div>
 						</div>
 					</div>
@@ -339,6 +345,11 @@
 								<div id="orbit-vis2"></div>
 							</div>
 							<canvas id="trails"></canvas>
+							<svg id="scaffold">
+								<circle r="10" style="fill: red"></circle>
+								<circle id="satellite" r="5" style="fill: rgba(0, 255, 255, .6)"></circle>
+								<circle id="ghost" r="5" style="fill: rgba(0, 255, 255, .6)"></circle>
+							</svg>
 						</div>
 					</div>
 				</div>
