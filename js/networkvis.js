@@ -116,6 +116,13 @@ class NetworkVis {
         vis.selectedCategory = selectedCategory;
         vis.legendStatus = false; // controls whether the legend is drawn or not
 
+        // create the text blurbs and assign as needed in if statement
+        vis.legendTextAll=[
+            ["Russia, China, and the USA make up a soid two-thirds of the space launch industry to-date, but the other third is filled with a bunch of nations ever-reaching to the stars."],
+            ["Launching rockets into space is, actually, rocket science. That is to say, mistakes will be made."],
+            ["The choosing the right color scale here was tricky, because most of the rockets are launched 150 times or less....than then there's Russia with 580+ launches of some rockets."],
+            ["Rockets, like fashion, come and go. Here is an overview of the rockets listed as active in the dataset."]]
+
         // give everything a default color
         vis.rootData.descendants().forEach((d, i) => {
             d["color"] = "#00ffd4";
@@ -173,9 +180,7 @@ class NetworkVis {
             })
 
             // add some text
-            // probably could have just added these in one long array somewhere and set vis.legendText using an index
-            // but oh well. This works fine.
-            vis.legendText = ["Rockets, like fashion, come and go. Here is an overview of the rockets listed as active in the dataset."]
+             vis.legendText = vis.legendTextAll[3]
 
         } else if (vis.selectedCategory == "country") {
             vis.legendStatus = true;
@@ -202,7 +207,7 @@ class NetworkVis {
                 d.color = vis.color(myCountry)
 
             })
-            vis.legendText = ["While only 10 countries officially have the capability to launch rockets into space, the others have launched experimental/science-focused rockets."]
+            vis.legendText = vis.legendTextAll[0]
 
 
         } else if (vis.selectedCategory == "success") {
@@ -222,7 +227,7 @@ class NetworkVis {
                 }
             })
 
-            vis.legendText = ["Launching rockets into space is, actually, rocket science. That is to say, mistakes will be made."]
+            vis.legendText = vis.legendTextAll[1]
 
 
         } else if (vis.selectedCategory == "total") {
@@ -264,7 +269,7 @@ class NetworkVis {
                     d.color = vis.color(d.data.information.total)
                 }
             })
-            vis.legendText = ["The choosing the right color scale here was tricky, because most of the rockets are launched 150 times or less....than then there's Russia with 1700+ launches of some rockets.."]
+            vis.legendText = vis.legendTextAll[2]
 
 
         } else {
@@ -556,10 +561,6 @@ class NetworkVis {
 
         }
 
-        // commented out because are they even used anymore?
-        // vis.legendSquares.exit().remove();
-        // vis.legendLabels.exit().remove();
-
 
         // create label objects
         vis.networkLabels = vis.svg
@@ -623,5 +624,7 @@ class NetworkVis {
         vis.networkLabels.exit().remove();
         vis.circleGroups.selectAll(".networkCirclesLabel").exit().remove();
     }
+
+
 
 }
