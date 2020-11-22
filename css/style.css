@@ -95,17 +95,19 @@ p {
     width: 100%;
 }
 
-#world-map, #orbit-vis, #network-vis, #launches-vis, #brush-plot {
+#world-map, #orbit-vis, #network-vis, #orbit-vis2, #launches-vis,#legendText, #brush-plot,#networkLegend-vis {
     height: 100%;
     width:  100%;
 }
 
 /* NETWORK VIS CSS */
-#network-vis{
+#network-vis, #orbit-vis, #orbit-vis2{
     border: none;
     border-radius: 5px;
     height: 100vh;
 }
+
+
 
 #networkTooltip h3 {
     text-align: center;
@@ -203,11 +205,56 @@ p {
     stroke: white;
 }
 
+
+/*what are the ones below for? Can't remember, should delete? */
 .pathGroup path {
     stroke: lightslategrey;
     fill: white;
     opacity: 80%;
 }
+
+.container {
+    width: 890px;
+}
+
+#graphic {
+    padding-top: 60px;
+}
+
+
+/*#sections {*/
+/*    position: relative;*/
+/*    display: inline-block;*/
+/*    width: 250px;*/
+/*    top: 0px;*/
+/*    z-index: 90;*/
+/*    padding-bottom: 200px;*/
+/*}*/
+
+#scaffold, #controls {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#controls {
+    font-size: 14px;
+    text-align: left;
+    margin: 8px;
+    padding: 1px 5px 5px 5px;
+    background: rgba(230, 230, 250, 0.7);
+    opacity: 0.5;
+    border-radius: 3px;
+    z-index: 1000;
+}
+
+#controls:hover {
+    opacity: 1;
+}
+
+
+
+
 
 
 

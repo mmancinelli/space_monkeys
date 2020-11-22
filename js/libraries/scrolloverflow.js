@@ -668,7 +668,7 @@ IScroll.prototype = {
 // INSERT POINT: _end
 
         if ( newX != this.x || newY != this.y ) {
-            // change easing function when scroller goes out of the boundaries
+            // change easing function when scroll goes out of the boundaries
             if ( newX > 0 || newX < this.maxScrollX || newY > 0 || newY < this.maxScrollY ) {
                 easing = utils.ease.quadratic;
             }
@@ -2476,13 +2476,13 @@ if ( typeof module != 'undefined' && module.exports ) {
             isScrolled: function(type, scrollable) {
                 var scroller = scrollable.fp_iscrollInstance;
 
-                //no scroller?
+                //no scroll?
                 if (!scroller) {
                     return true;
                 }
 
                 // two times reporting the same Y position ? 
-                // that means we are on the top or on the bottom of the scroller
+                // that means we are on the top or on the bottom of the scroll
                 
                 if (type === 'top'){
                     return scroller.y >= 0 && !fp_utils.getScrollTop(scrollable);
@@ -2524,7 +2524,7 @@ if ( typeof module != 'undefined' && module.exports ) {
              * @return {Number}
              */
             scrollHeight: function(element) {
-                return $('.fp-scroller', $(SCROLLABLE_SEL, element)[0] )[0].scrollHeight;
+                return $('.fp-scroll', $(SCROLLABLE_SEL, element)[0] )[0].scrollHeight;
             },
 
             /**
@@ -2545,7 +2545,7 @@ if ( typeof module != 'undefined' && module.exports ) {
                     scrollable.fp_iscrollInstance = null;
 
                     //unwrapping...
-                    fp_utils.unwrap($('.fp-scroller', element)[0]);
+                    fp_utils.unwrap($('.fp-scroll', element)[0]);
                     fp_utils.unwrap($(SCROLLABLE_SEL, element)[0]);
                 }
             },
@@ -2592,7 +2592,7 @@ if ( typeof module != 'undefined' && module.exports ) {
                 scrollable.className = SCROLLABLE;
 
                 var scroller = document.createElement('div');
-                scroller.className = 'fp-scroller';
+                scroller.className = 'fp-scroll';
 
                 return {
                     scrollable: scrollable,

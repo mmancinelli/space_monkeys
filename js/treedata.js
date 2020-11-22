@@ -3,13 +3,16 @@
  *                  for the radial dendrogram visualization
  * author: Zane
  * date created: 11/09/2020
- * date last modified: 11/13/2020
+ * date last modified: 11/18/2020
  * product: a stringified json array of the data in hierarchical form.
  *          Which was then copied and pasted into a .json file because exporting files in this framework is stupid.
  */
 
 
-// loadData();
+loadData();
+
+var totalLaunches=[];
+var successRatiosList=[];
 
 function loadData() {
     d3.csv("data/prepared_launch_data.csv").then(csv => {
@@ -33,8 +36,6 @@ function loadData() {
                 d.Country = "USA";
             }else if (d.Country =="Zealand"){
                 d.Country = "New Zealand";
-            }else if (d.Country =="Zealand"){
-                d.Country = "New Zealand";
             }else if (d.Country =="Facility"){
                 d.Country = "USA"
             }else if (d.Country =="Canaria"){
@@ -42,7 +43,9 @@ function loadData() {
             }else if (d.CompanyName =="Kosmotras"| d.CompanyName =="Land Launch"|d.CompanyName =="OKB-586"|d.CompanyName =="Roscosmos"|d.CompanyName =="RVSN USSR"|d.CompanyName =="Starsem"|d.CompanyName =="VKS RF"|d.CompanyName =="Yuzhmash"){
                 d.Country = "Russia"
             }else if (d.CompanyName =="Arianespace"){
-                d.Country = "Europe (ESA)"
+                d.Country = "France"
+            }else if (d.CompanyName =="ULA"){
+                d.CompanyName = "Boeing"
             }
         })
 
@@ -61,7 +64,7 @@ function loadData() {
         // for some reason, byCompanyRocket outputs asynchronously as the finished product.
         // making an unused duplicate to compare/contrast final product
         let byCountryCompanyRocket = d3.group(csv, d => d.Country, d => d.CompanyName, d => d.Rocket_Category);
-        console.log(byCountryCompanyRocket)
+        // console.log(byCountryCompanyRocket)
 
 
         // moved these sections of code to their own functions below
@@ -78,7 +81,7 @@ function loadData() {
 
         // need to convert map object into array
         let finalArray = arrayifyData(nestedMapObject);
-        // console.log("final array", finalA/rray)
+        // console.log("final array", finalArray)
 
         let finalTree=[];
         finalTree = {name: "Rockets", children: finalArray}
@@ -86,7 +89,8 @@ function loadData() {
         // console.log(finalTree)
 
         let finalJSON = JSON.stringify(finalTree);
-        console.log(finalJSON);
+        // console.log(finalJSON);
+
 
         // write to file
         // fs.writeFile ("data/treeData.json", JSON.stringify(finalArray), function(err) {
@@ -135,7 +139,7 @@ function replaceData(data, rocketdata){
                 myArray =data.get(myCountryName).get(myCompanyName)
                 rocketdata.forEach((d,i)=> {
                     // console.log(d)
-                    if (d.name==myRocketName){
+                    if (d.name==myRocketName & d.company ==myCompanyName){
                         myArray.set(myRocketName, d)
                     }
                 })
@@ -146,21 +150,28 @@ function replaceData(data, rocketdata){
 }
 function summarizeData(data){
     let rocketdata=[];
+    var successRatioArray=[];
+
     data.forEach((d, i) => {
         // d returns a map of all companies in country
+
 
         d.forEach((d, i) => {
             // d is a map of all rockets per company
 
             // set up counters to collect data
-            var rocketName, rocketStatus, companyName, country;
-            var rocketCounter = 0;
-            var successCounter = 0;
-            var failureCounter = 0;
-            var date= '';
+
 
             d.forEach((d, i) => {
                 // d is an array of all rocket launches per rocket
+                var rocketName, rocketStatus, companyName, country;
+                var rocketCounter = 0;
+                var successCounter = 0;
+                var failureCounter = 0;
+                var successratio = 0;
+
+
+                var date= '';
 
                 // collect information for each rocket
                 rocketStatus = "StatusRetired";
@@ -187,6 +198,14 @@ function summarizeData(data){
                     }
                 })
 
+
+                let successRatio = (successCounter / rocketCounter * 100).toFixed(1)
+                successRatioArray.push({
+                    name: rocketName,
+                    ratio: successRatio
+                })
+                successRatiosList.push(successRatio)
+                totalLaunches.push(rocketCounter)
                 // push collected information to rocketData
                 // length: 182
                 // one entry for each rocket type
@@ -198,13 +217,18 @@ function summarizeData(data){
                     country: countryName,
                     company: companyName,
                     total: rocketCounter,
-                    date: date
+                    date: date,
+                    successRatio:successRatio
                 })
             })
+
         })
     })
-    // console.log(rocketdata)
+
+    // console.log(totalLaunches)
+    // console.log(d3.max(totalLaunches, d=>d))
     return rocketdata;
+
 }
 function splitWords(location){
     var n = location.split(", ")

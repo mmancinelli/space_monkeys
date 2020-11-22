@@ -11,9 +11,12 @@
     Parallax CSS Stars modified from https://codepen.io/saransh/details/BKJun
     -->
 	<link rel="stylesheet" type="text/css" href="css/fullpage.css" />
+<!--	<script src="//unpkg.com/d3-force-magnetic"></script>-->
+
 <!--	<link rel="stylesheet" type="text/css" href="css/examples.css" />-->
 	<link rel="stylesheet" type="text/css" href="css/stars.css" />
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
+
 	<style>
 
 	/* Style for our header texts
@@ -41,7 +44,7 @@
 	</div>
 
 	<div class="section " id="section1">
-		<div id="star-section">
+		<div class="star-section">
 			<div class = "stars"></div>
 			<div class = "stars2"></div>
 			<div class = "stars3"></div>
@@ -59,7 +62,7 @@
 
 	<!-- Cold War Images and Facts -->
 	<div class="section " id="section2">
-		<div id="star-section">
+		<div class="star-section">
 			<div class = "stars"></div>
 			<div class = "stars2"></div>
 			<div class = "stars3"></div>
@@ -75,7 +78,7 @@
 
 	<!-- Story Point 2 -->
 	<div class="section " id="section3">
-		<div id="star-section">
+		<div class="star-section">
 			<div class = "stars"></div>
 			<div class = "stars2"></div>
 			<div class = "stars3"></div>
@@ -91,7 +94,7 @@
 
 	<!-- Story Point 3 -->
 	<div class="section " id="section4">
-		<div id="star-section">
+		<div class="star-section">
 			<div class = "stars"></div>
 			<div class = "stars2"></div>
 			<div class = "stars3"></div>
@@ -106,12 +109,12 @@
 	</div>
 
 	<!-- Network Diagram -->
-	<div class="section " id="section3">
-		<div id="star-section2">
+	<div class="section " id="section5">
+		<div class="star-section">
 			<div class = "stars"></div>
 			<div class = "stars2"></div>
 			<div class = "stars3"></div>
-			<div class="container-fluid"  style = "padding-top: 0%;">
+			<div class="container-fluid"  style = "padding-top: 0%;height: 100%">
 				<!--			<div class="row justify-content-center header">-->
 				<!--				<div class="align-self-center">-->
 				<!--					<h3>How many companies and rockets are there?</h3>-->
@@ -120,7 +123,7 @@
 				<div class="row main-body">
 					<div class="col">
 						<div class="row">
-							<div class="col-2" style="height: 5vh; padding-left: 20pt; padding-top: 5vh;" >
+							<div class="col-3" style="height: 15vh; padding-left: 20pt; padding-top: 1vh;" >
 								<div class="row" >
 									<button id = "labelToggle" class="btn btn-light" type="button" value="OFF" onclick="toggleButton(this);" style="border: thin solid grey;";>Labels</button>
 								</div>
@@ -129,15 +132,25 @@
 										<option value="default" selected>Default (none)</option>
 										<option value="country">by Country</option>
 										<option value="status">by Status</option>
-										<option value="success">by Success</option>
+										<option value="success">by Success Percentage</option>
 										<option value="total">by Total Launches</option>
 									</select>
 								</div>
+								<div class="row" style="height: 50vh; padding-top: 5pt">
+									<div id="networkLegend-vis">
+									</div>
+								</div>
+								<div class ="row" style="height:40vh; padding-top: 10pt; text-align: left;">
+									<div id = "legendText">
+									</div>
+
+								</div>
 							</div>
-							<div class="col-10">
+							<div class="col-9" style="padding-top: 1vh;">
 								<div class="align-self-center vis-holder">
 									<div id="network-vis"></div>
 								</div>
+
 							</div>
 						</div>
 					</div>
@@ -148,7 +161,7 @@
 
 	<!-- Story Point 4 -->
 	<div class="section " id="section6">
-		<div id="star-section">
+		<div class="star-section">
 			<div class = "stars"></div>
 			<div class = "stars2"></div>
 			<div class = "stars3"></div>
@@ -167,7 +180,7 @@
 
 	<!-- World Map -->
 	<div class="section " id="section7">
-		<div id="star-section1">
+		<div class="star-section">
 			<div class = "stars"></div>
 			<div class = "stars2"></div>
 			<div class = "stars3"></div>
@@ -198,7 +211,7 @@
 
 	<!-- Fun Facts 2 -->
 	<div class="section " id="section8">
-		<div id="star-section">
+		<div class="star-section">
 			<div class = "stars"></div>
 			<div class = "stars2"></div>
 			<div class = "stars3"></div>
@@ -214,7 +227,7 @@
 
 	<!-- Story Point 5 -->
 	<div class="section " id="section9">
-		<div id="star-section">
+		<div class="star-section">
 			<div class = "stars"></div>
 			<div class = "stars2"></div>
 			<div class = "stars3"></div>
@@ -233,7 +246,7 @@
 
 	<!-- Cumulative Launch Diagram -->
 	<div class="section " id="section10">
-		<div id="star-section3">
+		<div class="star-section">
 			<div class = "stars"></div>
 			<div class = "stars2"></div>
 			<div class = "stars3"></div>
@@ -258,7 +271,7 @@
 
 	<!-- Fun Facts 3 -->
 	<div class="section " id="section11">
-		<div id="star-section">
+		<div class="star-section">
 			<div class = "stars"></div>
 			<div class = "stars2"></div>
 			<div class = "stars3"></div>
@@ -274,7 +287,7 @@
 
 	<!-- Story Point 6 -->
 	<div class="section " id="section12">
-		<div id="star-section">
+		<div class="star-section">
 			<div class = "stars"></div>
 			<div class = "stars2"></div>
 			<div class = "stars3"></div>
@@ -282,7 +295,7 @@
 				<div class="row h-100 justify-content-center">
 					<div class="align-self-center">
 						<h2>All culminating in the vibrant constellations of satellites orbiting our globe today.</h2>
-						<h3>Although the USA and USSR set the stage back in 1955, dozens of countries and over [number] rockets have to lead to the [number] satellites in orbit today.</h2>
+						<h2>Although the USA and USSR set the stage back in 1955, dozens of countries and over [number] rockets have to lead to the [number] satellites in orbit today.</h2>
 					</div>
 				</div>
 			</div>
@@ -291,25 +304,53 @@
 
 	<!-- Orbits -->
 	<div class="section " id="section13">
-		<div id="star-section">
+		<div class="star-section">
 			<div class = "stars"></div>
 			<div class = "stars2"></div>
 			<div class = "stars3"></div>
 			<div class="container-fluid">
-				<div class="row justify-content-center header">
-					<div class="align-self-center">
-						<h3>What is the current state of satellites in orbit?</h3>
+				<div class="row main-body">
+					<div class="col">
+<!--						<div class="col" style="padding-top: 1vh;">-->
+<!--							<div class="align-self-center vis-holder">-->
+<!--								<div id="orbit-vis"></div>-->
+<!--							</div>-->
+<!--						</div>-->
+					<div class="row justify-content-center center-center">
+						<div class="align-self-center vis-holder">
+							<div id="orbit-vis"></div>
+
+						</div>
+					</div>
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Orbits -->
+	<div class="section " id="section15">
+		<div class="star-section">
+			<div class = "stars"></div>
+			<div class = "stars2"></div>
+			<div class = "stars3"></div>
+			<div class="container-fluid">
 				<div class="row main-body">
-					<div class="col one-col">
+					<div class="col">
 						<div class="row justify-content-center center-center">
 							<div class="align-self-center vis-holder">
-								<div id="orbit-vis"></div>
+								<div id="orbit-vis">
+									<svg id="canvas">
+<!--										<circle id="center" r="20" cx="0" cy="0"></circle>-->
+<!--										<circle id="particle" r="8"></circle>-->
+									</svg>
+								</div>
+
 							</div>
 						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>
@@ -332,22 +373,23 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="js/libraries/fullpage.js"></script>
+
+<script src="//unpkg.com/d3-force-magnetic"></script>
 <!--<script type="text/javascript" src="js/libraries/examples.js"></script>-->
 
 <!-- d3 -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
 <script src="https://d3js.org/d3.v6.min.js"></script>
-
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <script src="https://d3js.org/topojson.v2.min.js"></script>
 <script src="https://d3js.org/d3-geo.v1.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-collection/1.0.5/d3-collection.min.js"></script>
+<script src="https://d3js.org/d3-timer.v2.min.js"></script>
 <script src="js/libraries/d3-tip.js"></script>
-
 <script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
+
 
 
 
@@ -357,9 +399,12 @@
 <script src="js/brushvis.js"></script>
 <script src="js/flightvis.js"></script>
 <script src="js/costvis.js"></script>
-<script src="js/atmovis.js"></script>
+<script src="js/orbitvis.js"></script>
 <script src="js/networkvis.js"></script>
 <script src="js/treedata.js"></script>
+<script src="js/orbitvis_REDO.js"></script>
+
+
 
 <script src="js/main.js"></script>
 
