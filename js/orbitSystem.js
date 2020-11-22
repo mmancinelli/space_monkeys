@@ -66,7 +66,18 @@ class OrbitSystem {
             .attr("width", vis.widthLegend + vis.marginLegend.left + vis.marginLegend.right)
             .attr("height", vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom)
             .append('g')
-        // .attr('transform', `translate (${vis.widthLegend  / 2}, ${vis.heightLegend  / 2})`);
+
+        // create slider https://refreshless.com/nouislider
+        // since the slider was literally my nemesis for hw 6, I very gratefully just followed along with Ben's hw 6 review.
+
+
+        // updateRangeSliderValues(originalTimePeriod);
+        // vis.slider.noUiSlider.on('slide', function(values, handle){
+        //     updateRangeSliderValues(values);
+        //     vis.wrangleData()
+        // })
+
+
 
         // ****************************************
         //             GLOBE
@@ -94,21 +105,36 @@ class OrbitSystem {
             .attr("stroke", "rgba(129,129,129,0.35)")
             .attr("d", vis.globePath);
 
-        // config variables for rotation of globe -- makes rotation of everything extremely choppy
+        // config variables for rotation of globe -- commented out because rotating globes makes rotation of everything extremely choppy
         // vis.config = {
         //     speed: 0.005,
         //     verticalTilt: -10,
         //     horizontalTilt: 0
         // }
 
+        // ****************************************
+        //             Legend
+        // ****************************************
+
 
         // create legend item
         vis.legend = vis.svg2.append("g")
             .attr("class", "orbitLegend")
 
+        // initialize legend data array
         vis.legendData = [];
-        vis.originalTimePeriod = d3.extent(vis.satData, d=>d.Date)
-        console.log(vis.originalTimePeriod)
+
+        //initialize date filter
+        // vis.originalTimePeriod = d3.extent(vis.satData, d=>d.Date)
+        // console.log(vis.originalTimePeriod)
+        //
+        // vis.timePeriodMin =vis.originalTimePeriod[0];
+        // vis.timePeriodMax =vis.originalTimePeriod[1];
+
+        // vis.timePeriodMin = document.getElementById("time-period-min").value;
+        // vis.timePeriodMax = document.getElementbyId("time-period-max").value;
+
+
 
 
         vis.wrangleData()
@@ -120,11 +146,19 @@ class OrbitSystem {
 
         vis.selectedSatCategory = selectedSatCategory;
 
+        // ****************************************
+        //             Satellites
+        // ****************************************
+
         // filter out entries where Period is NaN - removes about 20
-        vis.filteredData = vis.satData.filter((d,i)=>{
+        vis.satData1 = vis.satData.filter((d,i)=>{
             if (!isNaN(d.Period)){
                 return d
             }
+        })
+
+        vis.filteredData = vis.satData1.filter(d=>{
+            return d.Date >= vis.timePeriodMin && d.Date <=vis.timePeriodMax;
         })
 
         //set up filter by Date
@@ -194,7 +228,7 @@ class OrbitSystem {
             vis.legendStatus = true;
             vis.legendData = ["USA", "China", "Russia", "United Kingdom", "Japan", "Other"]
             vis.color = d3.scaleOrdinal()
-                .range(["#0e3860", "#7431c4", "#9f0797", "#640345", "#800000", "#ee6666"])
+                .range(["#0a60b1", "#7431c4", "#9f0797", "#640345", "#800000", "#ee6666"])
                 .domain(vis.legendData)
 
             console.log(vis.color("Other"))

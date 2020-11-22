@@ -5,7 +5,7 @@ let launchVis, brushVis, networkVis, flightVis, costVis, orbitVis, orbitVis3, or
 let mapvis_selectedTime = []
 
 // Function to convert date objects to strings or reverse
-let dateFormatter = d3.timeFormat("%Y-%m-%d");
+let dateFormatter = d3.timeFormat("%Y");
 let dateParser = d3.timeParse("%m/%d/%y");
 
 
@@ -50,20 +50,6 @@ Promise.all(promises)
 				d.Purpose = "Other"
 			}
 
-			// if (d.Users = "Civil/Government"){
-			// 	d.Users = "Government/Civil"
-			// } else if (d.Users = "Military/Government"){
-			// 	d.Users = "Government/Military"
-			// }
-			// else if (d.Users = "Civil/Military"){
-			// 	d.Users = "Military/Civil"
-			// } else if (d.Users = "Commercial/Government"){
-			// 	d.Users = "Government/Commercial"
-			// } else if (d.Users = "Commercial/Military"){
-			// 	d.Users = "Military/Commercial"
-			// }  else if (d.Users = "Government/Commercial"){
-			// 	d.Users = "Government/Commercial"
-			// }
 		})
 
 		createVis(data)})
@@ -79,7 +65,23 @@ function createVis(data){
 	treeData      = data[3];
 	geoData       = data[4];
 
-	// console.log(satelliteData);
+	// var originalTimePeriod = d3.extent(satelliteData, d=>d.Date)
+	// console.log(dateFormatter(originalTimePeriod[0]))
+	//
+	// // vis.timePeriodMin =vis.originalTimePeriod[0];
+	// // vis.timePeriodMax =vis.originalTimePeriod[1];
+	//
+	// // console.log(satelliteData);
+	// var slider = document.getElementById("slider")
+	// noUiSlider.create(slider, {
+	// 	start: [dateFormatter(originalTimePeriod[0]), dateFormatter(originalTimePeriod[1])],
+	// 	connect: true,
+	// 	behaviour: "drag",
+	// 	step: 1,
+	// 	margin: 1,
+	// 	range: {'min': dateFormatter(originalTimePeriod[0]),
+	// 		'max': dateFormatter(originalTimePeriod[1])}
+	// })
 
 
 
@@ -151,5 +153,10 @@ function animateMap () {
 		}, (ii * step_delay));
 	}
 }
+
+// function updateRangeSliderValues(values){
+// 	$("#time-period-min").text(parseInt(values[0]));
+// 	$("#time-period-max").text(parseInt(values[1]));
+// }
 
 
