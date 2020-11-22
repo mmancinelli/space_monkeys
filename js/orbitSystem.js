@@ -5,7 +5,8 @@
 *
 *
  *
- * author: Zane
+ * author: Zane and Michael
+ * contributions: Zane created the bulk of the code and Michael swooped in to solve enter/update/exit issues by separating the code out into separate functions and changing the animation framework
  * modified from: http://bl.ocks.org/codybuell/fc2426aedabef2d69873
  * date created: 11/19/2020
  * date last modified:
@@ -21,7 +22,7 @@ class OrbitSystem {
         this.selectedSatCategory = "default";
 
         // number of sats to display
-        this.displayAmount = 2787;
+        this.displayAmount = 1000;
 
         console.log(this.satData)
 
@@ -206,7 +207,7 @@ class OrbitSystem {
             vis.satellites.push({
                 R: vis.R,
                 r: 3,
-                speed: vis.periodScale(d.Period),
+                // speed: vis.periodScale(d.Period),
                 phi0: phi0,
                 name: d["Current Official Name of Satellite"],
                 color: "#00ffd4",
@@ -311,13 +312,13 @@ class OrbitSystem {
         vis.circle.exit().remove();
 
         // animate
-        vis.animate = function (duration,angle) {
+        vis.animate = function (duration,angle_multiple) {
             vis.svg.selectAll(".planet")
                 .transition()
                 .ease(d3.easeLinear)
                 .duration(duration)
                 .attr("transform", function (d) {
-                    d.phi0 = d.phi0 + angle;
+                    d.phi0 = d.phi0 + Math.sqrt(1/d.R) * angle_multiple; // orbital period -> sqrt(1/R)
                     return "rotate(" + d.phi0 + ")";
                 })
 
