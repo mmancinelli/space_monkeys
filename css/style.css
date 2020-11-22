@@ -95,13 +95,13 @@ p {
     width: 100%;
 }
 
-#world-map, #orbit-vis, #network-vis, #launches-vis, #brush-plot,#networkLegend-vis {
+#world-map, #orbit-vis, #network-vis, #orbit-vis2, #launches-vis,#legendText, #brush-plot,#networkLegend-vis {
     height: 100%;
     width:  100%;
 }
 
 /* NETWORK VIS CSS */
-#network-vis{
+#network-vis, #orbit-vis, #orbit-vis2{
     border: none;
     border-radius: 5px;
     height: 100vh;
@@ -198,6 +198,8 @@ p {
     stroke: white;
 }
 
+
+/*what are the ones below for? Can't remember, should delete? */
 .pathGroup path {
     stroke: lightslategrey;
     fill: white;
@@ -213,74 +215,39 @@ p {
 }
 
 
-#sections {
-    position: relative;
-    display: inline-block;
-    width: 250px;
-    top: 0px;
-    z-index: 90;
-    padding-bottom: 200px;
+/*#sections {*/
+/*    position: relative;*/
+/*    display: inline-block;*/
+/*    width: 250px;*/
+/*    top: 0px;*/
+/*    z-index: 90;*/
+/*    padding-bottom: 200px;*/
+/*}*/
+
+#scaffold, #controls {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
-.step {
-    margin-bottom: 200px;
-    font-family: "TiemposTextWeb-Regular","Georgia";
-    font-size: 16px;
-    line-height: 23px;
-    color: #767678;
+#controls {
+    font-size: 14px;
+    text-align: left;
+    margin: 8px;
+    padding: 1px 5px 5px 5px;
+    background: rgba(230, 230, 250, 0.7);
+    opacity: 0.5;
+    border-radius: 3px;
+    z-index: 1000;
 }
 
-#sections .title {
-    font-family: Arial,Helvetica,"san-serif";
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 2px;
-    color: #262626;
-    line-height: 1.2em;
+#controls:hover {
+    opacity: 1;
 }
 
-#extra-space {
-    height: 300px;
-}
 
-#vis {
-    display: inline-block;
-    position: fixed;
-    top: 60px;
-    z-index: 1;
-    margin-left: 0;
-    /* height: 600px; */
-    /* width: 600px; */
-    /* background-color: #ddd; */
-}
 
-#vis .title {
-    font-size:120px;
-    text-anchor: middle;
-}
 
-#vis .sub-title {
-    font-size:80px;
-    text-anchor: middle;
-}
-
-.matrixaxis path,
-.matrixaxis line {
-    fill: none;
-    stroke: #666;
-    shape-rendering: crispEdges;
-}
-
-.highlight {
-    fill: #008080;
-    font-weight: bold;
-}
-
-.cough-arrow {
-    stroke: #000;
-    stroke-width: 4px;
-
-}
 
 
 

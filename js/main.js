@@ -1,12 +1,12 @@
-let launchData, rocketData, satelliteData, treeData, geoData
-let launchVis, brushVis, networkVis, flightVis, atmoVis, costVis
+let launchData, rocketData, satelliteData, treeData, geoData, globeData, airportData
+let launchVis, brushVis, networkVis, flightVis, costVis, orbitVis, orbitVis3
 
 // init global time selction for map vis
 let mapvis_selectedTime = []
 
 // Function to convert date objects to strings or reverse
 let dateFormatter = d3.timeFormat("%Y-%m-%d");
-let dateParser = d3.timeParse("%Y-%m-%d");
+let dateParser = d3.timeParse("%m/%d/%y");
 
 
 // (1) Load data with promises
@@ -16,11 +16,23 @@ let promises = [
 	d3.csv("data/prepared_satellite_data.csv"),
 	d3.json("data/treeData.json"),
 	d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json"),
-	d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_dendrogram.json") //practice data for the dendrogram
+	d3.json("https://gist.githubusercontent.com/mbostock/4090846/raw/d534aba169207548a8a3d670c9c2cc719ff05c47/world-110m.json")
 ];
 
 Promise.all(promises)
-    .then( function(data){ createVis(data)})
+    .then( function(data){
+    	// clean up satellite data
+    	data[2].forEach(d=>{
+    		d["Apogee"]=+d["Apogee (km)"];
+			d["EL"]=+d["Expected Lifetime (yrs.)"];
+			d["Period"]=+d["Period (minutes)"];
+			d["LaunchMass"]=+d["Launch Mass (kg.)"];
+			d["Country"] = d["Country of Operator/Owner"];
+			d["Owner"]= d["Operator/Owner"];
+			d["Date of Launch"] = dateParser(d["Date of Launch"])
+		})
+
+		createVis(data)})
     .catch( function (err){console.log(err)} );
 
 
@@ -33,17 +45,17 @@ function createVis(data){
 	treeData      = data[3];
 	geoData       = data[4];
 
-	console.log(satelliteData);
+	// console.log(satelliteData);
 
 
-	// orbitVis = new Orbitvis("orbitvis", data);
-	orbitVis = new Orbitvis("scroll",data);
+	orbitVis = new OrbitvisREDO("canvas", satelliteData, geoData);
+	// orbitVis = new Orbitvis2("orbit-vis2", satelliteData, geoData);
 	launchVis = new LaunchVis("world-map", launchData, geoData);
 	brushVis   = new Brushvis("brush-plot", launchData);
 	networkVis = new NetworkVis("network-vis", "networkLegend-vis",treeData);
 	flightVis = new FlightVis("launches-vis", data);
-	costVis = new CostVis("costvis", data);
 
+	// makeViz()
 }
 
 function toggleButton(button) {

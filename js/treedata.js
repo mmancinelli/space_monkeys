@@ -12,6 +12,7 @@
 loadData();
 
 var totalLaunches=[];
+var successRatiosList=[];
 
 function loadData() {
     d3.csv("data/prepared_launch_data.csv").then(csv => {
@@ -150,23 +151,27 @@ function replaceData(data, rocketdata){
 function summarizeData(data){
     let rocketdata=[];
     var successRatioArray=[];
+
     data.forEach((d, i) => {
         // d returns a map of all companies in country
+
 
         d.forEach((d, i) => {
             // d is a map of all rockets per company
 
             // set up counters to collect data
-            var rocketName, rocketStatus, companyName, country;
-            var rocketCounter = 0;
-            var successCounter = 0;
-            var failureCounter = 0;
-            var successratio = 0;
 
-            var date= '';
 
             d.forEach((d, i) => {
                 // d is an array of all rocket launches per rocket
+                var rocketName, rocketStatus, companyName, country;
+                var rocketCounter = 0;
+                var successCounter = 0;
+                var failureCounter = 0;
+                var successratio = 0;
+
+
+                var date= '';
 
                 // collect information for each rocket
                 rocketStatus = "StatusRetired";
@@ -199,6 +204,7 @@ function summarizeData(data){
                     name: rocketName,
                     ratio: successRatio
                 })
+                successRatiosList.push(successRatio)
                 totalLaunches.push(rocketCounter)
                 // push collected information to rocketData
                 // length: 182
@@ -220,7 +226,7 @@ function summarizeData(data){
     })
 
     // console.log(totalLaunches)
-    // console.log(d3.min(totalLaunches, d=>d.ratio))
+    // console.log(d3.max(totalLaunches, d=>d))
     return rocketdata;
 
 }
