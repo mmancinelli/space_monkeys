@@ -83,11 +83,12 @@ class FlightVis {
 
         //vis.data=vis.dataCountry
 
-        console.log(vis.data)
+        //console.log(vis.data)
 
         // Group data by Rocket_Category
         vis.filteredData = []
         vis.dataByRocketCat = Array.from(d3.group(this.data, d =>d.Rocket_Category), ([key, value]) => ({key, value}))
+        console.log(vis.dataByRocketCat)
 
         // Iterate, get total flights and years
         vis.dataByRocketCat.forEach(row => {
@@ -133,7 +134,7 @@ class FlightVis {
         let vis = this;
 
         //console.log(vis.filteredData)
-        vis.yScale.domain([d3.min(vis.filteredData,d=>d.total), d3.max(vis.filteredData,d=>d.total)])
+        vis.yScale.domain([d3.min(vis.filteredData,d=>d.total), d3.max(vis.filteredData,d=>d.total)]).nice()
 
         vis.line = d3.line()
             .x(d => vis.xScale(d.year))
@@ -149,10 +150,10 @@ class FlightVis {
         vis.line_group = vis.svg.append("g").attr("class","path-group-jc");
 
         vis.filteredData.forEach(row => {
-            console.log(row)
+            //console.log(row)
             vis.dataRocket = []
             row.years.forEach((jj,i) => {vis.dataRocket.push({year: row.years[i], flights: row.cumsum[i]});});
-            console.log(vis.dataRocket)
+            //console.log(vis.dataRocket)
 
             vis.line_group.append("path")//selectAll('path')
                 .data([vis.dataRocket])
@@ -237,7 +238,7 @@ class FlightVis {
         ///});
 
         vis.yAxis_Pointer.call(vis.yAxis);
-        vis.svg.call(vis.hover, vis.svg);
+        vis.svg.call(vis.hover());
     }
 
     onSelectionChange(selectionStart, selectionEnd) {
@@ -247,7 +248,7 @@ class FlightVis {
         vis.wrangleData();
     }
 
-    hover(svg, path) {
+    hover() {
 
         let vis = this;
 
@@ -256,17 +257,17 @@ class FlightVis {
             .domain(d3.extent(vis.data, d=> d.date.getFullYear()))
             .range([0,vis.width]);
 
-        if ("ontouchstart" in document) svg
+        if ("ontouchstart" in document) vis.svg
             .style("-webkit-tap-highlight-color", "transparent")
             .on("touchmove", moved)
             .on("touchstart", entered)
             .on("touchend", left)
-        else svg
+        else vis.svg
             .on("mousemove", moved)
             .on("mouseenter", entered)
             .on("mouseleave", left);
 
-        const dot = svg.append("g")
+        const dot = vis.svg.append("g")
             .attr("display", "none");
 
         dot.append("circle")
@@ -282,9 +283,16 @@ class FlightVis {
             event.preventDefault();
             const pointer = d3.pointer(event, this);
             console.log(pointer)
-            console.log(x(5))
+            //console.log(x(5))
+            const xm = vis.xScale.invert(pointer[0]);
+            console.log(xm)
             const ym = vis.yScale.invert(pointer[1]);
-            const i = d3.bisectCenter(data.dates, xm);
+            console.log(ym)
+            let iyear = vis.data.filter(function(country) {return country.date == d3.round(xm);})
+            //let iyear = vis.data.filter(function(pointyear) {return pointyear.date.getFullYear() == xm;});
+            console.log(iyear)
+            const i = d3.bisectCenter(vis.data.date, xm);
+            console.log(i)
             const s = d3.least(data.series, d => Math.abs(d.values[i] - ym));
             path.attr("stroke", d => d === s ? null : "#ddd").filter(d => d === s).raise();
             dot.attr("transform", `translate(${x(data.dates[i])},${y(s.values[i])})`);
