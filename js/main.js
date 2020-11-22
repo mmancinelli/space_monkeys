@@ -58,6 +58,13 @@ function createVis(data){
 	flightVis = new FlightVis("launches-vis", data);
 
 	// makeViz()
+
+	//loop through orbits after 10 seconds and continue for a few hours
+	for (let ii = 1; ii <= 1000; ii++) {
+		setTimeout(function () {
+			orbitSystem.animate(10000, 17);
+		}, (ii * 10000));
+	}
 }
 
 function toggleButton(button) {
@@ -84,9 +91,9 @@ function categoryChange() {
 }
 function satCategoryChange(){
 
-	selectedSatCategory = $('#satColor').val();
+	orbitSystem.selectedSatCategory = $('#satColor').val();
 	// console.log(selectedSatCategory)
-	orbitSystem.wrangleData();
+	orbitSystem.updateColor();
 }
 
 function animateMap () {

@@ -17,6 +17,10 @@ class OrbitSystem {
         this.parentElement = _parentElement;
         this.geoData = geoData;
         this.satData = satelliteData;
+        this.selectedSatCategory = "default";
+
+        // number of sats to display
+        this.displayAmount = 1000;
 
         console.log(this.satData)
 
@@ -50,7 +54,7 @@ class OrbitSystem {
         vis.t0 = new Date().setHours(0, 0, 0, 0);
         vis.delta = (Date.now() - vis.t0);
 
-// insert svg element
+        // insert svg element
         vis.svg = d3.select("#" + vis.parentElement).insert("svg")
             .attr("width", vis.width)
             .attr("height", vis.height)
@@ -84,10 +88,27 @@ class OrbitSystem {
 
         // config variables for rotation
         vis.config = {
-            speed: 0.005,
+            speed: 0.0005,
             verticalTilt: -30,
             horizontalTilt: 0
         }
+
+        // draw the globe
+        vis.globe = vis.svg.selectAll(".country")
+            .data(vis.world)
+
+        vis.countries = vis.globe
+            .enter().append("path")
+            .attr('class', 'country')
+            .attr("fill", "green")
+            .attr("opacity", 0.6)
+            .merge(vis.globe)
+            .attr("d", vis.globePath)
+
+        // planet group
+        vis.container = vis.svg.append("g")
+            .attr("id", "orbit_container")
+            .attr("transform", "translate(" + vis.x + "," + vis.y + ")");
 
 
         vis.wrangleData()
@@ -97,19 +118,6 @@ class OrbitSystem {
     wrangleData() {
         let vis = this;
 
-        vis.selectedSatCategory = selectedSatCategory;
-        // console.log(vis.selectedSatCategory)
-
-        // vis.nans=0;
-
-        // figure out how many nans there are - 890
-        // vis.satData.forEach((d,i)=>{
-        //     if (isNaN(d.Apogee)){
-        //         vis.nans++;
-        //     }
-        //
-        // })
-        // console.log(vis.nans)
         // filter out entries where apogee is NaN - this will help cut down on dataset
         vis.filteredData = vis.satData.filter((d,i)=>{
             if (!isNaN(d.Period)){
@@ -117,10 +125,14 @@ class OrbitSystem {
             }
         })
 
+        // pull random 200 sats
+        let pulledData = [];
+        for (let ii = 0; ii < vis.displayAmount; ii++) {
+            pulledData.push(vis.filteredData[Math.floor(Math.random()*vis.filteredData.length)]);
+        }
+        vis.filteredData = pulledData;
+
         //set up filter by Date
-
-
-
 
         vis.satellites=[]
 
@@ -155,102 +167,84 @@ class OrbitSystem {
             // make it random between 0 and 359 so they are spread out around the orbit
             phi0 = (Math.random()*100)*3+(Math.random()*10)*5+(Math.random()*9) //generate random starting point between 0 and 360
 
-            // set color based on selected Category
-            if (vis.selectedSatCategory=="default"){
-                vis.color="#00ffd4"
-            } else {
-                vis.color = "red"
-            }
-
             vis.satellites.push({
                 R: vis.R,
                 r: 3,
                 speed: vis.periodScale(d.Period),
                 phi0: phi0,
                 name: d["Current Official Name of Satellite"],
-                color: vis.color
+                color: "#00ffd4"
             })
 
         })
 
-
         vis.displayData = vis.satellites;
 
-
-        vis.updateVis()
+        vis.drawfirstCircles()
     }
 
-
-    updateVis() {
+    drawfirstCircles() {
         let vis = this;
 
-        // draw the globe
-        vis.globe = vis.svg.selectAll(".country")
-            .data(vis.world)
+        // draw planets and moon clusters
+        vis.circle = vis.container.selectAll("circle")
+            .data(vis.displayData, d => d.name);
 
-        vis.countries = vis.globe
-            .enter().append("path")
-            .attr('class', 'country')
-            .attr("fill", "green")
-            .attr("opacity", 0.6)
-            .merge(vis.globe)
-            .attr("d", vis.globePath)
-
-        // rotate the globe
-        // commented out when debugging
-
-        // planet group
-        vis.container = vis.svg.append("g")
-            .attr("id", "orbit_container")
-            .attr("transform", "translate(" + vis.x + "," + vis.y + ")");
-
-// draw planets and moon clusters
-//         vis.svg.selectAll("g.planet").selectAll(".planet_cluster").remove();
-        vis.satellites = vis.container.selectAll("g.planet_cluster")
-            .data(vis.displayData);
-
-        console.log(vis.satellites)
-
-       vis.satGroups = vis.satellites
-            .enter()
-            .append("g")
-            .attr("class", "planet_cluster")
-           .merge(vis.satellites);
-
-        vis.satGroups
-            .append("circle")
+        vis.circle.enter().append('circle')
             .attr("class", "planet")
+            .merge(vis.circle)
             .attr("r", d=>d.r)
             .attr("cx", d=>d.R)
             .attr("cy", 0)
             .attr("stroke", "black")
             .style("stroke-width", 0.1)
             .attr("transform", function (d) {
-                return "rotate(" + (d.phi0 + (vis.delta * (d.speed / 100))) + ")";
+                return "rotate(" + d.phi0 + ")";
             })
             .style("fill", d=>d.color)
-            .transition().duration(1000)
-            .attr("transform", function (d) {
-                return "rotate(" + (d.phi0 + (vis.delta * (d.speed / 100))) + ")";
-            })
-            .selection()
             .on("mouseover", function (event, d) {
-            console.log(d)
-        });
+                console.log(d)
+            });
 
-        console.log(vis.satellites)
-        vis.satellites.exit().remove();
+        // exit
+        vis.circle.exit().remove();
 
-// throttled rotaiton animations
-        setInterval(function () {
-            vis.delta = (Date.now() - vis.t0);
-            vis.svg.selectAll(".planet_cluster").merge(vis.container).attr("transform", function (d) {
-                return "rotate(" + (d.phi0 + (vis.delta * (d.speed / 100))) + ")";
-            })
-
-        }, 40);
-
-
+        // animate
+        vis.animate = function (duration,angle) {
+            vis.svg.selectAll(".planet")
+                .transition()
+                .ease(d3.easeLinear)
+                .duration(duration)
+                .attr("transform", function (d) {
+                    d.phi0 = d.phi0 + angle;
+                    return "rotate(" + d.phi0 + ")";
+                })
+        }
     }
-}// establish variables
+
+    updateColor() {
+        let vis = this;
+
+        vis.displayData.forEach(function(d) {
+            // set color based on selected Category
+            if (vis.selectedSatCategory=="default"){
+                d.color="#00ffd4"
+            } else {
+                d.color = "red"
+            }
+        })
+
+        // draw planets and moon clusters
+        vis.circle = vis.container.selectAll("circle")
+            .data(vis.displayData, d => d.name);
+
+        vis.circle.enter().append('circle')
+            .attr("class", "planet")
+            .merge(vis.circle)
+            .style("fill", d=>d.color);
+
+        // exit
+        vis.circle.exit().remove();
+    }
+}
 
