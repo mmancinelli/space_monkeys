@@ -11,11 +11,12 @@
     Parallax CSS Stars modified from https://codepen.io/saransh/details/BKJun
     -->
 	<link rel="stylesheet" type="text/css" href="css/fullpage.css" />
-	<script src="//unpkg.com/d3-force-magnetic"></script>
+<!--	<script src="//unpkg.com/d3-force-magnetic"></script>-->
 
 <!--	<link rel="stylesheet" type="text/css" href="css/examples.css" />-->
 	<link rel="stylesheet" type="text/css" href="css/stars.css" />
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
+
 	<style>
 
 	/* Style for our header texts
@@ -318,6 +319,7 @@
 					<div class="row justify-content-center center-center">
 						<div class="align-self-center vis-holder">
 							<div id="orbit-vis"></div>
+
 						</div>
 					</div>
 					</div>
@@ -335,24 +337,20 @@
 			<div class="container-fluid">
 				<div class="row main-body">
 					<div class="col">
-						<!--						<div class="col" style="padding-top: 1vh;">-->
-						<!--							<div class="align-self-center vis-holder">-->
-						<!--								<div id="orbit-vis"></div>-->
-						<!--							</div>-->
-						<!--						</div>-->
 						<div class="row justify-content-center center-center">
 							<div class="align-self-center vis-holder">
-								<div id="orbit-vis2"></div>
+								<div id="orbit-vis">
+									<svg id="canvas">
+<!--										<circle id="center" r="20" cx="0" cy="0"></circle>-->
+<!--										<circle id="particle" r="8"></circle>-->
+									</svg>
+								</div>
+
 							</div>
-							<canvas id="trails"></canvas>
-							<svg id="scaffold">
-								<circle r="10" style="fill: red"></circle>
-								<circle id="satellite" r="5" style="fill: rgba(0, 255, 255, .6)"></circle>
-								<circle id="ghost" r="5" style="fill: rgba(0, 255, 255, .6)"></circle>
-							</svg>
 						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>
@@ -375,24 +373,21 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="js/libraries/fullpage.js"></script>
+
+<script src="//unpkg.com/d3-force-magnetic"></script>
 <!--<script type="text/javascript" src="js/libraries/examples.js"></script>-->
 
 <!-- d3 -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
 <script src="https://d3js.org/d3.v6.min.js"></script>
-
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <script src="https://d3js.org/topojson.v2.min.js"></script>
 <script src="https://d3js.org/d3-geo.v1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-collection/1.0.5/d3-collection.min.js"></script>
-
-
-
+<script src="https://d3js.org/d3-timer.v2.min.js"></script>
 <script src="js/libraries/d3-tip.js"></script>
-
 <script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
 
 
@@ -407,11 +402,8 @@
 <script src="js/orbitvis.js"></script>
 <script src="js/networkvis.js"></script>
 <script src="js/treedata.js"></script>
-<script src="js/orbitvis2.js"></script>
-<!--<script src="js/scroll.js"></script>-->
-<!--<script src="js/orbitvis2.js"></script>-->
-<!--<script src="js/sections.js"></script>-->
-<!--<script src="jquery.scrollstory.js"></script>-->
+<script src="js/orbitvis_REDO.js"></script>
+
 
 
 <script src="js/main.js"></script>
