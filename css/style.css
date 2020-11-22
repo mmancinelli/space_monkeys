@@ -47,7 +47,7 @@ body {
 }
 
 .header {
-    height: 12vh;
+    height: 15vh;
     background: none;
 }
 
@@ -64,7 +64,7 @@ h2 {
 }
 
 h3 {
-    font-size: 1em;
+    font-size: 1.5em;
     font-family: arial,helvetica;
     color: #fff;
     margin-top: 15px;
