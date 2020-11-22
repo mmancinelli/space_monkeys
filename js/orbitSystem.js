@@ -21,7 +21,7 @@ class OrbitSystem {
         this.selectedSatCategory = "default";
 
         // number of sats to display
-        this.displayAmount = 1000;
+        this.displayAmount = 2787;
 
         console.log(this.satData)
 
@@ -60,6 +60,7 @@ class OrbitSystem {
             .attr("width", vis.widthLegend + vis.marginLegend.left + vis.marginLegend.right)
             .attr("height", vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom)
             .append('g')
+
 
         // create slider https://refreshless.com/nouislider
         // since the slider was literally my nemesis for hw 6, I very gratefully just followed along with Ben's hw 6 review.
@@ -153,10 +154,10 @@ class OrbitSystem {
                 return d
             }
         })
-
-        vis.filteredData = vis.satData1.filter(d=>{
-            return d.Date >= vis.timePeriodMin && d.Date <=vis.timePeriodMax;
-        })
+        //
+        // vis.filteredData = vis.satData1.filter(d=>{
+        //     return d.Date >= vis.timePeriodMin && d.Date <=vis.timePeriodMax;
+        // })
 
         //set up filter by Date
 
@@ -200,7 +201,7 @@ class OrbitSystem {
 
             // phi0 is the starting angle coordinate
             // make it random between 0 and 359 so they are spread out around the orbit
-            phi0 = Math.floor(Math.random() * 360); //generate random starting point between 0 and 360
+            phi0 = Math.floor(Math.random() * 360);
 
             vis.satellites.push({
                 R: vis.R,
@@ -319,6 +320,7 @@ class OrbitSystem {
                     d.phi0 = d.phi0 + angle;
                     return "rotate(" + d.phi0 + ")";
                 })
+
         }
     }
 

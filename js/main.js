@@ -65,23 +65,7 @@ function createVis(data){
 	treeData      = data[3];
 	geoData       = data[4];
 
-	// var originalTimePeriod = d3.extent(satelliteData, d=>d.Date)
-	// console.log(dateFormatter(originalTimePeriod[0]))
-	//
-	// // vis.timePeriodMin =vis.originalTimePeriod[0];
-	// // vis.timePeriodMax =vis.originalTimePeriod[1];
-	//
-	// // console.log(satelliteData);
-	// var slider = document.getElementById("slider")
-	// noUiSlider.create(slider, {
-	// 	start: [dateFormatter(originalTimePeriod[0]), dateFormatter(originalTimePeriod[1])],
-	// 	connect: true,
-	// 	behaviour: "drag",
-	// 	step: 1,
-	// 	margin: 1,
-	// 	range: {'min': dateFormatter(originalTimePeriod[0]),
-	// 		'max': dateFormatter(originalTimePeriod[1])}
-	// })
+
 
 
 
@@ -97,7 +81,7 @@ function createVis(data){
 	//loop through orbits after 10 seconds and continue for a few hours
 	for (let ii = 1; ii <= 1000; ii++) {
 		setTimeout(function () {
-			orbitSystem.animate(10000, 17);
+			orbitSystem.animate(10000, 10);
 		}, (ii * 10000));
 	}
 }
