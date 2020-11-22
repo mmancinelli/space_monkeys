@@ -93,10 +93,10 @@ function createVis(data){
 	// makeViz()
 
 	//loop through orbits after 10 seconds and continue for a few hours
-	for (let ii = 1; ii <= 1000; ii++) {
+	for (let ii = 0; ii <= 1000; ii++) {
 		setTimeout(function () {
-			orbitSystem.animate(10000, 17);
-		}, (ii * 10000));
+			orbitSystem.animate(20000, 1000);
+		}, (ii * 20000));
 	}
 }
 

@@ -276,13 +276,13 @@ class OrbitSystem {
         vis.circle.exit().remove();
 
         // animate
-        vis.animate = function (duration,angle) {
+        vis.animate = function (duration,angle_multiple) {
             vis.svg.selectAll(".planet")
                 .transition()
                 .ease(d3.easeLinear)
                 .duration(duration)
                 .attr("transform", function (d) {
-                    d.phi0 = d.phi0 + angle;
+                    d.phi0 = d.phi0 + Math.sqrt(1/d.R) * angle_multiple; // orbital period -> sqrt(1/R)
                     return "rotate(" + d.phi0 + ")";
                 })
         }
