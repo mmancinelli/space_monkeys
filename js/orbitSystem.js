@@ -18,6 +18,10 @@ class OrbitSystem {
         this.legendElement= legendElement;
         this.geoData = geoData;
         this.satData = satelliteData;
+        this.selectedSatCategory = "default";
+
+        // number of sats to display
+        this.displayAmount = 1000;
 
         console.log(this.satData)
 
@@ -30,22 +34,12 @@ class OrbitSystem {
      */
 
     initVis() {
-
         let vis = this;
-
 
         vis.margin = {top: -10, right: 20, bottom: 20, left: -100};
         vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
         vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
 
-        // init drawing area
-        // vis.svg = d3.select("#" + vis.parentElement)
-        //     .attr("width", vis.width)
-        //     .attr("height", vis.height)
-        //     .attr('transform', `translate (${vis.margin.left}, ${vis.margin.top})`);
-
-        // var w     = 1600;
-        // var h     = 1400;
         vis.x = (vis.width / 2);
         vis.y = vis.height / 2;
         vis.t0 = new Date().setHours(0, 0, 0, 0);
@@ -105,18 +99,6 @@ class OrbitSystem {
             .attr("stroke", "rgba(129,129,129,0.35)")
             .attr("d", vis.globePath);
 
-        // config variables for rotation of globe -- commented out because rotating globes makes rotation of everything extremely choppy
-        // vis.config = {
-        //     speed: 0.005,
-        //     verticalTilt: -10,
-        //     horizontalTilt: 0
-        // }
-
-        // ****************************************
-        //             Legend
-        // ****************************************
-
-
         // create legend item
         vis.legend = vis.svg2.append("g")
             .attr("class", "orbitLegend")
@@ -136,9 +118,24 @@ class OrbitSystem {
 
 
 
+        // draw the globe
+        vis.globe = vis.svg.selectAll(".country")
+            .data(vis.world);
+
+        vis.countries = vis.globe
+            .enter().append("path")
+            .attr('class', 'country')
+            .attr("fill", "green")
+            .attr("opacity", 0.6)
+            .merge(vis.globe)
+            .attr("d", vis.globePath)
+
+        // planet group
+        vis.container = vis.svg.append("g")
+            .attr("id", "orbit_container")
+            .attr("transform", "translate(" + vis.x + "," + vis.y + ")");
 
         vis.wrangleData()
-
     }
 
     wrangleData() {
@@ -151,8 +148,8 @@ class OrbitSystem {
         // ****************************************
 
         // filter out entries where Period is NaN - removes about 20
-        vis.satData1 = vis.satData.filter((d,i)=>{
-            if (!isNaN(d.Period)){
+        vis.filteredData = vis.satData.filter((d, i) => {
+            if (!isNaN(d.Period)) {
                 return d
             }
         })
@@ -165,57 +162,69 @@ class OrbitSystem {
 
         // set up color
         // set color based on selected Category
+        // pull random sats
+        let pulledData = [];
+        for (let ii = 0; ii < vis.displayAmount; ii++) {
+            pulledData.push(vis.filteredData[Math.floor(Math.random() * vis.filteredData.length)]);
+        }
+        vis.filteredData = pulledData;
 
+        //set up filter by Date
 
-        vis.satellites=[]
-
+        vis.satellites = []
 
         // create scale to match orbiting velocity to period time
         vis.periodScale = d3.scaleLinear()
             .range([-0.5, -10])
-            .domain([0,12000])
+            .domain([0, 12000])
 
-
-        vis.filteredData.forEach((d,i)=>{
+        vis.filteredData.forEach((d, i) => {
             // console.log(d)
             let speed = 0;
-            let phi0=0;
-            vis.R=0;
-            let r=0;
+            let phi0 = 0;
+            vis.R = 0;
+            let r = 0;
 
-            r=2 //same size for all sats
+            r = 2 //same size for all sats
             // for each class of orbit, generate a random number within acceptable range
             // randomness will help spread them out in space
-            if (d["Class of Orbit"]=="LEO"){
+            if (d["Class of Orbit"] == "LEO") {
                 vis.R = Math.floor(Math.random() * 16) + 55 // radius of planet is 50. chose 55 to have a bit of a buffer
 
-            } else if (d["Class of Orbit"]=="MEO"){
+            } else if (d["Class of Orbit"] == "MEO") {
                 vis.R = Math.floor(Math.random() * 145) + 66
 
-            } else if (d["Class of Orbit"]=="GEO" | d["Class of Orbit"]=="Elliptical"){
+            } else if (d["Class of Orbit"] == "GEO" | d["Class of Orbit"] == "Elliptical") {
                 vis.R = Math.floor(Math.random() * 119) + 211
             }
 
             // phi0 is the starting angle coordinate
             // make it random between 0 and 359 so they are spread out around the orbit
-            phi0 = (Math.random()*100)*3+(Math.random()*10)*5+(Math.random()*9) //generate random starting point between 0 and 360
-
+            phi0 = Math.floor(Math.random() * 360); //generate random starting point between 0 and 360
 
             vis.satellites.push({
                 R: vis.R,
                 r: 3,
                 speed: vis.periodScale(d.Period),
                 phi0: phi0,
-                color: vis.color,
-                Country : d.Country,
-                Purpose : d.Purpose,
-                Users : d.Users,
+                name: d["Current Official Name of Satellite"],
+                color: "#00ffd4",
+                Country: d.Country,
+                Purpose: d.Purpose,
+                Users: d.Users,
                 Orbit: d["Class of Orbit"]
             })
 
         })
 
-        if (vis.selectedSatCategory=="default"){
+        vis.updateLegend();
+        vis.drawfirstCircles();
+    }
+
+    updateLegend () {
+        let vis = this;
+
+        if (vis.selectedSatCategory == "default") {
             vis.legendStatus = false;
             vis.color="#00ffd4"
 
@@ -223,7 +232,7 @@ class OrbitSystem {
                 d.color=vis.color
             })
 
-        } else if (vis.selectedSatCategory == "country"){
+        } else if (vis.selectedSatCategory == "country") {
             // console.log(vis.selectedSatCategory)
             vis.legendStatus = true;
             vis.legendData = ["USA", "China", "Russia", "United Kingdom", "Japan", "Other"]
@@ -271,91 +280,50 @@ class OrbitSystem {
             console.log("nah")
         }
 
-
-
         vis.displayData = vis.satellites;
-
-
-        vis.updateVis()
     }
 
-
-    updateVis() {
+    drawfirstCircles() {
         let vis = this;
 
-        // draw the globe
-        vis.globe = vis.svg.selectAll(".country")
-            .data(vis.world)
+        // draw planets and moon clusters
+        vis.circle = vis.container.selectAll("circle")
+            .data(vis.displayData, d => d.name);
 
-        vis.countries = vis.globe
-            .enter().append("path")
-            .attr('class', 'country')
-            .attr("fill", "green")
-            .attr("opacity", 0.6)
-            .merge(vis.globe)
-            .attr("d", vis.globePath)
-
-        // rotate the globe
-        // commented out when debugging
-
-        // planet group
-        vis.container = vis.svg.append("g")
-            .attr("id", "orbit_container")
-            .attr("transform", "translate(" + vis.x + "," + vis.y + ")");
-
-// draw planets and moon clusters
-//         vis.svg.selectAll("g.planet").selectAll(".planet_cluster").remove();
-        vis.satellites = vis.container.selectAll("g.planet_cluster")
-            .data(vis.displayData);
-
-        console.log(vis.satellites)
-
-       vis.satGroups = vis.satellites
-            .enter()
-            .append("g")
-            .attr("class", "planet_cluster")
-           .merge(vis.satellites);
-
-        vis.satGroups
-            .append("circle")
+        vis.circle.enter().append('circle')
             .attr("class", "planet")
+            .merge(vis.circle)
             .attr("r", d=>d.r)
             .attr("cx", d=>d.R)
             .attr("cy", 0)
             .attr("stroke", "black")
             .style("stroke-width", 0.1)
             .attr("transform", function (d) {
-                return "rotate(" + (d.phi0 + (vis.delta * (d.speed / 100))) + ")";
+                return "rotate(" + d.phi0 + ")";
             })
             .style("fill", d=>d.color)
-            .transition().duration(1000)
-            .attr("transform", function (d) {
-                return "rotate(" + (d.phi0 + (vis.delta * (d.speed / 100))) + ")";
-            })
-            .selection()
             .on("mouseover", function (event, d) {
-            console.log(d)
-        });
+                console.log(d)
+            });
 
-        console.log(vis.satellites)
-        vis.satellites.exit().remove();
+        // exit
+        vis.circle.exit().remove();
 
-// throttled rotaiton animations
-        setInterval(function () {
-            vis.delta = (Date.now() - vis.t0);
-            vis.svg.selectAll(".planet_cluster").merge(vis.container).attr("transform", function (d) {
-                return "rotate(" + (d.phi0 + (vis.delta * (d.speed / 100))) + ")";
-            })
+        // animate
+        vis.animate = function (duration,angle) {
+            vis.svg.selectAll(".planet")
+                .transition()
+                .ease(d3.easeLinear)
+                .duration(duration)
+                .attr("transform", function (d) {
+                    d.phi0 = d.phi0 + angle;
+                    return "rotate(" + d.phi0 + ")";
+                })
+        }
+    }
 
-            // unfortunately, trying to rotate the globe makes everything super choppy :/
-
-            // vis.projection.rotate([vis.delta/10, vis.config.verticalTilt, vis.config.horizontalTilt])
-            // vis.svg.selectAll("path")
-            //     .merge(vis.countries)
-            //     .attr("d", vis.globePath);
-
-
-        }, 10);
+    updateColor() {
+        let vis = this;
 
         // set up stuff for the labels
         vis.legendSquares = vis.legend
@@ -449,7 +417,17 @@ class OrbitSystem {
 
         }
 
+        // draw planets and moon clusters
+        vis.circle = vis.container.selectAll("circle")
+            .data(vis.displayData, d => d.name);
 
+        vis.circle.enter().append('circle')
+            .attr("class", "planet")
+            .merge(vis.circle)
+            .style("fill", d=>d.color);
+
+        // exit
+        vis.circle.exit().remove();
     }
-}// establish variables
+}
 
