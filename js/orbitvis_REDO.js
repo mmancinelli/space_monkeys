@@ -43,8 +43,8 @@ class OrbitvisREDO {
             .attr('width', vis.width)
             .attr('height', vis.height)
             .attr('viewBox', `${-vis.width/2} ${-vis.height/2} ${vis.width} ${vis.height}`);
-
-        // init drawing area
+        //
+        // // init drawing area
         // vis.svg = d3.select("#" + vis.parentElement)
         //     .attr("width", vis.width)
         //     .attr("height", vis.height)
@@ -82,6 +82,7 @@ class OrbitvisREDO {
             verticalTilt: -30,
             horizontalTilt: 0
         }
+
         //
         // vis.center = d3.select("#canvas").append("circle")
         //     .attr("r", "50")
@@ -123,6 +124,13 @@ class OrbitvisREDO {
                     .attr('cx', d => d.x)
                     .attr('cy', d => d.y)
             });
+
+    // .on("tick", () => {
+    //         particle.id
+    //             .datum(particle)
+    //             .attr('cx', d => d.x)
+    //             .attr('cy', d => d.y)
+    //     });
 
         // Add orbit trail
         // d3.timer(() => {
@@ -176,10 +184,10 @@ class OrbitvisREDO {
             .attr("opacity", 0.6)
             .merge(vis.globe)
             .attr("d", vis.globePath)
-
-        // rotate the globe
-        // commented out when debugging
-        vis.rotateAngle = 1;
+        //
+        // // rotate the globe
+        // // commented out when debugging
+        // vis.rotateAngle = 1;
 
         // d3.timer(function (elapsed) {
         //     // console.log(elapsed)

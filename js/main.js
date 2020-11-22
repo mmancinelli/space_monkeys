@@ -16,7 +16,8 @@ let promises = [
 	d3.csv("data/prepared_satellite_data.csv"),
 	d3.json("data/treeData.json"),
 	d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json"),
-	d3.json("https://gist.githubusercontent.com/mbostock/4090846/raw/d534aba169207548a8a3d670c9c2cc719ff05c47/world-110m.json")
+	d3.json("https://gist.githubusercontent.com/mbostock/4090846/raw/d534aba169207548a8a3d670c9c2cc719ff05c47/world-110m.json"),
+	d3.json("data/flare.json")
 ];
 
 Promise.all(promises)
@@ -46,6 +47,7 @@ function createVis(data){
 	geoData       = data[4];
 
 	// console.log(satelliteData);
+
 
 
 	orbitVis = new OrbitvisREDO("canvas", satelliteData, geoData);

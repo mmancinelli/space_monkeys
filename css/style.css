@@ -224,25 +224,24 @@ p {
 /*    padding-bottom: 200px;*/
 /*}*/
 
-#scaffold, #controls {
-    position: absolute;
-    top: 0;
-    left: 0;
+#sun {
+    stroke: #666;
+    fill: #666;
 }
 
-#controls {
-    font-size: 14px;
-    text-align: left;
-    margin: 8px;
-    padding: 1px 5px 5px 5px;
-    background: rgba(230, 230, 250, 0.7);
-    opacity: 0.5;
-    border-radius: 3px;
-    z-index: 1000;
+.orbit {
+    stroke: #ccc;
+    fill: transparent;
 }
 
-#controls:hover {
-    opacity: 1;
+.planet {
+    stroke: #666;
+    fill: #fff;
+}
+
+.moon {
+    stroke: #ccc;
+    fill: #fff;
 }
 
 
