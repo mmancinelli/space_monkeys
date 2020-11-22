@@ -74,10 +74,19 @@ function toggleButton(button) {
 }
 
 var selectedCategory = $('#categorySelector').val();
+var selectedSatCategory = $('#satColor').val();
+// var selectedCategory = $('#categorySelector').val();
 
 function categoryChange() {
 	selectedCategory = $('#categorySelector').val();
+
 	networkVis.wrangleData();
+}
+function satCategoryChange(){
+
+	selectedSatCategory = $('#satColor').val();
+	// console.log(selectedSatCategory)
+	orbitSystem.wrangleData();
 }
 
 function animateMap () {

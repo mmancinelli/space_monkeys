@@ -1,3 +1,15 @@
+/*
+* OrbitSystem - Object constructor function
+* @param _parentElement 	-- the HTML element in which to draw the visualization
+* @param _data						-- the actual data
+*
+*
+ *
+ * author: Zane
+ * modified from: http://bl.ocks.org/codybuell/fc2426aedabef2d69873
+ * date created: 11/19/2020
+ * date last modified:
+ */
 class OrbitSystem {
 
 
@@ -21,7 +33,7 @@ class OrbitSystem {
         let vis = this;
 
 
-        vis.margin = {top: 10, right: 20, bottom: 20, left: 20};
+        vis.margin = {top: -10, right: 20, bottom: 20, left: -200};
         vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
         vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
 
@@ -39,7 +51,7 @@ class OrbitSystem {
         vis.delta = (Date.now() - vis.t0);
 
 // insert svg element
-        vis.svg = d3.select('#orbit-vis').insert("svg")
+        vis.svg = d3.select("#" + vis.parentElement).insert("svg")
             .attr("width", vis.width)
             .attr("height", vis.height)
             .attr('transform', `translate (${vis.margin.left}, ${vis.margin.top})`);
@@ -78,55 +90,6 @@ class OrbitSystem {
         }
 
 
-// planets and moons
-        vis.planets = [
-            {
-                R: 73, r: 2, speed: -1.60, phi0: 35, moons: [   // mercury
-                ]
-            },
-            {
-                R: 95, r: 2, speed: -1.17, phi0: 185, moons: [   // venus
-                ]
-            },
-            {
-                R: 95, r: 5, speed: -1.17, phi0: 185, moons: [   // venus
-                ]
-            },
-            {
-                R: 137, r: 2, speed: -1.00, phi0: 135, moons:[]
-            },
-            {
-                R: 190, r: 1, speed: -0.80, phi0: 235, moons: []
-            },
-            {
-                R: 120, r: 2, speed: -1.17, phi0: 20, moons: [   // venus
-                ]
-            },
-            {
-                R: 100, r: 5, speed: -1.17, phi0: 142, moons: [   // venus
-                ]
-            },
-            {
-                R: 150, r: 2, speed: -1.00, phi0: 350, moons: []
-            },
-            {
-                R: 200, r: 1, speed: -0.80, phi0: 75, moons: []
-            }
-        ];
-
-
-// sun
-//         vis.svg.append("circle")
-//             .attr("r", 50)
-//             .attr("cx", vis.x)
-//             .attr("cy", vis.y)
-//             .attr("id", "sun");
-
-
-
-
-
-
         vis.wrangleData()
 
     }
@@ -134,7 +97,85 @@ class OrbitSystem {
     wrangleData() {
         let vis = this;
 
-        // create random data structure with information for each land
+        vis.selectedSatCategory = selectedSatCategory;
+        // console.log(vis.selectedSatCategory)
+
+        // vis.nans=0;
+
+        // figure out how many nans there are - 890
+        // vis.satData.forEach((d,i)=>{
+        //     if (isNaN(d.Apogee)){
+        //         vis.nans++;
+        //     }
+        //
+        // })
+        // console.log(vis.nans)
+        // filter out entries where apogee is NaN - this will help cut down on dataset
+        vis.filteredData = vis.satData.filter((d,i)=>{
+            if (!isNaN(d.Period)){
+                return d
+            }
+        })
+
+        //set up filter by Date
+
+
+
+
+        vis.satellites=[]
+
+
+        // create scale to match orbiting velocity to period time
+        vis.periodScale = d3.scaleLinear()
+            .range([-0.5, -10])
+            .domain([0,12000])
+
+
+        vis.filteredData.forEach((d,i)=>{
+            // console.log(d)
+            let speed = 0;
+            let phi0=0;
+            vis.R=0;
+            let r=0;
+
+            r=2 //same size for all sats
+            // for each class of orbit, generate a random number within acceptable range
+            // randomness will help spread them out in space
+            if (d["Class of Orbit"]=="LEO"){
+                vis.R = Math.floor(Math.random() * 16) + 55
+
+            } else if (d["Class of Orbit"]=="MEO"){
+                vis.R = Math.floor(Math.random() * 145) + 66
+
+            } else if (d["Class of Orbit"]=="GEO" | d["Class of Orbit"]=="Elliptical"){
+                vis.R = Math.floor(Math.random() * 119) + 211
+            }
+
+            // phi0 is the starting x coordinate
+            // make it random between 0 and 359 so they are spread out around the orbit
+            phi0 = (Math.random()*100)*3+(Math.random()*10)*5+(Math.random()*9) //generate random starting point between 0 and 360
+
+            // set color based on selected Category
+            if (vis.selectedSatCategory=="default"){
+                vis.color="#00ffd4"
+            } else {
+                vis.color = "red"
+            }
+
+            vis.satellites.push({
+                R: vis.R,
+                r: 3,
+                speed: vis.periodScale(d.Period),
+                phi0: phi0,
+                name: d["Current Official Name of Satellite"],
+                color: vis.color
+            })
+
+        })
+
+
+        vis.displayData = vis.satellites;
+
 
         vis.updateVis()
     }
@@ -164,36 +205,46 @@ class OrbitSystem {
             .attr("transform", "translate(" + vis.x + "," + vis.y + ")");
 
 // draw planets and moon clusters
-        vis.container.selectAll("g.planet").data(vis.planets).enter().append("g")
-            .attr("class", "planet_cluster").each(function (d, i) {
-            // d3.select(this).append("circle").attr("class", "orbit")
-            //     .attr("r", d.R);
-                d3.select(this).append("circle").attr("r", d.r).attr("cx", d.R)
-                    .attr("cy", 0).attr("class", "planet")
-                //     .on("mouseover", function (event, d) {
-                //     console.log(d)
-                // });
-                // d3.select(this).append("g").attr("transform", "translate(" + d.R + ",0)")
-                //     .selectAll("g.moon").data(d.moons).enter().append("g")
-                //     .attr("class", "moon_cluster").each(function (d, i) {
-                //     d3.select(this).append("circle").attr("class", "orbit")
-                //         .attr("r", d.R);
-                //     d3.select(this).append("circle").attr("r", d.r).attr("cx", d.R)
-                //         .attr("cy", 0).attr("class", "moon");
-                // })
-                    .attr("transform", function (d) {
-                        return "rotate(" + (d.phi0 + (vis.delta * (d.speed / 100))) + ")";
-                    });
-            })
+//         vis.svg.selectAll("g.planet").selectAll(".planet_cluster").remove();
+        vis.satellites = vis.container.selectAll("g.planet_cluster")
+            .data(vis.displayData);
+
+        console.log(vis.satellites)
+
+       vis.satGroups = vis.satellites
+            .enter()
+            .append("g")
+            .attr("class", "planet_cluster")
+           .merge(vis.satellites);
+
+        vis.satGroups
+            .append("circle")
+            .attr("class", "planet")
+            .attr("r", d=>d.r)
+            .attr("cx", d=>d.R)
+            .attr("cy", 0)
+            .attr("stroke", "black")
+            .style("stroke-width", 0.1)
             .attr("transform", function (d) {
                 return "rotate(" + (d.phi0 + (vis.delta * (d.speed / 100))) + ")";
             })
-        ;
+            .style("fill", d=>d.color)
+            .transition().duration(1000)
+            .attr("transform", function (d) {
+                return "rotate(" + (d.phi0 + (vis.delta * (d.speed / 100))) + ")";
+            })
+            .selection()
+            .on("mouseover", function (event, d) {
+            console.log(d)
+        });
+
+        console.log(vis.satellites)
+        vis.satellites.exit().remove();
 
 // throttled rotaiton animations
         setInterval(function () {
             vis.delta = (Date.now() - vis.t0);
-            vis.svg.selectAll(".planet_cluster, .moon_cluster").attr("transform", function (d) {
+            vis.svg.selectAll(".planet_cluster").merge(vis.container).attr("transform", function (d) {
                 return "rotate(" + (d.phi0 + (vis.delta * (d.speed / 100))) + ")";
             })
 

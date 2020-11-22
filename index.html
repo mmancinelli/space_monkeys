@@ -311,18 +311,35 @@
 			<div class="container-fluid">
 				<div class="row main-body">
 					<div class="col">
-<!--						<div class="col" style="padding-top: 1vh;">-->
-<!--							<div class="align-self-center vis-holder">-->
-<!--								<div id="orbit-vis"></div>-->
-<!--							</div>-->
-<!--						</div>-->
-					<div class="row justify-content-center center-center">
-						<div class="align-self-center vis-holder">
-							<div id="orbit-vis">
-							</div>
+<!--						<div class="row">-->
+							<div class="row" style="height: 5vh; padding-left: 20pt; padding-top: 1vh;" >
+								<div class="col-3" style="height: 5vh; padding-top: 5pt">
+									<select id='satColor' class="custom-select" style="width: 75%" onchange="satCategoryChange()">
+										<option value="default" selected>Default (none)</option>
+										<option value="country">by BLAH </option>
+										<option value="purpose">by Purpose</option>
+										<option value="use">by Use</option>
+									</select>
+								</div>
 
-						</div>
-					</div>
+<!--								<div class ="row" style="height:40vh; padding-top: 10pt; text-align: left;">-->
+<!--									<div id = "legendText">-->
+<!--									</div>-->
+
+<!--								</div>-->
+							</div>
+							<div class="row" style="padding-top: 1vh;">
+								<div class="col-2" style="height: 75vh; padding-top: 1vh;">
+									<div id="orbitLegend-vis">
+									</div>
+								</div>
+								<div class="col-10"style="height: 85vh;">
+								<div id="orbit-vis">
+								</div>
+								</div>
+							</div>
+<!--						</div>-->
+<!--						</div>-->
 					</div>
 				</div>
 			</div>
