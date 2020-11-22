@@ -417,13 +417,17 @@
 										<option value="orbit">by Orbit</option>
 									</select>
 								</div>
-								<div class="col-8" style="height: 5vh; padding-top: 5pt">
+								<div class="col-6 offset-2" style="height: 10vh; padding-top: 5pt">
 									<div id="slider"></div>
+<!--									<div class="row align-items-center">-->
+<!--										<div class="col-sm"><p id="startdate">1930-2014</p></div>-->
+<!--										<div class="col-md"><div id="slider-range"></div></div>-->
+<!--									</div>-->
 <!--									<form class="form-inline">-->
 <!--										<div class="form-group">-->
-<!--											<label> Time Period: </label>-->
-<!--											<input type="number" maxlength = "4" class="form-control" id="time-period-min" placeholder="">- -->
-<!--											<input type="number" maxlength = "4" class="form-control" id="time-period-max" placeholder="">-->
+<!--											<p> Time Period: </p>-->
+<!--											<input type="number" maxlength = "4" class="form-control" id="time-period-min" placeholder="1974">- -->
+<!--											<input type="number" maxlength = "4" class="form-control" id="time-period-max" placeholder="2020">-->
 <!--											<span id="time-period-filter" class="btn btn-primary" onclick = "updateVisualization()"> Filter</span>-->
 <!--										</div>-->
 <!--									</form>-->
@@ -436,11 +440,11 @@
 <!--								</div>-->
 							</div>
 							<div class="row" style="padding-top: 1vh;">
-								<div class="col-2" style="height: 75vh; padding-top: 1vh;padding-left: 50pt;">
+								<div class="col-3" style="height: 75vh; padding-top: 1vh;padding-left: 50pt;">
 									<div id="orbitLegend-vis">
 									</div>
 								</div>
-								<div class="col-10"style="height: 85vh;">
+								<div class="col-9"style="height: 85vh;">
 								<div id="orbit-vis">
 								</div>
 								</div>
@@ -503,6 +507,7 @@
 <script src="https://d3js.org/d3-timer.v2.min.js"></script>
 <script src="js/libraries/d3-tip.js"></script>
 <script src="js/nouislider.js"></script>
+<script src="https://unpkg.com/d3-simple-slider"></script>
 <script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
 
 
@@ -532,6 +537,8 @@
         navigationPosition: 'right',
         navigationTooltips: ['First page', 'Second page', 'Third page', 'Forth page', 'Fifth page']
     });
+
+
 
 
 

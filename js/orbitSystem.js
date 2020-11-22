@@ -6,7 +6,7 @@
 *
  *
  * author: Zane and Michael
- * contributions: Zane created the bulk of the code and Michael swooped in to solve enter/update/exit issues by separating the code out into separate functions and changing the animation framework
+ * contributions: Zane created the bulk of the code and Michael swooped in to solve enter/update/exit issues by separating the code out into separate functions and changing the animation procedure
  * modified from: http://bl.ocks.org/codybuell/fc2426aedabef2d69873
  * date created: 11/19/2020
  * date last modified:
@@ -72,6 +72,24 @@ class OrbitSystem {
         //     updateRangeSliderValues(values);
         //     vis.wrangleData()
         // })
+        vis.originalTimePeriod = d3.extent(vis.satData, d=>d.Date)
+        // vis.timePeriodMin = d3.select("#time-period-min").value;
+        // vis.timePeriodMax = d3.select("#time-period-max").value;
+        // console.log(vis.timePeriodMax, vis.timePeriodMin)
+
+        //
+        // var slider = document.getElementById("slider")
+        // noUiSlider.create(slider, {
+        //     start: [parseInt(dateFormatter(originalTimePeriod[0])), parseInt(dateFormatter(originalTimePeriod[1]))],
+        //     connect: true,
+        //     behaviour: "drag",
+        //     step: 1,
+        //     margin: 1,
+        //     range: {'min': parseInt(dateFormatter(originalTimePeriod[0])),
+        //         'max': parseInt(dateFormatter(originalTimePeriod[1]))}
+        // })
+        // slider.noUiSlider.on('slide', function(values, handle){
+        //     updateRangeSliderValues(values);})
 
 
 
@@ -97,7 +115,7 @@ class OrbitSystem {
             .datum({type: "Sphere"})
             .attr("class", "graticule")
             .attr('fill', '#ADDEFF')
-            .attr("opacity", 0.5)
+            .attr("opacity", 0.9)
             .attr("stroke", "rgba(129,129,129,0.35)")
             .attr("d", vis.globePath);
 
@@ -115,8 +133,7 @@ class OrbitSystem {
         // vis.timePeriodMin =vis.originalTimePeriod[0];
         // vis.timePeriodMax =vis.originalTimePeriod[1];
 
-        // vis.timePeriodMin = document.getElementById("time-period-min").value;
-        // vis.timePeriodMax = document.getElementbyId("time-period-max").value;
+
 
 
 
@@ -128,7 +145,7 @@ class OrbitSystem {
             .enter().append("path")
             .attr('class', 'country')
             .attr("fill", "green")
-            .attr("opacity", 0.6)
+            .attr("opacity", 0.7)
             .merge(vis.globe)
             .attr("d", vis.globePath)
 

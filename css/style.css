@@ -103,6 +103,10 @@ p {
     height: 100%;
 }
 
+.noUi-base, noUi-connects{
+    height: 100%;
+}
+
 .footer {
     height: 20vh;
     background: none;

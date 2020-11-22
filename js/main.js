@@ -8,6 +8,15 @@ let mapvis_selectedTime = []
 let dateFormatter = d3.timeFormat("%Y");
 let dateParser = d3.timeParse("%m/%d/%y");
 
+var gRange = d3
+	.select('div#slider-range')
+	.attr("class", "gRange")
+	.append('svg')
+	.attr('width', 500)
+	.attr('height', 100)
+	.append('g')
+	.attr('transform', 'translate(30,30)');
+
 
 // (1) Load data with promises
 let promises = [
@@ -65,23 +74,14 @@ function createVis(data){
 	treeData      = data[3];
 	geoData       = data[4];
 
-	var originalTimePeriod = d3.extent(satelliteData, d=>d.Date)
-	console.log(dateFormatter(originalTimePeriod[0]))
-	//
+
 	// // vis.timePeriodMin =vis.originalTimePeriod[0];
 	// // vis.timePeriodMax =vis.originalTimePeriod[1];
 	//
 	// // console.log(satelliteData);
-	var slider = document.getElementById("slider")
-	noUiSlider.create(slider, {
-		start: [dateFormatter(originalTimePeriod[0]), dateFormatter(originalTimePeriod[1])],
-		connect: true,
-		behaviour: "drag",
-		step: 1,
-		margin: 1,
-		range: {'min': parseInt(dateFormatter(originalTimePeriod[0])),
-			'max': parseInt(dateFormatter(originalTimePeriod[1]))}
-	})
+
+
+
 
 
 
@@ -166,6 +166,7 @@ function animateMap () {
 function updateRangeSliderValues(values){
 	$("#time-period-min").text(parseInt(values[0]));
 	$("#time-period-max").text(parseInt(values[1]));
+	orbitVis.wrangleData();
 }
 
 
