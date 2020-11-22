@@ -1,5 +1,5 @@
 let launchData, rocketData, satelliteData, treeData, geoData, globeData, airportData
-let launchVis, brushVis, networkVis, flightVis, costVis, orbitVis, orbitVis3
+let launchVis, brushVis, networkVis, flightVis, costVis, orbitVis, orbitVis3, orbitSystem
 
 // init global time selction for map vis
 let mapvis_selectedTime = []
@@ -50,8 +50,8 @@ function createVis(data){
 
 
 
-	orbitVis = new OrbitvisREDO("canvas", satelliteData, geoData);
-	// orbitVis = new Orbitvis2("orbit-vis2", satelliteData, geoData);
+	// orbitVis = new OrbitvisREDO("canvas", satelliteData, geoData);
+	orbitSystem = new OrbitSystem("orbit-vis", satelliteData, geoData);
 	launchVis = new LaunchVis("world-map", launchData, geoData);
 	brushVis   = new Brushvis("brush-plot", launchData);
 	networkVis = new NetworkVis("network-vis", "networkLegend-vis",treeData);

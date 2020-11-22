@@ -224,25 +224,19 @@ p {
 /*    padding-bottom: 200px;*/
 /*}*/
 
-#sun {
-    stroke: #666;
-    fill: #666;
-}
 
-.orbit {
-    stroke: #ccc;
-    fill: transparent;
-}
+
+/*.orbit {*/
+/*    stroke: #ccc;*/
+/*    fill: transparent;*/
+/*}*/
 
 .planet {
-    stroke: #666;
+    stroke: red;
     fill: #fff;
 }
 
-.moon {
-    stroke: #ccc;
-    fill: #fff;
-}
+
 
 
 
