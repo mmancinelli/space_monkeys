@@ -95,7 +95,7 @@ p {
     width: 100%;
 }
 
-#world-map, #orbit-vis, #network-vis, #orbit-vis2, #launches-vis,#legendText, #brush-plot,#networkLegend-vis {
+#world-map, #orbit-vis, #network-vis, #orbit-vis2, #launches-vis,#legendText, #brush-plot,#networkLegend-vis, #orbitLegend-vis {
     height: 100%;
     width:  100%;
 }

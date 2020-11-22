@@ -13,8 +13,9 @@
 class OrbitSystem {
 
 
-    constructor(_parentElement, satelliteData, geoData) {
+    constructor(_parentElement, legendElement,satelliteData, geoData) {
         this.parentElement = _parentElement;
+        this.legendElement= legendElement;
         this.geoData = geoData;
         this.satData = satelliteData;
         this.selectedSatCategory = "default";
@@ -33,22 +34,12 @@ class OrbitSystem {
      */
 
     initVis() {
-
         let vis = this;
 
-
-        vis.margin = {top: -10, right: 20, bottom: 20, left: -200};
+        vis.margin = {top: -10, right: 20, bottom: 20, left: -100};
         vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
         vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
 
-        // init drawing area
-        // vis.svg = d3.select("#" + vis.parentElement)
-        //     .attr("width", vis.width)
-        //     .attr("height", vis.height)
-        //     .attr('transform', `translate (${vis.margin.left}, ${vis.margin.top})`);
-
-        // var w     = 1600;
-        // var h     = 1400;
         vis.x = (vis.width / 2);
         vis.y = vis.height / 2;
         vis.t0 = new Date().setHours(0, 0, 0, 0);
@@ -59,6 +50,17 @@ class OrbitSystem {
             .attr("width", vis.width)
             .attr("height", vis.height)
             .attr('transform', `translate (${vis.margin.left}, ${vis.margin.top})`);
+
+        // set up legend svg
+        vis.marginLegend = {top: 0, right: 0, bottom: 100, left: 0};
+        vis.widthLegend = $("#" + vis.legendElement).width() - vis.marginLegend.left - vis.marginLegend.right;
+        vis.heightLegend = $("#" + vis.legendElement).height() - vis.marginLegend.top - vis.marginLegend.bottom;
+
+        vis.svg2 = d3.select("#" + vis.legendElement).append("svg")
+            .attr("width", vis.widthLegend + vis.marginLegend.left + vis.marginLegend.right)
+            .attr("height", vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom)
+            .append('g')
+        // .attr('transform', `translate (${vis.widthLegend  / 2}, ${vis.heightLegend  / 2})`);
 
         // ****************************************
         //             GLOBE
@@ -86,16 +88,17 @@ class OrbitSystem {
             .attr("stroke", "rgba(129,129,129,0.35)")
             .attr("d", vis.globePath);
 
-        // config variables for rotation
-        vis.config = {
-            speed: 0.0005,
-            verticalTilt: -30,
-            horizontalTilt: 0
-        }
+        // create legend item
+        vis.legend = vis.svg2.append("g")
+            .attr("class", "orbitLegend")
+
+        vis.legendData = [];
+        vis.originalTimePeriod = d3.extent(vis.satData, d=>d.Date)
+        console.log(vis.originalTimePeriod)
 
         // draw the globe
         vis.globe = vis.svg.selectAll(".country")
-            .data(vis.world)
+            .data(vis.world);
 
         vis.countries = vis.globe
             .enter().append("path")
@@ -110,62 +113,60 @@ class OrbitSystem {
             .attr("id", "orbit_container")
             .attr("transform", "translate(" + vis.x + "," + vis.y + ")");
 
-
         vis.wrangleData()
-
     }
 
     wrangleData() {
         let vis = this;
 
-        // filter out entries where apogee is NaN - this will help cut down on dataset
-        vis.filteredData = vis.satData.filter((d,i)=>{
-            if (!isNaN(d.Period)){
+        vis.selectedSatCategory = selectedSatCategory;
+
+        // filter out entries where Period is NaN - removes about 20
+        vis.filteredData = vis.satData.filter((d, i) => {
+            if (!isNaN(d.Period)) {
                 return d
             }
         })
 
-        // pull random 200 sats
+        // pull random sats
         let pulledData = [];
         for (let ii = 0; ii < vis.displayAmount; ii++) {
-            pulledData.push(vis.filteredData[Math.floor(Math.random()*vis.filteredData.length)]);
+            pulledData.push(vis.filteredData[Math.floor(Math.random() * vis.filteredData.length)]);
         }
         vis.filteredData = pulledData;
 
         //set up filter by Date
 
-        vis.satellites=[]
-
+        vis.satellites = []
 
         // create scale to match orbiting velocity to period time
         vis.periodScale = d3.scaleLinear()
             .range([-0.5, -10])
-            .domain([0,12000])
+            .domain([0, 12000])
 
-
-        vis.filteredData.forEach((d,i)=>{
+        vis.filteredData.forEach((d, i) => {
             // console.log(d)
             let speed = 0;
-            let phi0=0;
-            vis.R=0;
-            let r=0;
+            let phi0 = 0;
+            vis.R = 0;
+            let r = 0;
 
-            r=2 //same size for all sats
+            r = 2 //same size for all sats
             // for each class of orbit, generate a random number within acceptable range
             // randomness will help spread them out in space
-            if (d["Class of Orbit"]=="LEO"){
-                vis.R = Math.floor(Math.random() * 16) + 55
+            if (d["Class of Orbit"] == "LEO") {
+                vis.R = Math.floor(Math.random() * 16) + 55 // radius of planet is 50. chose 55 to have a bit of a buffer
 
-            } else if (d["Class of Orbit"]=="MEO"){
+            } else if (d["Class of Orbit"] == "MEO") {
                 vis.R = Math.floor(Math.random() * 145) + 66
 
-            } else if (d["Class of Orbit"]=="GEO" | d["Class of Orbit"]=="Elliptical"){
+            } else if (d["Class of Orbit"] == "GEO" | d["Class of Orbit"] == "Elliptical") {
                 vis.R = Math.floor(Math.random() * 119) + 211
             }
 
-            // phi0 is the starting x coordinate
+            // phi0 is the starting angle coordinate
             // make it random between 0 and 359 so they are spread out around the orbit
-            phi0 = (Math.random()*100)*3+(Math.random()*10)*5+(Math.random()*9) //generate random starting point between 0 and 360
+            phi0 = Math.floor(Math.random() * 360); //generate random starting point between 0 and 360
 
             vis.satellites.push({
                 R: vis.R,
@@ -173,14 +174,79 @@ class OrbitSystem {
                 speed: vis.periodScale(d.Period),
                 phi0: phi0,
                 name: d["Current Official Name of Satellite"],
-                color: "#00ffd4"
+                color: "#00ffd4",
+                Country: d.Country,
+                Purpose: d.Purpose,
+                Users: d.Users,
+                Orbit: d["Class of Orbit"]
             })
 
         })
 
-        vis.displayData = vis.satellites;
+        vis.updateLegend();
+        vis.drawfirstCircles();
+    }
 
-        vis.drawfirstCircles()
+    updateLegend () {
+        let vis = this;
+
+        if (vis.selectedSatCategory == "default") {
+            vis.legendStatus = false;
+            vis.color="#00ffd4"
+
+            vis.satellites.forEach((d,i)=>{
+                d.color=vis.color
+            })
+
+        } else if (vis.selectedSatCategory == "country") {
+            // console.log(vis.selectedSatCategory)
+            vis.legendStatus = true;
+            vis.legendData = ["USA", "China", "Russia", "United Kingdom", "Japan", "Other"]
+            vis.color = d3.scaleOrdinal()
+                .range(["#0e3860", "#7431c4", "#9f0797", "#640345", "#800000", "#ee6666"])
+                .domain(vis.legendData)
+
+            console.log(vis.color("Other"))
+
+            vis.satellites.forEach((d,i)=>{
+                // console.log(d.Country)
+                d.color=vis.color(d.Country)
+                // console.log(d.color)
+
+            })
+        } else if (vis.selectedSatCategory == "purpose"){
+            console.log(vis.selectedSatCategory)
+            vis.legendStatus = true;
+            vis.legendData = ["Communications", "Earth Science", "Navigation", "Space Science", "Other"]
+            vis.color = d3.scaleOrdinal()
+                .range(["#ec0505", "#f58702", "#ffeb04", "#8eac07", "#12cee7"])
+                .domain(vis.legendData)
+
+            vis.satellites.forEach((d,i)=>{
+                // console.log(d.Purpose)
+                d.color=vis.color(d.Purpose)
+                // console.log(d.color)
+
+            })
+        }  else if (vis.selectedSatCategory == "orbit"){
+            console.log(vis.selectedSatCategory)
+            vis.legendStatus = true;
+            vis.legendData = ["LEO", "MEO", "GEO", "Elliptical"]
+            vis.color = d3.scaleOrdinal()
+                .range(["#0b3701", "#08e2b0", "#2f96e7", "#490cbc" ])
+                .domain(vis.legendData)
+
+            vis.satellites.forEach((d,i)=>{
+                // console.log(d.Orbit)
+                d.color=vis.color(d.Orbit)
+                // console.log(d.color)
+
+            })
+        }else {
+            console.log("nah")
+        }
+
+        vis.displayData = vis.satellites;
     }
 
     drawfirstCircles() {
@@ -225,14 +291,97 @@ class OrbitSystem {
     updateColor() {
         let vis = this;
 
-        vis.displayData.forEach(function(d) {
-            // set color based on selected Category
-            if (vis.selectedSatCategory=="default"){
-                d.color="#00ffd4"
-            } else {
-                d.color = "red"
-            }
-        })
+        // set up stuff for the labels
+        vis.legendSquares = vis.legend
+            .attr("class", "legendSquares")
+            .selectAll(".legendSquare")
+            .data(vis.legendData);
+
+        vis.legendLabels = vis.legend
+            .attr("class", "legendLabels")
+            .selectAll(".legendLabel")
+            .data(vis.legendData);
+
+        // grab the legend text element to update the text box
+        // vis.body = d3.select("#legendText")
+
+        //toggle legend
+        if (vis.legendStatus == true) {
+            var size = 20;
+
+            // make the legend color squares
+            vis.legendSquares
+                .enter()
+                .append("rect")
+                .attr("class", "legendSquare")
+                .merge(vis.legendSquares)
+                .attr("x", 20)
+                .attr("y", function (d, i) {
+                    return 100 + i * (size + 5)
+                }) // 100 is where the first dot appears. 25 is the distance between dots
+                .attr("width", size)
+                .attr("height", size)
+                .style("fill", function (d) {
+                    return vis.color(d)
+                });
+
+            // make the legend text, colored the same
+            vis.legendLabels
+                .enter()
+                .append("text")
+                .attr("class", "legendLabel")
+                .merge(vis.legendLabels)
+                .attr("x", 60)
+                .attr("y", function (d, i) {
+                    return 100 + i * (size + 5) + (size / 2)
+                })
+                .style("fill", function (d) {
+                    return vis.color(d)
+                })
+                .text(function (d) {
+                    if (vis.selectedCategory == "status") {
+                        if (d == "StatusActive") {
+                            return "Active"
+                        } else {
+                            return "Retired"
+                        }
+                    } else if (vis.selectedCategory == "total") {
+                        // console.log(d)
+                        if (d === 2) {
+                            return "0-2"
+                        } else if (d === 5) {
+                            return "3-5"
+                        } else if (d==18){
+                            return "6-18"
+                        } else {
+                            return "19-588"
+                        }
+
+                    }
+                    else {
+                        return d
+                    }
+                })
+                .attr("text-anchor", "left")
+                .style("alignment-baseline", "middle");
+
+            //remove the current text box if there is one
+            // vis.body.selectAll("p").remove();
+
+            // add new text info
+            // vis.body.append("p").text(vis.legendText[0])
+
+            // update legend stuffs
+            vis.legendSquares.exit().remove();
+            vis.legendLabels.exit().remove();
+
+        } else if (vis.legendStatus == false) {
+            // if legend is off, remove all the stuff and wipe the slate clean
+            vis.legendLabels.remove();
+            vis.legendSquares.remove();
+            // vis.body.selectAll("p").remove();
+
+        }
 
         // draw planets and moon clusters
         vis.circle = vis.container.selectAll("circle")

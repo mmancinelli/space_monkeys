@@ -24,13 +24,46 @@ Promise.all(promises)
     .then( function(data){
     	// clean up satellite data
     	data[2].forEach(d=>{
+    		// console.log(d)
     		d["Apogee"]=+d["Apogee (km)"];
 			d["EL"]=+d["Expected Lifetime (yrs.)"];
 			d["Period"]=+d["Period (minutes)"];
 			d["LaunchMass"]=+d["Launch Mass (kg.)"];
 			d["Country"] = d["Country of Operator/Owner"];
 			d["Owner"]= d["Operator/Owner"];
-			d["Date of Launch"] = dateParser(d["Date of Launch"])
+			d["Date"] = dateParser(d["Date of Launch"])
+
+
+			if (d.Country != "USA" & d.Country != "China" & d.Country != "United Kingdom"& d.Country != "Russia" &d.Country != "Japan" ){
+				d.Country = "Other"
+			}
+			if (d.Purpose == "Communications" | d.Purpose == "Communications/Maritime Tracking" |d.Purpose == "Communications/Navigation" |d.Purpose == "Communications/Technology Development" ){
+				d.Purpose = "Communications"
+			} else if (d.Purpose == "Earth Observation" |d.Purpose == "Earth Observation/Communications" |d.Purpose == "Earth Observation/Communication/Space Science" |d.Purpose == "Earth Observation/Earth Science" |d.Purpose == "Earth Observation/Space Science" |d.Purpose == "Earth Observation/Technology Development" |d.Purpose == "Earth Science" |d.Purpose == "Earth Science/Earth Observation" |d.Purpose == "Earth/Space Observation") {
+				d.Purpose = "Earth Science"
+			} else if (d.Purpose == "Navigation/Global Positioning" |d.Purpose == "Navigation/Regional Postioning"){
+				d.Purpose = "Navigation"
+			} else if (d.Purpose == "Space Observation" |d.Purpose == "Space Science" |d.Purpose == "Space Science/Technology Demonstration" |d.Purpose == "Space Science/Technology Development"){
+				d.Purpose = "Space Science"
+			}
+			else {
+				d.Purpose = "Other"
+			}
+
+			// if (d.Users = "Civil/Government"){
+			// 	d.Users = "Government/Civil"
+			// } else if (d.Users = "Military/Government"){
+			// 	d.Users = "Government/Military"
+			// }
+			// else if (d.Users = "Civil/Military"){
+			// 	d.Users = "Military/Civil"
+			// } else if (d.Users = "Commercial/Government"){
+			// 	d.Users = "Government/Commercial"
+			// } else if (d.Users = "Commercial/Military"){
+			// 	d.Users = "Military/Commercial"
+			// }  else if (d.Users = "Government/Commercial"){
+			// 	d.Users = "Government/Commercial"
+			// }
 		})
 
 		createVis(data)})
@@ -51,7 +84,7 @@ function createVis(data){
 
 
 	// orbitVis = new OrbitvisREDO("canvas", satelliteData, geoData);
-	orbitSystem = new OrbitSystem("orbit-vis", satelliteData, geoData);
+	orbitSystem = new OrbitSystem("orbit-vis","orbitLegend-vis", satelliteData, geoData);
 	launchVis = new LaunchVis("world-map", launchData, geoData);
 	brushVis   = new Brushvis("brush-plot", launchData);
 	networkVis = new NetworkVis("network-vis", "networkLegend-vis",treeData);
@@ -93,6 +126,7 @@ function satCategoryChange(){
 
 	orbitSystem.selectedSatCategory = $('#satColor').val();
 	// console.log(selectedSatCategory)
+	orbitSystem.updateLegend();
 	orbitSystem.updateColor();
 }
 
