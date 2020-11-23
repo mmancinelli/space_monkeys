@@ -47,8 +47,8 @@ class FlightVis {
         vis.xAxis = d3.axisBottom()
             .scale(vis.xScale);
 
-        //vis.yScale = d3.scaleLinear()
-        vis.yScale = d3.scaleLog()
+        vis.yScale = d3.scaleLinear()
+        //vis.yScale = d3.scaleLog()
             .range([vis.height, 0]);
 
         vis.yAxis = d3.axisLeft()
@@ -61,7 +61,6 @@ class FlightVis {
 
         vis.yAxis_Pointer = vis.svg.append("g")
             .attr("class", "axis y-axis");
-
 
         // (Filter, aggregate, modify data)
         vis.wrangleData();
@@ -87,6 +86,7 @@ class FlightVis {
 
         // Group data by Rocket_Category
         vis.filteredData = []
+        vis.filteredData2 = []
         vis.dataByRocketCat = Array.from(d3.group(this.data, d =>d.Rocket_Category), ([key, value]) => ({key, value}))
         console.log(vis.dataByRocketCat)
 
@@ -99,6 +99,10 @@ class FlightVis {
                 vis.launch_year = row.value.filter(function (d) { return (d.date.getFullYear() == y) });
                 if(vis.launch_year.length > 0 ){
                     vis.launchperyear.push(vis.launch_year.length)
+                    vis.yearsinflight.push(y)
+                }
+                else{
+                    vis.launchperyear.push(0)
                     vis.yearsinflight.push(y)
                 }
             });
@@ -114,6 +118,15 @@ class FlightVis {
                 company: row.value[0].CompanyName,
                 country: row.value[0].Country
             };
+            vis.filteredData2.push({
+                rocket: row.key,
+                total: row.value.length,
+                years: vis.yearsinflight,
+                flights: vis.launchperyear,
+                cumsum: vis.cumsum,
+                company: row.value[0].CompanyName,
+                country: row.value[0].Country
+            });
         });
 
         console.log(vis.filteredData)
@@ -121,17 +134,32 @@ class FlightVis {
         vis.newData = []
         vis.newData.dates = d3.range(d3.min(vis.data,d=>d.date).getFullYear(), d3.max(vis.data,d=>d.date).getFullYear())
         // Reformat data
-        console.log(vis.newData)
-        vis.newData = {
-            series: {
-                name:  "Cosmos",
-                values: d3.merge([Array(4).fill(0),vis.filteredData['Cosmos'].years,Array(9).fill(0)])
-            }
-
-            }
+        //console.log(vis.newData)
+        vis.series = []
+        vis.series[0] = {
+            name:  "Cosmos",
+            values: d3.merge([Array(4).fill(0),vis.filteredData['Cosmos'].cumsum,Array(9).fill(0)])
+        }
+        vis.series[1] = {
+            name:  "Molniya",
+            values: d3.merge([Array(3).fill(0),vis.filteredData['Molniya'].cumsum,Array(11).fill(0)])
+        }
+        vis.series[2] = {
+            name:  "Voskhod",
+            values: d3.merge([Array(6).fill(0),vis.filteredData['Voskhod'].cumsum,Array(43).fill(0)])
+        }
+        vis.series[3] = {
+            name:  "Tsyklon",
+            values: d3.merge([Array(9).fill(0),vis.filteredData['Tsyklon'].cumsum,Array(15).fill(0)])
+        }
+        vis.series[4] = {
+            name:  "Vostok",
+            values: d3.merge([Array(1).fill(0),vis.filteredData['Vostok'].cumsum,Array(33).fill(0)])
+        }
+        vis.newData.series = vis.series;
         // Reformat data to make it like
-
-        console.log(vis.newData)
+        //console.log(vis.series)
+        console.log(vis.newData);
 
         //console.log(vis.filteredData)
         //console.log(vis.dataByRocketCat)
@@ -151,11 +179,11 @@ class FlightVis {
         let vis = this;
 
         //console.log(vis.filteredData)
-        vis.yScale.domain([d3.min(vis.filteredData,d=>d.total), d3.max(vis.filteredData,d=>d.total)]).nice()
+        vis.yScale.domain([d3.min(vis.filteredData2,d=>d.total), d3.max(vis.filteredData2,d=>d.total)])
 
         vis.line = d3.line()
-            .x(d => vis.xScale(d.year))
-            .y(d => vis.yScale(d.flights));
+            .x((d,i) => vis.xScale(vis.newData.dates[i]))
+            .y(d => vis.yScale(d));
 
         //let row = vis.filteredData[10];
         //console.log(row)
@@ -164,59 +192,24 @@ class FlightVis {
 
         //console.log(vis.dataRocket)
 
-        vis.line_group = vis.svg.append("g").attr("class","path-group-jc");
-
-        vis.filteredData.forEach(row => {
-            //console.log(row)
-            vis.dataRocket = []
-            row.years.forEach((jj,i) => {vis.dataRocket.push({year: row.years[i], flights: row.cumsum[i]});});
-            //console.log(vis.dataRocket)
-
-            vis.line_group.append("path")//selectAll('path')
-                .data([vis.dataRocket])
-                //.enter()
-                //.append("path")
-                .attr("class","test")
-                .attr("stroke","white")
+        vis.line_group = vis.svg.append("g")//.attr("class","path-group-jc");
                 .attr("fill","none")
-                .attr("d", d => vis.line(d));
-        });
-
-        console.log('JCL')
-        //vis.svg.selectAll("path")
-        //    .data([vis.dataRocket])
-        //    //.join("path")
-        //    //.style("mix-blend-mode", "multiply")
-        //    .append('path')
-        //    .enter()
-        //    //.attr("d", d => line(d.values))
-        //    .attr("d", d3.line()
-        //        .x(function(d) { return console.log(d)})
-        //       //.x(function(d) { console.log(d) return vis.xScale(d.year) })
-        //        .y(function(d) { return vis.yScale(d.flights) }))
-        //    .attr("stroke", "#e2efef")
-        //    .style("stroke-width", 4)
-        //    .style("fill", "none");
-
-        ///vis.filteredData.forEach(row => {
-        ///    //console.log(row)
-        ///    vis.dataRocket = []
-        ///    row.years.forEach((jj,i) => {vis.dataRocket.push({year: new Date(row.years[i]), flights: row.cumsum[i]});});
-        ///    //console.log(vis.dataRocket)
-        ///    //console.log(vis.xScale(vis.dataRocket.year))
-        ///
-        ///    vis.svg.selectAll()
-        ///        .datum(vis.dataRocket)
-        ///        .append('path')
-        ///        .enter()
-        ///        .attr("d", d3.line()
-        ///            .x(function(d) { return vis.xScale(d.year) })
-        ///            .y(function(d) { return vis.yScale(d.flights) })
-        ///        )
-        ///        .attr("stroke", "#e2efef")
-        ///        .style("stroke-width", 4)
-        ///        .style("fill", "none")
-        ///});
+                .attr("stroke","white")
+                .attr("stroke-width", 1.5)
+                .attr("stroke-linejoin", "round")
+                .attr("stroke-linecap", "round")
+                .selectAll("path")//.append("path")//selectAll('path')
+            .data(vis.newData.series)
+            .join("path")
+                .style("mix-blend-mode", "multiply")
+                .attr("d", d => vis.line(d.values))
+            //.enter()
+            //.append("path")
+            //.attr("class","test")
+            //.attr("stroke","white")
+            //.attr("fill","none")
+            //.attr("d", d => vis.line(d.values));
+            //.attr("d",  (d,i) => console.log(d));
 
         vis.yAxis_Pointer.call(vis.yAxis);
         vis.svg.call(vis.hover());
@@ -232,11 +225,6 @@ class FlightVis {
     hover() {
 
         let vis = this;
-
-        let x = d3.scaleLinear()
-            //.domain([d3.min(vis.data,d=>d.date), d3.max(vis.data,d=>d.date)])
-            .domain(d3.extent(vis.data, d=> d.date.getFullYear()))
-            .range([0,vis.width]);
 
         if ("ontouchstart" in document) vis.svg
             .style("-webkit-tap-highlight-color", "transparent")
@@ -264,29 +252,22 @@ class FlightVis {
             event.preventDefault();
             const pointer = d3.pointer(event, this);
             console.log(pointer)
-            //console.log(x(5))
             const xm = vis.xScale.invert(pointer[0]);
-            console.log(xm)
             const ym = vis.yScale.invert(pointer[1]);
-            console.log(ym)
-            let iyear = vis.data.filter(function(country) {return country.date == d3.round(xm);})
-            //let iyear = vis.data.filter(function(pointyear) {return pointyear.date.getFullYear() == xm;});
-            console.log(iyear)
-            const i = d3.bisectCenter(vis.data.date, xm);
-            console.log(i)
-            const s = d3.least(data.series, d => Math.abs(d.values[i] - ym));
-            path.attr("stroke", d => d === s ? null : "#ddd").filter(d => d === s).raise();
-            dot.attr("transform", `translate(${x(data.dates[i])},${y(s.values[i])})`);
+            const i = d3.bisectCenter(vis.newData.dates, xm);
+            const s = d3.least(vis.newData.series, d => Math.abs(d.values[i] - ym));
+            vis.line_group.attr("stroke", d => d === s ? null : "#0e59a7").filter(d => d === s).raise();
+            dot.attr("transform", `translate(${vis.xScale(vis.newData.dates[i])},${vis.yScale(s.values[i])})`);
             dot.select("text").text(s.name);
         }
 
         function entered() {
-            path.style("mix-blend-mode", null).attr("stroke", "#ddd");
+            vis.line_group.style("mix-blend-mode", null).attr("stroke", "#0e59a7");
             dot.attr("display", null);
         }
 
         function left() {
-            path.style("mix-blend-mode", "multiply").attr("stroke", null);
+            vis.line_group.style("mix-blend-mode", "multiply").attr("stroke", null);
             dot.attr("display", "none");
         }
     }
