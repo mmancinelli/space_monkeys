@@ -54,6 +54,14 @@ class FlightVis {
         vis.yAxis = d3.axisLeft()
             .scale(vis.yScale)
 
+        vis.svg.append("text")
+            //.attr("transform", "rotate(-90)")
+            .attr("y",-20)
+            .attr("x",20)
+            .attr("dy", "1em")
+            .style("text-anchor", "left")
+            .text("Cumulative Flights");
+
         vis.svg.append("g")
             .attr("class", "axis axis--x")
             .attr("transform", "translate(0," + (vis.height) + ")")
@@ -86,7 +94,6 @@ class FlightVis {
 
         // Group data by Rocket_Category
         vis.filteredData = []
-        vis.filteredData2 = []
         vis.dataByRocketCat = Array.from(d3.group(this.data, d =>d.Rocket_Category), ([key, value]) => ({key, value}))
         console.log(vis.dataByRocketCat)
 
@@ -94,7 +101,8 @@ class FlightVis {
         vis.dataByRocketCat.forEach(row => {
             vis.launchperyear = []
             vis.yearsinflight = []
-            vis.years = d3.range(d3.min(row.value, d => d.date).getFullYear(),d3.max(row.value, d => d.date).getFullYear()+1);
+            //vis.years = d3.range(d3.min(row.value, d => d.date).getFullYear(),d3.max(row.value, d => d.date).getFullYear()+1);
+            vis.years = d3.range(d3.min(vis.data,d=>d.date).getFullYear(), d3.max(vis.data,d=>d.date).getFullYear())
             vis.years.forEach(function (y) {
                 vis.launch_year = row.value.filter(function (d) { return (d.date.getFullYear() == y) });
                 if(vis.launch_year.length > 0 ){
@@ -108,17 +116,8 @@ class FlightVis {
             });
             let y = 0
             vis.cumsum = vis.launchperyear.map(d=>y+=d)
-            vis.filteredData[row.key] = {
-            //vis.filteredData.push({
-                rocket: row.key,
-                total: row.value.length,
-                years: vis.yearsinflight,
-                flights: vis.launchperyear,
-                cumsum: vis.cumsum,
-                company: row.value[0].CompanyName,
-                country: row.value[0].Country
-            };
-            vis.filteredData2.push({
+            //vis.filteredData[row.key] = {
+            vis.filteredData.push({
                 rocket: row.key,
                 total: row.value.length,
                 years: vis.yearsinflight,
@@ -134,31 +133,19 @@ class FlightVis {
         vis.newData = []
         vis.newData.dates = d3.range(d3.min(vis.data,d=>d.date).getFullYear(), d3.max(vis.data,d=>d.date).getFullYear())
         // Reformat data
-        //console.log(vis.newData)
-        vis.series = []
-        vis.series[0] = {
-            name:  "Cosmos",
-            values: d3.merge([Array(4).fill(0),vis.filteredData['Cosmos'].cumsum,Array(9).fill(0)])
-        }
-        vis.series[1] = {
-            name:  "Molniya",
-            values: d3.merge([Array(3).fill(0),vis.filteredData['Molniya'].cumsum,Array(11).fill(0)])
-        }
-        vis.series[2] = {
-            name:  "Voskhod",
-            values: d3.merge([Array(6).fill(0),vis.filteredData['Voskhod'].cumsum,Array(43).fill(0)])
-        }
-        vis.series[3] = {
-            name:  "Tsyklon",
-            values: d3.merge([Array(9).fill(0),vis.filteredData['Tsyklon'].cumsum,Array(15).fill(0)])
-        }
-        vis.series[4] = {
-            name:  "Vostok",
-            values: d3.merge([Array(1).fill(0),vis.filteredData['Vostok'].cumsum,Array(33).fill(0)])
-        }
-        vis.newData.series = vis.series;
-        // Reformat data to make it like
-        //console.log(vis.series)
+        vis.series2 = []
+        vis.filteredData.forEach(row => {
+            vis.series2.push({
+                name: row.rocket,
+                country: row.country,
+                values: row.cumsum
+            })
+        });
+
+        vis.newData.series = vis.series2;
+
+        console.log(vis.series2)
+
         console.log(vis.newData);
 
         //console.log(vis.filteredData)
@@ -179,7 +166,8 @@ class FlightVis {
         let vis = this;
 
         //console.log(vis.filteredData)
-        vis.yScale.domain([d3.min(vis.filteredData2,d=>d.total), d3.max(vis.filteredData2,d=>d.total)])
+        vis.yScale.domain([d3.min(vis.filteredData,d=>d.total), d3.max(vis.filteredData,d=>d.total)])
+        //vis.yScale.domain([d3.min(vis.filteredData,d=>d.total), 300])
 
         vis.line = d3.line()
             .x((d,i) => vis.xScale(vis.newData.dates[i]))
@@ -192,6 +180,10 @@ class FlightVis {
 
         //console.log(vis.dataRocket)
 
+        //vis.color = d3.scaleSqrt()
+        //    .interpolate(() => d3.interpolateYlGnBu)
+        //    .domain([0, vis.newData.series.length])
+
         vis.line_group = vis.svg.append("g")//.attr("class","path-group-jc");
                 .attr("fill","none")
                 .attr("stroke","white")
@@ -203,13 +195,7 @@ class FlightVis {
             .join("path")
                 .style("mix-blend-mode", "multiply")
                 .attr("d", d => vis.line(d.values))
-            //.enter()
-            //.append("path")
-            //.attr("class","test")
-            //.attr("stroke","white")
-            //.attr("fill","none")
-            //.attr("d", d => vis.line(d.values));
-            //.attr("d",  (d,i) => console.log(d));
+                //.attr("stroke", (d,i) => vis.color(i))
 
         vis.yAxis_Pointer.call(vis.yAxis);
         vis.svg.call(vis.hover());
@@ -258,7 +244,7 @@ class FlightVis {
             const s = d3.least(vis.newData.series, d => Math.abs(d.values[i] - ym));
             vis.line_group.attr("stroke", d => d === s ? null : "#0e59a7").filter(d => d === s).raise();
             dot.attr("transform", `translate(${vis.xScale(vis.newData.dates[i])},${vis.yScale(s.values[i])})`);
-            dot.select("text").text(s.name);
+            dot.select("text").text([s.name,s.country]);
         }
 
         function entered() {
