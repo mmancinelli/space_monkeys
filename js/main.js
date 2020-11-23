@@ -1,12 +1,21 @@
 let launchData, rocketData, satelliteData, treeData, geoData, globeData, airportData
-let launchVis, brushVis, networkVis, flightVis, costVis, orbitVis, orbitVis3
+let launchVis, brushVis, networkVis, flightVis, costVis, orbitVis, orbitVis3, orbitSystem
 
 // init global time selction for map vis
 let mapvis_selectedTime = []
 
 // Function to convert date objects to strings or reverse
-let dateFormatter = d3.timeFormat("%Y-%m-%d");
+let dateFormatter = d3.timeFormat("%Y");
 let dateParser = d3.timeParse("%m/%d/%y");
+
+var gRange = d3
+	.select('div#slider-range')
+	.attr("class", "gRange")
+	.append('svg')
+	.attr('width', 500)
+	.attr('height', 100)
+	.append('g')
+	.attr('transform', 'translate(30,30)');
 
 
 // (1) Load data with promises
@@ -16,20 +25,40 @@ let promises = [
 	d3.csv("data/prepared_satellite_data.csv"),
 	d3.json("data/treeData.json"),
 	d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json"),
-	d3.json("https://gist.githubusercontent.com/mbostock/4090846/raw/d534aba169207548a8a3d670c9c2cc719ff05c47/world-110m.json")
+	d3.json("https://gist.githubusercontent.com/mbostock/4090846/raw/d534aba169207548a8a3d670c9c2cc719ff05c47/world-110m.json"),
+	d3.json("data/flare.json")
 ];
 
 Promise.all(promises)
     .then( function(data){
     	// clean up satellite data
     	data[2].forEach(d=>{
+    		// console.log(d)
     		d["Apogee"]=+d["Apogee (km)"];
 			d["EL"]=+d["Expected Lifetime (yrs.)"];
 			d["Period"]=+d["Period (minutes)"];
 			d["LaunchMass"]=+d["Launch Mass (kg.)"];
 			d["Country"] = d["Country of Operator/Owner"];
 			d["Owner"]= d["Operator/Owner"];
-			d["Date of Launch"] = dateParser(d["Date of Launch"])
+			d["Date"] = dateParser(d["Date of Launch"])
+
+
+			if (d.Country != "USA" & d.Country != "China" & d.Country != "United Kingdom"& d.Country != "Russia" &d.Country != "Japan" ){
+				d.Country = "Other"
+			}
+			if (d.Purpose == "Communications" | d.Purpose == "Communications/Maritime Tracking" |d.Purpose == "Communications/Navigation" |d.Purpose == "Communications/Technology Development" ){
+				d.Purpose = "Communications"
+			} else if (d.Purpose == "Earth Observation" |d.Purpose == "Earth Observation/Communications" |d.Purpose == "Earth Observation/Communication/Space Science" |d.Purpose == "Earth Observation/Earth Science" |d.Purpose == "Earth Observation/Space Science" |d.Purpose == "Earth Observation/Technology Development" |d.Purpose == "Earth Science" |d.Purpose == "Earth Science/Earth Observation" |d.Purpose == "Earth/Space Observation") {
+				d.Purpose = "Earth Science"
+			} else if (d.Purpose == "Navigation/Global Positioning" |d.Purpose == "Navigation/Regional Postioning"){
+				d.Purpose = "Navigation"
+			} else if (d.Purpose == "Space Observation" |d.Purpose == "Space Science" |d.Purpose == "Space Science/Technology Demonstration" |d.Purpose == "Space Science/Technology Development"){
+				d.Purpose = "Space Science"
+			}
+			else {
+				d.Purpose = "Other"
+			}
+
 		})
 
 		createVis(data)})
@@ -45,17 +74,33 @@ function createVis(data){
 	treeData      = data[3];
 	geoData       = data[4];
 
-	// console.log(satelliteData);
+
+	// // vis.timePeriodMin =vis.originalTimePeriod[0];
+	// // vis.timePeriodMax =vis.originalTimePeriod[1];
+	//
+	// // console.log(satelliteData);
 
 
-	orbitVis = new OrbitvisREDO("canvas", satelliteData, geoData);
-	// orbitVis = new Orbitvis2("orbit-vis2", satelliteData, geoData);
+
+
+
+
+
+	// orbitVis = new OrbitvisREDO("canvas", satelliteData, geoData);
+	orbitSystem = new OrbitSystem("orbit-vis","orbitLegend-vis", satelliteData, geoData);
 	launchVis = new LaunchVis("world-map", launchData, geoData);
 	brushVis   = new Brushvis("brush-plot", launchData);
 	networkVis = new NetworkVis("network-vis", "networkLegend-vis",treeData);
 	flightVis = new FlightVis("launches-vis", data);
 
 	// makeViz()
+
+	//loop through orbits after 10 seconds and continue for a few hours
+	for (let ii = 0; ii <= 1000; ii++) {
+		setTimeout(function () {
+			orbitSystem.animate(20000, 1000);
+		}, (ii * 20000));
+	}
 }
 
 function toggleButton(button) {
@@ -72,10 +117,20 @@ function toggleButton(button) {
 }
 
 var selectedCategory = $('#categorySelector').val();
+var selectedSatCategory = $('#satColor').val();
+// var selectedCategory = $('#categorySelector').val();
 
 function categoryChange() {
 	selectedCategory = $('#categorySelector').val();
+
 	networkVis.wrangleData();
+}
+function satCategoryChange(){
+
+	orbitSystem.selectedSatCategory = $('#satColor').val();
+	// console.log(selectedSatCategory)
+	orbitSystem.updateLegend();
+	orbitSystem.updateColor();
 }
 
 function animateMap () {
@@ -106,6 +161,12 @@ function animateMap () {
 
 		}, (ii * step_delay));
 	}
+}
+
+function updateRangeSliderValues(values){
+	$("#time-period-min").text(parseInt(values[0]));
+	$("#time-period-max").text(parseInt(values[1]));
+	orbitVis.wrangleData();
 }
 
 

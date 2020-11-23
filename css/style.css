@@ -8,6 +8,11 @@ h1{
     color: #fff;
 }
 
+.image-block {
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+
 /* Centered texts in each section
 * --------------------------------------- */
 .section{
@@ -42,7 +47,7 @@ body {
 }
 
 .header {
-    height: 12vh;
+    height: 15vh;
     background: none;
 }
 
@@ -55,17 +60,30 @@ h2 {
     font-family: arial,helvetica;
     color: #fff;
     margin:0;
+    font-style: italic;
 }
 
 h3 {
-    font-size: 2em;
+    font-size: 1.5em;
     font-family: arial,helvetica;
     color: #fff;
-    margin:0;
+    margin-top: 15px;
 }
 
 p {
-    color: white;
+    font-size: 1em;
+    font-family: arial,helvetica;
+    color: #fff;
+}
+
+.network-title {
+    font-weight: bolder;
+    font-style: italic;
+}
+
+.rocket-stats {
+    margin-top: 7px;
+    font-style: italic;
 }
 
 .story-line {
@@ -85,6 +103,10 @@ p {
     height: 100%;
 }
 
+.noUi-base, noUi-connects{
+    height: 100%;
+}
+
 .footer {
     height: 20vh;
     background: none;
@@ -95,7 +117,7 @@ p {
     width: 100%;
 }
 
-#world-map, #orbit-vis, #network-vis, #orbit-vis2, #launches-vis,#legendText, #brush-plot,#networkLegend-vis {
+#world-map, #orbit-vis, #slider, #network-vis, #orbit-vis2, #launches-vis,#legendText, #brush-plot,#networkLegend-vis, #orbitLegend-vis {
     height: 100%;
     width:  100%;
 }
@@ -231,30 +253,45 @@ p {
 /*    padding-bottom: 200px;*/
 /*}*/
 
-#scaffold, #controls {
+
+
+/*.orbit {*/
+/*    stroke: #ccc;*/
+/*    fill: transparent;*/
+/*}*/
+
+
+
+
+
+
+
+
+
+.carousel-item > img {
+    max-width: 50%;
+}
+
+.carousel-caption {
     position: absolute;
-    top: 0;
-    left: 0;
+    text-align: center;
+    padding: 2px;
+    font: 20px sans-serif;
+    color: white;
+    background: #262729;
+    border-radius: 8px;
+    stroke: grey;
+    opacity: 0.75;
 }
 
-#controls {
-    font-size: 14px;
+.img-thumbnail {
+    max-height: 100%;
+}
+
+.row-height {
+    max-height: 40vh;
+}
+
+.end-notes {
     text-align: left;
-    margin: 8px;
-    padding: 1px 5px 5px 5px;
-    background: rgba(230, 230, 250, 0.7);
-    opacity: 0.5;
-    border-radius: 3px;
-    z-index: 1000;
 }
-
-#controls:hover {
-    opacity: 1;
-}
-
-
-
-
-
-
-
