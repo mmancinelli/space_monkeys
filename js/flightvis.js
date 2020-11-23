@@ -83,7 +83,7 @@ class FlightVis {
     wrangleData() {
         let vis = this;
 
-        console.log(vis.data)
+        //console.log(vis.data)
 
         //Filter data by Selected Country
         //vis.dataCountry = vis.data.filter(function(country) {return country.Country == "USA";});
@@ -95,7 +95,7 @@ class FlightVis {
         // Group data by Rocket_Category
         vis.filteredData = []
         vis.dataByRocketCat = Array.from(d3.group(this.data, d =>d.Rocket_Category), ([key, value]) => ({key, value}))
-        console.log(vis.dataByRocketCat)
+        //console.log(vis.dataByRocketCat)
 
         // Iterate, get total flights and years
         vis.dataByRocketCat.forEach(row => {
@@ -128,7 +128,7 @@ class FlightVis {
             });
         });
 
-        console.log(vis.filteredData)
+        //console.log(vis.filteredData)
 
         vis.newData = []
         vis.newData.dates = d3.range(d3.min(vis.data,d=>d.date).getFullYear(), d3.max(vis.data,d=>d.date).getFullYear())
@@ -144,9 +144,9 @@ class FlightVis {
 
         vis.newData.series = vis.series2;
 
-        console.log(vis.series2)
+        //console.log(vis.series2)
 
-        console.log(vis.newData);
+        //console.log(vis.newData);
 
         //console.log(vis.filteredData)
         //console.log(vis.dataByRocketCat)
@@ -198,7 +198,8 @@ class FlightVis {
                 //.attr("stroke", (d,i) => vis.color(i))
 
         vis.yAxis_Pointer.call(vis.yAxis);
-        vis.svg.call(vis.hover());
+        //vis.svg.call(vis.hover());
+        vis.hover()
     }
 
     onSelectionChange(selectionStart, selectionEnd) {
@@ -237,7 +238,7 @@ class FlightVis {
         function moved(event) {
             event.preventDefault();
             const pointer = d3.pointer(event, this);
-            console.log(pointer)
+            //console.log(pointer)
             const xm = vis.xScale.invert(pointer[0]);
             const ym = vis.yScale.invert(pointer[1]);
             const i = d3.bisectCenter(vis.newData.dates, xm);
