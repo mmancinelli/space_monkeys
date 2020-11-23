@@ -3,9 +3,10 @@
 * @param _parentElement 	-- the HTML element in which to draw the visualization
 * @param _data						-- the actual data
 *
-* /*
+*
  *
  * author: Zane
+ * modified from: https://observablehq.com/@d3/radial-dendrogram
  * date created: 11/09/2020
  * date last modified:
  */

@@ -406,46 +406,53 @@
 			<div class="container-fluid">
 				<div class="row main-body">
 					<div class="col">
-<!--						<div class="col" style="padding-top: 1vh;">-->
-<!--							<div class="align-self-center vis-holder">-->
-<!--								<div id="orbit-vis"></div>-->
-<!--							</div>-->
-<!--						</div>-->
-					<div class="row justify-content-center center-center">
-						<div class="align-self-center vis-holder">
-							<div id="orbit-vis"></div>
-
-						</div>
-					</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Orbits -->
-	<div class="section " id="section15">
-		<div class="star-section">
-			<div class = "stars"></div>
-			<div class = "stars2"></div>
-			<div class = "stars3"></div>
-			<div class="container-fluid">
-				<div class="row main-body">
-					<div class="col">
-						<div class="row justify-content-center center-center">
-							<div class="align-self-center vis-holder">
-								<div id="orbit-vis">
-									<svg id="canvas">
-<!--										<circle id="center" r="20" cx="0" cy="0"></circle>-->
-<!--										<circle id="particle" r="8"></circle>-->
-									</svg>
+<!--						<div class="row">-->
+							<div class="row" style="height: 5vh; padding-left: 20pt; padding-top: 1vh;" >
+								<div class="col-3" style="height: 5vh; padding-top: 5pt">
+									<select id='satColor' class="custom-select" style="width: 75%" onchange="satCategoryChange()">
+										<option value="default" selected >Default (none)</option>
+										<option value="country">by Country </option>
+										<option value="purpose">by Purpose</option>
+<!--										<option value="use">by Use</option>-->
+										<option value="orbit">by Orbit</option>
+									</select>
+								</div>
+								<div class="col-6 offset-2" style="height: 10vh; padding-top: 5pt">
+									<div id="slider"></div>
+<!--									<div class="row align-items-center">-->
+<!--										<div class="col-sm"><p id="startdate">1930-2014</p></div>-->
+<!--										<div class="col-md"><div id="slider-range"></div></div>-->
+<!--									</div>-->
+<!--									<form class="form-inline">-->
+<!--										<div class="form-group">-->
+<!--											<p> Time Period: </p>-->
+<!--											<input type="number" maxlength = "4" class="form-control" id="time-period-min" placeholder="1974">- -->
+<!--											<input type="number" maxlength = "4" class="form-control" id="time-period-max" placeholder="2020">-->
+<!--											<span id="time-period-filter" class="btn btn-primary" onclick = "updateVisualization()"> Filter</span>-->
+<!--										</div>-->
+<!--									</form>-->
 								</div>
 
+<!--								<div class ="row" style="height:40vh; padding-top: 10pt; text-align: left;">-->
+<!--									<div id = "legendText">-->
+<!--									</div>-->
+
+<!--								</div>-->
 							</div>
-						</div>
+							<div class="row" style="padding-top: 1vh;">
+								<div class="col-3" style="height: 75vh; padding-top: 1vh;padding-left: 50pt;">
+									<div id="orbitLegend-vis">
+									</div>
+								</div>
+								<div class="col-9"style="height: 85vh;">
+								<div id="orbit-vis">
+								</div>
+								</div>
+							</div>
+<!--						</div>-->
+<!--						</div>-->
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>
@@ -499,6 +506,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-collection/1.0.5/d3-collection.min.js"></script>
 <script src="https://d3js.org/d3-timer.v2.min.js"></script>
 <script src="js/libraries/d3-tip.js"></script>
+<script src="js/nouislider.js"></script>
+<script src="https://unpkg.com/d3-simple-slider"></script>
 <script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
 
 
@@ -509,11 +518,12 @@
 <script src="js/launchvis.js"></script>
 <script src="js/brushvis.js"></script>
 <script src="js/flightvis.js"></script>
-<script src="js/costvis.js"></script>
-<script src="js/orbitvis.js"></script>
+<!--<script src="js/costvis.js"></script>-->
+<!--<script src="js/orbitvis.js"></script>-->
 <script src="js/networkvis.js"></script>
 <script src="js/treedata.js"></script>
-<script src="js/orbitvis_REDO.js"></script>
+<!--<script src="js/orbitvis_REDO.js"></script>-->
+<script src="js/orbitSystem.js"></script>
 
 
 
@@ -527,6 +537,8 @@
         navigationPosition: 'right',
         navigationTooltips: ['First page', 'Second page', 'Third page', 'Forth page', 'Fifth page']
     });
+
+
 
 
 
