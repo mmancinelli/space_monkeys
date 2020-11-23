@@ -74,26 +74,13 @@ function createVis(data){
 	treeData      = data[3];
 	geoData       = data[4];
 
-
-	// // vis.timePeriodMin =vis.originalTimePeriod[0];
-	// // vis.timePeriodMax =vis.originalTimePeriod[1];
-	//
-	// // console.log(satelliteData);
-
-
-
-
-
-
-
-	// orbitVis = new OrbitvisREDO("canvas", satelliteData, geoData);
+	// instantiate visualization objects
 	orbitSystem = new OrbitSystem("orbit-vis","orbitLegend-vis", satelliteData, geoData);
 	launchVis = new LaunchVis("world-map", launchData, geoData);
 	brushVis   = new Brushvis("brush-plot", launchData);
 	networkVis = new NetworkVis("network-vis", "networkLegend-vis",treeData);
 	flightVis = new FlightVis("launches-vis", data);
 
-	// makeViz()
 
 	//loop through orbits after 10 seconds and continue for a few hours
 	for (let ii = 0; ii <= 1000; ii++) {
@@ -157,7 +144,7 @@ function animateMap () {
 				.attr("width", brush_width);
 			mapvis_selectedTime = [min_year, (min_year + (max_year - min_year) / animation_steps * ii)];
 			launchVis.wrangleData();
-			console.log("wrangled " + ii + " with " + mapvis_selectedTime + " and width: " + brush_width);
+			//console.log("wrangled " + ii + " with " + mapvis_selectedTime + " and width: " + brush_width);
 
 		}, (ii * step_delay));
 	}

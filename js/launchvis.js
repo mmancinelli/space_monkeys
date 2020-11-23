@@ -6,7 +6,6 @@
 
 class LaunchVis {
 
-
     constructor(_parentElement, _data, _geoData) {
         this.parentElement = _parentElement;
         this.data = _data;
@@ -91,8 +90,9 @@ class LaunchVis {
         vis.world = topojson.feature(vis.geoData, vis.geoData.objects.countries).features;
 
         // create map vis group and circle group
-        vis.map_group = vis.svg.append("g");
-        vis.circle_group = vis.svg.append("g");
+        vis.map_group = vis.svg.append("g").attr("id","map_group");
+        vis.circle_group = vis.svg.append("g").attr("id","circle_group");
+        vis.label_group = vis.svg.append("g").attr("id","circle_label_group");
 
         vis.map_group.append("path")
             .attr("id", "outline")
@@ -183,6 +183,9 @@ class LaunchVis {
         vis.circle = vis.circle_group.selectAll("circle")
             .data(vis.displayData);
 
+        vis.label = vis.label_group.selectAll("text")
+            .data(vis.displayData);
+
         // Enter (initialize the newly added elements)
         vis.circle.enter().append("circle")
             .attr("class", "circle")
@@ -204,9 +207,34 @@ class LaunchVis {
             .attr("r", d => Math.sqrt(d.launches))
             .attr("fill", "black");
 
+        vis.label.enter().append("text")
+            .attr("class", "circle-label")
+
+            // Enter and Update (set the dynamic properties of the elements)
+            .merge(vis.label)
+            .on("mouseover", function (e,d) {
+                vis.tooltip.show(d,this);
+            })
+            .on("mouseout", function (){
+                vis.tooltip.hide();
+            })
+            .on("click", function (e,d) {
+                console.log(d);
+            })
+            .transition()
+            .duration(100)
+            .text(d => d.launches)
+            .attr('text-anchor', 'middle')
+            .attr('alignment-baseline','middle')
+            .attr('font-weight','bold')
+            .attr('fill','black')
+            .attr('stroke','red')
+            .attr("transform", d => `translate(${vis.projection([d.lon, d.lat])})`);
+
 
         // Exit
         vis.circle.exit().remove();
+        vis.label.exit().remove();
 
     }
 
