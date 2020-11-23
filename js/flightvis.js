@@ -198,8 +198,9 @@ class FlightVis {
                 //.attr("stroke", (d,i) => vis.color(i))
 
         vis.yAxis_Pointer.call(vis.yAxis);
-        //vis.svg.call(vis.hover());
+
         vis.hover()
+
     }
 
     onSelectionChange(selectionStart, selectionEnd) {
