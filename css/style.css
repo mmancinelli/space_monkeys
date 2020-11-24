@@ -202,7 +202,7 @@ p {
 #launches-vis{
     border: none;
     border-radius: 5px;
-    height: 75vh;
+    height: 70vh;
 }
 
 .x-axis {
@@ -226,6 +226,12 @@ p {
     fill: none;
     stroke: white;
 }
+
+#FlightLegend-vis, #FlightText {
+    height: 100%;
+    width:  100%;
+}
+
 
 
 /*what are the ones below for? Can't remember, should delete? */

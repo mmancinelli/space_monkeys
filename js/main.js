@@ -79,7 +79,7 @@ function createVis(data){
 	launchVis = new LaunchVis("world-map", launchData, geoData);
 	brushVis   = new Brushvis("brush-plot", launchData);
 	networkVis = new NetworkVis("network-vis", "networkLegend-vis",treeData);
-	flightVis = new FlightVis("launches-vis", data);
+	flightVis = new FlightVis("launches-vis", "FlightLegend-vis", data);
 
 
 	//loop through orbits after 10 seconds and continue for a few hours
@@ -105,6 +105,7 @@ function toggleButton(button) {
 
 var selectedCategory = $('#categorySelector').val();
 var selectedSatCategory = $('#satColor').val();
+var selectedCountry = $('#countrySelector').val();
 // var selectedCategory = $('#categorySelector').val();
 
 function categoryChange() {
@@ -154,6 +155,12 @@ function updateRangeSliderValues(values){
 	$("#time-period-min").text(parseInt(values[0]));
 	$("#time-period-max").text(parseInt(values[1]));
 	orbitVis.wrangleData();
+}
+
+function countryChange() {
+	selectedCountry = $('#countrySelector').val();
+
+	flightVis.wrangleData();
 }
 
 
