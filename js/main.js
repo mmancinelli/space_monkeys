@@ -118,6 +118,7 @@ function toggleButton(button) {
 
 var selectedCategory = $('#categorySelector').val();
 var selectedSatCategory = $('#satColor').val();
+var selectedCountry = $('#countrySelector').val();
 // var selectedCategory = $('#categorySelector').val();
 
 function categoryChange() {
@@ -167,6 +168,12 @@ function updateRangeSliderValues(values){
 	$("#time-period-min").text(parseInt(values[0]));
 	$("#time-period-max").text(parseInt(values[1]));
 	orbitVis.wrangleData();
+}
+
+function countryChange() {
+	selectedCountry = $('#countrySelector').val();
+
+	flightVis.wrangleData();
 }
 
 

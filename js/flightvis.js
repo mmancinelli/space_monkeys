@@ -56,7 +56,7 @@ class FlightVis {
 
         vis.svg.append("text")
             //.attr("transform", "rotate(-90)")
-            .attr("y",-20)
+            .attr("y",-5)
             .attr("x",20)
             .attr("dy", "1em")
             .style("text-anchor", "left")
@@ -70,6 +70,11 @@ class FlightVis {
         vis.yAxis_Pointer = vis.svg.append("g")
             .attr("class", "axis y-axis");
 
+        // Save master data
+        vis.master = vis.data;
+        vis.myCountries = ["USA", "China", "Russia", "Japan", "Israel", "New Zealand", "Iran", "France", "India", "Mexico", "Kazakhstan", "North Korea", "Brazil", "Kenya", "Australia"]
+        console.log(vis.master)
+
         // (Filter, aggregate, modify data)
         vis.wrangleData();
     }
@@ -82,6 +87,52 @@ class FlightVis {
 
     wrangleData() {
         let vis = this;
+
+        vis.selectedCountry = selectedCountry;
+        //console.log(vis.selectedCountry);
+
+        vis.color = d3.scaleOrdinal()
+            //.range(["#fbb4ae","#b3cde3","#ccebc5","#decbe4","#fed9a6","#ffffcc","#e5d8bd","#fddaec","#f2f2f2"])
+            .range(["#4e79a7","#f28e2c","#e15759","#76b7b2","#59a14f","#edc949","#af7aa1","#ff9da7","#9c755f","#bab0ab"]);
+
+        if (vis.selectedCountry === "default") {
+            vis.data=vis.master;
+            vis.legendData=vis.myCountries;
+            vis.color.domain(vis.legendData)
+        }else if (vis.selectedCountry === "USA") {
+            vis.dataCountry = vis.master.filter(function (country) {return country.Country === "USA";});
+            vis.data = vis.dataCountry
+            //vis.databyCompany = Array.from(d3.group(this.data, d =>d.CompanyName), ([key, value]) => ({key, value}))
+            //console.log(vis.databyCompany)
+            vis.legendData=["SpaceX","ULA","Northrop","Virgin Orbit","Blue Origin","NASA","Boeing","ILS","Lockheed","EER","General Dynamics","Martin Marietta","Douglas","US Air Force", "US Navy","AMBA"];
+            vis.color.domain(vis.legendData)
+        }else if (vis.selectedCountry === "China") {
+            vis.dataCountry = vis.master.filter(function (country) {return country.Country === "China";});
+            vis.data = vis.dataCountry
+            vis.legendData=["CASC","ExPace","i-Space","OneSpace","Landspace","CASIC"];
+            vis.color.domain(vis.legendData)
+        }else if (vis.selectedCountry === "Russia") {
+            vis.dataCountry = vis.master.filter(function (country) {return country.Country === "Russia";});
+            vis.data = vis.dataCountry
+            vis.legendData=["Roscosmos","VKS RF","Arianespace","ILS","Eurockot","Land Launch","Kosmotras","Khrunichev","Starsem","RVSN USSR","Yuzhmash","OKB-586"];
+            vis.color.domain(vis.legendData)
+        }else if (vis.selectedCountry === "Japan") {
+            vis.dataCountry = vis.master.filter(function (country) {return country.Country === "Japan";});
+            vis.data = vis.dataCountry
+            vis.legendData=["JAXA","MHI","ISAS", "UT"];
+            vis.color.domain(vis.legendData)
+        }else if (vis.selectedCountry === "Israel") {
+            vis.dataCountry = vis.master.filter(function (country) {return country.Country === "Israel";});
+            vis.data = vis.dataCountry
+            vis.legendData=["IAI"];
+            vis.color.domain(vis.legendData)
+        }else if (vis.selectedCountry === "New Zealand") {
+            vis.dataCountry = vis.master.filter(function (country) {return country.Country === "New Zealand";});
+            vis.data = vis.dataCountry
+            vis.databyCompany = Array.from(d3.group(this.data, d =>d.CompanyName), ([key, value]) => ({key, value}))
+            vis.legendData=["Rocket Lab"];
+            vis.color.domain(vis.legendData)
+        }
 
         //console.log(vis.data)
 
@@ -102,7 +153,7 @@ class FlightVis {
             vis.launchperyear = []
             vis.yearsinflight = []
             //vis.years = d3.range(d3.min(row.value, d => d.date).getFullYear(),d3.max(row.value, d => d.date).getFullYear()+1);
-            vis.years = d3.range(d3.min(vis.data,d=>d.date).getFullYear(), d3.max(vis.data,d=>d.date).getFullYear())
+            vis.years = d3.range(d3.min(vis.master,d=>d.date).getFullYear(), d3.max(vis.master,d=>d.date).getFullYear())
             vis.years.forEach(function (y) {
                 vis.launch_year = row.value.filter(function (d) { return (d.date.getFullYear() == y) });
                 if(vis.launch_year.length > 0 ){
@@ -131,13 +182,14 @@ class FlightVis {
         //console.log(vis.filteredData)
 
         vis.newData = []
-        vis.newData.dates = d3.range(d3.min(vis.data,d=>d.date).getFullYear(), d3.max(vis.data,d=>d.date).getFullYear())
+        vis.newData.dates = d3.range(d3.min(vis.master,d=>d.date).getFullYear(), d3.max(vis.master,d=>d.date).getFullYear())
         // Reformat data
         vis.series2 = []
         vis.filteredData.forEach(row => {
             vis.series2.push({
                 name: row.rocket,
                 country: row.country,
+                company: row.company,
                 values: row.cumsum
             })
         });
@@ -146,9 +198,9 @@ class FlightVis {
 
         //console.log(vis.series2)
 
-        //console.log(vis.newData);
+        console.log(vis.newData);
 
-        //console.log(vis.filteredData)
+        console.log(vis.filteredData)
         //console.log(vis.dataByRocketCat)
 
         // Update the visualization
@@ -166,7 +218,11 @@ class FlightVis {
         let vis = this;
 
         //console.log(vis.filteredData)
-        vis.yScale.domain([d3.min(vis.filteredData,d=>d.total), d3.max(vis.filteredData,d=>d.total)])
+        //console.log(d3.max(vis.newData.series,d => d.values))
+        //vis.xScale.domain(d3.extent(vis.filteredData, d=> d.date.getFullYear()))
+        //vis.yScale.domain([d3.min(vis.filteredData,d=>d.total), d3.max(vis.filteredData,d=>d.total)])
+        vis.yScale.domain([0, d3.max(vis.filteredData,d=>d.total)])
+        //vis.yScale.domain(d3.extent(vis.filteredData, d=> d.total))
         //vis.yScale.domain([d3.min(vis.filteredData,d=>d.total), 300])
 
         vis.line = d3.line()
@@ -182,32 +238,65 @@ class FlightVis {
 
         //vis.color = d3.scaleSqrt()
         //    .interpolate(() => d3.interpolateYlGnBu)
-        //    .domain([0, vis.newData.series.length])
+        //    .domain
+       // vis.svg.selectAll(".line").remove()
 
-        vis.line_group = vis.svg.append("g")//.attr("class","path-group-jc");
-                .attr("fill","none")
-                .attr("stroke","white")
-                .attr("stroke-width", 1.5)
-                .attr("stroke-linejoin", "round")
-                .attr("stroke-linecap", "round")
-                .selectAll("path")//.append("path")//selectAll('path')
+        //vis.svg.select("g").selectAll("path").remove()
+
+        // vis.line_group = vis.svg.append("g")
+        //         .attr("fill","none")
+        //         .attr("stroke","white")
+        //         .attr("stroke-width", 5)
+        //         .attr("stroke-linejoin", "round")
+        //         .attr("stroke-linecap", "round")
+        //         .selectAll("path")
+        //     .data(vis.newData.series)
+        //     .join("path")
+        //
+        // vis.line_group
+        //     .style("mix-blend-mode", "multiply")
+        //     .attr("d", d => vis.line(d.values))
+
+        vis.line_group = vis.svg.selectAll(".rockets")
             .data(vis.newData.series)
-            .join("path")
-                .style("mix-blend-mode", "multiply")
-                .attr("d", d => vis.line(d.values))
-                //.attr("stroke", (d,i) => vis.color(i))
+
+        vis.line_group.exit().remove()
+
+        vis.line_group.enter().insert("g", ".focus").append("path")
+            .attr("class","lines rockets")
+            .attr("fill", "none")
+            .attr("stroke-width", 3)
+            .merge(vis.line_group)
+        .transition().duration(1000)
+            .style("mix-blend-mode", "multiply")
+            .attr("d", d => vis.line(d.values))
+            .attr("stroke", d => {
+                if (vis.selectedCountry === "default") {
+                    return vis.color(d.country)
+                }else {
+                    return vis.color(d.company)
+                }});
+
+        // vis.lines = vis.svg.selectAll("linesGroup")
+        //     .data(vis.newData.series)
+        //
+        // vis.linesGroup = vis.lines
+        //     .enter()
+        //     .append("g")
+        //     .attr("class", (d,i) => 'linesGroup')
+        //     .merge(vis.lines)
+        //     .attr("d", d => vis.line(d.values))
+
+        //vis.line_group
+            //.join("path")
+              //  .style("mix-blend-mode", "multiply")
+                //.attr("d", d => vis.line(d.values))
+
 
         vis.yAxis_Pointer.call(vis.yAxis);
 
-        vis.hover()
+        //vis.hover()
 
-    }
-
-    onSelectionChange(selectionStart, selectionEnd) {
-        let vis = this;
-
-
-        vis.wrangleData();
     }
 
     hover() {
