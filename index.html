@@ -329,21 +329,38 @@
 				</div>
 			</div>
 			<div class="row main-body">
-				<div class="col one-col">
+				<div class="col">
 					<div class="row" style="height: 5vh; padding-top: 5pt">
-						<select id='countrySelector' class="custom-select" style="width: 10%" onchange="countryChange()">
-							<option value="default" selected>Default (all)</option>
-							<option value="USA">U.S.A.</option>
-							<option value="China">China.</option>
-							<option value="Russia">Russia</option>
-							<option value="Japan">Japan</option>
-							<option value="Israel">Israel</option>
-							<option value="New Zealand">New Zealand</option>
-						</select>
-					</div>
-					<div class="row justify-content-center center-center">
-						<div class="align-self-center vis-holder">
-							<div id="launches-vis"></div>
+						<div class="col-3" style="height: 15vh; padding-left: 20pt; padding-top: 1vh;" >
+							<div class="row" style="height: 5vh; padding-top: 5pt">
+								<select id='countrySelector' class="custom-select" style="width: 75%" onchange="countryChange()">
+									<option value="default" selected>Default (all)</option>
+									<option value="USA">U.S.A.</option>
+									<option value="China">China.</option>
+									<option value="Russia">Russia</option>
+									<option value="Japan">Japan</option>
+									<option value="Israel">Israel</option>
+									<option value="New Zealand">New Zealand</option>
+									<option value="Iran">Iran</option>
+									<option value="France">France</option>
+									<option value="India">India</option>
+									<option value="Mexico">Mexico</option>
+									<option value="Brazil">Brazil</option>
+								</select>
+							</div>
+							<div class="row" style="height: 50vh; padding-top: 5pt">
+								<div id="FlightLegend-vis">
+								</div>
+							</div>
+							<div class ="row" style="height:40vh; padding-top: 10pt; text-align: left;">
+								<div id = "FlightText">
+								</div>
+							</div>
+						</div>
+						<div class="col-9" style="padding-top: 1vh;">
+							<div class="align-self-center vis-holder">
+								<div id="launches-vis"></div>
+							</div>
 						</div>
 					</div>
 				</div>

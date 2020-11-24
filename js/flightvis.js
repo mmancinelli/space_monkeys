@@ -7,8 +7,9 @@
 class FlightVis {
 
 
-    constructor(_parentElement, _data) {
+    constructor(_parentElement,_legendElement, _data) {
         this.parentElement = _parentElement;
+        this.legendElement = _legendElement;
         this.data = _data[0];
 
         this.data.forEach(d => d.date = new Date(d.Datum));
@@ -25,12 +26,21 @@ class FlightVis {
         vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
         vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
 
+        vis.marginLegend = {top: 0, right: 0, bottom: 100, left: 0};
+        vis.widthLegend = $("#" + vis.legendElement).width() - vis.marginLegend.left - vis.marginLegend.right;
+        vis.heightLegend = $("#" + vis.legendElement).height() - vis.marginLegend.top - vis.marginLegend.bottom;
+
         vis.svg = d3.select("#" + vis.parentElement).append("svg")
             .attr("width", vis.width + vis.margin.left + vis.margin.right)
             .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
             .append("g")
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")")
             .style("overflow", "visible");
+
+        vis.svg2 = d3.select("#" + vis.legendElement).append("svg")
+            .attr("width", vis.widthLegend + vis.marginLegend.left + vis.marginLegend.right)
+            .attr("height", vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom)
+            .append('g')
 
         vis.svg.append("g")
             .attr("fill", "none")
@@ -67,13 +77,20 @@ class FlightVis {
             .attr("transform", "translate(0," + (vis.height) + ")")
             .call(vis.xAxis.tickFormat(d3.format("d")))
 
+
         vis.yAxis_Pointer = vis.svg.append("g")
             .attr("class", "axis y-axis");
 
         // Save master data
         vis.master = vis.data;
         vis.myCountries = ["USA", "China", "Russia", "Japan", "Israel", "New Zealand", "Iran", "France", "India", "Mexico", "Kazakhstan", "North Korea", "Brazil", "Kenya", "Australia"]
-        console.log(vis.master)
+        //console.log(vis.master)
+
+        // create legend item
+        vis.legend = vis.svg2.append("g")
+            .attr("class", "FlightLegend")
+
+        vis.legendData = [];
 
         // (Filter, aggregate, modify data)
         vis.wrangleData();
@@ -131,6 +148,34 @@ class FlightVis {
             vis.data = vis.dataCountry
             vis.databyCompany = Array.from(d3.group(this.data, d =>d.CompanyName), ([key, value]) => ({key, value}))
             vis.legendData=["Rocket Lab"];
+            vis.color.domain(vis.legendData)
+        }else if (vis.selectedCountry === "Iran") {
+            vis.dataCountry = vis.master.filter(function (country) {return country.Country === "Iran";});
+            vis.data = vis.dataCountry
+            vis.databyCompany = Array.from(d3.group(this.data, d =>d.CompanyName), ([key, value]) => ({key, value}))
+            vis.legendData=["ISA"];
+            vis.color.domain(vis.legendData)
+        }else if (vis.selectedCountry === "France") {
+            vis.dataCountry = vis.master.filter(function (country) {return country.Country === "France";});
+            vis.data = vis.dataCountry
+            vis.databyCompany = Array.from(d3.group(this.data, d =>d.CompanyName), ([key, value]) => ({key, value}))
+            vis.legendData=["ISRO","ULA","MITT"];
+            vis.color.domain(vis.legendData)
+        }else if (vis.selectedCountry === "Mexico") {
+            vis.dataCountry = vis.master.filter(function (country) {
+                return country.Country === "Mexico";
+            });
+            vis.data = vis.dataCountry
+            vis.databyCompany = Array.from(d3.group(this.data, d => d.CompanyName), ([key, value]) => ({key, value}))
+            vis.legendData = ["Exos"];
+            vis.color.domain(vis.legendData)
+        }else if (vis.selectedCountry === "Brazil") {
+            vis.dataCountry = vis.master.filter(function (country) {
+                return country.Country === "Brazil";
+            });
+            vis.data = vis.dataCountry
+            vis.databyCompany = Array.from(d3.group(this.data, d => d.CompanyName), ([key, value]) => ({key, value}))
+            vis.legendData = ["AEB"];
             vis.color.domain(vis.legendData)
         }
 
@@ -198,9 +243,9 @@ class FlightVis {
 
         //console.log(vis.series2)
 
-        console.log(vis.newData);
+        //console.log(vis.newData);
 
-        console.log(vis.filteredData)
+        //console.log(vis.filteredData)
         //console.log(vis.dataByRocketCat)
 
         // Update the visualization
@@ -268,7 +313,7 @@ class FlightVis {
             .attr("stroke-width", 3)
             .merge(vis.line_group)
         .transition().duration(1000)
-            .style("mix-blend-mode", "multiply")
+            //.style("mix-blend-mode", "multiply")
             .attr("d", d => vis.line(d.values))
             .attr("stroke", d => {
                 if (vis.selectedCountry === "default") {
@@ -276,6 +321,61 @@ class FlightVis {
                 }else {
                     return vis.color(d.company)
                 }});
+
+        vis.line_group.style("mix-blend-mode", "multiply")
+
+        vis.legendSquares = vis.legend
+            .attr("class", "legendSquares")
+            .selectAll(".legendSquare")
+            .data(vis.legendData);
+
+        vis.legendLabels = vis.legend
+            .attr("class", "legendLabels")
+            .selectAll(".legendLabel")
+            .data(vis.legendData);
+
+        vis.body = d3.select("#legendText")
+
+        var size = 20;
+
+        vis.legendSquares
+            .enter()
+            .append("rect")
+            .attr("class", "legendSquare")
+            .merge(vis.legendSquares)
+            .attr("x", 20)
+            .attr("y", function (d, i) {
+                return 100 + i * (size + 5)
+            }) // 100 is where the first dot appears. 25 is the distance between dots
+            .attr("width", size)
+            .attr("height", size)
+            .style("fill", function (d) {
+                return vis.color(d)
+            });
+
+        vis.legendLabels
+            .enter()
+            .append("text")
+            .attr("class", "legendLabel")
+            .merge(vis.legendLabels)
+            .attr("x", 60)
+            .attr("y", function (d, i) {
+                return 100 + i * (size + 5) + (size / 2)
+            })
+            .style("fill", function (d) {
+                return vis.color(d)
+            })
+            .text(d => d);
+
+        //remove the current text box if there is one
+        vis.body.selectAll("p").remove();
+
+        // add new text info
+        //vis.body.append("p").text(vis.legendText[0])
+
+        // update legend stuffs
+        vis.legendSquares.exit().remove();
+        vis.legendLabels.exit().remove();
 
         // vis.lines = vis.svg.selectAll("linesGroup")
         //     .data(vis.newData.series)
@@ -307,11 +407,11 @@ class FlightVis {
             .style("-webkit-tap-highlight-color", "transparent")
             .on("touchmove", moved)
             .on("touchstart", entered)
-            .on("touchend", left)
+            //.on("touchend", left)
         else vis.svg
             .on("mousemove", moved)
             .on("mouseenter", entered)
-            .on("mouseleave", left);
+            //.on("mouseleave", left);
 
         const dot = vis.svg.append("g")
             .attr("display", "none");
@@ -332,8 +432,11 @@ class FlightVis {
             const xm = vis.xScale.invert(pointer[0]);
             const ym = vis.yScale.invert(pointer[1]);
             const i = d3.bisectCenter(vis.newData.dates, xm);
+            //console.log(xm)
+            //console.log(ym)
+            //console.log(i)
             const s = d3.least(vis.newData.series, d => Math.abs(d.values[i] - ym));
-            vis.line_group.attr("stroke", d => d === s ? null : "#0e59a7").filter(d => d === s).raise();
+            //vis.line_group.attr("stroke", d => d === s ? null : "#ecf1f5").filter(d => d === s).raise();
             dot.attr("transform", `translate(${vis.xScale(vis.newData.dates[i])},${vis.yScale(s.values[i])})`);
             dot.select("text").text([s.name,s.country]);
         }

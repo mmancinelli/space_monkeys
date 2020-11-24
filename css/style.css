@@ -227,6 +227,12 @@ p {
     stroke: white;
 }
 
+#FlightLegend-vis, #FlightText {
+    height: 100%;
+    width:  100%;
+}
+
+
 
 /*what are the ones below for? Can't remember, should delete? */
 .pathGroup path {
