@@ -159,7 +159,7 @@ class FlightVis {
             vis.dataCountry = vis.master.filter(function (country) {return country.Country === "France";});
             vis.data = vis.dataCountry
             vis.databyCompany = Array.from(d3.group(this.data, d =>d.CompanyName), ([key, value]) => ({key, value}))
-            vis.legendData=["ISRO","ULA","MITT"];
+            vis.legendData=["Arianespace","Rocket Lab","VKS RF","Kosmotras","Boeing","AEB","ASI","Arm'e de l'Air"];
             vis.color.domain(vis.legendData)
         }else if (vis.selectedCountry === "Mexico") {
             vis.dataCountry = vis.master.filter(function (country) {
@@ -395,7 +395,8 @@ class FlightVis {
 
         vis.yAxis_Pointer.call(vis.yAxis);
 
-        //vis.hover()
+        vis.hover()
+        //vis.mouseflight()
 
     }
 
@@ -407,21 +408,21 @@ class FlightVis {
             .style("-webkit-tap-highlight-color", "transparent")
             .on("touchmove", moved)
             .on("touchstart", entered)
-            //.on("touchend", left)
+            .on("touchend", left)
         else vis.svg
             .on("mousemove", moved)
             .on("mouseenter", entered)
-            //.on("mouseleave", left);
+            .on("mouseleave", left);
 
         const dot = vis.svg.append("g")
             .attr("display", "none");
 
         dot.append("circle")
-            .attr("r", 2.5);
+            .attr("r", 5);
 
         dot.append("text")
             .attr("font-family", "sans-serif")
-            .attr("font-size", 10)
+            .attr("font-size", 16)
             .attr("text-anchor", "middle")
             .attr("y", -8);
 
@@ -437,19 +438,143 @@ class FlightVis {
             //console.log(i)
             const s = d3.least(vis.newData.series, d => Math.abs(d.values[i] - ym));
             //vis.line_group.attr("stroke", d => d === s ? null : "#ecf1f5").filter(d => d === s).raise();
+            //vis.line_group.attr("stroke","#ecf1f5")
+            vis.line_group.attr("stroke", d => {
+                    if (d === s) {
+                        return "#ecf1f5"
+                    }else {
+                        return "#184264"
+                    }}).filter(d => d === s).raise();
             dot.attr("transform", `translate(${vis.xScale(vis.newData.dates[i])},${vis.yScale(s.values[i])})`);
-            dot.select("text").text([s.name,s.country]);
+            dot.select("text").text([s.name,s.company,ym.toFixed(0)]);
         }
 
         function entered() {
-            vis.line_group.style("mix-blend-mode", null).attr("stroke", "#0e59a7");
+            //vis.line_group.style("mix-blend-mode", null).attr("stroke", "#0e59a7");
+            vis.line_group.attr("stroke","#ecf1f5")
             dot.attr("display", null);
         }
 
         function left() {
-            vis.line_group.style("mix-blend-mode", "multiply").attr("stroke", null);
+            //vis.line_group.style("mix-blend-mode", "multiply").attr("stroke", null);
+            //vis.line_group.attr("stroke","#ecf1f5")
+            vis.line_group.attr("stroke", d => {
+                if (vis.selectedCountry === "default") {
+                    return vis.color(d.country)
+                }else {
+                    return vis.color(d.company)
+                }});
             dot.attr("display", "none");
         }
     }
+
+    mouseflight(){
+            let vis = this;
+
+            vis.mouseG = vis.svg.append("g")
+                .attr("class", "mouse-over-effects");
+
+            vis.mouseG.append("path") // this is the black vertical line to follow mouse
+                .attr("class", "mouse-line")
+                .style("stroke", "black")
+                .style("stroke-width", "1px")
+                .style("opacity", "0");
+
+            vis.lines = document.getElementsByClassName("lines rockets");
+            //console.log(vis.lines)
+
+            vis.mousePerLine = vis.mouseG.selectAll('.mouse-per-line')
+                .data(vis.newData.series)
+                .enter()
+                .append("g")
+                .attr("class", "mouse-per-line");
+
+            vis.mousePerLine.append("circle")
+                .attr("r", 7)
+                .style("stroke", d => {
+                    if (vis.selectedCountry === "default") {
+                        return vis.color(d.country)
+                    }else {
+                        return vis.color(d.company)
+                    }})
+                .style("fill", "none")
+                .style("stroke-width", "1px")
+                .style("opacity", "0");
+
+           vis.mousePerLine.append("text")
+                .attr("transform", "translate(10,3)");
+
+            vis.mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
+                .attr('width', vis.width) // can't catch mouse events on a g element
+                .attr('height', vis.height)
+                .attr('fill', 'none')
+                .attr('pointer-events', 'all')
+                .on('mouseout', function() { // on mouse out hide line, circles and text
+                    d3.select(".mouse-line")
+                        .style("opacity", "0");
+                    d3.selectAll(".mouse-per-line circle")
+                        .style("opacity", "0");
+                    d3.selectAll(".mouse-per-line text")
+                        .style("opacity", "0");
+                })
+                .on('mouseover', function() { // on mouse in show line, circles and text
+                    d3.select(".mouse-line")
+                        .style("opacity", "1");
+                    d3.selectAll(".mouse-per-line circle")
+                        .style("opacity", "1");
+                    d3.selectAll(".mouse-per-line text")
+                        .style("opacity", "1");
+                })
+                .on('mousemove', function() { // mouse moving over canvas
+                    vis.mouse = d3.pointer(event, this);
+                    //console.log(vis.mouse[0])
+                    d3.select(".mouse-line")
+                        .attr("d", function() {
+                            var d = "M" + vis.mouse[0] + "," + vis.height;
+                            d += " " + vis.mouse[0] + "," + 0;
+                            return d;
+                        });
+
+                    d3.selectAll(".mouse-per-line")
+                        .attr("transform", function(d, i) {
+                            //console.log(vis.width/vis.mouse[0])
+                            var xDate = vis.xScale.invert(vis.mouse[0]);
+                            //console.log(xDate)
+                            //var bisect = d3.bisector(function(d) { return d.date; }).right;
+                            var idx = d3.bisectCenter(vis.newData.dates, xDate)
+                            //console.log(idx);
+                            //var idx = bisect(d.values, xDate);
+
+                            var beginning = 0,
+                                end = vis.lines[i].getTotalLength(),
+                                target = null;
+
+                            while (true){
+                                target = Math.floor((beginning + end) / 2);
+                                vis.pos = vis.lines[i].getPointAtLength(target);
+                                if ((target === end || target === beginning) && vis.pos.x !== vis.mouse[0]) {
+                                    break;
+                                }
+                                if (vis.pos.x > vis.mouse[0])      end = target;
+                                else if (vis.pos.x < vis.mouse[0]) beginning = target;
+                                else break; //position found
+                            }
+                            const pointer = d3.pointer(event, this);
+                            //console.log(pointer)
+                            const xm = vis.xScale.invert(pointer[0]);
+                            const ym = vis.yScale.invert(pointer[1]);
+                            const ii = d3.bisectCenter(vis.newData.dates, xm);
+                            const s = d3.least(vis.newData.series, d => Math.abs(d.values[ii] - ym));
+
+                            console.log(vis.pos.y)
+
+                            d3.select(this).select('text')
+                                .text(vis.yScale.invert(vis.pos.y).toFixed(2));
+                                //.text([s.name,s.company]);
+
+                            return "translate(" + vis.mouse[0] + "," + vis.pos.y +")";
+                        });
+                });
+        }
 
 }
