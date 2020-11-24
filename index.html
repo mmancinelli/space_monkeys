@@ -268,7 +268,7 @@
 								</div>
 							</div>
 							<div class="carousel-item">
-								<img class="img-fluid" src="images/hubble.jpeg" alt="Hubble Space Telescope"">
+								<img class="img-fluid" src="images/hubble.jpeg" alt="Hubble Space Telescope">
 								<div class="carousel-caption d-none d-md-block">
 									<h2>Exploration Age: Hubble</h2>
 									<h3 class="rocket-stats">1990 to present</h3>
@@ -325,14 +325,42 @@
 		<div class="container-fluid">
 			<div class="row justify-content-center header">
 				<div class="align-self-center">
-					<h3 class="network-title">The most storied are the Delta II (USA) and the Cosmos (Russia).</h3>
+					<h3 class="network-title">Cosmos and the Molniya rockets from Russia have the most cumulative flights. </h3>
 				</div>
 			</div>
 			<div class="row main-body">
-				<div class="col one-col">
-					<div class="row justify-content-center center-center">
-						<div class="align-self-center vis-holder">
-							<div id="launches-vis"></div>
+				<div class="col">
+					<div class="row" style="height: 5vh; padding-top: 5pt">
+						<div class="col-3" style="height: 15vh; padding-left: 20pt; padding-top: 1vh;" >
+							<div class="row" style="height: 5vh; padding-top: 5pt">
+								<select id='countrySelector' class="custom-select" style="width: 75%" onchange="countryChange()">
+									<option value="default" selected>Default (all)</option>
+									<option value="USA">U.S.A.</option>
+									<option value="China">China.</option>
+									<option value="Russia">Russia</option>
+									<option value="Japan">Japan</option>
+									<option value="Israel">Israel</option>
+									<option value="New Zealand">New Zealand</option>
+									<option value="Iran">Iran</option>
+									<option value="France">France</option>
+									<option value="India">India</option>
+									<option value="Mexico">Mexico</option>
+									<option value="Brazil">Brazil</option>
+								</select>
+							</div>
+							<div class="row" style="height: 50vh; padding-top: 5pt">
+								<div id="FlightLegend-vis">
+								</div>
+							</div>
+							<div class ="row" style="height:40vh; padding-top: 10pt; text-align: left;">
+								<div id = "FlightText">
+								</div>
+							</div>
+						</div>
+						<div class="col-9" style="padding-top: 1vh;">
+							<div class="align-self-center vis-holder">
+								<div id="launches-vis"></div>
+							</div>
 						</div>
 					</div>
 				</div>
