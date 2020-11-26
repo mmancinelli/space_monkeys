@@ -122,7 +122,8 @@ class NetworkVis {
             ["Russia, China, and the USA make up a soid two-thirds of the space launch industry to-date, but the other third is filled with a bunch of nations ever-reaching to the stars."],
             ["Launching rockets into space is, actually, rocket science. That is to say, mistakes will be made."],
             ["The choosing the right color scale here was tricky, because most of the rockets are launched 150 times or less....than then there's Russia with 580+ launches of some rockets."],
-            ["Rockets, like fashion, come and go. Here is an overview of the rockets listed as active in the dataset."]]
+            ["Rockets, like fashion, come and go. Here is an overview of the rockets listed as active in the dataset."],
+            ["The current rocket industry."]]
 
         // give everything a default color
         vis.rootData.descendants().forEach((d, i) => {
@@ -132,6 +133,15 @@ class NetworkVis {
         // update color based on selection category
         if (vis.selectedCategory == "default") {
             vis.legendStatus = false;
+            vis.legendData = [0,1,2,3];
+            vis.color = d3.scaleOrdinal()
+                .range(["white","#00ffd4","#06b4ff","#2526c1"])
+                .domain(vis.legendData)
+
+            vis.rootData.descendants().forEach((d,i)=>{
+                d.color= vis.color(d.height)
+            })
+            vis.legendText = vis.legendTextAll[4];
         } else if (vis.selectedCategory == "status") {
             vis.legendStatus = true;
 
@@ -235,7 +245,7 @@ class NetworkVis {
             vis.legendStatus = true;
 
             // yes, I had to go through and determine where the quantiles were split. By hand.
-            vis.legendData = ([2, 5, 18,19 ])
+            vis.legendData = ([0,5,98,199,200 ])
             // quantiles are 1-2,3-18, 19-
 
             // choosing the right scale for this was the hardest, because most rockets launched <100 times
@@ -252,9 +262,9 @@ class NetworkVis {
             //     .range(["white", "yellow", "orange", "red"])
             //     .domain([0, 600])
             // console.log(totalLaunches)
-            vis.color = d3.scaleQuantile()
-                .domain(totalLaunches)
-                .range(["white", "#FFCD06", "#ff7e08", "#BE1013"])
+            vis.color = d3.scaleThreshold()
+                .domain([5,9,100,200])
+                .range(["white", "#FFCD06", "#ff7e08", "#BE1013", "black"])
 
             // vis.color = d3.scaleQuantize()
             //     .domain([0,1777])
@@ -344,13 +354,15 @@ class NetworkVis {
                     .attr('stroke', 'black')
                     .attr('fill', 'white');
                 let yplacement = 0;
+                let xplacement = 0;
                 if (event.pageY > 620) {
-                    yplacement = event.pageY - 250;
+                    yplacement = event.pageY - 350;
+                    xplacement = event.pageX - 50;
                 } else {
-                    yplacement = event.pageY;
+                    yplacement = event.pageY+10;
                 }
 
-                let xplacement = 0;
+                // let xplacement = 0;
                 if (event.pageX > 1000) {
                     xplacement = event.pageX - 320;
                 } else {
@@ -525,15 +537,18 @@ class NetworkVis {
                             return "Retired"
                         }
                     } else if (vis.selectedCategory == "total") {
+                        // vis.legendData = ([0,5,98,199,200 ])
                         // console.log(d)
-                        if (d === 2) {
-                            return "0-2"
+                        if (d === 0) {
+                            return "0-4"
                         } else if (d === 5) {
-                            return "3-5"
-                        } else if (d==18){
-                            return "6-18"
+                            return "5-9"
+                        } else if (d==98){
+                            return "10-99"
+                        } else if (d==199){
+                            return "100-199"
                         } else {
-                            return "19-588"
+                            return "200+"
                         }
 
                     }
@@ -574,6 +589,17 @@ class NetworkVis {
             .selectAll(".networkCircleLabel")
             .data(vis.rootData.descendants());
 
+        // removed magic numbers of d.y in positioning of labels, since it changes with window size apparently
+        //
+        let secondY;
+        vis.rootData.descendants().forEach((d,i)=>{
+            if (d.height == 1){
+                secondY = d.y
+            }
+        })
+        secondY+=10
+        // console.log(secondY)
+
         // toggle labels
         // TODO Get labels on right side of tree to rotate
         if ($(`#labelToggle`).val() == "ON") {
@@ -590,8 +616,8 @@ class NetworkVis {
                 translate(${d.y},0)
                 rotate(${d.x > 1.6 ? 180 : 0})
                 rotate(${(d.x > Math.PI & d.x < 180) ? (180, 0, 180) : 0})
-                translate(${(d.x > Math.PI & d.x < 180 & d.y > 270) ? 12 : 0})
-                translate(${(d.x > Math.PI & d.x < 180 & d.y < 270) ? -12 : 0})
+                translate(${(d.x > Math.PI & d.x < 180 & d.y > secondY) ? 12 : 0})
+                translate(${(d.x > Math.PI & d.x < 180 & d.y < secondY) ? -12 : 0})
               `)
                 // first rotate spreads the texts around the circle of the tree, with the angle matching the angle of the circle the label is attached to
                 // translate pushes the labels from the center out to the correct distance from the center of the tree
@@ -604,9 +630,9 @@ class NetworkVis {
                 // depending on if they are on the right side or the left side of the circle, and if they are on an inner ring or the outer one - text anchor them at the start or end
                 .attr("text-anchor", d => {
                     if (d.x > Math.PI & d.x < 180) {
-                        if (d.y > 270) {
+                        if (d.y > secondY) {
                             return "start"
-                        } else if (d.y < 270) {
+                        } else if (d.y < secondY) {
                             return "end"
                         }
                     } else if (d.x >= 180) {
