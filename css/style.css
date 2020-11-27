@@ -143,6 +143,10 @@ p {
     color: black;
 }
 
+.networkLegendText{
+    color: white;
+}
+
 /* Map Vis CSS */
 .circle {
     stroke: #d61111;

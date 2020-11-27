@@ -46,6 +46,8 @@ function loadData() {
                 d.Country = "France"
             }else if (d.CompanyName =="ULA"){
                 d.CompanyName = "Boeing"
+            } else if (d.Country == "Kazakhstan"){
+                d.Country = "Russia"
             }
         })
 
@@ -225,7 +227,7 @@ function summarizeData(data){
         })
     })
 
-    // console.log(totalLaunches)
+    console.log(d3.sum(totalLaunches))
     // console.log(d3.max(totalLaunches, d=>d))
     return rocketdata;
 

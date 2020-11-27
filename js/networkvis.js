@@ -102,6 +102,7 @@ class NetworkVis {
 
         vis.myCountries = ["USA", "China", "Russia", "Japan", "Israel", "New Zealand", "Iran", "France", "India", "Mexico", "Kazakhstan", "North Korea", "Brazil", "Kenya", "Australia"]
 
+        vis.firstLegend = true;
 
         // (Filter, aggregate, modify data)
         vis.wrangleData();
@@ -115,15 +116,15 @@ class NetworkVis {
     wrangleData() {
         let vis = this;
         vis.selectedCategory = selectedCategory;
-        vis.legendStatus = false; // controls whether the legend is drawn or not
+        vis.legendStatus = true; // controls whether the legend is drawn or not
 
         // create the text blurbs and assign as needed in if statement
         vis.legendTextAll=[
-            ["Russia, China, and the USA make up a soid two-thirds of the space launch industry to-date, but the other third is filled with a bunch of nations ever-reaching to the stars."],
-            ["Launching rockets into space is, actually, rocket science. That is to say, mistakes will be made."],
-            ["The choosing the right color scale here was tricky, because most of the rockets are launched 150 times or less....than then there's Russia with 580+ launches of some rockets."],
-            ["Rockets, like fashion, come and go. Here is an overview of the rockets listed as active in the dataset."],
-            ["The current rocket industry."]]
+            ["The top 9 countries with rocket-launching capabilities are USA, China, Russia, Japan, France (ESA), India, Israel, Iran, and North Korea. Russia, China, and the USA make up a solid two-thirds of the space launch industry to-date, but more countries have launched experimental rockets, like Kenya. "],
+            ["Launching rockets into space is, actually, rocket science. That is to say, mistakes will be made. The most "],
+            ["Choosing the best color scale here was tricky, because most of the rockets are launched 100 times or less....AND then there's Russia crushing it with 200-588 launches for some of its rockets. In comparison, the most-launched shuttle for the US is the Space Shuttle at 135 times."],
+            ["Rockets, like fashion, come and go. The rockets that are currently active and being launched today, according to the dataset, are highlight in green."],
+            ["This is what the space industry looks like today. 14 countries, 59 companies, 167 rocket types, and 4324 launches. "]]
 
         // give everything a default color
         vis.rootData.descendants().forEach((d, i) => {
@@ -132,7 +133,7 @@ class NetworkVis {
 
         // update color based on selection category
         if (vis.selectedCategory == "default") {
-            vis.legendStatus = false;
+            vis.legendStatus = true;
             vis.legendData = [0,1,2,3];
             vis.color = d3.scaleOrdinal()
                 .range(["white","#00ffd4","#06b4ff","#2526c1"])
@@ -142,7 +143,11 @@ class NetworkVis {
                 d.color= vis.color(d.height)
             })
             vis.legendText = vis.legendTextAll[4];
-        } else if (vis.selectedCategory == "status") {
+            console.log(vis.rootData)
+            // vis.rootData = vis.rootData.data.sort((a, b) => d3.ascending(a.height, b.height) || d3.ascending(a.data.name, b.data.name));
+
+        }
+        else if (vis.selectedCategory == "status") {
             vis.legendStatus = true;
 
             // vis.legendData, vis.color, and vis.legendText are all standardized across the if statement and used when drawing the legend
@@ -174,6 +179,8 @@ class NetworkVis {
             // cycle through the data
             // for the countries and companies, check to see if they are listed as true in the propagation arrays
             // if so, also set the color for those as 'active'
+            let comp = 0;
+            let rock = 0;
             vis.rootData.descendants().forEach((d, i) => {
                 // console.log(d)
                 if (d.height == 2) {
@@ -182,18 +189,23 @@ class NetworkVis {
                         d.color = vis.color(vis.legendData[0])
                     }
                 } else if (d.height == 1) {
+                    comp++
                     let thisCompany = d.data.name;
                     if (companyStatus[thisCompany] == true) {
                         d.color = vis.color(vis.legendData[0])
                     }
+                } else if (d.height == 0){
+                    rock++
                 }
                 vis.rootData.descendants()[0].color = vis.color(vis.legendData[0]);
             })
+            console.log(comp, rock)
 
             // add some text
              vis.legendText = vis.legendTextAll[3]
 
-        } else if (vis.selectedCategory == "country") {
+        }
+        else if (vis.selectedCategory == "country") {
             vis.legendStatus = true;
 
             vis.legendData = vis.myCountries
@@ -221,7 +233,8 @@ class NetworkVis {
             vis.legendText = vis.legendTextAll[0]
 
 
-        } else if (vis.selectedCategory == "success") {
+        }
+        else if (vis.selectedCategory == "success") {
             vis.legendStatus = true;
 
             vis.legendData = ([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
@@ -241,7 +254,8 @@ class NetworkVis {
             vis.legendText = vis.legendTextAll[1]
 
 
-        } else if (vis.selectedCategory == "total") {
+        }
+        else if (vis.selectedCategory == "total") {
             vis.legendStatus = true;
 
             // yes, I had to go through and determine where the quantiles were split. By hand.
@@ -250,29 +264,9 @@ class NetworkVis {
 
             // choosing the right scale for this was the hardest, because most rockets launched <100 times
             // and then there's Russia.
-            // using the quantile scale showed the most diversity, but masks just how outrageously higher Russia is than everyone else.
-
-            // vis.color = d3.scaleSequential()
-            //     .domain([0, 600])
-            //     .range(["white", "red"])
-            // vis.color = d3.scaleSequential()
-            //     .interpolator(d3.interpolateReds)
-            //     .domain([0,600])
-            // vis.color = d3.scaleOrdinal()
-            //     .range(["white", "yellow", "orange", "red"])
-            //     .domain([0, 600])
-            // console.log(totalLaunches)
             vis.color = d3.scaleThreshold()
                 .domain([5,9,100,200])
-                .range(["white", "#FFCD06", "#ff7e08", "#BE1013", "black"])
-
-            // vis.color = d3.scaleQuantize()
-            //     .domain([0,1777])
-            //     .range(["fff","FFCD06", "#BE1013"])
-            // console.log(vis.color(3))
-            // console.log(vis.color(4))
-            // console.log(vis.color(5))
-            //     .range(["fff","FFCD06","#E45323", "#BE1013", "black"])
+                .range(["white", "#ffd013", "#ff5800", "#BE1013", "#9e0cfd"])
 
             vis.rootData.descendants().forEach((d, i) => {
                 // console.log(d)
@@ -283,7 +277,8 @@ class NetworkVis {
             vis.legendText = vis.legendTextAll[2]
 
 
-        } else {
+        }
+        else {
             vis.legendStatus = false;
             console.log(vis.legendStatus);
 
@@ -494,7 +489,8 @@ class NetworkVis {
             .data(vis.legendData);
 
         // grab the legend text element to update the text box
-        vis.body = d3.select("#legendText")
+        vis.body = d3.select("#legendText").data(vis.legendText).attr("class", "networkLegendText")
+        // vis.body.selectAll("p").remove();
 
         //toggle legend
         if (vis.legendStatus == true) {
@@ -551,6 +547,19 @@ class NetworkVis {
                             return "200+"
                         }
 
+                    }else if (vis.selectedCategory == "default") {
+                        // vis.legendData = ([0,5,98,199,200 ])
+                        // console.log(d)
+                        if (d === 3) {
+                            return "Rocket Industry"
+                        } else if (d === 2) {
+                            return "Country"
+                        } else if (d===1){
+                            return "Company"
+                        } else if (d==0){
+                            return "Rocket Type"
+                        }
+
                     }
                     else {
                         return d
@@ -560,22 +569,31 @@ class NetworkVis {
                 .style("alignment-baseline", "middle");
 
             //remove the current text box if there is one
-            vis.body.selectAll("p").remove();
+
 
             // add new text info
-            vis.body.append("p").text(vis.legendText[0])
+
+
+
+
+            vis.body.enter().append("p").merge(vis.body).text(vis.legendText[0])
 
             // update legend stuffs
             vis.legendSquares.exit().remove();
             vis.legendLabels.exit().remove();
+            vis.body.exit().remove()
 
-        } else if (vis.legendStatus == false) {
-            // if legend is off, remove all the stuff and wipe the slate clean
-            vis.legendLabels.remove();
-            vis.legendSquares.remove();
-            vis.body.selectAll("p").remove();
 
         }
+        // else if (vis.firstLegend == true) {
+        //     vis.firstLegend = false;
+        //     // if legend is off, remove all the stuff and wipe the slate clean
+        //     vis.body.append("p").text(vis.legendText[0])
+        //     // vis.legendLabels.remove();
+        //     // vis.legendSquares.remove();
+        //     // vis.body.selectAll("p").remove();
+        //
+        // }
 
 
         // create label objects
