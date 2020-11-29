@@ -63,6 +63,14 @@ h2 {
     font-style: italic;
 }
 
+.carousel-caption>h2 {
+    font-size: 2em;
+}
+
+.carousel-caption>h3 {
+    font-size: 1em;
+}
+
 h3 {
     font-size: 1.5em;
     font-family: arial,helvetica;
