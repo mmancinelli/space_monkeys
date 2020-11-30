@@ -188,14 +188,16 @@ class NetworkVis {
 
             vis.legendData = vis.myCountries
 
-            // tell you what though
-            // choosing the right colors for this was a pain. It had to be both visible against the dark sky
-            // and also differentiable from it's direct neighbor. And pretty.
-            // it's like this class. ["juggle the dozens of balls and do well", "get sleep", "have time to work on literally anything else"] : choose 2.
-            vis.rootData.descendants()[0].color = "#fff"
-            vis.color = d3.scaleOrdinal()
-                .range(["#0e3860", "#7431c4", "#9f0797", "#640345", "#800000", "#ee6666", "#ec7805", "#d49953", "#ffeb04", "#8eac07", "#364e05", "#0b3701", "#08e2b0", "#2f96e7", "#3559e0"])
-                .domain(vis.legendData)
+            // // tell you what though
+            // // choosing the right colors for this was a pain. It had to be both visible against the dark sky
+            // // and also differentiable from it's direct neighbor. And pretty.
+            // // it's like this class. ["juggle the dozens of balls and do well", "get sleep", "have time to work on literally anything else"] : choose 2.
+            // vis.rootData.descendants()[0].color = "#fff"
+            // vis.color = d3.scaleOrdinal()
+            //     .range(["#0e3860", "#7431c4", "#9f0797", "#640345", "#800000", "#ee6666", "#ec7805", "#d49953", "#ffeb04", "#8eac07", "#364e05", "#0b3701", "#08e2b0", "#2f96e7", "#3559e0"])
+            //     .domain(vis.legendData)
+
+            vis.color = countryColorScale;
 
             vis.rootData.children.forEach((d, i) => {
                 let myCountry = d.data.name;
