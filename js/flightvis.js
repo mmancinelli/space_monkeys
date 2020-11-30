@@ -114,8 +114,8 @@ class FlightVis {
 
         if (vis.selectedCountry === "default") {
             vis.data=vis.master;
-            vis.legendData=vis.myCountries;
-            vis.color.domain(vis.legendData)
+            vis.legendData = vis.myCountries;
+            vis.color = countryColorScale;
         }else if (vis.selectedCountry === "USA") {
             vis.dataCountry = vis.master.filter(function (country) {return country.Country === "USA";});
             vis.data = vis.dataCountry

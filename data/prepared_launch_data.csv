@@ -460,7 +460,7 @@ VarName1,Unnamed0,CompanyName,Location,Datum,Detail,StatusRocket,Rocket,StatusMi
 458,458,MHI,"LA-Y1, Tanegashima Space Center, Japan","Wed Feb 17, 2016 08:45 UTC","H-IIA 202 | Astro H, Horyu 4 & Kinshachi 2 and 3",StatusActive,90,Success,Japan,35.5,139.75,H-IIA 202,"Astro H, Horyu 4 & Kinshachi 2 and 3",H-II
 459,459,Eurockot,"Site 133/3, Plesetsk Cosmodrome, Russia","Tue Feb 16, 2016 17:57 UTC",Rokot/Briz KM | Sentinel-3A,StatusRetired,41.8,Success,Russia,60,100,Rokot/Briz KM,Sentinel-3A,Rokot/Briz K
 460,460,ULA,"SLC-6, Vandenberg AFB, California, USA","Wed Feb 10, 2016 11:40 UTC","Delta IV Medium+ (5,2) | NROL-45",StatusRetired,NaN,Success,California,37.25,-119.75,"Delta IV Medium+ (5,2)",NROL-45,Delta IV
-461,461,KCST,"Pad 1, Sohae Satellite Launching Station, North Korea","Sun Feb 07, 2016 00:30 UTC",Unha-3 | Kwangmyngsng-4,StatusActive,NaN,Success,Korea,36.5,127.75,Unha-3,Kwangmyngsng-4,Unha
+461,461,KCST,"Pad 1, Sohae Satellite Launching Station, North Korea","Sun Feb 07, 2016 00:30 UTC",Unha-3 | Kwangmyngsng-4,StatusActive,NaN,Success,North Korea,41,127.51,Unha-3,Kwangmyngsng-4,Unha
 462,462,VKS RF,"Site 43/4, Plesetsk Cosmodrome, Russia","Sun Feb 07, 2016 00:21 UTC",Soyuz 2.1b/Fregat | GLONASS-M No.50S,StatusActive,48.5,Success,Russia,60,100,Soyuz 2.1b/Fregat,GLONASS-M No.50S,Soyuz 2.1
 463,463,ULA,"SLC-41, Cape Canaveral AFS, Florida, USA","Fri Feb 05, 2016 13:38 UTC",Atlas V 401 | GPS IIF-12,StatusActive,109,Success,Florida,28.75,-82.5,Atlas V 401,GPS IIF-12,Atlas V
 464,464,CASC,"LC-2, Xichang Satellite Launch Center, China","Mon Feb 01, 2016 07:29 UTC",Long March 3C/YZ-1 | BeiDou M3-S,StatusActive,NaN,Success,China,35,105,Long March 3C/YZ-1,BeiDou M3-S,Long March 3
@@ -618,11 +618,11 @@ VarName1,Unnamed0,CompanyName,Location,Datum,Detail,StatusRocket,Rocket,StatusMi
 616,616,Arianespace,"ELA-3, Guiana Space Centre, French Guiana, France","Thu Feb 07, 2013 21:36 UTC","Ariane 5 ECA | Amazonas-3, Azerspace-1 (Africasat-1A)",StatusActive,200,Success,France,46,2,Ariane 5 ECA,"Amazonas-3, Azerspace-1 (Africasat-1A)",Ariane 5
 617,617,Sea Launch,"LP Odyssey, Kiritimati Launch Area, Pacific Ocean","Fri Feb 01, 2013 06:55 UTC",Zenit-3 SL | Intelsat-27,StatusActive,NaN,Failure,Ocean,0,0,Zenit-3 SL,Intelsat-27,Zenit
 618,618,ULA,"SLC-41, Cape Canaveral AFS, Florida, USA","Thu Jan 31, 2013 01:48 UTC",Atlas V 401 | TDRS-K,StatusActive,109,Success,Florida,28.75,-82.5,Atlas V 401,TDRS-K,Atlas V
-619,619,KARI,"LC-1, Naro Space Center, South Korea","Wed Jan 30, 2013 07:00 UTC",Naro-1 | STSAT-2C,StatusRetired,NaN,Success,Korea,36.5,127.75,Naro-1,STSAT-2C,Naro-1
+619,619,KARI,"LC-1, Naro Space Center, South Korea","Wed Jan 30, 2013 07:00 UTC",Naro-1 | STSAT-2C,StatusRetired,NaN,Success,South Korea,35.5,127.77,Naro-1,STSAT-2C,Naro-1
 620,620,MHI,"LA-Y1, Tanegashima Space Center, Japan","Sun Jan 27, 2013 04:40 UTC",H-IIA 202 | IGS-Optical 5V & IGS-Radar 4,StatusActive,90,Success,Japan,35.5,139.75,H-IIA 202,IGS-Optical 5V & IGS-Radar 4,H-II
 621,621,VKS RF,"Site 133/3, Plesetsk Cosmodrome, Russia","Tue Jan 15, 2013 16:24 UTC",Rokot/Briz KM | Cosmos 2482 to 2484,StatusRetired,41.8,Partial Failure,Russia,60,100,Rokot/Briz KM,Cosmos 2482 to 2484,Rokot/Briz K
 622,622,Arianespace,"ELA-3, Guiana Space Centre, French Guiana, France","Wed Dec 19, 2012 21:49 UTC","Ariane 5 ECA | Skynet 5D, Mexsat-3",StatusActive,200,Success,France,46,2,Ariane 5 ECA,"Skynet 5D, Mexsat-3",Ariane 5
-623,623,KCST,"Pad 1, Sohae Satellite Launching Station, North Korea","Wed Dec 12, 2012 00:49 UTC",Unha-3 | Kwangmyngsng-3 (Unit 2),StatusActive,NaN,Success,Korea,36.5,127.75,Unha-3,Kwangmyngsng-3 (Unit 2),Unha
+623,623,KCST,"Pad 1, Sohae Satellite Launching Station, North Korea","Wed Dec 12, 2012 00:49 UTC",Unha-3 | Kwangmyngsng-3 (Unit 2),StatusActive,NaN,Success,North Korea,41,127.51,Unha-3,Kwangmyngsng-3 (Unit 2),Unha
 624,624,ULA,"SLC-41, Cape Canaveral AFS, Florida, USA","Tue Dec 11, 2012 18:03 UTC",Atlas V 501 | OTV-3,StatusActive,120,Success,Florida,28.75,-82.5,Atlas V 501,OTV-3,Atlas V
 625,625,Sea Launch,"LP Odyssey, Kiritimati Launch Area, Pacific Ocean","Mon Dec 03, 2012 20:43 UTC",Zenit-3 SL | Eutelsat-70B,StatusActive,NaN,Success,Ocean,0,0,Zenit-3 SL,Eutelsat-70B,Zenit
 626,626,Arianespace,"ELS, Guiana Space Centre, French Guiana, France","Sun Dec 02, 2012 02:02 UTC",Soyuz ST-A/Fregat | Pl??iades 1B,StatusActive,80,Success,France,46,2,Soyuz ST-A/Fregat,Pl??iades 1B,Soyuz ST
@@ -652,7 +652,7 @@ VarName1,Unnamed0,CompanyName,Location,Datum,Detail,StatusRocket,Rocket,StatusMi
 650,650,ULA,"SLC-41, Cape Canaveral AFS, Florida, USA","Fri May 04, 2012 18:42 UTC",Atlas V 531 | AEHF-2,StatusActive,140,Success,Florida,28.75,-82.5,Atlas V 531,AEHF-2,Atlas V
 651,651,ISRO,"First Launch Pad, Satish Dhawan Space Centre, India","Thu Apr 26, 2012 00:17 UTC",PSLV-XL | RISAT-1,StatusActive,31,Success,India,22,79,PSLV-XL,RISAT-1,PSLV
 652,652,ISRO,"First Launch Pad, Satish Dhawan Space Centre, India","Thu Apr 26, 2012",PSLV-XL | PSLV- C19 RISAT-1,StatusActive,31,Success,India,22,79,PSLV-XL,PSLV- C19 RISAT-1,PSLV
-653,653,KCST,"Pad 1, Sohae Satellite Launching Station, North Korea","Thu Apr 12, 2012 22:38 UTC",Unha-3 | Kwangmyngsng-3,StatusActive,NaN,Failure,Korea,36.5,127.75,Unha-3,Kwangmyngsng-3,Unha
+653,653,KCST,"Pad 1, Sohae Satellite Launching Station, North Korea","Thu Apr 12, 2012 22:38 UTC",Unha-3 | Kwangmyngsng-3,StatusActive,NaN,Failure,North Korea,41,127.51,Unha-3,Kwangmyngsng-3,Unha
 654,654,ULA,"SLC-6, Vandenberg AFB, California, USA","Tue Apr 03, 2012 23:12 UTC","Delta IV Medium+ (5,2) | NROL-25",StatusRetired,NaN,Success,California,37.25,-119.75,"Delta IV Medium+ (5,2)",NROL-25,Delta IV
 655,655,Arianespace,"ELA-3, Guiana Space Centre, French Guiana, France","Fri Mar 23, 2012 04:34 UTC",Ariane 5 ES | Edoardo Amaldi ATV,StatusRetired,NaN,Success,France,46,2,Ariane 5 ES,Edoardo Amaldi ATV,Ariane 5
 656,656,ULA,"SLC-41, Cape Canaveral AFS, Florida, USA","Fri Feb 24, 2012 22:15 UTC",Atlas V 551 | MUOS-1,StatusActive,153,Success,Florida,28.75,-82.5,Atlas V 551,MUOS-1,Atlas V
@@ -720,7 +720,7 @@ VarName1,Unnamed0,CompanyName,Location,Datum,Detail,StatusRocket,Rocket,StatusMi
 718,718,IAI,"Pad 1, Palmachim Airbase, Israel","Tue Jun 22, 2010",Shavit-2 | Ofek-9,StatusActive,NaN,Success,Israel,31,34.9,Shavit-2,Ofek-9,Shavit
 719,719,Kosmotras,"Site 109/95, Baikonur Cosmodrome, Kazakhstan","Mon Jun 21, 2010 02:14 UTC",Dnepr | TanDEM-X,StatusRetired,29,Success,Kazakhstan,48,68,Dnepr,TanDEM-X,Dnepr
 720,720,Kosmotras,"Site 370/13, Yasny Cosmodrome, Russia","Tue Jun 15, 2010 14:42 UTC",Dnepr | Picard & Others,StatusRetired,29,Success,Russia,60,100,Dnepr,Picard & Others,Dnepr
-721,721,KARI,"LC-1, Naro Space Center, South Korea","Thu Jun 10, 2010 08:01 UTC",Naro-1 | STSAT-2B,StatusRetired,NaN,Failure,Korea,36.5,127.75,Naro-1,STSAT-2B,Naro-1
+721,721,KARI,"LC-1, Naro Space Center, South Korea","Thu Jun 10, 2010 08:01 UTC",Naro-1 | STSAT-2B,StatusRetired,NaN,Failure,South Korea,35.5,127.77,Naro-1,STSAT-2B,Naro-1
 722,722,SpaceX,"SLC-40, Cape Canaveral AFS, Florida, USA","Fri Jun 04, 2010 18:45 UTC",Falcon 9 v1.0 | Flight 1,StatusRetired,59.5,Success,Florida,28.75,-82.5,Falcon 9 v1.0,Flight 1,Falcon 9
 723,723,Eurockot,"Site 133/3, Plesetsk Cosmodrome, Russia","Wed Jun 02, 2010 01:59 UTC",Rokot/Briz KM | SERVIS-2,StatusRetired,41.8,Success,Russia,60,100,Rokot/Briz KM,SERVIS-2,Rokot/Briz K
 724,724,ULA,"SLC-37B, Cape Canaveral AFS, Florida, USA","Fri May 28, 2010 03:00 UTC","Delta IV Medium+ (4,2) | GPS IIF-1",StatusRetired,164,Success,Florida,28.75,-82.5,"Delta IV Medium+ (4,2)",GPS IIF-1,Delta IV
@@ -756,7 +756,7 @@ VarName1,Unnamed0,CompanyName,Location,Datum,Detail,StatusRocket,Rocket,StatusMi
 754,754,MHI,"LA-Y2, Tanegashima Space Center, Japan","Thu Sep 10, 2009 17:01 UTC",H-IIB | HTV-1,StatusRetired,112.5,Success,Japan,35.5,139.75,H-IIB,HTV-1,H-II
 755,755,ULA,"SLC-41, Cape Canaveral AFS, Florida, USA","Tue Sep 08, 2009 21:35 UTC",Atlas V 401 | PAN,StatusActive,109,Success,Florida,28.75,-82.5,Atlas V 401,PAN,Atlas V
 756,756,NASA,"LC-39A, Kennedy Space Center, Florida, USA","Fri Aug 28, 2009 03:59 UTC",Space Shuttle Discovery | STS-128,StatusRetired,450,Success,Florida,28.75,-82.5,Space Shuttle Discovery,STS-128,Space Shuttle
-757,757,KARI,"LC-1, Naro Space Center, South Korea","Tue Aug 25, 2009 08:00 UTC",Naro-1 | STSAT-2A,StatusRetired,NaN,Failure,Korea,36.5,127.75,Naro-1,STSAT-2A,Naro-1
+757,757,KARI,"LC-1, Naro Space Center, South Korea","Tue Aug 25, 2009 08:00 UTC",Naro-1 | STSAT-2A,StatusRetired,NaN,Failure,South Korea,35.5,127.77,Naro-1,STSAT-2A,Naro-1
 758,758,Arianespace,"ELA-3, Guiana Space Centre, French Guiana, France","Fri Aug 21, 2009 22:09 UTC",Ariane 5 ECA | JCSAT-12 & Optus D3,StatusActive,200,Success,France,46,2,Ariane 5 ECA,JCSAT-12 & Optus D3,Ariane 5
 759,759,ULA,"SLC-17A, Cape Canaveral AFS, Florida, USA","Mon Aug 17, 2009 10:35 UTC",Delta II 7925 | GPS IIRM-8,StatusRetired,NaN,Success,Florida,28.75,-82.5,Delta II 7925,GPS IIRM-8,Delta II
 760,760,Kosmotras,"Site 109/95, Baikonur Cosmodrome, Kazakhstan","Wed Jul 29, 2009 18:46 UTC",Dnepr | DubaiSat 1 & Others,StatusRetired,29,Success,Kazakhstan,48,68,Dnepr,DubaiSat 1 & Others,Dnepr
@@ -774,7 +774,7 @@ VarName1,Unnamed0,CompanyName,Location,Datum,Detail,StatusRocket,Rocket,StatusMi
 772,772,ULA,"SLC-2W, Vandenberg AFB, California, USA","Tue May 05, 2009 20:24 UTC",Delta II 7920-10C | STSS-ATRR,StatusRetired,NaN,Success,California,37.25,-119.75,Delta II 7920-10C,STSS-ATRR,Delta II
 773,773,Sea Launch,"LP Odyssey, Kiritimati Launch Area, Pacific Ocean","Mon Apr 20, 2009 08:15 UTC",Zenit-3 SL | Sicral-1B,StatusActive,NaN,Success,Ocean,0,0,Zenit-3 SL,Sicral-1B,Zenit
 774,774,ISRO,"Second Launch Pad, Satish Dhawan Space Centre, India","Mon Apr 20, 2009 01:15 UTC",PSLV-CA | RISAT-2 & ANUSAT,StatusActive,21,Success,India,22,79,PSLV-CA,RISAT-2 & ANUSAT,PSLV
-775,775,KCST,"Pad 1, Tonghae Satellite Launching Ground, North Korea","Sun Apr 05, 2009 02:20 UTC",Unha-2 | Kwangmyngsng-2,StatusRetired,NaN,Failure,Korea,36.5,127.75,Unha-2,Kwangmyngsng-2,Unha
+775,775,KCST,"Pad 1, Tonghae Satellite Launching Ground, North Korea","Sun Apr 05, 2009 02:20 UTC",Unha-2 | Kwangmyngsng-2,StatusRetired,NaN,Failure,North Korea,41,127.51,Unha-2,Kwangmyngsng-2,Unha
 776,776,ULA,"SLC-41, Cape Canaveral AFS, Florida, USA","Sat Apr 04, 2009 00:31 UTC",Atlas V 421 | WGS-2,StatusActive,123,Success,Florida,28.75,-82.5,Atlas V 421,WGS-2,Atlas V
 777,777,ULA,"SLC-17A, Cape Canaveral AFS, Florida, USA","Tue Mar 24, 2009 08:34 UTC",Delta II 7925 | GPS IIRM-7,StatusRetired,NaN,Success,Florida,28.75,-82.5,Delta II 7925,GPS IIRM-7,Delta II
 778,778,Eurockot,"Site 133/3, Plesetsk Cosmodrome, Russia","Tue Mar 17, 2009 14:21 UTC",Rokot/Briz KM | GOCE,StatusRetired,41.8,Success,Russia,60,100,Rokot/Briz KM,GOCE,Rokot/Briz K
@@ -1293,7 +1293,7 @@ VarName1,Unnamed0,CompanyName,Location,Datum,Detail,StatusRocket,Rocket,StatusMi
 1291,1291,Arianespace,"ELA-2, Guiana Space Centre, French Guiana, France","Wed Sep 16, 1998 06:31 UTC",Ariane 44LP | Panamsat-7,StatusRetired,NaN,Success,France,46,2,Ariane 44LP,Panamsat-7,Ariane 4
 1292,1292,VKS RF,"Site 45/1, Baikonur Cosmodrome, Kazakhstan","Wed Sep 09, 1998 20:29 UTC",Zenit-2 | Globalstar Satellites,StatusRetired,NaN,Failure,Kazakhstan,48,68,Zenit-2,Globalstar Satellites,Zenit
 1293,1293,Boeing,"SLC-2W, Vandenberg AFB, California, USA","Tue Sep 08, 1998 21:13 UTC",Delta II 7920-10C | MS-10,StatusRetired,NaN,Success,California,37.25,-119.75,Delta II 7920-10C,MS-10,Delta II
-1294,1294,KCST,"Pad 1, Tonghae Satellite Launching Ground, North Korea","Mon Aug 31, 1998 03:07 UTC",Taepodong-1 | Kwangmyngsng 1,StatusRetired,NaN,Failure,Korea,36.5,127.75,Taepodong-1,Kwangmyngsng 1,Taepodong-1
+1294,1294,KCST,"Pad 1, Tonghae Satellite Launching Ground, North Korea","Mon Aug 31, 1998 03:07 UTC",Taepodong-1 | Kwangmyngsng 1,StatusRetired,NaN,Failure,North Korea,41,127.51,Taepodong-1,Kwangmyngsng 1,Taepodong-1
 1295,1295,Boeing,"SLC-17B, Cape Canaveral AFS, Florida, USA","Thu Aug 27, 1998 01:17 UTC",Delta III 8930 | Galaxy 10,StatusRetired,NaN,Failure,Florida,28.75,-82.5,Delta III 8930,Galaxy 10,Delta II
 1296,1296,Arianespace,"ELA-2, Guiana Space Centre, French Guiana, France","Tue Aug 25, 1998 23:07 UTC",Ariane 44P | ST-1,StatusRetired,NaN,Success,France,46,2,Ariane 44P,ST-1,Ariane 4
 1297,1297,Boeing,"SLC-2W, Vandenberg AFB, California, USA","Mon Aug 24, 1998 12:08 UTC",Delta II 7920-10C | Deep Space 1,StatusRetired,NaN,Success,California,37.25,-119.75,Delta II 7920-10C,Deep Space 1,Delta II
