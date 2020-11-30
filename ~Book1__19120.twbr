@@ -1,0 +1,1425 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20203.20.0918.1727                               -->
+<workbook source-build='2020.3.1 (20203.20.0918.1727)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
+    <MapboxVectorStylesAndLayers />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='prepared_launch_data' inline='true' name='federated.0bzf1ht1qjrj2q13an5v00ut4y0n' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='prepared_launch_data' name='textscan.1r5ez0n0u3jxqz1c0th4n1a3i41z'>
+            <connection class='textscan' directory='C:/Users/Zane/Documents/School/Classes/Harvard/CS_171_Data_Vis/Final_Project/space_monkeys/data' filename='prepared_launch_data.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='textscan.1r5ez0n0u3jxqz1c0th4n1a3i41z' name='prepared_launch_data.csv' table='[prepared_launch_data#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='integer' name='VarName1' ordinal='0' />
+            <column datatype='integer' name='Unnamed0' ordinal='1' />
+            <column datatype='string' name='CompanyName' ordinal='2' />
+            <column datatype='string' name='Location' ordinal='3' />
+            <column datatype='string' name='Datum' ordinal='4' />
+            <column datatype='string' name='Detail' ordinal='5' />
+            <column datatype='string' name='StatusRocket' ordinal='6' />
+            <column datatype='string' name='Rocket' ordinal='7' />
+            <column datatype='string' name='StatusMission' ordinal='8' />
+            <column datatype='string' name='Country' ordinal='9' />
+            <column datatype='real' name='lat' ordinal='10' />
+            <column datatype='real' name='lon' ordinal='11' />
+            <column datatype='string' name='Rocket_Fullname' ordinal='12' />
+            <column datatype='string' name='Payload_Fullname' ordinal='13' />
+            <column datatype='string' name='Rocket_Category' ordinal='14' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='textscan.1r5ez0n0u3jxqz1c0th4n1a3i41z' name='prepared_launch_data.csv' table='[prepared_launch_data#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='integer' name='VarName1' ordinal='0' />
+            <column datatype='integer' name='Unnamed0' ordinal='1' />
+            <column datatype='string' name='CompanyName' ordinal='2' />
+            <column datatype='string' name='Location' ordinal='3' />
+            <column datatype='string' name='Datum' ordinal='4' />
+            <column datatype='string' name='Detail' ordinal='5' />
+            <column datatype='string' name='StatusRocket' ordinal='6' />
+            <column datatype='string' name='Rocket' ordinal='7' />
+            <column datatype='string' name='StatusMission' ordinal='8' />
+            <column datatype='string' name='Country' ordinal='9' />
+            <column datatype='real' name='lat' ordinal='10' />
+            <column datatype='real' name='lon' ordinal='11' />
+            <column datatype='string' name='Rocket_Fullname' ordinal='12' />
+            <column datatype='string' name='Payload_Fullname' ordinal='13' />
+            <column datatype='string' name='Rocket_Category' ordinal='14' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[prepared_launch_data.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>VarName1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[VarName1]</local-name>
+            <parent-name>[prepared_launch_data.csv]</parent-name>
+            <remote-alias>VarName1</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Unnamed0</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Unnamed0]</local-name>
+            <parent-name>[prepared_launch_data.csv]</parent-name>
+            <remote-alias>Unnamed0</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>CompanyName</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[CompanyName]</local-name>
+            <parent-name>[prepared_launch_data.csv]</parent-name>
+            <remote-alias>CompanyName</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Location</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Location]</local-name>
+            <parent-name>[prepared_launch_data.csv]</parent-name>
+            <remote-alias>Location</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Datum</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Datum]</local-name>
+            <parent-name>[prepared_launch_data.csv]</parent-name>
+            <remote-alias>Datum</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Detail</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Detail]</local-name>
+            <parent-name>[prepared_launch_data.csv]</parent-name>
+            <remote-alias>Detail</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>StatusRocket</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[StatusRocket]</local-name>
+            <parent-name>[prepared_launch_data.csv]</parent-name>
+            <remote-alias>StatusRocket</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Rocket</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Rocket]</local-name>
+            <parent-name>[prepared_launch_data.csv]</parent-name>
+            <remote-alias>Rocket</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>StatusMission</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[StatusMission]</local-name>
+            <parent-name>[prepared_launch_data.csv]</parent-name>
+            <remote-alias>StatusMission</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Country</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Country]</local-name>
+            <parent-name>[prepared_launch_data.csv]</parent-name>
+            <remote-alias>Country</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>lat</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[lat]</local-name>
+            <parent-name>[prepared_launch_data.csv]</parent-name>
+            <remote-alias>lat</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>lon</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[lon]</local-name>
+            <parent-name>[prepared_launch_data.csv]</parent-name>
+            <remote-alias>lon</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Rocket_Fullname</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Rocket_Fullname]</local-name>
+            <parent-name>[prepared_launch_data.csv]</parent-name>
+            <remote-alias>Rocket_Fullname</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Payload_Fullname</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Payload_Fullname]</local-name>
+            <parent-name>[prepared_launch_data.csv]</parent-name>
+            <remote-alias>Payload_Fullname</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Rocket_Category</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Rocket_Category]</local-name>
+            <parent-name>[prepared_launch_data.csv]</parent-name>
+            <remote-alias>Rocket_Category</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Calculation2' datatype='integer' name='[Calculation_1345450439870418948]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNT([__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C])' />
+      </column>
+      <column caption='Date2' datatype='datetime' name='[Calculation_3088624965978243073]' role='dimension' type='quantitative'>
+        <calculation class='tableau' formula='DATEPARSE(&apos;EEE MMM dd, YYYY hh:mm zzz&apos;, [Datum])' />
+      </column>
+      <column caption='Calculation1' datatype='date' datatype-customized='true' name='[Calculation_3088624965980426242]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='DATE(DATEPARSE ( &quot;yyyy&quot;, DATENAME(&apos;year&apos;, [Calculation_3088624965978243073]) )) ' />
+      </column>
+      <column caption='Company Name' datatype='string' name='[CompanyName]' role='dimension' type='nominal' />
+      <column datatype='string' name='[Country (group)]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal'>
+        <calculation class='categorical-bin' column='[Country]' new-bin='true'>
+          <bin default-name='false' value='&quot;USA&quot;'>
+            <value>&quot;California&quot;</value>
+            <value>&quot;Florida&quot;</value>
+            <value>&quot;USA&quot;</value>
+          </bin>
+        </calculation>
+      </column>
+      <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column caption='Payload Fullname' datatype='string' name='[Payload_Fullname]' role='dimension' type='nominal' />
+      <column caption='Rocket Category' datatype='string' name='[Rocket_Category]' role='dimension' type='nominal' />
+      <column caption='Rocket Fullname' datatype='string' name='[Rocket_Fullname]' role='dimension' type='nominal' />
+      <column caption='Status Mission' datatype='string' name='[StatusMission]' role='dimension' type='nominal' />
+      <column caption='Status Rocket' datatype='string' name='[StatusRocket]' role='dimension' type='nominal' />
+      <_.fcp.ObjectModelTableType.true...column caption='prepared_launch_data.csv' datatype='table' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+      <column aggregation='Avg' caption='Lat' datatype='real' name='[lat]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+      <column aggregation='Avg' caption='Lon' datatype='real' name='[lon]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[Country (group)]' type='palette'>
+            <map to='#499894'>
+              <bucket>&quot;Israel&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Australia&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Facility&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Korea&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Japan&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;France&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;USA&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Brazil&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Sea&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;India&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Mexico&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;New Zealand&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Ocean&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Site&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Zealand&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Kazakhstan&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Iran&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Canaria&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Russia&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Kenya&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;China&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <field-sort-info field-sort-order-type='custom-order'>
+        <field-sort-custom-order field='VarName1' />
+        <field-sort-custom-order field='Unnamed0' />
+        <field-sort-custom-order field='CompanyName' />
+        <field-sort-custom-order field='Location' />
+        <field-sort-custom-order field='Datum' />
+        <field-sort-custom-order field='Calculation_3088624965978243073' />
+        <field-sort-custom-order field='Calculation_3088624965980426242' />
+        <field-sort-custom-order field='Detail' />
+        <field-sort-custom-order field='StatusRocket' />
+        <field-sort-custom-order field='Rocket' />
+        <field-sort-custom-order field='StatusMission' />
+        <field-sort-custom-order field='Country' />
+        <field-sort-custom-order field='lat' />
+        <field-sort-custom-order field='lon' />
+        <field-sort-custom-order field='Rocket_Fullname' />
+        <field-sort-custom-order field='Payload_Fullname' />
+        <field-sort-custom-order field='Rocket_Category' />
+      </field-sort-info>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='prepared_launch_data.csv' id='prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C'>
+            <properties context=''>
+              <relation connection='textscan.1r5ez0n0u3jxqz1c0th4n1a3i41z' name='prepared_launch_data.csv' table='[prepared_launch_data#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='integer' name='VarName1' ordinal='0' />
+                  <column datatype='integer' name='Unnamed0' ordinal='1' />
+                  <column datatype='string' name='CompanyName' ordinal='2' />
+                  <column datatype='string' name='Location' ordinal='3' />
+                  <column datatype='string' name='Datum' ordinal='4' />
+                  <column datatype='string' name='Detail' ordinal='5' />
+                  <column datatype='string' name='StatusRocket' ordinal='6' />
+                  <column datatype='string' name='Rocket' ordinal='7' />
+                  <column datatype='string' name='StatusMission' ordinal='8' />
+                  <column datatype='string' name='Country' ordinal='9' />
+                  <column datatype='real' name='lat' ordinal='10' />
+                  <column datatype='real' name='lon' ordinal='11' />
+                  <column datatype='string' name='Rocket_Fullname' ordinal='12' />
+                  <column datatype='string' name='Payload_Fullname' ordinal='13' />
+                  <column datatype='string' name='Rocket_Category' ordinal='14' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <mapsources>
+    <mapsource name='Tableau' />
+  </mapsources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='prepared_launch_data' name='federated.0bzf1ht1qjrj2q13an5v00ut4y0n' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0bzf1ht1qjrj2q13an5v00ut4y0n'>
+            <column caption='Date2' datatype='datetime' name='[Calculation_3088624965978243073]' role='dimension' type='quantitative'>
+              <calculation class='tableau' formula='DATEPARSE(&apos;EEE MMM dd, YYYY hh:mm zzz&apos;, [Datum])' />
+            </column>
+            <column caption='Calculation1' datatype='date' datatype-customized='true' name='[Calculation_3088624965980426242]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATE(DATEPARSE ( &quot;yyyy&quot;, DATENAME(&apos;year&apos;, [Calculation_3088624965978243073]) )) ' />
+            </column>
+            <column datatype='string' name='[Country (group)]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal'>
+              <calculation class='categorical-bin' column='[Country]' new-bin='true'>
+                <bin default-name='false' value='&quot;USA&quot;'>
+                  <value>&quot;California&quot;</value>
+                  <value>&quot;Florida&quot;</value>
+                  <value>&quot;USA&quot;</value>
+                </bin>
+              </calculation>
+            </column>
+            <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column datatype='string' name='[Datum]' role='dimension' type='nominal' />
+            <_.fcp.ObjectModelTableType.false...column caption='prepared_launch_data.csv' datatype='integer' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column-instance column='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk]' pivot='key' type='quantitative' />
+            <_.fcp.ObjectModelTableType.true...column caption='prepared_launch_data.csv' datatype='table' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_3088624965980426242]' derivation='None' name='[none:Calculation_3088624965980426242:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Country]' derivation='None' name='[none:Country:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:Country:nk]'>
+            <groupfilter from='&quot;Australia&quot;' function='range' level='[none:Country:nk]' to='&quot;Zealand&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:Country:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[Country (group)]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[__tableau_internal_object_id__].[cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk]</rows>
+        <cols>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:Calculation_3088624965980426242:ok]</cols>
+      </table>
+      <simple-id uuid='{B5CA4664-5FFA-4F6D-B850-BA8F3BEBBCC2}' />
+    </worksheet>
+    <worksheet name='Sheet 10'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='prepared_launch_data' name='federated.0bzf1ht1qjrj2q13an5v00ut4y0n' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0bzf1ht1qjrj2q13an5v00ut4y0n'>
+            <column caption='Date2' datatype='datetime' name='[Calculation_3088624965978243073]' role='dimension' type='quantitative'>
+              <calculation class='tableau' formula='DATEPARSE(&apos;EEE MMM dd, YYYY hh:mm zzz&apos;, [Datum])' />
+            </column>
+            <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column datatype='string' name='[Datum]' role='dimension' type='nominal' />
+            <_.fcp.ObjectModelTableType.false...column caption='prepared_launch_data.csv' datatype='integer' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column-instance column='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk]' pivot='key' type='quantitative' />
+            <_.fcp.ObjectModelTableType.true...column caption='prepared_launch_data.csv' datatype='table' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column-instance column='[Country]' derivation='None' name='[none:Country:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_3088624965978243073]' derivation='Year-Trunc' name='[tyr:Calculation_3088624965978243073:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[tyr:Calculation_3088624965978243073:ok]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[__tableau_internal_object_id__].[cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk]' shelf='columns' />
+          </shelf-sorts>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Shape' />
+            <encodings>
+              <color column='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:Country:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.60000002384185791' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[__tableau_internal_object_id__].[cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk]</rows>
+        <cols>([federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:Country:nk] / [federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[tyr:Calculation_3088624965978243073:ok])</cols>
+      </table>
+      <simple-id uuid='{6522B15D-8A68-471D-89F0-19B5B4633D1A}' />
+    </worksheet>
+    <worksheet name='Sheet 11'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='prepared_launch_data' name='federated.0bzf1ht1qjrj2q13an5v00ut4y0n' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0bzf1ht1qjrj2q13an5v00ut4y0n'>
+            <column caption='Date2' datatype='datetime' name='[Calculation_3088624965978243073]' role='dimension' type='quantitative'>
+              <calculation class='tableau' formula='DATEPARSE(&apos;EEE MMM dd, YYYY hh:mm zzz&apos;, [Datum])' />
+            </column>
+            <column caption='Company Name' datatype='string' name='[CompanyName]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Country (group)]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal'>
+              <calculation class='categorical-bin' column='[Country]' new-bin='true'>
+                <bin default-name='false' value='&quot;USA&quot;'>
+                  <value>&quot;California&quot;</value>
+                  <value>&quot;Florida&quot;</value>
+                  <value>&quot;USA&quot;</value>
+                </bin>
+              </calculation>
+            </column>
+            <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column datatype='string' name='[Datum]' role='dimension' type='nominal' />
+            <_.fcp.ObjectModelTableType.false...column caption='prepared_launch_data.csv' datatype='integer' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column-instance column='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk]' pivot='key' type='quantitative' />
+            <_.fcp.ObjectModelTableType.true...column caption='prepared_launch_data.csv' datatype='table' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column-instance column='[CompanyName]' derivation='None' name='[none:CompanyName:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Country]' derivation='None' name='[none:Country:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_3088624965978243073]' derivation='Year-Trunc' name='[tyr:Calculation_3088624965978243073:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:CompanyName:nk]'>
+            <groupfilter from='&quot;AEB&quot;' function='range' level='[none:CompanyName:nk]' to='&quot;Yuzhmash&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:Country:nk]'>
+            <groupfilter from='&quot;Australia&quot;' function='range' level='[none:Country:nk]' to='&quot;USA&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:CompanyName:nk]</column>
+            <column>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:Country:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Area' />
+            <encodings>
+              <color column='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[Country (group)]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[__tableau_internal_object_id__].[cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk]</rows>
+        <cols>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[tyr:Calculation_3088624965978243073:qk]</cols>
+      </table>
+      <simple-id uuid='{949B1A67-499A-494B-9F69-C0A747D8D5B4}' />
+    </worksheet>
+    <worksheet name='Sheet 12'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='prepared_launch_data' name='federated.0bzf1ht1qjrj2q13an5v00ut4y0n' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0bzf1ht1qjrj2q13an5v00ut4y0n'>
+            <column caption='Date2' datatype='datetime' name='[Calculation_3088624965978243073]' role='dimension' type='quantitative'>
+              <calculation class='tableau' formula='DATEPARSE(&apos;EEE MMM dd, YYYY hh:mm zzz&apos;, [Datum])' />
+            </column>
+            <column caption='Company Name' datatype='string' name='[CompanyName]' role='dimension' type='nominal' />
+            <_.fcp.ObjectModelTableType.false...column caption='prepared_launch_data.csv' datatype='integer' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Datum]' role='dimension' type='nominal' />
+            <_.fcp.ObjectModelTableType.true...column caption='prepared_launch_data.csv' datatype='table' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column-instance column='[CompanyName]' derivation='None' name='[none:CompanyName:nk]' pivot='key' type='nominal' />
+            <column-instance column='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' derivation='Count' name='[pcto:cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk:3]' pivot='key' type='quantitative'>
+              <table-calc ordering-field='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[CompanyName]' ordering-type='Field' type='PctTotal' />
+            </column-instance>
+            <column-instance column='[Calculation_3088624965978243073]' derivation='Year-Trunc' name='[tyr:Calculation_3088624965978243073:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:CompanyName:nk]'>
+            <groupfilter from='&quot;AEB&quot;' function='range' level='[none:CompanyName:nk]' to='&quot;Yuzhmash&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:CompanyName:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Area' />
+            <encodings>
+              <color column='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:CompanyName:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[pcto:cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk:3]</rows>
+        <cols>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[tyr:Calculation_3088624965978243073:qk]</cols>
+      </table>
+      <simple-id uuid='{B8A71017-A668-465F-B5C5-EBC04390A377}' />
+    </worksheet>
+    <worksheet name='Sheet 13'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='prepared_launch_data' name='federated.0bzf1ht1qjrj2q13an5v00ut4y0n' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0bzf1ht1qjrj2q13an5v00ut4y0n'>
+            <column caption='Calculation2' datatype='integer' name='[Calculation_1345450439870418948]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNT([__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C])' />
+            </column>
+            <column caption='Date2' datatype='datetime' name='[Calculation_3088624965978243073]' role='dimension' type='quantitative'>
+              <calculation class='tableau' formula='DATEPARSE(&apos;EEE MMM dd, YYYY hh:mm zzz&apos;, [Datum])' />
+            </column>
+            <column datatype='string' name='[Country (group)]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal'>
+              <calculation class='categorical-bin' column='[Country]' new-bin='true'>
+                <bin default-name='false' value='&quot;USA&quot;'>
+                  <value>&quot;California&quot;</value>
+                  <value>&quot;Florida&quot;</value>
+                  <value>&quot;USA&quot;</value>
+                </bin>
+              </calculation>
+            </column>
+            <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <_.fcp.ObjectModelTableType.false...column caption='prepared_launch_data.csv' datatype='integer' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Datum]' role='dimension' type='nominal' />
+            <_.fcp.ObjectModelTableType.true...column caption='prepared_launch_data.csv' datatype='table' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_3088624965978243073]' derivation='Year-Trunc' name='[tyr:Calculation_3088624965978243073:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1345450439870418948]' derivation='User' name='[usr:Calculation_1345450439870418948:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[usr:Calculation_1345450439870418948:ok]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[usr:Calculation_1345450439870418948:ok]' shelf='rows' />
+          </shelf-sorts>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <encodings>
+              <color column='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[Country (group)]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[usr:Calculation_1345450439870418948:ok]</rows>
+        <cols>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[tyr:Calculation_3088624965978243073:qk]</cols>
+      </table>
+      <simple-id uuid='{A7A4C331-F26D-4EF3-8D8C-3A5754C61B5A}' />
+    </worksheet>
+    <worksheet name='Sheet 14'>
+      <table>
+        <view>
+          <datasources />
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{9EF8E3F8-F7C5-40DF-8614-DF9955B08808}' />
+    </worksheet>
+    <worksheet name='Sheet 2'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='prepared_launch_data' name='federated.0bzf1ht1qjrj2q13an5v00ut4y0n' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.0bzf1ht1qjrj2q13an5v00ut4y0n'>
+            <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <_.fcp.ObjectModelTableType.false...column caption='prepared_launch_data.csv' datatype='integer' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column-instance column='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk]' pivot='key' type='quantitative' />
+            <_.fcp.ObjectModelTableType.true...column caption='prepared_launch_data.csv' datatype='table' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column-instance column='[Country]' derivation='None' name='[none:Country:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[__tableau_internal_object_id__].[cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk]</rows>
+        <cols>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:Country:nk]</cols>
+      </table>
+      <simple-id uuid='{D0AFE5DC-EDDF-4C1C-B3F2-7946D05B0606}' />
+    </worksheet>
+    <worksheet name='Sheet 3'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='prepared_launch_data' name='federated.0bzf1ht1qjrj2q13an5v00ut4y0n' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0bzf1ht1qjrj2q13an5v00ut4y0n'>
+            <column caption='Date2' datatype='datetime' name='[Calculation_3088624965978243073]' role='dimension' type='quantitative'>
+              <calculation class='tableau' formula='DATEPARSE(&apos;EEE MMM dd, YYYY hh:mm zzz&apos;, [Datum])' />
+            </column>
+            <column caption='Calculation1' datatype='date' datatype-customized='true' name='[Calculation_3088624965980426242]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATE(DATEPARSE ( &quot;yyyy&quot;, DATENAME(&apos;year&apos;, [Calculation_3088624965978243073]) )) ' />
+            </column>
+            <column datatype='string' name='[Country (group)]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal'>
+              <calculation class='categorical-bin' column='[Country]' new-bin='true'>
+                <bin default-name='false' value='&quot;USA&quot;'>
+                  <value>&quot;California&quot;</value>
+                  <value>&quot;Florida&quot;</value>
+                  <value>&quot;USA&quot;</value>
+                </bin>
+              </calculation>
+            </column>
+            <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column datatype='string' name='[Datum]' role='dimension' type='nominal' />
+            <_.fcp.ObjectModelTableType.false...column caption='prepared_launch_data.csv' datatype='integer' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column-instance column='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk]' pivot='key' type='quantitative' />
+            <_.fcp.ObjectModelTableType.true...column caption='prepared_launch_data.csv' datatype='table' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_3088624965980426242]' derivation='Year' name='[yr:Calculation_3088624965980426242:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[Country (group)]'>
+            <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[Country (group)]' member='&quot;Russia&quot;' />
+              <groupfilter function='member' level='[Country (group)]' member='&quot;USA&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[Country (group)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[Country (group)]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[__tableau_internal_object_id__].[cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk]</rows>
+        <cols>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[yr:Calculation_3088624965980426242:ok]</cols>
+      </table>
+      <simple-id uuid='{6C9EEB0F-9EE7-4DE1-99C0-E417B468DE69}' />
+    </worksheet>
+    <worksheet name='Sheet 4'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='prepared_launch_data' name='federated.0bzf1ht1qjrj2q13an5v00ut4y0n' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0bzf1ht1qjrj2q13an5v00ut4y0n'>
+            <column caption='Date2' datatype='datetime' name='[Calculation_3088624965978243073]' role='dimension' type='quantitative'>
+              <calculation class='tableau' formula='DATEPARSE(&apos;EEE MMM dd, YYYY hh:mm zzz&apos;, [Datum])' />
+            </column>
+            <column caption='Calculation1' datatype='date' datatype-customized='true' name='[Calculation_3088624965980426242]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATE(DATEPARSE ( &quot;yyyy&quot;, DATENAME(&apos;year&apos;, [Calculation_3088624965978243073]) )) ' />
+            </column>
+            <column datatype='string' name='[Datum]' role='dimension' type='nominal' />
+            <column caption='Rocket Category' datatype='string' name='[Rocket_Category]' role='dimension' type='nominal' />
+            <_.fcp.ObjectModelTableType.false...column caption='prepared_launch_data.csv' datatype='integer' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column-instance column='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk]' pivot='key' type='quantitative' />
+            <_.fcp.ObjectModelTableType.true...column caption='prepared_launch_data.csv' datatype='table' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column-instance column='[Rocket_Category]' derivation='None' name='[none:Rocket_Category:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_3088624965980426242]' derivation='Year' name='[yr:Calculation_3088624965980426242:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:Rocket_Category:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[__tableau_internal_object_id__].[cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk]</rows>
+        <cols>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[yr:Calculation_3088624965980426242:ok]</cols>
+      </table>
+      <simple-id uuid='{40D70EC1-A107-4174-920D-396799506659}' />
+    </worksheet>
+    <worksheet name='Sheet 5'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='prepared_launch_data' name='federated.0bzf1ht1qjrj2q13an5v00ut4y0n' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0bzf1ht1qjrj2q13an5v00ut4y0n'>
+            <column caption='Date2' datatype='datetime' name='[Calculation_3088624965978243073]' role='dimension' type='quantitative'>
+              <calculation class='tableau' formula='DATEPARSE(&apos;EEE MMM dd, YYYY hh:mm zzz&apos;, [Datum])' />
+            </column>
+            <column caption='Calculation1' datatype='date' datatype-customized='true' name='[Calculation_3088624965980426242]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATE(DATEPARSE ( &quot;yyyy&quot;, DATENAME(&apos;year&apos;, [Calculation_3088624965978243073]) )) ' />
+            </column>
+            <column caption='Company Name' datatype='string' name='[CompanyName]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Datum]' role='dimension' type='nominal' />
+            <_.fcp.ObjectModelTableType.false...column caption='prepared_launch_data.csv' datatype='integer' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column-instance column='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk]' pivot='key' type='quantitative' />
+            <_.fcp.ObjectModelTableType.true...column caption='prepared_launch_data.csv' datatype='table' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column-instance column='[CompanyName]' derivation='None' name='[none:CompanyName:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_3088624965980426242]' derivation='Year' name='[yr:Calculation_3088624965980426242:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:CompanyName:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[__tableau_internal_object_id__].[cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk]</rows>
+        <cols>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[yr:Calculation_3088624965980426242:ok]</cols>
+      </table>
+      <simple-id uuid='{F76AC478-A8AE-408D-8EF6-B56BFDF741D4}' />
+    </worksheet>
+    <worksheet name='Sheet 6'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='prepared_launch_data' name='federated.0bzf1ht1qjrj2q13an5v00ut4y0n' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0bzf1ht1qjrj2q13an5v00ut4y0n'>
+            <column caption='Date2' datatype='datetime' name='[Calculation_3088624965978243073]' role='dimension' type='quantitative'>
+              <calculation class='tableau' formula='DATEPARSE(&apos;EEE MMM dd, YYYY hh:mm zzz&apos;, [Datum])' />
+            </column>
+            <column caption='Calculation1' datatype='date' datatype-customized='true' name='[Calculation_3088624965980426242]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATE(DATEPARSE ( &quot;yyyy&quot;, DATENAME(&apos;year&apos;, [Calculation_3088624965978243073]) )) ' />
+            </column>
+            <column datatype='string' name='[Datum]' role='dimension' type='nominal' />
+            <column caption='Status Mission' datatype='string' name='[StatusMission]' role='dimension' type='nominal' />
+            <_.fcp.ObjectModelTableType.false...column caption='prepared_launch_data.csv' datatype='integer' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column-instance column='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk]' pivot='key' type='quantitative' />
+            <_.fcp.ObjectModelTableType.true...column caption='prepared_launch_data.csv' datatype='table' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column-instance column='[StatusMission]' derivation='None' name='[none:StatusMission:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_3088624965980426242]' derivation='Year' name='[yr:Calculation_3088624965980426242:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:StatusMission:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[__tableau_internal_object_id__].[cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk]</rows>
+        <cols>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[yr:Calculation_3088624965980426242:ok]</cols>
+      </table>
+      <simple-id uuid='{238D2B6E-B1BD-4F03-9BE0-53195753E842}' />
+    </worksheet>
+    <worksheet name='Sheet 7'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='prepared_launch_data' name='federated.0bzf1ht1qjrj2q13an5v00ut4y0n' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0bzf1ht1qjrj2q13an5v00ut4y0n'>
+            <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <_.fcp.ObjectModelTableType.false...column caption='prepared_launch_data.csv' datatype='integer' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column-instance column='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk]' pivot='key' type='quantitative' />
+            <_.fcp.ObjectModelTableType.true...column caption='prepared_launch_data.csv' datatype='table' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column-instance column='[Country]' derivation='None' name='[none:Country:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:Country:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[__tableau_internal_object_id__].[cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk]' shelf='columns' />
+          </shelf-sorts>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='height' field='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:Country:nk]' value='21' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[__tableau_internal_object_id__].[cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk]</rows>
+        <cols>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:Country:nk]</cols>
+      </table>
+      <simple-id uuid='{F40A4D47-F280-4F83-827D-8A1EB36F8B52}' />
+    </worksheet>
+    <worksheet name='Sheet 8'>
+      <table>
+        <view>
+          <datasources />
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{EBAD3278-9450-4D06-AEED-8D5E29CA9D94}' />
+    </worksheet>
+    <worksheet name='Sheet 9'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='prepared_launch_data' name='federated.0bzf1ht1qjrj2q13an5v00ut4y0n' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0bzf1ht1qjrj2q13an5v00ut4y0n'>
+            <column caption='Company Name' datatype='string' name='[CompanyName]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <_.fcp.ObjectModelTableType.false...column caption='prepared_launch_data.csv' datatype='integer' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column-instance column='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk]' pivot='key' type='quantitative' />
+            <_.fcp.ObjectModelTableType.true...column caption='prepared_launch_data.csv' datatype='table' name='[__tableau_internal_object_id__].[prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C]' role='measure' type='quantitative' />
+            <column-instance column='[CompanyName]' derivation='None' name='[none:CompanyName:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Country]' derivation='None' name='[none:Country:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:Country:nk]'>
+            <groupfilter function='member' level='[none:Country:nk]' member='&quot;Kazakhstan&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:Country:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:CompanyName:nk]' value='103' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[__tableau_internal_object_id__].[cnt:prepared_launch_data.csv_A1C6E1996BBC49F7AB07DCF4EFFDDA9C:qk]</rows>
+        <cols>[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:CompanyName:nk]</cols>
+      </table>
+      <simple-id uuid='{B0DDDF74-7015-4596-AEF3-E2C0A08A97FD}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[Country (group)]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{6BD5B718-72C9-4F3E-A2E0-95C321FA9978}' />
+    </window>
+    <window class='worksheet' name='Sheet 2'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{32F0BE2E-0043-42CC-9CC6-A60595D7BAE7}' />
+    </window>
+    <window class='worksheet' name='Sheet 3'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[Country (group)]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{D6E7A87D-4202-4B85-B3C5-BE91048ADC80}' />
+    </window>
+    <window class='worksheet' name='Sheet 4'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:Rocket_Category:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{C0A002BA-5DFE-49D8-9602-71FEA8A66102}' />
+    </window>
+    <window class='worksheet' name='Sheet 5'>
+      <cards>
+        <edge name='left'>
+          <strip size='175'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='56'>
+            <card type='columns' />
+          </strip>
+          <strip size='56'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='175'>
+            <card pane-specification-id='0' param='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:CompanyName:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{95DFEE83-9021-410B-B58F-304BF9706AE3}' />
+    </window>
+    <window class='worksheet' name='Sheet 6'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:StatusMission:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{F02B550B-E7EE-4FD9-8244-850A126A737F}' />
+    </window>
+    <window class='worksheet' name='Sheet 7'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{116B8EE2-7134-44BB-A972-1E51980F6DC8}' />
+    </window>
+    <window class='worksheet' name='Sheet 8'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{F816E6AB-1207-4D4D-A495-ECD6A312DB4B}' />
+    </window>
+    <window class='worksheet' name='Sheet 9'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{F1CE6857-C462-4A3E-A299-49C69BB542A8}' />
+    </window>
+    <window class='worksheet' name='Sheet 10'>
+      <cards>
+        <edge name='left'>
+          <strip size='100'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='100'>
+            <card pane-specification-id='0' param='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:Country:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{48E853B7-81CC-46F8-909C-A92A686F9520}' />
+    </window>
+    <window class='worksheet' name='Sheet 11'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[Country (group)]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{0C7B32C2-6BF2-4890-BB1F-C47D6501104F}' />
+    </window>
+    <window class='worksheet' name='Sheet 12'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[none:CompanyName:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{1E500B58-5734-4767-A068-AD0B5ABC1CDB}' />
+    </window>
+    <window class='worksheet' name='Sheet 13'>
+      <cards>
+        <edge name='left'>
+          <strip size='175'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='56'>
+            <card type='columns' />
+          </strip>
+          <strip size='56'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='175'>
+            <card pane-specification-id='0' param='[federated.0bzf1ht1qjrj2q13an5v00ut4y0n].[Country (group)]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{7A4DFD3B-1460-4A61-A5A4-DE6D6D748AB1}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Sheet 14'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='31'>
+            <card type='columns' />
+          </strip>
+          <strip size='31'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{CEC000D7-D665-45F4-A005-C333CC5BA66E}' />
+    </window>
+  </windows>
+</workbook>

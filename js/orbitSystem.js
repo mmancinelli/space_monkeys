@@ -24,7 +24,7 @@ class OrbitSystem {
         // number of sats to display
         this.displayAmount = 1000;
 
-        console.log(this.satData)
+        // console.log(this.satData)
 
         this.initVis();
     }
