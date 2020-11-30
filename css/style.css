@@ -259,6 +259,9 @@ p {
     padding-top: 60px;
 }
 
+.sat-info {
+    fill: white;
+}
 
 /*#sections {*/
 /*    position: relative;*/
