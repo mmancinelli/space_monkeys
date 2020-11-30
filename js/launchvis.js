@@ -27,7 +27,6 @@ class LaunchVis {
                 d.lat = 60;
                 d.lon = 100;
             }
-
         });
 
         // pull out the country names and exclude bad data
