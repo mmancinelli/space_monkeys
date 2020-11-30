@@ -227,8 +227,8 @@ function summarizeData(data){
         })
     })
 
-    console.log(d3.sum(totalLaunches))
-    // console.log(d3.max(totalLaunches, d=>d))
+    // console.log(d3.sum(totalLaunches))
+    console.log(d3.mean(successRatiosList))
     return rocketdata;
 
 }

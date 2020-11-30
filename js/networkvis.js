@@ -60,6 +60,11 @@ class NetworkVis {
         // console.log(vis.height)
         vis.radius = vis.height / 2.3;
 
+
+
+
+        // console.log(age0, age1);
+
         vis.tree = data => {
             vis.root = d3.hierarchy(data, function (d) {
                 return d.children;
@@ -75,9 +80,6 @@ class NetworkVis {
         }
         // var root = vis.tree(vis.practiceData)
         vis.rootData = vis.tree(vis.treeData)
-        // console.log(vis.rootData.descendants())
-
-        // vis.rootData.descendants().forEach((d,i)=>)
 
 
         // Features of the links between nodes:
@@ -120,11 +122,11 @@ class NetworkVis {
 
         // create the text blurbs and assign as needed in if statement
         vis.legendTextAll=[
-            ["The top 9 countries with rocket-launching capabilities are USA, China, Russia, Japan, France (ESA), India, Israel, Iran, and North Korea. Russia, China, and the USA make up a solid two-thirds of the space launch industry to-date, but more countries have launched experimental rockets, like Kenya. "],
-            ["Launching rockets into space is, actually, rocket science. That is to say, mistakes will be made. The most "],
+            ["The top 9 countries with rocket-launching capabilities are USA, China, Russia, Japan, France (ESA), India, Israel, Iran, and North Korea. Russia, China, and the USA make up a solid two-thirds of the space launch industry to-date, but more countries have launched experimental rockets, like Kenya."],
+            ["Launching rockets into space is, actually, rocket science. Mistakes will be, and have been, made. Partial failures were counted as failures, and the average success percentage across the entire board is 76.9%. Some of the less-experienced countries such as Brazil, Mexico, and North Korea (thank goodness), incidentally, have the lowest success percentages."],
             ["Choosing the best color scale here was tricky, because most of the rockets are launched 100 times or less....AND then there's Russia crushing it with 200-588 launches for some of its rockets. In comparison, the most-launched shuttle for the US is the Space Shuttle at 135 times."],
-            ["Rockets, like fashion, come and go. The rockets that are currently active and being launched today, according to the dataset, are highlight in green."],
-            ["This is what the space industry looks like today. 14 countries, 59 companies, 167 rocket types, and 4324 launches. "]]
+            ["Rockets, like most technologies, come and go. The rockets that are currently active and being launched today, according to the dataset, are highlighted in green."],
+            ["This is the cumulative shape of the space industry: 14 countries, 59 companies, 167 major rocket types, and 4324 launches."]]
 
         // give everything a default color
         vis.rootData.descendants().forEach((d, i) => {
@@ -134,17 +136,16 @@ class NetworkVis {
         // update color based on selection category
         if (vis.selectedCategory == "default") {
             vis.legendStatus = true;
-            vis.legendData = [0,1,2,3];
+            vis.legendData = [3,2,1,0];
             vis.color = d3.scaleOrdinal()
-                .range(["white","#00ffd4","#06b4ff","#2526c1"])
+                .range(["white","#62ff00","#09d4cd","#ac05e9"])
                 .domain(vis.legendData)
 
             vis.rootData.descendants().forEach((d,i)=>{
                 d.color= vis.color(d.height)
             })
             vis.legendText = vis.legendTextAll[4];
-            console.log(vis.rootData)
-            // vis.rootData = vis.rootData.data.sort((a, b) => d3.ascending(a.height, b.height) || d3.ascending(a.data.name, b.data.name));
+
 
         }
         else if (vis.selectedCategory == "status") {
@@ -199,7 +200,7 @@ class NetworkVis {
                 }
                 vis.rootData.descendants()[0].color = vis.color(vis.legendData[0]);
             })
-            console.log(comp, rock)
+            // console.log(comp, rock)
 
             // add some text
              vis.legendText = vis.legendTextAll[3]
@@ -347,7 +348,10 @@ class NetworkVis {
                 d3.select(this)
                     .attr('stroke-width', '2px')
                     .attr('stroke', 'black')
-                    .attr('fill', 'white');
+                    // white fill works for some of the color legends but not for success or launches, where white is informational. Changed it to green, which is not used in either of those scales.
+                    .attr('fill', d=>{
+                        return ((vis.selectedCategory== "total" |vis.selectedCategory == "success") ? "#5ee514" : "white")
+                    });
                 let yplacement = 0;
                 let xplacement = 0;
                 if (event.pageY > 620) {
@@ -371,6 +375,7 @@ class NetworkVis {
                 if (d.height === 0) {
                     // rocket type tooltip
                     vis.tooltip
+                        .attr('id', 'networkTooltip')
                         .html(`
                      <div style="border: thin solid grey; border-radius: 5px; background: darkgray; padding: 20px">
                          <p> <strong>Rocket Type: </strong>${d.data.name}</p>
@@ -410,6 +415,7 @@ class NetworkVis {
 
 
                     vis.tooltip
+                        .attr('id', 'networkTooltip')
                         .html(`
                      <div style="border: thin solid grey; border-radius: 5px; background: darkgray; padding: 20px">
                          <h3>${d.data.name}<h3>
@@ -438,6 +444,7 @@ class NetworkVis {
                     })
 
                     vis.tooltip
+                        .attr('id', 'networkTooltip')
                         .html(`
                      <div style="border: thin solid grey; border-radius: 5px; background: darkgray; padding: 20px">
                          <h3>${d.data.name}<h3>
@@ -445,16 +452,11 @@ class NetworkVis {
                          <p> <strong>Total Rocket Types: </strong>${totalRockets}</p>
                      </div>`);
                 } else if (d.height == 3) {
-                    //potential easter egg. However, I get a 404 error file not found
-                    // need to find the correct way to link to images
-                    // var myImagePath = "spacemonkey.png";
-                    // // var string = '<img src= + "images/spacemonkey.png" + />`;
-                    // vis.tooltip
-                    //     .html(`<img src = +" myImagePath + />"`)
-                    //     // .html(`img src={\`${API_URL}/${myImagePath}\`}`)//this will add the image on mouseover
-                    //     .style("left", (event.pageX + 10) + "px")
-                    //     .style("top", (event.pageY + 50) + "px")
-                    //     .style("font-color", "white");
+                    vis.tooltip
+                        .attr("id", "spacemonkey")
+                        .style("left", 50 + "px")
+                        .style("top", 50 +'px')
+                        // .style("width", vis.width/3)
 
                 }
             })
@@ -493,7 +495,7 @@ class NetworkVis {
         // vis.body.selectAll("p").remove();
 
         //toggle legend
-        if (vis.legendStatus == true) {
+        // if (vis.legendStatus == true) {
             var size = 20;
 
             // make the legend color squares
@@ -584,7 +586,8 @@ class NetworkVis {
             vis.body.exit().remove()
 
 
-        }
+        // }
+        // commented out because it's never false
         // else if (vis.firstLegend == true) {
         //     vis.firstLegend = false;
         //     // if legend is off, remove all the stuff and wipe the slate clean
