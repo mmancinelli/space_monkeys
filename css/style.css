@@ -151,6 +151,18 @@ p {
     color: black;
 }
 
+.networkLegendText{
+    color: white;
+}
+
+#spacemonkey{
+    content: url('../images/spacemonkey.svg');
+    display: block;
+    position: absolute;
+    width: 50%;
+
+}
+
 /* Map Vis CSS */
 .circle {
     /*stroke: #d61111;*/
