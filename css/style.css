@@ -153,9 +153,9 @@ p {
 
 /* Map Vis CSS */
 .circle {
-    stroke: #d61111;
+    /*stroke: #d61111;*/
     stroke-width: 2;
-    fill: #d61111;
+    /*fill: #d61111;*/
     fill-opacity: 50%;
 }
 

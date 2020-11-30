@@ -27,6 +27,12 @@ class LaunchVis {
                 d.lat = 60;
                 d.lon = 100;
             }
+            if (d.Country === "North Korea") {
+                d.lat = 43; // move up for rendering
+            }
+            if (d.Country === "Japan") {
+                d.lon = 142; // move over for rendering
+            }
         });
 
         // pull out the country names and exclude bad data
@@ -204,7 +210,8 @@ class LaunchVis {
             .duration(100)
             .attr("transform", d => `translate(${vis.projection([d.lon, d.lat])})`)
             .attr("r", d => Math.sqrt(d.launches))
-            .attr("fill", "black");
+            .attr("fill", d => countryColorScale(d.name))
+            .attr("stroke", d => countryColorScale(d.name));
 
         vis.label.enter().append("text")
             .attr("class", "circle-label")
@@ -226,8 +233,10 @@ class LaunchVis {
             .attr('text-anchor', 'middle')
             .attr('alignment-baseline','middle')
             .attr('font-weight','bold')
-            .attr('fill','black')
-            .attr('stroke','red')
+            .attr('fill',d => countryColorScale(d.name))
+            .attr('font-size','x-large')
+            .attr('stroke','white')
+            .attr('stroke-width',1)
             .attr("transform", d => `translate(${vis.projection([d.lon, d.lat])})`);
 
 
