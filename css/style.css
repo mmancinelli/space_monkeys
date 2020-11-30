@@ -240,12 +240,14 @@ p {
     width:  100%;
 }
 
+.age-label {
+    font-weight: bold;
 
+}
 
-/*what are the ones below for? Can't remember, should delete? */
 .pathGroup path {
     stroke: lightslategrey;
-    fill: white;
+    fill: #00ffd4;
     opacity: 80%;
 }
 
