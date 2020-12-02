@@ -112,6 +112,7 @@ function toggleButton(button) {
 var selectedCategory = $('#categorySelector').val();
 var selectedSatCategory = $('#satColor').val();
 var selectedCountry = $('#countrySelector').val();
+var selectedSpaceAge = $('#countrySelector').val();
 // var selectedCategory = $('#categorySelector').val();
 
 function categoryChange() {
@@ -165,7 +166,11 @@ function updateRangeSliderValues(values){
 
 function countryChange() {
 	selectedCountry = $('#countrySelector').val();
+	flightVis.wrangleData();
+}
 
+function AgeChange() {
+	selectedSpaceAge = $('#AgeSelector').val();
 	flightVis.wrangleData();
 }
 

@@ -51,7 +51,7 @@ class FlightVis {
 
         vis.xScale = d3.scaleLinear()
             //.domain([d3.min(vis.data,d=>d.date), d3.max(vis.data,d=>d.date)])
-            .domain(d3.extent(vis.data, d=> d.date.getFullYear()))
+            //.domain(d3.extent(vis.data, d=> d.date.getFullYear()))
             .range([0,vis.width]);
 
         vis.xAxis = d3.axisBottom()
@@ -74,12 +74,14 @@ class FlightVis {
 
         vis.svg.append("g")
             .attr("class", "axis axis--x")
-            .attr("transform", "translate(0," + (vis.height) + ")")
-            .call(vis.xAxis.tickFormat(d3.format("d")))
+            //.call(vis.xAxis.tickFormat(d3.format("d")))
 
 
         vis.yAxis_Pointer = vis.svg.append("g")
             .attr("class", "axis y-axis");
+
+        vis.xAxis_Pointer = vis.svg.append("g")
+            .attr("class", "axis x-axis");
 
         // Save master data
         vis.master = vis.data;
@@ -106,6 +108,7 @@ class FlightVis {
         let vis = this;
 
         vis.selectedCountry = selectedCountry;
+        vis.selectedAge = selectedSpaceAge;
         //console.log(vis.selectedCountry);
 
         vis.color = d3.scaleOrdinal()
@@ -117,67 +120,39 @@ class FlightVis {
             vis.legendData = vis.myCountries;
             vis.color = countryColorScale;
         }else if (vis.selectedCountry === "USA") {
-            vis.dataCountry = vis.master.filter(function (country) {return country.Country === "USA";});
-            vis.data = vis.dataCountry
-            //vis.databyCompany = Array.from(d3.group(this.data, d =>d.CompanyName), ([key, value]) => ({key, value}))
-            //console.log(vis.databyCompany)
             vis.legendData=["SpaceX","ULA","Northrop","Virgin Orbit","Blue Origin","NASA","Boeing","ILS","Lockheed","EER","General Dynamics","Martin Marietta","Douglas","US Air Force", "US Navy","AMBA"];
-            vis.color.domain(vis.legendData)
         }else if (vis.selectedCountry === "China") {
-            vis.dataCountry = vis.master.filter(function (country) {return country.Country === "China";});
-            vis.data = vis.dataCountry
             vis.legendData=["CASC","ExPace","i-Space","OneSpace","Landspace","CASIC"];
-            vis.color.domain(vis.legendData)
         }else if (vis.selectedCountry === "Russia") {
-            vis.dataCountry = vis.master.filter(function (country) {return country.Country === "Russia";});
-            vis.data = vis.dataCountry
             vis.legendData=["Roscosmos","VKS RF","Arianespace","ILS","Eurockot","Land Launch","Kosmotras","Khrunichev","Starsem","RVSN USSR","Yuzhmash","OKB-586"];
-            vis.color.domain(vis.legendData)
         }else if (vis.selectedCountry === "Japan") {
-            vis.dataCountry = vis.master.filter(function (country) {return country.Country === "Japan";});
-            vis.data = vis.dataCountry
             vis.legendData=["JAXA","MHI","ISAS", "UT"];
-            vis.color.domain(vis.legendData)
         }else if (vis.selectedCountry === "Israel") {
-            vis.dataCountry = vis.master.filter(function (country) {return country.Country === "Israel";});
-            vis.data = vis.dataCountry
             vis.legendData=["IAI"];
-            vis.color.domain(vis.legendData)
         }else if (vis.selectedCountry === "New Zealand") {
-            vis.dataCountry = vis.master.filter(function (country) {return country.Country === "New Zealand";});
-            vis.data = vis.dataCountry
-            vis.databyCompany = Array.from(d3.group(this.data, d =>d.CompanyName), ([key, value]) => ({key, value}))
             vis.legendData=["Rocket Lab"];
-            vis.color.domain(vis.legendData)
         }else if (vis.selectedCountry === "Iran") {
-            vis.dataCountry = vis.master.filter(function (country) {return country.Country === "Iran";});
-            vis.data = vis.dataCountry
-            vis.databyCompany = Array.from(d3.group(this.data, d =>d.CompanyName), ([key, value]) => ({key, value}))
             vis.legendData=["ISA"];
-            vis.color.domain(vis.legendData)
         }else if (vis.selectedCountry === "France") {
-            vis.dataCountry = vis.master.filter(function (country) {return country.Country === "France";});
-            vis.data = vis.dataCountry
-            vis.databyCompany = Array.from(d3.group(this.data, d =>d.CompanyName), ([key, value]) => ({key, value}))
             vis.legendData=["Arianespace","Rocket Lab","VKS RF","Kosmotras","Boeing","AEB","ASI","Arm'e de l'Air"];
-            vis.color.domain(vis.legendData)
         }else if (vis.selectedCountry === "Mexico") {
-            vis.dataCountry = vis.master.filter(function (country) {
-                return country.Country === "Mexico";
-            });
-            vis.data = vis.dataCountry
-            vis.databyCompany = Array.from(d3.group(this.data, d => d.CompanyName), ([key, value]) => ({key, value}))
             vis.legendData = ["Exos"];
-            vis.color.domain(vis.legendData)
         }else if (vis.selectedCountry === "Brazil") {
-            vis.dataCountry = vis.master.filter(function (country) {
-                return country.Country === "Brazil";
-            });
-            vis.data = vis.dataCountry
-            vis.databyCompany = Array.from(d3.group(this.data, d => d.CompanyName), ([key, value]) => ({key, value}))
             vis.legendData = ["AEB"];
+        }else if (vis.selectedCountry === "India") {
+            vis.legendData = ["ISRO"];
+        }
+
+        vis.dataCountry = vis.master.filter(function (country) {return country.Country === vis.selectedCountry;});
+        if(vis.selectedCountry === "default"){
+            vis.data = vis.master
+            vis.legendData = vis.myCountries;
+            vis.color = countryColorScale;
+        }else{
+            vis.data = vis.dataCountry
             vis.color.domain(vis.legendData)
         }
+
 
         //console.log(vis.data)
 
@@ -198,7 +173,16 @@ class FlightVis {
             vis.launchperyear = []
             vis.yearsinflight = []
             //vis.years = d3.range(d3.min(row.value, d => d.date).getFullYear(),d3.max(row.value, d => d.date).getFullYear()+1);
-            vis.years = d3.range(d3.min(vis.master,d=>d.date).getFullYear(), d3.max(vis.master,d=>d.date).getFullYear())
+            //vis.years = d3.range(d3.min(vis.master,d=>d.date).getFullYear(), d3.max(vis.master,d=>d.date).getFullYear())
+            if(vis.selectedAge === "space_race"){
+                vis.years=d3.range(new Date (1957),new Date(1975))
+            }else if(vis.selectedAge === "exploration"){
+                vis.years=d3.range(new Date (1975),new Date(2011))
+            }else if(vis.selectedAge === "commercial"){
+                vis.years=d3.range(new Date (2011),new Date(2020))
+            }else{
+                vis.years = d3.range(d3.min(vis.master,d=>d.date).getFullYear(), d3.max(vis.master,d=>d.date).getFullYear())
+            }
             vis.years.forEach(function (y) {
                 vis.launch_year = row.value.filter(function (d) { return (d.date.getFullYear() == y) });
                 if(vis.launch_year.length > 0 ){
@@ -211,11 +195,26 @@ class FlightVis {
                 }
             });
             let y = 0
+            //console.log(vis.launchperyear)
             vis.cumsum = vis.launchperyear.map(d=>y+=d)
+            //console.log(vis.cumsum.length)
+            var i = 0
+            while (i < vis.cumsum.length) {
+                //console.log(i)
+                if(vis.cumsum[i] === vis.cumsum[vis.cumsum.length - 1]){
+                    vis.cumsum[i] = null
+                }
+                else{
+                    vis.cumsum[i] = vis.cumsum[i]
+                }
+                i = i + 1;
+            }
+            //console.log(vis.cumsum)
+            //console.log(vis.cumsum)
             //vis.filteredData[row.key] = {
             vis.filteredData.push({
                 rocket: row.key,
-                total: row.value.length,
+                total: d3.max(vis.cumsum),
                 years: vis.yearsinflight,
                 flights: vis.launchperyear,
                 cumsum: vis.cumsum,
@@ -227,7 +226,8 @@ class FlightVis {
         //console.log(vis.filteredData)
 
         vis.newData = []
-        vis.newData.dates = d3.range(d3.min(vis.master,d=>d.date).getFullYear(), d3.max(vis.master,d=>d.date).getFullYear())
+        //vis.newData.dates = d3.range(d3.min(vis.master,d=>d.date).getFullYear(), d3.max(vis.master,d=>d.date).getFullYear())
+        vis.newData.dates = d3.range(d3.min(vis.years),d3.max(vis.years))
         // Reformat data
         vis.series2 = []
         vis.filteredData.forEach(row => {
@@ -243,12 +243,13 @@ class FlightVis {
 
         //console.log(vis.series2)
 
-        //console.log(vis.newData);
+        console.log(vis.newData);
 
         //console.log(vis.filteredData)
         //console.log(vis.dataByRocketCat)
 
         // Update the visualization
+
         vis.updateVis();
 
     }
@@ -262,17 +263,21 @@ class FlightVis {
     updateVis() {
         let vis = this;
 
-        //console.log(vis.filteredData)
-        //console.log(d3.max(vis.newData.series,d => d.values))
-        //vis.xScale.domain(d3.extent(vis.filteredData, d=> d.date.getFullYear()))
-        //vis.yScale.domain([d3.min(vis.filteredData,d=>d.total), d3.max(vis.filteredData,d=>d.total)])
+        //vis.selectedAge === selectedAge;
+
+        //vis.xScale.domain([new Date(1957), new Date(1975)])
+        //vis.xScale.domain(d3.extent(vis.newData, d=> d.dates.getFullYear()))
+        //vis.xScale.domain([d3.min(vis.data,d=>d.date), d3.max(vis.data,d=>d.date)])
+        vis.xScale.domain(d3.extent(vis.newData.dates))
+        //vis.xScale.domain(d3.extent(vis.data, d=> d.date.getFullYear()))
+
         vis.yScale.domain([0, d3.max(vis.filteredData,d=>d.total)])
-        //vis.yScale.domain(d3.extent(vis.filteredData, d=> d.total))
-        //vis.yScale.domain([d3.min(vis.filteredData,d=>d.total), 300])
 
         vis.line = d3.line()
-            .x((d,i) => vis.xScale(vis.newData.dates[i]))
-            .y(d => vis.yScale(d));
+            .y(d => vis.yScale(d))
+            //.defined(function(d) { return d; })
+            .defined(function(d) { return d != null; })
+            .x((d,i) => vis.xScale(vis.newData.dates[i]));
 
         //let row = vis.filteredData[10];
         //console.log(row)
@@ -394,6 +399,8 @@ class FlightVis {
 
 
         vis.yAxis_Pointer.call(vis.yAxis);
+        vis.xAxis_Pointer.attr("transform", "translate(0," + (vis.height) + ")")
+            .call(vis.xAxis.tickFormat(d3.format("d")));
 
         vis.hover()
         //vis.mouseflight()
