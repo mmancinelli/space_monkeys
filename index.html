@@ -16,6 +16,7 @@
 <!--	<link rel="stylesheet" type="text/css" href="css/examples.css" />-->
 	<link rel="stylesheet" type="text/css" href="css/stars.css" />
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/fonts/stylesheet.css" charset="utf-8"/>
 
 	<style>
 
@@ -39,7 +40,16 @@
 			<div class = "stars"></div>
 			<div class = "stars2"></div>
 			<div class = "stars3"></div>
-			<div id = "title"><span> A History of Space Flight </span><br/> by the space monkeys</div>
+			<div class="container-fluid h-100">
+				<div class="row h-100 justify-content-center">
+					<div class="align-self-center">
+						<h5>A HISTORY OF</h5>
+						<h5 style="font-size:8em; color:#ffb700">SPACE FLIGHT</h5>
+						<h3>BY THE SPACE MONKEYS</h3>
+					</div>
+				</div>
+			</div>
+			<!--<div id = "title"><span> A History of Space Flight </span><br/> by the space monkeys</div>-->
 		</div>
 	</div>
 
@@ -51,10 +61,35 @@
 			<div class="container-fluid h-100">
 				<div class="row h-100 justify-content-center">
 					<div class="align-self-center">
-						<h2>Most people know about the space race. </h2>
-						<h3>Where the United States of America and USSR battled for space dominance.</h3>
-						<h3>This battle lasted over 40 years.</h3>
-						<h3>Starting with the Launch of Sputnik on October 4, 1957 and ending with the International Space Statio cooperation in 1998.</h3>
+						<h2>Most people know about the Space Race </h2>
+						<h3>It started on October 4, 1957 with the Soviet launch of Sputnik...</h3>
+						<!--<h3>This battle lasted over 40 years.</h3>
+						<h3>Starting with the Launch of Sputnik on October 4, 1957 and ending with the International Space Statio cooperation in 1998.</h3>-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section" id="section1_5">
+		<div class="star-section">
+			<div class = "stars"></div>
+			<div class = "stars2"></div>
+			<div class = "stars3"></div>
+			<div class="container-fluid h-100" style="padding: 0vh">
+				<div class="video-container">
+					<video autoplay muted loop id="myVideo1">
+						<source src="videos/SaturnV.mov" type="video/mp4">
+					</video>
+					<!-- Optional: some overlay text to describe the video -->
+					<div class="content_video">
+						<div class="align-self-center">
+							<h2>Space Race</h2>
+							<h2 style="font-size:3em; color:#ffb700">(1957-1975)</h2>
+							<p>The United States and the Soviet Union fought for space domination.  This led to the race to the Moon, propelled by the Saturn V, the largest rocket ever built.  The Space Race culminated in 1975, with the docking of the Russian Soyuz and American Apollo vehicles in Low-Earth Orbit.</p>
+							<!-- Use a button to pause/play the video with JavaScript -->
+							<button id="myBtn1" onclick="myFunction()">Pause</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -104,8 +139,8 @@
 			<div class="container-fluid h-100">
 				<div class="row h-100 justify-content-center">
 					<div class="align-self-center">
-						<h2>What happened next?</h2>
-						<h3>Once tensions eased and the Cold War subsided, countries continued explore and expand their presence in space.</h3>
+						<h2>What happened after the Space Race?</h2>
+						<h3>Once tensions eased and the Cold War subsided, countries continued to explore and expand their presence in space.</h3>
 					</div>
 				</div>
 			</div>
@@ -121,9 +156,10 @@
 			<div class="container-fluid h-100">
 				<div class="row h-100 justify-content-center">
 					<div class="align-self-center">
-						<h2>Russia/USSR and the USA paved the way to space.</h2>
-						<h3>These two countries are commonly believed to be the two dominant players.</h3>
-						<h3>How many countries provide launch services?</h3>
+						<h2>WHO ELSE PROVIDES</h2>
+						<h2 style="font-size:5em; color:#ffb700">LAUNCH SERVICES?</h2>
+						<!--<h3>These two countries are commonly believed to be the two dominant players.</h3>
+						<h3>How many countries provide launch services?</h3>-->
 					</div>
 				</div>
 			</div>
@@ -193,10 +229,53 @@
 			<div class="container-fluid h-100">
 				<div class="row h-100 justify-content-center">
 					<div class="align-self-center">
-						<h2>The diverse industry evolved over time.</h2>
-						<h3>It started with the space race...</h3>
-						<h3>Then the age of exploration...</h3>
-						<h3>And finally, the age of commercialization.</h3>
+						<h2>A new era of Space Exploration</h2>
+						<h3>The end of the Space Race encouraged other nations to develop their own satellite and launch capabilities. Some even send their own astronauts to space.  This is what we call the Age of Exploration...</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Video: Age of Exploration -->
+	<div class="section" id="section5_5">
+		<div class="star-section">
+			<div class = "stars"></div>
+			<div class = "stars2"></div>
+			<div class = "stars3"></div>
+			<div class="container-fluid h-100" style="padding: 0vh">
+				<div class="video-container">
+					<video autoplay muted loop id="myVideo2">
+						<source src="videos/Shuttle.mp4" type="video/mp4">
+					</video>
+					<!-- Optional: some overlay text to describe the video -->
+					<div class="content_video">
+						<div class="align-self-center">
+							<h2>Age of Exploration</h2>
+							<h2 style="font-size:2em; color:#ffb700">(1981-Present)</h2>
+							<p>The diversification of activities in space led to the Age of Exploration, propelled by the Space Shuttle which began launching in 1981.  The Space Shuttle had the capacity to send up to 60,000 lbs of cargo to Low-Earth Orbit, which is equivalent to about 3 school buses. The Shuttle famously put the Hubble Space Telescope in orbit in 1990, and enabled the construction of the International Space Station with its first module launching in 1998. The Shuttle would launch from the Kennedy Space Center in Cape Canaveral, Florida. </p>
+							<!-- Use a button to pause/play the video with JavaScript -->
+							<button id="myBtn2" onclick="myFunction()">Pause</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Intro to Map Vis -->
+	<div class="section " id="section5_6">
+		<div class="star-section">
+			<div class = "stars"></div>
+			<div class = "stars2"></div>
+			<div class = "stars3"></div>
+			<div class="container-fluid h-100">
+				<div class="row h-100 justify-content-center">
+					<div class="align-self-center">
+						<h2>WHERE ARE SPACE MISSIONS</h2>
+						<h2 style="font-size:5em; color:#ffb700">LAUNCHED FROM?</h2>
+						<!--<h3>These two countries are commonly believed to be the two dominant players.</h3>
+						<h3>How many countries provide launch services?</h3>-->
 					</div>
 				</div>
 			</div>
@@ -298,6 +377,32 @@
 		</div>
 	</div>
 
+	<!-- Video: Age of Commercialization -->
+	<div class="section" id="section9_5">
+		<div class="star-section">
+			<div class = "stars"></div>
+			<div class = "stars2"></div>
+			<div class = "stars3"></div>
+			<div class="container-fluid h-100" style="padding: 0vh">
+				<div class="video-container">
+					<video autoplay muted loop id="myVideo3">
+						<source src="videos/Rocket1.mp4" type="video/mp4">
+					</video>
+					<!-- Optional: some overlay text to describe the video -->
+					<div class="content_video">
+						<div class="align-self-center">
+							<h2>Commercial Space Age</h2>
+							<h2 style="font-size:2em; color:#ffb700">(2011-Present)</h2>
+							<p>In 2011, SpaceX became the first private company to launch a rocket, the Falcon 9.  Since then, other companies and nations have joined the space industry.  Their goal: get a share of the growing space economy which is projected to hit the $1.1 trillion mark by 2040, according to Morgan Stanley.</p>
+							<!-- Use a button to pause/play the video with JavaScript -->
+							<button id="myBtn3" onclick="myFunction()">Pause</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!-- Story Point 5 -->
 	<div class="section " id="section9">
 		<div class="star-section">
@@ -315,6 +420,25 @@
 		</div>
 	</div>
 
+	<!-- Intro to Launch Vis -->
+	<div class="section " id="section9_10">
+		<div class="star-section">
+			<div class = "stars"></div>
+			<div class = "stars2"></div>
+			<div class = "stars3"></div>
+			<div class="container-fluid h-100">
+				<div class="row h-100 justify-content-center">
+					<div class="align-self-center">
+						<h2>HOW LONG HAVE THESE</h2>
+						<h2 style="font-size:5em; color:#ffb700">ROCKETS FLOWN?</h2>
+						<!--<h3>These two countries are commonly believed to be the two dominant players.</h3>
+						<h3>How many countries provide launch services?</h3>-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 	<!-- Cumulative Launch Diagram -->
 	<div class="section " id="section10">
@@ -323,11 +447,11 @@
 			<div class = "stars2"></div>
 			<div class = "stars3"></div>
 		<div class="container-fluid">
-			<div class="row justify-content-center header">
+			<!--<div class="row justify-content-center header">
 				<div class="align-self-center">
 					<h3 class="network-title">Cosmos and the Molniya rockets from Russia have the most cumulative flights. </h3>
 				</div>
-			</div>
+			</div>-->
 			<div class="row main-body">
 				<div class="col">
 					<div class="row" style="height: 5vh; padding-top: 5pt">
@@ -336,7 +460,7 @@
 								<select id='countrySelector' class="custom-select" style="width: 75%" onchange="countryChange()">
 									<option value="default" selected>Default (all)</option>
 									<option value="USA">U.S.A.</option>
-									<option value="China">China.</option>
+									<option value="China">China</option>
 									<option value="Russia">Russia</option>
 									<option value="Japan">Japan</option>
 									<option value="Israel">Israel</option>
@@ -347,6 +471,27 @@
 									<option value="Mexico">Mexico</option>
 									<option value="Brazil">Brazil</option>
 								</select>
+							</div>
+							<div class="row" style="height: 5vh; padding-top: 5pt">
+								<select id='AgeSelector' class="custom-select" style="width: 75%" onchange="AgeChange()">
+									<option value="all" selected>All Ages</option>
+									<option value="space_race">Space Race (1957-1985)</option>
+									<option value="exploration">Exploration (1981-Present)</option>
+									<option value="commercial">Commercialization (2011-Present)</option>
+								</select>
+								<!--<div class="btn-group">
+									<button id = "labelToggle" class="btn btn-light" type="button" value="OFF" onclick="toggleButton(this);" style="border: thin solid grey;";>Labels</button>
+									<button value="all" id="button1" onclick="AgeChange1()" selected>All Ages</button>
+									<button value="space_race" id="button2" onclick="AgeChange2()">Space Race</button>
+									<button value="exploration" id="button3" onclick="AgeChange3()">Exploration</button>
+									<button value="commercialization" id="button4" onclick="AgeChange4()">Commercialization</button>
+								</div>-->
+								<!--<select id='AgeSelector' class="custom-select" style="width: 75%" onchange="AgeChange()">
+									<option value="all" selected>All Ages</option>
+									<option value="space_race">Space Race</option>
+									<option value="exploration">Exploration</option>
+									<option value="commercialization">Commercialization</option>
+								</select>-->
 							</div>
 							<div class="row" style="height: 50vh; padding-top: 5pt">
 								<div id="FlightLegend-vis">
@@ -409,7 +554,7 @@
 	</div>
 
 	<!-- Story Point 6 -->
-	<div class="section " id="section12">
+	<!--<div class="section " id="section12">
 		<div class="star-section">
 			<div class = "stars"></div>
 			<div class = "stars2"></div>
@@ -419,6 +564,51 @@
 					<div class="align-self-center">
 						<h2>The Delta II, Cosmos, and 100s of other launch vehicles have contributed to the nearly 3000 satellites in orbit today.</h2>
 						<h3>Although the USA and USSR set the stage back in 1955, the current ecosystem is contributed to by over a dozen countries.</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>-->
+
+	<!-- Video: Orbits -->
+	<div class="section" id="section12_1">
+		<div class="star-section">
+			<div class = "stars"></div>
+			<div class = "stars2"></div>
+			<div class = "stars3"></div>
+			<div class="container-fluid h-100" style="padding: 0vh">
+				<div class="video-container">
+					<video autoplay muted loop id="myVideo4">
+						<source src="videos/Earth.mov" type="video/mp4">
+					</video>
+					<!-- Optional: some overlay text to describe the video -->
+					<div class="content_video">
+						<div class="align-self-center">
+							<h2>Satellites in Orbit</h2>
+							<h2 style="font-size:2em; color:#ffb700">(1957-Present)</h2>
+							<p>The Delta II, Cosmos, and 100s of other launch vehicles have contributed to the nearly 3000 satellites in orbit today. Although the USA and USSR set the stage back in Space Race, the current ecosystem is contributed to by over a dozen countries.</p>
+							<!-- Use a button to pause/play the video with JavaScript -->
+							<button id="myBtn4" onclick="myFunction()">Pause</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Intro to Orbits Vis -->
+	<div class="section " id="section12_5">
+		<div class="star-section">
+			<div class = "stars"></div>
+			<div class = "stars2"></div>
+			<div class = "stars3"></div>
+			<div class="container-fluid h-100">
+				<div class="row h-100 justify-content-center">
+					<div class="align-self-center">
+						<h2>WHAT PAYLOADS ARE CURRENTLY</h2>
+						<h2 style="font-size:5em; color:#ffb700">ORBITING IN SPACE?</h2>
+						<!--<h3>These two countries are commonly believed to be the two dominant players.</h3>
+						<h3>How many countries provide launch services?</h3>-->
 					</div>
 				</div>
 			</div>
@@ -485,6 +675,35 @@
 		</div>
 	</div>
 
+	<!-- Video: Future -->
+	<div class="section" id="section13_5">
+		<div class="star-section">
+			<div class = "stars"></div>
+			<div class = "stars2"></div>
+			<div class = "stars3"></div>
+			<div class="container-fluid h-100" style="padding: 0vh">
+				<div class="video-container">
+					<video autoplay muted loop id="myVideo5">
+						<source src="videos/Solar.mov" type="video/mp4">
+					</video>
+					<!-- Optional: some overlay text to describe the video -->
+					<div class="content_video">
+						<div class="align-self-center">
+							<!--<h2>What will be the next "Giant Leap"?</h2>-->
+							<h2>What will be the next</h2>
+							<h2 style="font-size:4em; color:#ffb700">"Giant Leap"?</h2>
+							<p>The exploration and commercialization of space presents new opportunities.  Since 2010, countries such as the UAE, South Africa, Paraguay, and Portugal created their space agencies.  Their goal: continue to push the boundaries of human knowledge while exploring the Earth, Moon, Mars, and beyond.</p>
+
+							<!-- Use a button to pause/play the video with JavaScript
+							<button id="myBtn5" onclick="myFunction5()">Pause</button> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 	<!-- Endnotes -->
 	<div class="section" id="section14">
 		<div class="intro" id="star-end">
@@ -511,6 +730,7 @@
 			</div>
 		</div>
 	</div>
+
 </div>
 
 <!-- BOOTSTRAP -->
@@ -565,12 +785,39 @@
         navigationPosition: 'right',
         navigationTooltips: ['First page', 'Second page', 'Third page', 'Forth page', 'Fifth page']
     });
+</script>
 
+<script>
+	var video = document.getElementById("myVideo1");
+	var btn = document.getElementById("myBtn1");
+	var video2 = document.getElementById("myVideo2");
+	var btn2 = document.getElementById("myBtn2");
+	var video3 = document.getElementById("myVideo2");
+	var btn3 = document.getElementById("myBtn2");
+	var video4 = document.getElementById("myVideo2");
+	var btn4 = document.getElementById("myBtn2");
 
-
-
-
-
+	function myFunction() {
+		if (video.paused) {
+			video.play();
+			btn.innerHTML = "Pause";
+			video2.play();
+			btn2.innerHTML = "Pause";
+			video3.play();
+			btn3.innerHTML = "Pause";
+			video4.play();
+			btn4.innerHTML = "Pause";
+		} else {
+			video.pause();
+			btn.innerHTML = "Play";
+			video2.pause();
+			btn2.innerHTML = "Play";
+			video3.pause();
+			btn3.innerHTML = "Play";
+			video4.pause();
+			btn4.innerHTML = "Play";
+		}
+	}
 </script>
 
 </body>

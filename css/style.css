@@ -4,6 +4,13 @@ h1{
     color: #fff;
     margin:0;
 }
+#title{
+    font-size: 5em;
+    font-family: aerospaceregular;
+    color: #fff;
+    margin:0;
+    text-align:center;
+}
 .intro p{
     color: #fff;
 }
@@ -57,7 +64,8 @@ h1 {
 
 h2 {
     font-size: 3em;
-    font-family: arial,helvetica;
+    /*font-family: arial,helvetica;*/
+    font-family: a-space_light_demoregular;
     color: #fff;
     margin:0;
     font-style: italic;
@@ -222,7 +230,7 @@ p {
 #launches-vis{
     border: none;
     border-radius: 5px;
-    height: 70vh;
+    height: 80vh;
 }
 
 .x-axis {
@@ -325,4 +333,80 @@ p {
 
 .end-notes {
     text-align: left;
+}
+
+/* Video sections*/
+
+/*#myVideo {
+    position: fixed;
+    position:absolute;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+} */
+
+.video-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.video-container video {
+    /* Make video to at least 100% wide and tall */
+    min-width: 100%;
+    min-height: 100%;
+
+    /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+    width: auto;
+    height: auto;
+
+    /* Center the video */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+/* Add some content at the bottom of the video/page */
+.content_video {
+    /*position: fixed; padding: 20px;*/
+    position: absolute;
+    vertical-align: middle;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 30%;
+    height: 100%;
+    margin: auto;
+    align-content: center;
+    align-items: center;
+}
+
+/* Style the button used to pause/play the video */
+#myBtn {
+    width: 200px;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+#myBtn:hover {
+    background: #ddd;
+    color: black;
+}
+
+h5 {
+    font-size: 5em;
+    /*font-family: arial,helvetica;*/
+    font-family: a-space_light_demoregular;
+    color: #fff;
+    margin:0;
 }
