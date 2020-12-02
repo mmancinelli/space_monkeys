@@ -62,35 +62,13 @@ class OrbitSystem {
             .attr("height", vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom)
             .append('g')
 
-
-        // create slider https://refreshless.com/nouislider
-        // since the slider was literally my nemesis for hw 6, I very gratefully just followed along with Ben's hw 6 review.
-
-
-        // updateRangeSliderValues(originalTimePeriod);
-        // vis.slider.noUiSlider.on('slide', function(values, handle){
-        //     updateRangeSliderValues(values);
-        //     vis.wrangleData()
-        // })
+        vis.orbitLegendTextAll=[
+            ["Satellites yada yada yada default. "],
+            ["Colored by country. There are approximately X countries in Other."],
+            ["Purposes have been binned into major categories."],
+            ["Colored by orbit category."]
+            ]
         vis.originalTimePeriod = d3.extent(vis.satData, d=>d.Date)
-        // vis.timePeriodMin = d3.select("#time-period-min").value;
-        // vis.timePeriodMax = d3.select("#time-period-max").value;
-        // console.log(vis.timePeriodMax, vis.timePeriodMin)
-
-        //
-        // var slider = document.getElementById("slider")
-        // noUiSlider.create(slider, {
-        //     start: [parseInt(dateFormatter(originalTimePeriod[0])), parseInt(dateFormatter(originalTimePeriod[1]))],
-        //     connect: true,
-        //     behaviour: "drag",
-        //     step: 1,
-        //     margin: 1,
-        //     range: {'min': parseInt(dateFormatter(originalTimePeriod[0])),
-        //         'max': parseInt(dateFormatter(originalTimePeriod[1]))}
-        // })
-        // slider.noUiSlider.on('slide', function(values, handle){
-        //     updateRangeSliderValues(values);})
-
 
         // Set up text area for satellite info
         vis.satelliteInfo = vis.svg2.append("g");
@@ -155,16 +133,6 @@ class OrbitSystem {
 
         // initialize legend data array
         vis.legendData = [];
-
-        //initialize date filter
-        // vis.originalTimePeriod = d3.extent(vis.satData, d=>d.Date)
-        // console.log(vis.originalTimePeriod)
-        //
-        // vis.timePeriodMin =vis.originalTimePeriod[0];
-        // vis.timePeriodMax =vis.originalTimePeriod[1];
-
-
-
 
 
         // draw the globe
@@ -274,62 +242,56 @@ class OrbitSystem {
         let vis = this;
 
         if (vis.selectedSatCategory == "default") {
-            vis.legendStatus = false;
-            vis.color="#00ffd4"
+            vis.color=d3.scaleOrdinal()
+                .range(["#00ffd4"])
+                .domain([3])
+            vis.legendData=["Satellites"]
 
             vis.satellites.forEach((d,i)=>{
-                d.color=vis.color
+                // console.log(d)
+                d.color=vis.color(d.r)
             })
+            vis.orbitLegendText= vis.orbitLegendTextAll[0]
 
         } else if (vis.selectedSatCategory == "country") {
-            // console.log(vis.selectedSatCategory)
-            vis.legendStatus = true;
             vis.legendData = ["USA", "China", "Russia", "United Kingdom", "Japan", "Other"]
             vis.color = d3.scaleOrdinal()
                 .range(["#0a60b1", "#7431c4", "#9f0797", "#640345", "#800000", "#ee6666"])
                 .domain(vis.legendData)
 
-            console.log(vis.color("Other"))
 
             vis.satellites.forEach((d,i)=>{
-                // console.log(d.Country)
                 d.color=vis.color(d.Country)
-                // console.log(d.color)
 
             })
+            vis.orbitLegendText= vis.orbitLegendTextAll[1]
         } else if (vis.selectedSatCategory == "purpose"){
-            console.log(vis.selectedSatCategory)
-            vis.legendStatus = true;
             vis.legendData = ["Communications", "Earth Science", "Navigation", "Space Science", "Other"]
             vis.color = d3.scaleOrdinal()
                 .range(["#ec0505", "#f58702", "#ffeb04", "#8eac07", "#12cee7"])
                 .domain(vis.legendData)
 
             vis.satellites.forEach((d,i)=>{
-                // console.log(d.Purpose)
                 d.color=vis.color(d.Purpose)
-                // console.log(d.color)
 
             })
+            vis.orbitLegendText= vis.orbitLegendTextAll[2]
         }  else if (vis.selectedSatCategory == "orbit"){
-            console.log(vis.selectedSatCategory)
-            vis.legendStatus = true;
             vis.legendData = ["LEO", "MEO", "GEO", "Elliptical"]
             vis.color = d3.scaleOrdinal()
-                .range(["#0b3701", "#08e2b0", "#2f96e7", "#490cbc" ])
+                .range(["#1d6209", "#08e2b0", "#2f96e7", "#6230be" ])
                 .domain(vis.legendData)
 
             vis.satellites.forEach((d,i)=>{
-                // console.log(d.Orbit)
                 d.color=vis.color(d.Orbit)
-                // console.log(d.color)
 
             })
-        }else {
-            console.log("nah")
+
+            vis.orbitLegendText= vis.orbitLegendTextAll[3]
         }
 
         vis.displayData = vis.satellites;
+        vis.updateColor()
     }
 
     drawfirstCircles() {
@@ -388,96 +350,93 @@ class OrbitSystem {
         let vis = this;
 
         // set up stuff for the labels
-        vis.legendSquares = vis.legend
+        vis.orbitLegendSquares = vis.legend
             .attr("class", "legendSquares")
             .selectAll(".legendSquare")
             .data(vis.legendData);
 
-        vis.legendLabels = vis.legend
+        vis.orbitLegendLabels = vis.legend
             .attr("class", "legendLabels")
             .selectAll(".legendLabel")
             .data(vis.legendData);
 
-        // grab the legend text element to update the text box
-        // vis.body = d3.select("#legendText")
+
+        vis.orbitBody = d3.select("#orbitLegendText").data(vis.orbitLegendText).attr("class", "orbitLegendText")
 
         //toggle legend
-        if (vis.legendStatus == true) {
-            var size = 20;
+        // if (vis.legendStatus == true) {
+        var size = 20;
 
-            // make the legend color squares
-            vis.legendSquares
-                .enter()
-                .append("rect")
-                .attr("class", "legendSquare")
-                .merge(vis.legendSquares)
-                .attr("x", 20)
-                .attr("y", function (d, i) {
-                    return 100 + i * (size + 5)
-                }) // 100 is where the first dot appears. 25 is the distance between dots
-                .attr("width", size)
-                .attr("height", size)
-                .style("fill", function (d) {
-                    return vis.color(d)
-                });
+        // make the legend color squares
+        vis.orbitLegendSquares
+            .enter()
+            .append("rect")
+            .attr("class", "legendSquare")
+            .merge(vis.orbitLegendSquares)
+            .attr("x", 20)
+            .attr("y", function (d, i) {
+                return 100 + i * (size + 5)
+            }) // 100 is where the first dot appears. 25 is the distance between dots
+            .attr("width", size)
+            .attr("height", size)
+            .style("fill", function (d) {
+                return vis.color(d)
+            });
 
-            // make the legend text, colored the same
-            vis.legendLabels
-                .enter()
-                .append("text")
-                .attr("class", "legendLabel")
-                .merge(vis.legendLabels)
-                .attr("x", 60)
-                .attr("y", function (d, i) {
-                    return 100 + i * (size + 5) + (size / 2)
-                })
-                .style("fill", function (d) {
-                    return vis.color(d)
-                })
-                .text(function (d) {
-                    if (vis.selectedCategory == "status") {
-                        if (d == "StatusActive") {
-                            return "Active"
-                        } else {
-                            return "Retired"
-                        }
-                    } else if (vis.selectedCategory == "total") {
-                        // console.log(d)
-                        if (d === 2) {
-                            return "0-2"
-                        } else if (d === 5) {
-                            return "3-5"
-                        } else if (d==18){
-                            return "6-18"
-                        } else {
-                            return "19-588"
-                        }
-
+        // make the legend text, colored the same
+        vis.orbitLegendLabels
+            .enter()
+            .append("text")
+            .attr("class", "legendLabel")
+            .merge(vis.orbitLegendLabels)
+            .attr("x", 60)
+            .attr("y", function (d, i) {
+                return 100 + i * (size + 5) + (size / 2)
+            })
+            .style("fill", function (d) {
+                return vis.color(d)
+            })
+            .text(function (d) {
+                if (vis.selectedSatCategory == "orbit") {
+                    if (d == "LEO") {
+                        return "Low Earth Orbit"
+                    } else if (d=="MEO") {
+                        return "Middle Earth Orbit"
+                    } else if (d=="GEO"){
+                        return "Geosynchronous Earth Orbit"
+                    } else {
+                        return "Elliptical Orbit"
                     }
-                    else {
-                        return d
-                    }
-                })
-                .attr("text-anchor", "left")
-                .style("alignment-baseline", "middle");
-
-            //remove the current text box if there is one
-            // vis.body.selectAll("p").remove();
-
-            // add new text info
-            // vis.body.append("p").text(vis.legendText[0])
-
-            // update legend stuffs
-            vis.legendSquares.exit().remove();
-            vis.legendLabels.exit().remove();
-
-        } else if (vis.legendStatus == false) {
-            // if legend is off, remove all the stuff and wipe the slate clean
-            vis.legendLabels.remove();
-            vis.legendSquares.remove();
-            // vis.body.selectAll("p").remove();
+                } else if (vis.selectedSatCategory == "default"){
+                    return "Satellites"
 
         }
+                else {
+                    return d
+                }
+            })
+            .attr("text-anchor", "left")
+            .style("alignment-baseline", "middle");
+
+        //remove the current text box if there is one
+        // vis.body.selectAll("p").remove();
+        vis.orbitBody.enter().append("p").merge(vis.orbitBody).text(vis.orbitLegendText[0])
+
+        // add new text info
+        // vis.body.append("p").text(vis.legendText[0])
+
+        // update legend stuffs
+        vis.orbitLegendSquares.exit().remove();
+        vis.orbitLegendLabels.exit().remove();
+        vis.orbitBody.exit().remove();
+
+        // } else if (vis.legendStatus == false) {
+        //     // if legend is off, remove all the stuff and wipe the slate clean
+        //     vis.legendLabels.remove();
+        //     vis.legendSquares.remove();
+        //     // vis.body.selectAll("p").remove();
+        //
+        // }
 
         // draw planets and moon clusters
         vis.circle = vis.container.selectAll("circle")

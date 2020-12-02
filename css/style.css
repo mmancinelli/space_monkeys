@@ -133,13 +133,13 @@ p {
     width: 100%;
 }
 
-#world-map, #orbit-vis, #slider, #network-vis, #orbit-vis2, #launches-vis,#legendText, #brush-plot,#networkLegend-vis, #orbitLegend-vis {
+#world-map, #orbit-vis, #slider, #network-vis, #orbit-vis2, #launches-vis,#legendText,#orbitLegendText, #brush-plot,#networkLegend-vis, #orbitLegend-vis {
     height: 100%;
     width:  100%;
 }
 
 /* NETWORK VIS CSS */
-#network-vis, #orbit-vis, #orbit-vis2{
+#network-vis, #orbit-vis{
     border: none;
     border-radius: 5px;
     height: 100vh;
@@ -159,7 +159,7 @@ p {
     color: black;
 }
 
-.networkLegendText{
+.networkLegendText, .orbitLegendText{
     color: white;
 }
 

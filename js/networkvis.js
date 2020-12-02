@@ -585,7 +585,7 @@ class NetworkVis {
             // update legend stuffs
             vis.legendSquares.exit().remove();
             vis.legendLabels.exit().remove();
-            vis.body.exit().remove()
+            vis.body.exit().remove();
 
 
         // }

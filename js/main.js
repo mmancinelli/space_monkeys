@@ -125,7 +125,7 @@ function satCategoryChange(){
 	orbitSystem.selectedSatCategory = $('#satColor').val();
 	// console.log(selectedSatCategory)
 	orbitSystem.updateLegend();
-	orbitSystem.updateColor();
+	// orbitSystem.updateColor();
 }
 
 function animateMap () {

@@ -628,11 +628,11 @@
 							<div class="row" style="height: 5vh; padding-left: 20pt; padding-top: 1vh;" >
 								<div class="col-3" style="height: 5vh; padding-top: 5pt">
 									<select id='satColor' class="custom-select" style="width: 75%" onchange="satCategoryChange()">
-										<option value="default" selected >Default (none)</option>
+										<option value="default" selected>Default (none)</option>
 										<option value="country">by Country </option>
 										<option value="purpose">by Purpose</option>
 <!--										<option value="use">by Use</option>-->
-										<option value="orbit">by Orbit</option>
+										<option value="orbit" >by Orbit</option>
 									</select>
 								</div>
 								<div class="col-6 offset-2" style="height: 10vh; padding-top: 5pt">
@@ -659,12 +659,27 @@
 							</div>
 							<div class="row" style="padding-top: 1vh;">
 								<div class="col-3" style="height: 75vh; padding-top: 1vh;padding-left: 50pt;">
-									<div id="orbitLegend-vis">
+<!--									<div id="orbitLegend-vis">-->
+<!--									</div>-->
+<!--								</div>-->
+<!--								<div class ="row" style="height:40vh; padding-top: 10pt; text-align: left;">-->
+<!--									<div id = "legendText">-->
+<!--									</div>-->
+
+<!--								</div>-->
+									<div class="row" style="height: 50vh; padding-top: 5pt">
+										<div id="orbitLegend-vis">
+										</div>
+									</div>
+									<div class ="row" style="height:40vh; padding-top: 10pt; text-align: left;">
+										<div id = "orbitLegendText">
+										</div>
+
 									</div>
 								</div>
 								<div class="col-9"style="height: 85vh;">
-								<div id="orbit-vis">
-								</div>
+									<div id="orbit-vis">
+									</div>
 								</div>
 							</div>
 <!--						</div>-->
