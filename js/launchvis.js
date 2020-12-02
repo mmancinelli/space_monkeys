@@ -30,9 +30,9 @@ class LaunchVis {
             if (d.Country === "North Korea") {
                 d.lat = 43; // move up for rendering
             }
-            if (d.Country === "Japan") {
-                d.lon = 142; // move over for rendering
-            }
+            // if (d.Country === "Japan") {
+            //     d.lon = 142; // move over for rendering
+            // }
         });
 
         // pull out the country names and exclude bad data
@@ -188,8 +188,8 @@ class LaunchVis {
         vis.circle = vis.circle_group.selectAll("circle")
             .data(vis.displayData);
 
-        vis.label = vis.label_group.selectAll("text")
-            .data(vis.displayData);
+        // vis.label = vis.label_group.selectAll("text")
+        //     .data(vis.displayData);
 
         // Enter (initialize the newly added elements)
         vis.circle.enter().append("circle")
