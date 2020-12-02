@@ -126,7 +126,7 @@ class NetworkVis {
             ["Launching rockets into space is, actually, rocket science. Mistakes will be, and have been, made. Partial failures were counted as failures, and the average success percentage across the entire board is 76.9%. Some of the less-experienced countries such as Brazil, Mexico, and North Korea (thank goodness), incidentally, have the lowest success percentages."],
             ["Choosing the best color scale here was tricky, because most of the rockets are launched 100 times or less....AND then there's Russia crushing it with 200-588 launches for some of its rockets. In comparison, the most-launched shuttle for the US is the Space Shuttle at 135 times."],
             ["Rockets, like most technologies, come and go. The rockets that are currently active and being launched today, according to the dataset, are highlighted in green."],
-            ["This is the cumulative shape of the space industry: 14 countries, 59 companies, 167 major rocket types, and 4324 launches."]]
+            ["This is the cumulative shape of the space industry: 14 countries, 59 companies, 167 major rocket types, and 4324 launches. Hover over the circles to find out some more information about them."]]
 
         // give everything a default color
         vis.rootData.descendants().forEach((d, i) => {
