@@ -1,6 +1,12 @@
 let launchData, rocketData, satelliteData, treeData, geoData, globeData, airportData
 let launchVis, brushVis, networkVis, flightVis, costVis, orbitVis, orbitVis3, orbitSystem
 
+let countries = ["USA", "China", "Russia", "Japan", "Israel", "New Zealand", "Iran", "France", "India", "Mexico", "Kazakhstan", "North Korea","South Korea", "Brazil", "Kenya", "Australia"]
+
+let countryColorScale = d3.scaleOrdinal()
+	.range(["#0e3860", "#7431c4", "#9f0797", "#640345", "#800000", "#ee6666", "#ec7805", "#d49953", "#ffeb04", "#8eac07", "#364e05", "#0b3701","#0b3701", "#08e2b0", "#2f96e7", "#3559e0"])
+	.domain(countries);
+
 // init global time selction for map vis
 let mapvis_selectedTime = []
 
@@ -75,10 +81,10 @@ function createVis(data){
 	geoData       = data[4];
 
 	// instantiate visualization objects
+	networkVis = new NetworkVis("network-vis", "networkLegend-vis",treeData);
 	orbitSystem = new OrbitSystem("orbit-vis","orbitLegend-vis", satelliteData, geoData);
 	launchVis = new LaunchVis("world-map", launchData, geoData);
 	brushVis   = new Brushvis("brush-plot", launchData);
-	networkVis = new NetworkVis("network-vis", "networkLegend-vis",treeData);
 	flightVis = new FlightVis("launches-vis", "FlightLegend-vis", data);
 
 

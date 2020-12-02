@@ -60,6 +60,11 @@ class NetworkVis {
         // console.log(vis.height)
         vis.radius = vis.height / 2.3;
 
+
+
+
+        // console.log(age0, age1);
+
         vis.tree = data => {
             vis.root = d3.hierarchy(data, function (d) {
                 return d.children;
@@ -75,9 +80,6 @@ class NetworkVis {
         }
         // var root = vis.tree(vis.practiceData)
         vis.rootData = vis.tree(vis.treeData)
-        // console.log(vis.rootData.descendants())
-
-        // vis.rootData.descendants().forEach((d,i)=>)
 
 
         // Features of the links between nodes:
@@ -102,6 +104,7 @@ class NetworkVis {
 
         vis.myCountries = ["USA", "China", "Russia", "Japan", "Israel", "New Zealand", "Iran", "France", "India", "Mexico", "Kazakhstan", "North Korea", "Brazil", "Kenya", "Australia"]
 
+        vis.firstLegend = true;
 
         // (Filter, aggregate, modify data)
         vis.wrangleData();
@@ -115,14 +118,15 @@ class NetworkVis {
     wrangleData() {
         let vis = this;
         vis.selectedCategory = selectedCategory;
-        vis.legendStatus = false; // controls whether the legend is drawn or not
+        vis.legendStatus = true; // controls whether the legend is drawn or not
 
         // create the text blurbs and assign as needed in if statement
         vis.legendTextAll=[
-            ["Russia, China, and the USA make up a soid two-thirds of the space launch industry to-date, but the other third is filled with a bunch of nations ever-reaching to the stars."],
-            ["Launching rockets into space is, actually, rocket science. That is to say, mistakes will be made."],
-            ["The choosing the right color scale here was tricky, because most of the rockets are launched 150 times or less....than then there's Russia with 580+ launches of some rockets."],
-            ["Rockets, like fashion, come and go. Here is an overview of the rockets listed as active in the dataset."]]
+            ["The top 9 countries with rocket-launching capabilities are USA, China, Russia, Japan, France (ESA), India, Israel, Iran, and North Korea. Russia, China, and the USA make up a solid two-thirds of the space launch industry to-date, but more countries have launched experimental rockets, like Kenya."],
+            ["Launching rockets into space is, actually, rocket science. Mistakes will be, and have been, made. Partial failures were counted as failures, and the average success percentage across the entire board is 76.9%. Some of the less-experienced countries such as Brazil, Mexico, and North Korea (thank goodness), incidentally, have the lowest success percentages."],
+            ["Choosing the best color scale here was tricky, because most of the rockets are launched 100 times or less....AND then there's Russia crushing it with 200-588 launches for some of its rockets. In comparison, the most-launched shuttle for the US is the Space Shuttle at 135 times."],
+            ["Rockets, like most technologies, come and go. The rockets that are currently active and being launched today, according to the dataset, are highlighted in green."],
+            ["This is the cumulative shape of the space industry: 14 countries, 59 companies, 167 major rocket types, and 4324 launches."]]
 
         // give everything a default color
         vis.rootData.descendants().forEach((d, i) => {
@@ -131,8 +135,20 @@ class NetworkVis {
 
         // update color based on selection category
         if (vis.selectedCategory == "default") {
-            vis.legendStatus = false;
-        } else if (vis.selectedCategory == "status") {
+            vis.legendStatus = true;
+            vis.legendData = [3,2,1,0];
+            vis.color = d3.scaleOrdinal()
+                .range(["white","#62ff00","#09d4cd","#ac05e9"])
+                .domain(vis.legendData)
+
+            vis.rootData.descendants().forEach((d,i)=>{
+                d.color= vis.color(d.height)
+            })
+            vis.legendText = vis.legendTextAll[4];
+
+
+        }
+        else if (vis.selectedCategory == "status") {
             vis.legendStatus = true;
 
             // vis.legendData, vis.color, and vis.legendText are all standardized across the if statement and used when drawing the legend
@@ -164,6 +180,8 @@ class NetworkVis {
             // cycle through the data
             // for the countries and companies, check to see if they are listed as true in the propagation arrays
             // if so, also set the color for those as 'active'
+            let comp = 0;
+            let rock = 0;
             vis.rootData.descendants().forEach((d, i) => {
                 // console.log(d)
                 if (d.height == 2) {
@@ -172,30 +190,37 @@ class NetworkVis {
                         d.color = vis.color(vis.legendData[0])
                     }
                 } else if (d.height == 1) {
+                    comp++
                     let thisCompany = d.data.name;
                     if (companyStatus[thisCompany] == true) {
                         d.color = vis.color(vis.legendData[0])
                     }
+                } else if (d.height == 0){
+                    rock++
                 }
                 vis.rootData.descendants()[0].color = vis.color(vis.legendData[0]);
             })
+            // console.log(comp, rock)
 
             // add some text
              vis.legendText = vis.legendTextAll[3]
 
-        } else if (vis.selectedCategory == "country") {
+        }
+        else if (vis.selectedCategory == "country") {
             vis.legendStatus = true;
 
             vis.legendData = vis.myCountries
 
-            // tell you what though
-            // choosing the right colors for this was a pain. It had to be both visible against the dark sky
-            // and also differentiable from it's direct neighbor. And pretty.
-            // it's like this class. ["juggle the dozens of balls and do well", "get sleep", "have time to work on literally anything else"] : choose 2.
-            vis.rootData.descendants()[0].color = "#fff"
-            vis.color = d3.scaleOrdinal()
-                .range(["#0e3860", "#7431c4", "#9f0797", "#640345", "#800000", "#ee6666", "#ec7805", "#d49953", "#ffeb04", "#8eac07", "#364e05", "#0b3701", "#08e2b0", "#2f96e7", "#3559e0"])
-                .domain(vis.legendData)
+            // // tell you what though
+            // // choosing the right colors for this was a pain. It had to be both visible against the dark sky
+            // // and also differentiable from it's direct neighbor. And pretty.
+            // // it's like this class. ["juggle the dozens of balls and do well", "get sleep", "have time to work on literally anything else"] : choose 2.
+            // vis.rootData.descendants()[0].color = "#fff"
+            // vis.color = d3.scaleOrdinal()
+            //     .range(["#0e3860", "#7431c4", "#9f0797", "#640345", "#800000", "#ee6666", "#ec7805", "#d49953", "#ffeb04", "#8eac07", "#364e05", "#0b3701", "#08e2b0", "#2f96e7", "#3559e0"])
+            //     .domain(vis.legendData)
+
+            vis.color = countryColorScale;
 
             vis.rootData.children.forEach((d, i) => {
                 let myCountry = d.data.name;
@@ -211,7 +236,8 @@ class NetworkVis {
             vis.legendText = vis.legendTextAll[0]
 
 
-        } else if (vis.selectedCategory == "success") {
+        }
+        else if (vis.selectedCategory == "success") {
             vis.legendStatus = true;
 
             vis.legendData = ([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
@@ -231,38 +257,19 @@ class NetworkVis {
             vis.legendText = vis.legendTextAll[1]
 
 
-        } else if (vis.selectedCategory == "total") {
+        }
+        else if (vis.selectedCategory == "total") {
             vis.legendStatus = true;
 
             // yes, I had to go through and determine where the quantiles were split. By hand.
-            vis.legendData = ([2, 5, 18,19 ])
+            vis.legendData = ([0,5,98,199,200 ])
             // quantiles are 1-2,3-18, 19-
 
             // choosing the right scale for this was the hardest, because most rockets launched <100 times
             // and then there's Russia.
-            // using the quantile scale showed the most diversity, but masks just how outrageously higher Russia is than everyone else.
-
-            // vis.color = d3.scaleSequential()
-            //     .domain([0, 600])
-            //     .range(["white", "red"])
-            // vis.color = d3.scaleSequential()
-            //     .interpolator(d3.interpolateReds)
-            //     .domain([0,600])
-            // vis.color = d3.scaleOrdinal()
-            //     .range(["white", "yellow", "orange", "red"])
-            //     .domain([0, 600])
-            // console.log(totalLaunches)
-            vis.color = d3.scaleQuantile()
-                .domain(totalLaunches)
-                .range(["white", "#FFCD06", "#ff7e08", "#BE1013"])
-
-            // vis.color = d3.scaleQuantize()
-            //     .domain([0,1777])
-            //     .range(["fff","FFCD06", "#BE1013"])
-            // console.log(vis.color(3))
-            // console.log(vis.color(4))
-            // console.log(vis.color(5))
-            //     .range(["fff","FFCD06","#E45323", "#BE1013", "black"])
+            vis.color = d3.scaleThreshold()
+                .domain([5,9,100,200])
+                .range(["white", "#ffd013", "#ff5800", "#BE1013", "#9e0cfd"])
 
             vis.rootData.descendants().forEach((d, i) => {
                 // console.log(d)
@@ -273,7 +280,8 @@ class NetworkVis {
             vis.legendText = vis.legendTextAll[2]
 
 
-        } else {
+        }
+        else {
             vis.legendStatus = false;
             console.log(vis.legendStatus);
 
@@ -342,15 +350,20 @@ class NetworkVis {
                 d3.select(this)
                     .attr('stroke-width', '2px')
                     .attr('stroke', 'black')
-                    .attr('fill', 'white');
+                    // white fill works for some of the color legends but not for success or launches, where white is informational. Changed it to green, which is not used in either of those scales.
+                    .attr('fill', d=>{
+                        return ((vis.selectedCategory== "total" |vis.selectedCategory == "success") ? "#5ee514" : "white")
+                    });
                 let yplacement = 0;
+                let xplacement = 0;
                 if (event.pageY > 620) {
-                    yplacement = event.pageY - 250;
+                    yplacement = event.pageY - 350;
+                    xplacement = event.pageX - 50;
                 } else {
-                    yplacement = event.pageY;
+                    yplacement = event.pageY+10;
                 }
 
-                let xplacement = 0;
+                // let xplacement = 0;
                 if (event.pageX > 1000) {
                     xplacement = event.pageX - 320;
                 } else {
@@ -364,6 +377,7 @@ class NetworkVis {
                 if (d.height === 0) {
                     // rocket type tooltip
                     vis.tooltip
+                        .attr('id', 'networkTooltip')
                         .html(`
                      <div style="border: thin solid grey; border-radius: 5px; background: darkgray; padding: 20px">
                          <p> <strong>Rocket Type: </strong>${d.data.name}</p>
@@ -403,6 +417,7 @@ class NetworkVis {
 
 
                     vis.tooltip
+                        .attr('id', 'networkTooltip')
                         .html(`
                      <div style="border: thin solid grey; border-radius: 5px; background: darkgray; padding: 20px">
                          <h3>${d.data.name}<h3>
@@ -431,6 +446,7 @@ class NetworkVis {
                     })
 
                     vis.tooltip
+                        .attr('id', 'networkTooltip')
                         .html(`
                      <div style="border: thin solid grey; border-radius: 5px; background: darkgray; padding: 20px">
                          <h3>${d.data.name}<h3>
@@ -438,16 +454,11 @@ class NetworkVis {
                          <p> <strong>Total Rocket Types: </strong>${totalRockets}</p>
                      </div>`);
                 } else if (d.height == 3) {
-                    //potential easter egg. However, I get a 404 error file not found
-                    // need to find the correct way to link to images
-                    // var myImagePath = "spacemonkey.png";
-                    // // var string = '<img src= + "images/spacemonkey.png" + />`;
-                    // vis.tooltip
-                    //     .html(`<img src = +" myImagePath + />"`)
-                    //     // .html(`img src={\`${API_URL}/${myImagePath}\`}`)//this will add the image on mouseover
-                    //     .style("left", (event.pageX + 10) + "px")
-                    //     .style("top", (event.pageY + 50) + "px")
-                    //     .style("font-color", "white");
+                    vis.tooltip
+                        .attr("id", "spacemonkey")
+                        .style("left", 50 + "px")
+                        .style("top", 50 +'px')
+                        // .style("width", vis.width/3)
 
                 }
             })
@@ -482,10 +493,11 @@ class NetworkVis {
             .data(vis.legendData);
 
         // grab the legend text element to update the text box
-        vis.body = d3.select("#legendText")
+        vis.body = d3.select("#legendText").data(vis.legendText).attr("class", "networkLegendText")
+        // vis.body.selectAll("p").remove();
 
         //toggle legend
-        if (vis.legendStatus == true) {
+        // if (vis.legendStatus == true) {
             var size = 20;
 
             // make the legend color squares
@@ -525,15 +537,31 @@ class NetworkVis {
                             return "Retired"
                         }
                     } else if (vis.selectedCategory == "total") {
+                        // vis.legendData = ([0,5,98,199,200 ])
                         // console.log(d)
-                        if (d === 2) {
-                            return "0-2"
+                        if (d === 0) {
+                            return "0-4"
                         } else if (d === 5) {
-                            return "3-5"
-                        } else if (d==18){
-                            return "6-18"
+                            return "5-9"
+                        } else if (d==98){
+                            return "10-99"
+                        } else if (d==199){
+                            return "100-199"
                         } else {
-                            return "19-588"
+                            return "200+"
+                        }
+
+                    }else if (vis.selectedCategory == "default") {
+                        // vis.legendData = ([0,5,98,199,200 ])
+                        // console.log(d)
+                        if (d === 3) {
+                            return "Rocket Industry"
+                        } else if (d === 2) {
+                            return "Country"
+                        } else if (d===1){
+                            return "Company"
+                        } else if (d==0){
+                            return "Rocket Type"
                         }
 
                     }
@@ -545,22 +573,32 @@ class NetworkVis {
                 .style("alignment-baseline", "middle");
 
             //remove the current text box if there is one
-            vis.body.selectAll("p").remove();
+
 
             // add new text info
-            vis.body.append("p").text(vis.legendText[0])
+
+
+
+
+            vis.body.enter().append("p").merge(vis.body).text(vis.legendText[0])
 
             // update legend stuffs
             vis.legendSquares.exit().remove();
             vis.legendLabels.exit().remove();
+            vis.body.exit().remove()
 
-        } else if (vis.legendStatus == false) {
-            // if legend is off, remove all the stuff and wipe the slate clean
-            vis.legendLabels.remove();
-            vis.legendSquares.remove();
-            vis.body.selectAll("p").remove();
 
-        }
+        // }
+        // commented out because it's never false
+        // else if (vis.firstLegend == true) {
+        //     vis.firstLegend = false;
+        //     // if legend is off, remove all the stuff and wipe the slate clean
+        //     vis.body.append("p").text(vis.legendText[0])
+        //     // vis.legendLabels.remove();
+        //     // vis.legendSquares.remove();
+        //     // vis.body.selectAll("p").remove();
+        //
+        // }
 
 
         // create label objects
@@ -573,6 +611,17 @@ class NetworkVis {
             .attr("stroke", "black")
             .selectAll(".networkCircleLabel")
             .data(vis.rootData.descendants());
+
+        // removed magic numbers of d.y in positioning of labels, since it changes with window size apparently
+        //
+        let secondY;
+        vis.rootData.descendants().forEach((d,i)=>{
+            if (d.height == 1){
+                secondY = d.y
+            }
+        })
+        secondY+=10
+        // console.log(secondY)
 
         // toggle labels
         // TODO Get labels on right side of tree to rotate
@@ -590,8 +639,8 @@ class NetworkVis {
                 translate(${d.y},0)
                 rotate(${d.x > 1.6 ? 180 : 0})
                 rotate(${(d.x > Math.PI & d.x < 180) ? (180, 0, 180) : 0})
-                translate(${(d.x > Math.PI & d.x < 180 & d.y > 270) ? 12 : 0})
-                translate(${(d.x > Math.PI & d.x < 180 & d.y < 270) ? -12 : 0})
+                translate(${(d.x > Math.PI & d.x < 180 & d.y > secondY) ? 12 : 0})
+                translate(${(d.x > Math.PI & d.x < 180 & d.y < secondY) ? -12 : 0})
               `)
                 // first rotate spreads the texts around the circle of the tree, with the angle matching the angle of the circle the label is attached to
                 // translate pushes the labels from the center out to the correct distance from the center of the tree
@@ -604,9 +653,9 @@ class NetworkVis {
                 // depending on if they are on the right side or the left side of the circle, and if they are on an inner ring or the outer one - text anchor them at the start or end
                 .attr("text-anchor", d => {
                     if (d.x > Math.PI & d.x < 180) {
-                        if (d.y > 270) {
+                        if (d.y > secondY) {
                             return "start"
-                        } else if (d.y < 270) {
+                        } else if (d.y < secondY) {
                             return "end"
                         }
                     } else if (d.x >= 180) {

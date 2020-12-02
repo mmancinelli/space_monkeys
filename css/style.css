@@ -63,6 +63,14 @@ h2 {
     font-style: italic;
 }
 
+.carousel-caption>h2 {
+    font-size: 2em;
+}
+
+.carousel-caption>h3 {
+    font-size: 1em;
+}
+
 h3 {
     font-size: 1.5em;
     font-family: arial,helvetica;
@@ -143,11 +151,23 @@ p {
     color: black;
 }
 
+.networkLegendText{
+    color: white;
+}
+
+#spacemonkey{
+    content: url('../images/spacemonkey.svg');
+    display: block;
+    position: absolute;
+    width: 50%;
+
+}
+
 /* Map Vis CSS */
 .circle {
-    stroke: #d61111;
+    /*stroke: #d61111;*/
     stroke-width: 2;
-    fill: #d61111;
+    /*fill: #d61111;*/
     fill-opacity: 50%;
 }
 
@@ -232,12 +252,14 @@ p {
     width:  100%;
 }
 
+.age-label {
+    font-weight: bold;
 
+}
 
-/*what are the ones below for? Can't remember, should delete? */
 .pathGroup path {
     stroke: lightslategrey;
-    fill: white;
+    fill: #00ffd4;
     opacity: 80%;
 }
 
@@ -249,6 +271,9 @@ p {
     padding-top: 60px;
 }
 
+.sat-info {
+    fill: white;
+}
 
 /*#sections {*/
 /*    position: relative;*/

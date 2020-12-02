@@ -87,6 +87,23 @@ class Brushvis {
         vis.brushGroup = vis.svg.append("g")
             .attr("class", "brush");
 
+        // add age labels
+        vis.brushGroup.append("text")
+            .attr("class","age-label")
+            .attr("x",vis.width * 0.1856)
+            .attr("y", vis.height * 3 / 4)
+            .text("Space Race")
+        vis.brushGroup.append("text")
+            .attr("class","age-label")
+            .attr("x",vis.width * 0.546)
+            .attr("y", vis.height * 3 / 4)
+            .text("Exploration Age")
+        vis.brushGroup.append("text")
+            .attr("class","age-label")
+            .attr("x",vis.width * 0.901)
+            .attr("y", vis.height * 3 / 4)
+            .text("Comm. Age")
+
         //init brush
         vis.brush = d3.brushX()
             .extent([[0, 0], [vis.width, vis.height]])

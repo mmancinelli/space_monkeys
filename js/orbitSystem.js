@@ -24,7 +24,7 @@ class OrbitSystem {
         // number of sats to display
         this.displayAmount = 1000;
 
-        console.log(this.satData)
+        // console.log(this.satData)
 
         this.initVis();
     }
@@ -92,6 +92,36 @@ class OrbitSystem {
         //     updateRangeSliderValues(values);})
 
 
+        // Set up text area for satellite info
+        vis.satelliteInfo = vis.svg2.append("g");
+
+        vis.satelliteInfo.append("text")
+            .attr("class","sat-info")
+            .attr("id","sat-name")
+            .attr("x",0)
+            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.8)
+            .text("Hover over satellites for info!");
+
+        vis.satelliteInfo.append("text")
+            .attr("class","sat-info")
+            .attr("id","sat-country")
+            .attr("x",0)
+            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.8 + 1*30)
+            .text("");
+
+        vis.satelliteInfo.append("text")
+            .attr("class","sat-info")
+            .attr("id","sat-purpose")
+            .attr("x",0)
+            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.8 + 2*30)
+            .text("");
+
+        vis.satelliteInfo.append("text")
+            .attr("class","sat-info")
+            .attr("id","sat-alt")
+            .attr("x",0)
+            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.8 + 3*30)
+            .text("");
 
         // ****************************************
         //             GLOBE
@@ -323,6 +353,18 @@ class OrbitSystem {
             .style("fill", d=>d.color)
             .on("mouseover", function (event, d) {
                 console.log(d)
+
+                vis.satelliteInfo.select("#sat-name")
+                    .text("Name: " + d.name);
+
+                vis.satelliteInfo.select("#sat-country")
+                    .text("Country: " + d.Country);
+
+                vis.satelliteInfo.select("#sat-purpose")
+                    .text("Purpose: " + d.Purpose);
+
+                vis.satelliteInfo.select("#sat-alt")
+                    .text("Alt [km]: " + d.R);
             });
 
         // exit
