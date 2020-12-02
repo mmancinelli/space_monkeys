@@ -53,7 +53,7 @@ class OrbitSystem {
             .attr('transform', `translate (${vis.margin.left}, ${vis.margin.top})`);
 
         // set up legend svg
-        vis.marginLegend = {top: 0, right: 0, bottom: 100, left: 0};
+        vis.marginLegend = {top: 0, right: 0, bottom: 25, left: 15};
         vis.widthLegend = $("#" + vis.legendElement).width() - vis.marginLegend.left - vis.marginLegend.right;
         vis.heightLegend = $("#" + vis.legendElement).height() - vis.marginLegend.top - vis.marginLegend.bottom;
 
@@ -63,10 +63,10 @@ class OrbitSystem {
             .append('g')
 
         vis.orbitLegendTextAll=[
-            ["Satellites yada yada yada default. "],
-            ["Colored by country. There are approximately X countries in Other."],
-            ["Purposes have been binned into major categories."],
-            ["Colored by orbit category."]
+            ["There have been a total of 2787 satellites launched into orbit, carried there in the cargo bays of the rockets. Here the satellites have been encoded with realistic orbits and realistic orbiting speeds, and each circle represents a real satellite.  Also sometimes the animation makes the satellites orbit in a counter-clockwise fashion instead of clockwise. No idea why, just ignore it."],
+            ["While we show the five countries with the most satellites in orbit explicitly, seventy-five different countries have sent satellites into orbit. Additionally, there have been at least 30 different collaborations between countries, the most popular of which is USA/Taiwan with 11 satellites."],
+            ["The purposes have been binned into 5 major categories: Communication (1378), Earth Science (817), Other (344), Navigation (150), and Space Science (98). Other includes such purposes as Education, Technology Development, and Surveillance."],
+            ["The radii of the orbits correspond to the approximate ranges in kilometers: Lower Earth Orbit (LEO) < 2000km, Medium Earth Orbit (GEO) 2000-20,560km, and Geosynchronous Equatorial Orbit (GEO) <35,786km. To spread the satellites out in space and prevent overlap, each satellite was encoded with a random radius within its prescribed orbit range and a random starting angle. Satellites with elliptical orbits have been encoded with a regular orbit for animation purposes."]
             ]
         vis.originalTimePeriod = d3.extent(vis.satData, d=>d.Date)
 
@@ -76,28 +76,28 @@ class OrbitSystem {
         vis.satelliteInfo.append("text")
             .attr("class","sat-info")
             .attr("id","sat-name")
-            .attr("x",0)
+            .attr("x",vis.marginLegend.left)
             .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.8)
             .text("Hover over satellites for info!");
 
         vis.satelliteInfo.append("text")
             .attr("class","sat-info")
             .attr("id","sat-country")
-            .attr("x",0)
+            .attr("x",vis.marginLegend.left)
             .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.8 + 1*30)
             .text("");
 
         vis.satelliteInfo.append("text")
             .attr("class","sat-info")
             .attr("id","sat-purpose")
-            .attr("x",0)
+            .attr("x",vis.marginLegend.left)
             .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.8 + 2*30)
             .text("");
 
         vis.satelliteInfo.append("text")
             .attr("class","sat-info")
             .attr("id","sat-alt")
-            .attr("x",0)
+            .attr("x",vis.marginLegend.left)
             .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.8 + 3*30)
             .text("");
 
@@ -196,23 +196,28 @@ class OrbitSystem {
             .domain([0, 12000])
 
         vis.filteredData.forEach((d, i) => {
-            // console.log(d)
+            console.log(d)
             let speed = 0;
             let phi0 = 0;
             vis.R = 0;
             let r = 0;
 
             r = 2 //same size for all sats
+
+            // radius of planet is 50. chose 55 to have a bit of a buffer
+            // diameter of planet is 100 pixels, so the conversion is 0.0078px/km -> used to calculate pixel ranges
             // for each class of orbit, generate a random number within acceptable range
-            // randomness will help spread them out in space
+            // randomness will help spread them out in space, "jitter"
+
             if (d["Class of Orbit"] == "LEO") {
-                vis.R = Math.floor(Math.random() * 16) + 55 // radius of planet is 50. chose 55 to have a bit of a buffer
+                //min radius possible is 52, max radius possible is 66
+                vis.R = Math.floor(Math.random() * 16) + 55
 
             } else if (d["Class of Orbit"] == "MEO") {
-                vis.R = Math.floor(Math.random() * 145) + 66
+                vis.R = Math.floor(Math.random() * 150) + 71
 
             } else if (d["Class of Orbit"] == "GEO" | d["Class of Orbit"] == "Elliptical") {
-                vis.R = Math.floor(Math.random() * 119) + 211
+                vis.R = Math.floor(Math.random() * 124) + 216
             }
 
             // phi0 is the starting angle coordinate
@@ -227,6 +232,7 @@ class OrbitSystem {
                 name: d["Current Official Name of Satellite"],
                 color: "#00ffd4",
                 Country: d.Country,
+                Country2: d["Country of Operator/Owner"],
                 Purpose: d.Purpose,
                 Users: d.Users,
                 Orbit: d["Class of Orbit"]
@@ -254,9 +260,9 @@ class OrbitSystem {
             vis.orbitLegendText= vis.orbitLegendTextAll[0]
 
         } else if (vis.selectedSatCategory == "country") {
-            vis.legendData = ["USA", "China", "Russia", "United Kingdom", "Japan", "Other"]
+            vis.legendData = ["USA", "China", "Russia", "United Kingdom", "Japan", "Other", "Collaboration"]
             vis.color = d3.scaleOrdinal()
-                .range(["#0a60b1", "#7431c4", "#9f0797", "#640345", "#800000", "#ee6666"])
+                .range(["#0a60b1", "#7431c4", "#9f0797", "#640345", "#800000", "#ee6666", "#66ee83"])
                 .domain(vis.legendData)
 
 
@@ -317,16 +323,16 @@ class OrbitSystem {
                 console.log(d)
 
                 vis.satelliteInfo.select("#sat-name")
-                    .text("Name: " + d.name);
+                    .text("Name:    " + d.name);
 
                 vis.satelliteInfo.select("#sat-country")
-                    .text("Country: " + d.Country);
+                    .text("Country:    " + d.Country2);
 
                 vis.satelliteInfo.select("#sat-purpose")
-                    .text("Purpose: " + d.Purpose);
+                    .text("Purpose:   " + d.Purpose);
 
                 vis.satelliteInfo.select("#sat-alt")
-                    .text("Alt [km]: " + d.R);
+                    .text("Orbit:    " + d.Orbit);
             });
 
         // exit
@@ -401,9 +407,9 @@ class OrbitSystem {
                     if (d == "LEO") {
                         return "Low Earth Orbit"
                     } else if (d=="MEO") {
-                        return "Middle Earth Orbit"
+                        return "Medium Earth Orbit"
                     } else if (d=="GEO"){
-                        return "Geosynchronous Earth Orbit"
+                        return "Geosynchronous Equatorial Orbit"
                     } else {
                         return "Elliptical Orbit"
                     }
