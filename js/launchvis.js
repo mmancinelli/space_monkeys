@@ -12,6 +12,11 @@ class LaunchVis {
         this.geoData = _geoData;
         this.filteredData = [];
 
+        // default countries
+        this.myCountries = ["USA", "China", "Russia", "Japan", "Israel", "New Zealand", "Iran", "France", "India",
+            "Mexico", "Kazakhstan", "North Korea", "Brazil", "Kenya", "Australia"]
+
+
         // convert to js Date object
         this.data.forEach(d => d.date = new Date(d.Datum));
 
@@ -133,8 +138,72 @@ class LaunchVis {
             animateMap();
         });
 
+        // add legend
+        // create legend item
+        vis.legend = vis.svg.append("g")
+            .attr("class", "mapLegend")
+
+        vis.addLegend();
+
         // // (Filter, aggregate, modify data)
         // vis.wrangleData();
+    }
+
+    addLegend() {
+        let vis = this;
+
+        // create legend data
+        vis.legendData = vis.myCountries
+
+        // set up stuff for the labels
+        vis.legendSquares = vis.legend
+            .attr("class", "legendSquares")
+            .selectAll(".legendSquare")
+            .data(vis.legendData);
+
+        vis.legendLabels = vis.legend
+            .attr("class", "legendLabels")
+            .selectAll(".legendLabel")
+            .data(vis.legendData);
+
+        let size = 20;
+
+        // make the legend color squares
+        vis.legendSquares
+            .enter()
+            .append("rect")
+            .attr("class", "legendSquare")
+            .merge(vis.legendSquares)
+            .attr("x", 20)
+            .attr("y", function (d, i) {
+                return 10 + i * (size + 5)
+            }) // 100 is where the first dot appears. 25 is the distance between dots
+            .attr("width", size)
+            .attr("height", size)
+            .style("fill", function (d) {
+                return countryColorScale(d)
+            });
+
+        // make the legend text, colored the same
+        vis.legendLabels
+            .enter()
+            .append("text")
+            .attr("class", "legendLabel")
+            .merge(vis.legendLabels)
+            .attr("x", 60)
+            .attr("y", function (d, i) {
+                return 10 + i * (size + 5) + (size / 2)
+            })
+            .style("fill", function (d) {
+                return countryColorScale(d)
+            })
+            .text(d => d)
+            .attr("text-anchor", "left")
+            .style("alignment-baseline", "middle");
+
+        // update legend stuffs
+        vis.legendSquares.exit().remove();
+        vis.legendLabels.exit().remove();
     }
 
 
@@ -213,36 +282,36 @@ class LaunchVis {
             .attr("fill", d => countryColorScale(d.name))
             .attr("stroke", d => countryColorScale(d.name));
 
-        vis.label.enter().append("text")
-            .attr("class", "circle-label")
-
-            // Enter and Update (set the dynamic properties of the elements)
-            .merge(vis.label)
-            .on("mouseover", function (e,d) {
-                vis.tooltip.show(d,this);
-            })
-            .on("mouseout", function (){
-                vis.tooltip.hide();
-            })
-            .on("click", function (e,d) {
-                console.log(d);
-            })
-            .transition()
-            .duration(100)
-            .text(d => d.launches)
-            .attr('text-anchor', 'middle')
-            .attr('alignment-baseline','middle')
-            .attr('font-weight','bold')
-            .attr('fill',d => countryColorScale(d.name))
-            .attr('font-size','x-large')
-            .attr('stroke','white')
-            .attr('stroke-width',1)
-            .attr("transform", d => `translate(${vis.projection([d.lon, d.lat])})`);
+        // vis.label.enter().append("text")
+        //     .attr("class", "circle-label")
+        //
+        //     // Enter and Update (set the dynamic properties of the elements)
+        //     .merge(vis.label)
+        //     .on("mouseover", function (e,d) {
+        //         vis.tooltip.show(d,this);
+        //     })
+        //     .on("mouseout", function (){
+        //         vis.tooltip.hide();
+        //     })
+        //     .on("click", function (e,d) {
+        //         console.log(d);
+        //     })
+        //     .transition()
+        //     .duration(100)
+        //     .text(d => d.launches)
+        //     .attr('text-anchor', 'middle')
+        //     .attr('alignment-baseline','middle')
+        //     .attr('font-weight','bold')
+        //     .attr('fill',d => countryColorScale(d.name))
+        //     .attr('font-size','x-large')
+        //     .attr('stroke','white')
+        //     .attr('stroke-width',1)
+        //     .attr("transform", d => `translate(${vis.projection([d.lon, d.lat])})`);
 
 
         // Exit
         vis.circle.exit().remove();
-        vis.label.exit().remove();
+        // vis.label.exit().remove();
 
     }
 
