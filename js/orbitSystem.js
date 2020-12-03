@@ -234,6 +234,7 @@ class OrbitSystem {
                 Country: d.Country,
                 Country2: d["Country of Operator/Owner"],
                 Purpose: d.Purpose,
+                Purpose2: d.Purpose2,
                 Users: d.Users,
                 Orbit: d["Class of Orbit"]
             })
@@ -323,16 +324,18 @@ class OrbitSystem {
                 console.log(d)
 
                 vis.satelliteInfo.select("#sat-name")
-                    .text("Name:    " + d.name);
+                    .style("font-weight", "bold")
+                    .text("Name:  " + d.name);
+
 
                 vis.satelliteInfo.select("#sat-country")
-                    .text("Country:    " + d.Country2);
+                    .text("Country:  " + d.Country2);
 
                 vis.satelliteInfo.select("#sat-purpose")
-                    .text("Purpose:   " + d.Purpose);
+                    .text("Purpose:  " + d.Purpose2);
 
                 vis.satelliteInfo.select("#sat-alt")
-                    .text("Orbit:    " + d.Orbit);
+                    .text("Orbit:  " + d.Orbit);
             });
 
         // exit

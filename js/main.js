@@ -46,7 +46,8 @@ Promise.all(promises)
 			d["LaunchMass"]=+d["Launch Mass (kg.)"];
 			d["Country"] = d["Country of Operator/Owner"];
 			d["Owner"]= d["Operator/Owner"];
-			d["Date"] = dateParser(d["Date of Launch"])
+			d["Purpose2"]=d["Purpose"];
+			d["Date"] = dateParser(d["Date of Launch"]);
 
 			let str=d.Country
 			// console.log(str, str.includes('/'))
@@ -63,7 +64,7 @@ Promise.all(promises)
 				d.Purpose = "Communications"
 			} else if (d.Purpose == "Earth Observation" |d.Purpose == "Earth Observation/Communications" |d.Purpose == "Earth Observation/Communication/Space Science" |d.Purpose == "Earth Observation/Earth Science" |d.Purpose == "Earth Observation/Space Science" |d.Purpose == "Earth Observation/Technology Development" |d.Purpose == "Earth Science" |d.Purpose == "Earth Science/Earth Observation" |d.Purpose == "Earth/Space Observation") {
 				d.Purpose = "Earth Science"
-			} else if (d.Purpose == "Navigation/Global Positioning" |d.Purpose == "Navigation/Regional Postioning"){
+			} else if (d.Purpose == "Navigation/Global Positioning" |d.Purpose == "Navigation/Regional Positioning"){
 				d.Purpose = "Navigation"
 			} else if (d.Purpose == "Space Observation" |d.Purpose == "Space Science" |d.Purpose == "Space Science/Technology Demonstration" |d.Purpose == "Space Science/Technology Development"){
 				d.Purpose = "Space Science"
