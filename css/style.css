@@ -410,3 +410,7 @@ h5 {
     color: #fff;
     margin:0;
 }
+
+.content_video > div {
+    margin: 20px;
+}
