@@ -84,6 +84,7 @@ function createVis(data){
 	networkVis = new NetworkVis("network-vis", "networkLegend-vis",treeData);
 	orbitSystem = new OrbitSystem("orbit-vis","orbitLegend-vis", satelliteData, geoData);
 	launchVis = new LaunchVis("world-map", launchData, geoData);
+	mapBarVis = new MapBarVis("world-bar", launchData, geoData);
 	brushVis   = new Brushvis("brush-plot", launchData);
 	flightVis = new FlightVis("launches-vis", "FlightLegend-vis", data);
 
@@ -152,8 +153,12 @@ function animateMap () {
 				.attr("width", brush_width);
 			mapvis_selectedTime = [min_year, (min_year + (max_year - min_year) / animation_steps * ii)];
 			launchVis.wrangleData();
+			mapBarVis.wrangleData();
 			//console.log("wrangled " + ii + " with " + mapvis_selectedTime + " and width: " + brush_width);
 
+			if (ii === animation_steps) {
+				document.getElementById("map_animation").innerText = "Click and Drag Below to Explore";
+			}
 		}, (ii * step_delay));
 	}
 }

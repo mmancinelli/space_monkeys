@@ -3,7 +3,8 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>CS171 - Space Monkeys Testing</title>
+
+	<title>CS171 - Space Monkeys</title>
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<!--Code Sources:
@@ -11,9 +12,6 @@
     Parallax CSS Stars modified from https://codepen.io/saransh/details/BKJun
     -->
 	<link rel="stylesheet" type="text/css" href="css/fullpage.css" />
-<!--	<script src="//unpkg.com/d3-force-magnetic"></script>-->
-
-<!--	<link rel="stylesheet" type="text/css" href="css/examples.css" />-->
 	<link rel="stylesheet" type="text/css" href="css/stars.css" />
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<link rel="stylesheet" type="text/css" href="css/fonts/stylesheet.css" charset="utf-8"/>
@@ -71,24 +69,29 @@
 		</div>
 	</div>
 
+	<!--Video from Space Race-->
 	<div class="section" id="section1_5">
 		<div class="star-section">
 			<div class = "stars"></div>
 			<div class = "stars2"></div>
 			<div class = "stars3"></div>
-			<div class="container-fluid h-100" style="padding: 0vh">
+			<div class="container-fluid h-100 video-parent">
 				<div class="video-container">
 					<video autoplay muted loop id="myVideo1">
 						<source src="videos/SaturnV.mov" type="video/mp4">
 					</video>
 					<!-- Optional: some overlay text to describe the video -->
 					<div class="content_video">
-						<div class="align-self-center">
-							<h2>Space Race</h2>
-							<h2 style="font-size:3em; color:#ffb700">(1957-1975)</h2>
-							<p>The United States and the Soviet Union fought for space domination.  This led to the race to the Moon, propelled by the Saturn V, the largest rocket ever built.  The Space Race culminated in 1975, with the docking of the Russian Soyuz and American Apollo vehicles in Low-Earth Orbit.</p>
-							<!-- Use a button to pause/play the video with JavaScript -->
-							<button id="myBtn1" onclick="myFunction()">Pause</button>
+						<div class="row align-items-center">
+							<div class="col">
+								<h2>Space Race</h2>
+								<h2 class="date-range">(1957-1975)</h2>
+								<p>The United States and the Soviet Union fought for space domination.</p>
+								<p>This led to the race to the Moon, propelled by the Saturn V, the largest rocket ever built.</p>
+								<p>The Space Race culminated in 1975, with the docking of the Russian Soyuz and American Apollo vehicles in Low-Earth Orbit.</p>
+								<!-- Use a button to pause/play the video with JavaScript -->
+								<button id="myBtn1" onclick="toggleVideo1()">Pause</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -243,19 +246,24 @@
 			<div class = "stars"></div>
 			<div class = "stars2"></div>
 			<div class = "stars3"></div>
-			<div class="container-fluid h-100" style="padding: 0vh">
+			<div class="container-fluid h-100 video-parent">
 				<div class="video-container">
 					<video autoplay muted loop id="myVideo2">
 						<source src="videos/Shuttle.mp4" type="video/mp4">
 					</video>
 					<!-- Optional: some overlay text to describe the video -->
 					<div class="content_video">
-						<div class="align-self-center">
-							<h2>Age of Exploration</h2>
-							<h2 style="font-size:2em; color:#ffb700">(1981-Present)</h2>
-							<p>The diversification of activities in space led to the Age of Exploration, propelled by the Space Shuttle which began launching in 1981.  The Space Shuttle had the capacity to send up to 60,000 lbs of cargo to Low-Earth Orbit, which is equivalent to about 3 school buses. The Shuttle famously put the Hubble Space Telescope in orbit in 1990, and enabled the construction of the International Space Station with its first module launching in 1998. The Shuttle would launch from the Kennedy Space Center in Cape Canaveral, Florida. </p>
-							<!-- Use a button to pause/play the video with JavaScript -->
-							<button id="myBtn2" onclick="myFunction()">Pause</button>
+						<div class="row align-items-center">
+							<div class="col">
+								<h2>Age of Exploration</h2>
+								<h2 class="date-range">(1981-Present)</h2>
+								<p>The diversification of activities in space led to the Age of Exploration, propelled by the Space Shuttle which began launching in 1981.</p>
+								<p>The Space Shuttle had the capacity to send up to 60,000 lbs of cargo to Low-Earth Orbit, which is equivalent to about 3 school buses.</p>
+								<p>The Shuttle famously put the Hubble Space Telescope in orbit in 1990, and enabled the construction of the International Space Station with its first module launching in 1998.</p>
+								<p>The Shuttle would launch from the Kennedy Space Center in Cape Canaveral, Florida.</p>
+								<!-- Use a button to pause/play the video with JavaScript -->
+								<button id="myBtn2" onclick="toggleVideo2()">Pause</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -293,11 +301,17 @@
 				<div class="align-self-center">
 					<h2>The Evolution of the Space Industry</h2>
 					<h3>3 Distinct Eras. The Space Race. The Exploration Age. The Commercialization Age.</h3>
-					<button id="map_animation">Click Here to Watch the Evolution</button>
 				</div>
 			</div>
 			<div class="row main-body">
-				<div class="col one-col">
+				<div class="col">
+					<div class="row justify-content-center center-center">
+						<div class="align-self-center vis-holder">
+							<div id="world-bar"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col col-8">
 					<div class="row justify-content-center center-center">
 						<div class="align-self-center vis-holder">
 							<div id="world-map"></div>
@@ -306,6 +320,11 @@
 				</div>
 			</div>
 			<div class="row footer">
+				<div class="col one-col">
+					<div class="row justify-content-center center-center">
+						<button id="map_animation">Click Here to Watch the Evolution</button>
+					</div>
+				</div>
 				<div class="vis-holder">
 					<div id="brush-plot"></div>
 				</div>
@@ -383,19 +402,23 @@
 			<div class = "stars"></div>
 			<div class = "stars2"></div>
 			<div class = "stars3"></div>
-			<div class="container-fluid h-100" style="padding: 0vh">
+			<div class="container-fluid h-100 video-parent">
 				<div class="video-container">
 					<video autoplay muted loop id="myVideo3">
 						<source src="videos/Rocket1.mp4" type="video/mp4">
 					</video>
 					<!-- Optional: some overlay text to describe the video -->
 					<div class="content_video">
-						<div class="align-self-center">
-							<h2>Commercial Space Age</h2>
-							<h2 style="font-size:2em; color:#ffb700">(2011-Present)</h2>
-							<p>In 2011, SpaceX became the first private company to launch a rocket, the Falcon 9.  Since then, other companies and nations have joined the space industry.  Their goal: get a share of the growing space economy which is projected to hit the $1.1 trillion mark by 2040, according to Morgan Stanley.</p>
-							<!-- Use a button to pause/play the video with JavaScript -->
-							<button id="myBtn3" onclick="myFunction()">Pause</button>
+						<div class="row align-items-center">
+							<div class="col">
+								<h2>Commercial Space Age</h2>
+								<h2 class="date-range">(2011-Present)</h2>
+								<p>In 2011, SpaceX became the first private company to launch a rocket, the Falcon 9.</p>
+								<p>Since then, other companies and nations have joined the space industry.</p>
+								<p>Their goal: get a share of the growing space economy which is projected to hit the $1.1 trillion mark by 2040, according to Morgan Stanley.</p>
+								<!-- Use a button to pause/play the video with JavaScript -->
+								<button id="myBtn3" onclick="toggleVideo3()">Pause</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -576,19 +599,22 @@
 			<div class = "stars"></div>
 			<div class = "stars2"></div>
 			<div class = "stars3"></div>
-			<div class="container-fluid h-100" style="padding: 0vh">
+			<div class="container-fluid h-100 video-parent">
 				<div class="video-container">
 					<video autoplay muted loop id="myVideo4">
 						<source src="videos/Earth.mov" type="video/mp4">
 					</video>
 					<!-- Optional: some overlay text to describe the video -->
 					<div class="content_video">
-						<div class="align-self-center">
-							<h2>Satellites in Orbit</h2>
-							<h2 style="font-size:2em; color:#ffb700">(1957-Present)</h2>
-							<p>The Delta II, Cosmos, and 100s of other launch vehicles have contributed to the nearly 3000 satellites in orbit today. Although the USA and USSR set the stage back in Space Race, the current ecosystem is contributed to by over a dozen countries.</p>
-							<!-- Use a button to pause/play the video with JavaScript -->
-							<button id="myBtn4" onclick="myFunction()">Pause</button>
+						<div class="row align-items-center">
+							<div class="col">
+								<h2>Satellites in Orbit</h2>
+								<h2 class="date-range">(1957-Present)</h2>
+								<p>The Delta II, Cosmos, and 100s of other launch vehicles have contributed to the nearly 3000 satellites in orbit today.</p>
+								<p>Although the USA and USSR set the stage back in Space Race, the current ecosystem is contributed to by over a dozen countries.</p>
+								<!-- Use a button to pause/play the video with JavaScript -->
+								<button id="myBtn4" onclick="toggleVideo4()">Pause</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -681,21 +707,23 @@
 			<div class = "stars"></div>
 			<div class = "stars2"></div>
 			<div class = "stars3"></div>
-			<div class="container-fluid h-100" style="padding: 0vh">
+			<div class="container-fluid h-100 video-parent">
 				<div class="video-container">
 					<video autoplay muted loop id="myVideo5">
 						<source src="videos/Solar.mov" type="video/mp4">
 					</video>
 					<!-- Optional: some overlay text to describe the video -->
 					<div class="content_video">
-						<div class="align-self-center">
-							<!--<h2>What will be the next "Giant Leap"?</h2>-->
-							<h2>What will be the next</h2>
-							<h2 style="font-size:4em; color:#ffb700">"Giant Leap"?</h2>
-							<p>The exploration and commercialization of space presents new opportunities.  Since 2010, countries such as the UAE, South Africa, Paraguay, and Portugal created their space agencies.  Their goal: continue to push the boundaries of human knowledge while exploring the Earth, Moon, Mars, and beyond.</p>
-
-							<!-- Use a button to pause/play the video with JavaScript
-							<button id="myBtn5" onclick="myFunction5()">Pause</button> -->
+						<div class="row align-items-center">
+							<div class="col">
+								<h2>What will be the next</h2>
+								<h2 class="date-range">"Giant Leap"?</h2>
+								<p>The exploration and commercialization of space presents new opportunities.</p>
+								<p>Since 2010, countries such as the UAE, South Africa, Paraguay, and Portugal created their space agencies.</p>
+								<p>Their goal: continue to push the boundaries of human knowledge while exploring the Earth, Moon, Mars, and beyond.</p>
+								<!-- Use a button to pause/play the video with JavaScript -->
+								<button id="myBtn5" onclick="toggleVideo5()">Pause</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -766,11 +794,9 @@
 <script src="js/launchvis.js"></script>
 <script src="js/brushvis.js"></script>
 <script src="js/flightvis.js"></script>
-<!--<script src="js/costvis.js"></script>-->
-<!--<script src="js/orbitvis.js"></script>-->
+<script src="js/mapbarvis.js"></script>
 <script src="js/networkvis.js"></script>
 <script src="js/treedata.js"></script>
-<!--<script src="js/orbitvis_REDO.js"></script>-->
 <script src="js/orbitSystem.js"></script>
 
 
@@ -778,8 +804,6 @@
 <script src="js/main.js"></script>
 
 <script type="text/javascript">
-
-
     var myFullpage = new fullpage('#fullpage', {
         anchors: ['firstPage', 'secondPage', '3rdPage'],
         sectionsColor: ['#C63D0F', '#1BBC9B', '#7E8F7C'],
@@ -789,38 +813,7 @@
     });
 </script>
 
-<script>
-	var video = document.getElementById("myVideo1");
-	var btn = document.getElementById("myBtn1");
-	var video2 = document.getElementById("myVideo2");
-	var btn2 = document.getElementById("myBtn2");
-	var video3 = document.getElementById("myVideo2");
-	var btn3 = document.getElementById("myBtn2");
-	var video4 = document.getElementById("myVideo2");
-	var btn4 = document.getElementById("myBtn2");
-
-	function myFunction() {
-		if (video.paused) {
-			video.play();
-			btn.innerHTML = "Pause";
-			video2.play();
-			btn2.innerHTML = "Pause";
-			video3.play();
-			btn3.innerHTML = "Pause";
-			video4.play();
-			btn4.innerHTML = "Pause";
-		} else {
-			video.pause();
-			btn.innerHTML = "Play";
-			video2.pause();
-			btn2.innerHTML = "Play";
-			video3.pause();
-			btn3.innerHTML = "Play";
-			video4.pause();
-			btn4.innerHTML = "Play";
-		}
-	}
-</script>
+<script src="js/movies.js"></script>
 
 </body>
 </html>
