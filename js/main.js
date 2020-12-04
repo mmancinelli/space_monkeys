@@ -154,6 +154,9 @@ function animateMap () {
 			launchVis.wrangleData();
 			//console.log("wrangled " + ii + " with " + mapvis_selectedTime + " and width: " + brush_width);
 
+			if (ii === animation_steps) {
+				document.getElementById("map_animation").innerText = "Click and Drag Below to Explore";
+			}
 		}, (ii * step_delay));
 	}
 }
