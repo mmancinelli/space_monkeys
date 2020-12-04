@@ -411,6 +411,28 @@ h5 {
     margin:0;
 }
 
+.video-parent {
+    padding: 0vh;
+}
+
 .content_video > div {
     margin: 20px;
+}
+
+.content_video .row {
+    height: 100%;
+}
+
+.date-range {
+    font-size: 3em;
+    color: #ffb700;
+    margin-bottom: 20px;
+}
+
+.content_video h2 {
+    text-align: left;
+}
+
+.content_video p {
+    text-align: left;
 }
