@@ -111,12 +111,14 @@ class Brushvis {
                 mapvis_selectedTime = [vis.x.invert(event.selection[0]), vis.x.invert(event.selection[1])];
                 console.log(mapvis_selectedTime);
                 launchVis.wrangleData(); // connection is made here through the use of global variables.
+                mapBarVis.wrangleData();
             })
             .on("end", function (event) {
                 if (event.selection === null) {
                     mapvis_selectedTime = [];
                     console.log("Selection Cleared");
                     launchVis.wrangleData(); // connection is made here through the use of global variables
+                    mapBarVis.wrangleData();
                 }
             });
 

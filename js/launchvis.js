@@ -80,9 +80,11 @@ class LaunchVis {
         vis.svg.append('g')
             .attr('class', 'title map-title')
             .append('text')
-            .text("Launches per Country")
+            .text("Map of Launches")
             .attr('transform', `translate(${vis.width / 2}, 20)`)
-            .attr('text-anchor', 'middle');
+            .attr('text-anchor', 'middle')
+            .attr('font-weight','bold')
+            .attr('font-style','italic');
 
         // define scale factor
         vis.map_scale = 0.3;
@@ -143,7 +145,7 @@ class LaunchVis {
         vis.legend = vis.svg.append("g")
             .attr("class", "mapLegend")
 
-        vis.addLegend();
+        //vis.addLegend();
 
         // // (Filter, aggregate, modify data)
         // vis.wrangleData();
@@ -277,6 +279,7 @@ class LaunchVis {
             })
             .transition()
             .duration(100)
+            .attr("id",d => ("circle-"+d.name).replace(/ /g,"_"))
             .attr("transform", d => `translate(${vis.projection([d.lon, d.lat])})`)
             .attr("r", d => Math.sqrt(d.launches))
             .attr("fill", "#428A8D")

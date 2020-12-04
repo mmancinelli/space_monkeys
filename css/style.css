@@ -133,7 +133,7 @@ p {
     width: 100%;
 }
 
-#world-map, #orbit-vis, #slider, #network-vis, #orbit-vis2, #launches-vis,#legendText, #brush-plot,#networkLegend-vis, #orbitLegend-vis {
+#world-map, #world-bar, #orbit-vis, #slider, #network-vis, #orbit-vis2, #launches-vis,#legendText, #brush-plot,#networkLegend-vis, #orbitLegend-vis {
     height: 100%;
     width:  100%;
 }
@@ -270,7 +270,7 @@ p {
 }
 
 .pathGroup path {
-    stroke: lightslategrey;
+    stroke: #778899;
     fill: #00ffd4;
     opacity: 80%;
 }
