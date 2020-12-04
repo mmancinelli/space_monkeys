@@ -279,8 +279,8 @@ class LaunchVis {
             .duration(100)
             .attr("transform", d => `translate(${vis.projection([d.lon, d.lat])})`)
             .attr("r", d => Math.sqrt(d.launches))
-            .attr("fill", d => countryColorScale(d.name))
-            .attr("stroke", d => countryColorScale(d.name));
+            .attr("fill", "#428A8D")
+            .attr("stroke", "#136D70");
 
         // vis.label.enter().append("text")
         //     .attr("class", "circle-label")

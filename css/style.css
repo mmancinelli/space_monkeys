@@ -174,9 +174,9 @@ p {
 /* Map Vis CSS */
 .circle {
     /*stroke: #d61111;*/
-    stroke-width: 2;
+    stroke-width: 3;
     /*fill: #d61111;*/
-    fill-opacity: 50%;
+    fill-opacity: 70%;
 }
 
 .d3-tip {
