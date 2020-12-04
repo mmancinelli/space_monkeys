@@ -472,13 +472,20 @@ class NetworkVis {
                     .style("top", 0)
                     .html(``);
             })
+            .attr("stroke", "black")
+            .style("stroke-width", 2);
+
+        vis.circles
+            .enter()
+            .merge(vis.circleGroups)
+            .transition().duration(1000)
             .attr("fill", d => {
                 // console.log(d.color)
                 return d.color;
             })
-            .attr("stroke", "black")
-            .style("stroke-width", 2)
 
+
+        // vis.circles.exit().remove();
         vis.circleGroups.exit().remove();
 
         // set up stuff for the labels
@@ -498,94 +505,100 @@ class NetworkVis {
 
         //toggle legend
         // if (vis.legendStatus == true) {
-            var size = 20;
+        var size = 20;
 
-            // make the legend color squares
-            vis.legendSquares
-                .enter()
-                .append("rect")
-                .attr("class", "legendSquare")
-                .merge(vis.legendSquares)
-                .attr("x", 20)
-                .attr("y", function (d, i) {
-                    return 100 + i * (size + 5)
-                }) // 100 is where the first dot appears. 25 is the distance between dots
-                .attr("width", size)
-                .attr("height", size)
-                .style("fill", function (d) {
-                    return vis.color(d)
-                });
+        // make the legend color squares
+        vis.legendSquares
+            .enter()
+            .append("rect")
+            .attr("class", "legendSquare")
+            .merge(vis.legendSquares)
+            .attr("x", 20)
+            .attr("width", size)
+            .attr("height", size)
+            .attr("y", function (d, i) {
+                return 100 + i * (size + 5)
+            }) // 100 is where the first dot appears. 25 is the distance between dots
+            .transition().duration(1000)
 
-            // make the legend text, colored the same
-            vis.legendLabels
-                .enter()
-                .append("text")
-                .attr("class", "legendLabel")
-                .merge(vis.legendLabels)
-                .attr("x", 60)
-                .attr("y", function (d, i) {
-                    return 100 + i * (size + 5) + (size / 2)
-                })
-                .style("fill", function (d) {
-                    return vis.color(d)
-                })
-                .text(function (d) {
-                    if (vis.selectedCategory == "status") {
-                        if (d == "StatusActive") {
-                            return "Active"
-                        } else {
-                            return "Retired"
-                        }
-                    } else if (vis.selectedCategory == "total") {
-                        // vis.legendData = ([0,5,98,199,200 ])
-                        // console.log(d)
-                        if (d === 0) {
-                            return "0-4"
-                        } else if (d === 5) {
-                            return "5-9"
-                        } else if (d==98){
-                            return "10-99"
-                        } else if (d==199){
-                            return "100-199"
-                        } else {
-                            return "200+"
-                        }
 
-                    }else if (vis.selectedCategory == "default") {
-                        // vis.legendData = ([0,5,98,199,200 ])
-                        // console.log(d)
-                        if (d === 3) {
-                            return "Rocket Industry"
-                        } else if (d === 2) {
-                            return "Country"
-                        } else if (d===1){
-                            return "Company"
-                        } else if (d==0){
-                            return "Rocket Type"
-                        }
+            .style("fill", function (d) {
+                return vis.color(d)
+            });
 
+        // make the legend text, colored the same
+        vis.legendLabels
+            .enter()
+            .append("text")
+            .attr("class", "legendLabel")
+            .merge(vis.legendLabels)
+            .attr("x", 60)
+            .attr("text-anchor", "left")
+            .style("alignment-baseline", "middle")
+            .attr("y", function (d, i) {
+                return 100 + i * (size + 5) + (size / 2)
+            })
+            .transition().duration(1000)
+
+            .style("fill", function (d) {
+                return vis.color(d)
+            })
+            .text(function (d) {
+                if (vis.selectedCategory == "status") {
+                    if (d == "StatusActive") {
+                        return "Active"
+                    } else {
+                        return "Retired"
                     }
-                    else {
-                        return d
+                } else if (vis.selectedCategory == "total") {
+                    // vis.legendData = ([0,5,98,199,200 ])
+                    // console.log(d)
+                    if (d === 0) {
+                        return "0-4"
+                    } else if (d === 5) {
+                        return "5-9"
+                    } else if (d==98){
+                        return "10-99"
+                    } else if (d==199){
+                        return "100-199"
+                    } else {
+                        return "200+"
                     }
-                })
-                .attr("text-anchor", "left")
-                .style("alignment-baseline", "middle");
 
-            //remove the current text box if there is one
+                }else if (vis.selectedCategory == "default") {
+                    // vis.legendData = ([0,5,98,199,200 ])
+                    // console.log(d)
+                    if (d === 3) {
+                        return "Rocket Industry"
+                    } else if (d === 2) {
+                        return "Country"
+                    } else if (d===1){
+                        return "Company"
+                    } else if (d==0){
+                        return "Rocket Type"
+                    }
+
+                }
+                else {
+                    return d
+                }
+            })
 
 
-            // add new text info
+        //remove the current text box if there is one
+
+
+        // add new text info
 
 
 
 
-            vis.body.enter().append("p").merge(vis.body).text(vis.legendText[0])
+        vis.body.enter().append("p").merge(vis.body).text(vis.legendText[0])
 
-            // update legend stuffs
-            vis.legendSquares.exit().remove();
-            vis.legendLabels.exit().remove();
-            vis.body.exit().remove();
+        // update legend stuffs
+        vis.legendSquares.exit().remove();
+        vis.legendLabels.exit().remove();
+        vis.body.exit().remove();
 
 
         // }

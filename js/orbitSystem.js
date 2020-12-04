@@ -196,7 +196,7 @@ class OrbitSystem {
             .domain([0, 12000])
 
         vis.filteredData.forEach((d, i) => {
-            console.log(d)
+            // console.log(d)
             let speed = 0;
             let phi0 = 0;
             vis.R = 0;
@@ -319,9 +319,11 @@ class OrbitSystem {
             .attr("transform", function (d) {
                 return "rotate(" + d.phi0 + ")";
             })
+            .transition().duration(1000)
             .style("fill", d=>d.color)
+            .selection()
             .on("mouseover", function (event, d) {
-                console.log(d)
+                // console.log(d)
 
                 vis.satelliteInfo.select("#sat-name")
                     .style("font-weight", "bold")
@@ -383,14 +385,16 @@ class OrbitSystem {
             .attr("class", "legendSquare")
             .merge(vis.orbitLegendSquares)
             .attr("x", 20)
+            .attr("width", size)
+            .attr("height", size)
             .attr("y", function (d, i) {
                 return 100 + i * (size + 5)
             }) // 100 is where the first dot appears. 25 is the distance between dots
-            .attr("width", size)
-            .attr("height", size)
+            .transition().duration(1000)
             .style("fill", function (d) {
                 return vis.color(d)
-            });
+            })
+            ;
 
         // make the legend text, colored the same
         vis.orbitLegendLabels
@@ -402,6 +406,7 @@ class OrbitSystem {
             .attr("y", function (d, i) {
                 return 100 + i * (size + 5) + (size / 2)
             })
+            .transition().duration(1000)
             .style("fill", function (d) {
                 return vis.color(d)
             })
