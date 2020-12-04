@@ -190,7 +190,7 @@
 								</div>
 								<div class="row" style="height: 5vh; padding-top: 5pt">
 									<select id='categorySelector' class="custom-select" style="width: 75%" onchange="categoryChange()">
-										<option value="default" selected>Default (none)</option>
+										<option value="default" selected>Default</option>
 										<option value="country">by Country</option>
 										<option value="status">by Status</option>
 										<option value="success">by % Successful Launches</option>
@@ -625,9 +625,9 @@
 				<div class="row main-body">
 					<div class="col">
 <!--						<div class="row">-->
-							<div class="row" style="height: 5vh; padding-top: 1vh;" >
-								<div class="col-3" style="height: 5vh; padding-top: 5pt">
-									<select id='satColor' class="custom-select" style="width: 100%" onchange="satCategoryChange()">
+							<div class="row " style="height: 5vh; padding-top: 1vh; padding-left: -50pt;" >
+								<div class="col-2 justify-content-start" style="height: 5vh; padding-top: 5pt; ">
+									<select id='satColor' class="custom-select" style="width:100%" onchange="satCategoryChange()">
 										<option value="default" selected>Default (none)</option>
 										<option value="country">by Country </option>
 										<option value="purpose">by Purpose</option>
@@ -635,14 +635,23 @@
 										<option value="orbit" >by Orbit</option>
 									</select>
 								</div>
-								<div class="col-2" style="height: 5vh; padding-top: 5pt">
+								<div class="col-2 justify-content-end" style="height: 5vh; padding-top: 5pt">
 									<button id = "starButton" type="button" class="btn btn-light">Toggle Stars</button>
-<!--								lights out button-->
-<!--								<div class="col-6 offset-2" style="height: 10vh; padding-top: 5pt">-->
-<!--									<div id="slider"></div>-->
-<!--									<div class="row align-items-center">-->
-<!--										<div class="col-sm"><p id="startdate">1930-2014</p></div>-->
-<!--										<div class="col-md"><div id="slider-range"></div></div>-->
+								</div>
+								<div class="col-2 justify-content-start" style="height: 5vh; padding-top: 5pt; ">
+									<select id='satAge' class="custom-select" style="width:100%" onchange="satAgeFilter()">
+										<option value="default"selected>Random Subset</option>
+										<option value="allAge" >All</option>
+										<option value="spaceAge" >Space Race Age </option>
+										<option value="expAge">Exploration Age</option>
+										<option value="commAge" >Commercialization Age</option>
+									</select>
+								</div>
+								<div class="col-4 offset-1" style="height: 5vh; padding-top: 5pt; ">
+									<form class="form-inline">
+										<input id = "searchFilter" class="form-control mr-sm-2" type="search" placeholder="(e.g. Starlink)" aria-label="Search">
+										<button id="searchFilterButton" class="btn btn-light" onchange="satSearchFilter()">Search</button>
+									</form>
 								</div>
 <!--									<form class="form-inline">-->
 <!--										<div class="form-group">-->

@@ -391,7 +391,7 @@ class NetworkVis {
                 } else if (d.height === 1) {
                     // company tooltip
 
-                    // calculate totals
+                    // extract info
                     // let totalRockets = 0;
                     let totalLaunchesX = 0;
                     // let totalSuccesses = 0;
@@ -405,7 +405,7 @@ class NetworkVis {
                         daterange.push(d.information.date)
                     })
 
-                    console.log(daterange)
+                    // console.log(daterange)
                     let dateFormatter = d3.timeFormat("%Y");
                     var parseTime = d3.timeParse("%a %b %e, %Y %I:%M");
                     let parseTime2 = d3.timeParse("%a %b %e, %Y");
@@ -427,8 +427,6 @@ class NetworkVis {
                      </div>`);
                 } else if (d.height == 2) {
 
-                    // country tooltip
-                    // console.log(d)
 
                     //calculate totals
                     let totalRockets = 0;
@@ -501,10 +499,8 @@ class NetworkVis {
 
         // grab the legend text element to update the text box
         vis.body = d3.select("#legendText").data(vis.legendText).attr("class", "networkLegendText")
-        // vis.body.selectAll("p").remove();
 
-        //toggle legend
-        // if (vis.legendStatus == true) {
+
         var size = 20;
 
         // make the legend color squares
@@ -516,10 +512,11 @@ class NetworkVis {
             .attr("x", 20)
             .attr("width", size)
             .attr("height", size)
+            .transition().duration(1000)
             .attr("y", function (d, i) {
                 return 100 + i * (size + 5)
             }) // 100 is where the first dot appears. 25 is the distance between dots
-            .transition().duration(1000)
+
 
 
             .style("fill", function (d) {
@@ -535,10 +532,11 @@ class NetworkVis {
             .attr("x", 60)
             .attr("text-anchor", "left")
             .style("alignment-baseline", "middle")
+            .transition().duration(1000)
             .attr("y", function (d, i) {
                 return 100 + i * (size + 5) + (size / 2)
             })
-            .transition().duration(1000)
+
 
             .style("fill", function (d) {
                 return vis.color(d)
@@ -584,34 +582,13 @@ class NetworkVis {
                 }
             })
 
-
-        //remove the current text box if there is one
-
-
-        // add new text info
-
-
-
-
+        //update text box
         vis.body.enter().append("p").merge(vis.body).text(vis.legendText[0])
 
         // update legend stuffs
         vis.legendSquares.exit().remove();
         vis.legendLabels.exit().remove();
         vis.body.exit().remove();
-
-
-        // }
-        // commented out because it's never false
-        // else if (vis.firstLegend == true) {
-        //     vis.firstLegend = false;
-        //     // if legend is off, remove all the stuff and wipe the slate clean
-        //     vis.body.append("p").text(vis.legendText[0])
-        //     // vis.legendLabels.remove();
-        //     // vis.legendSquares.remove();
-        //     // vis.body.selectAll("p").remove();
-        //
-        // }
 
 
         // create label objects
@@ -644,7 +621,6 @@ class NetworkVis {
                 .append('text')
                 .attr('class', 'networkCircleLabel')
                 .merge(vis.networkLabels)
-                .text(d => d.data.name)
                 // .text(d=>{return (d.data.name+ ", "+ d.y.toFixed(1))})
                 // used d.x and d.y to figure out what the fuck was going on with the labels. Placing these things and rotating them correctly was honestly one of the biggest pains in the butt for this entire vis
                 .attr("transform", d => `
@@ -672,13 +648,15 @@ class NetworkVis {
                             return "end"
                         }
                     } else if (d.x >= 180) {
-                        if (d.y > 350) {
+                        if (d.y > secondY) {
                             return "end"
                         } else {
                             return "start"
                         }
                     }
                 })
+                .transition().duration(1000)
+                .text(d => d.data.name)
 
         } else {
 

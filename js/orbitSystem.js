@@ -20,6 +20,7 @@ class OrbitSystem {
         this.geoData = geoData;
         this.satData = satelliteData;
         this.selectedSatCategory = "default";
+        this.ageFilter = "default";
 
         // number of sats to display
         this.displayAmount = 1000;
@@ -37,7 +38,7 @@ class OrbitSystem {
     initVis() {
         let vis = this;
 
-        vis.margin = {top: -10, right: 20, bottom: 20, left: -100};
+        vis.margin = {top: -10, right: 20, bottom: 20, left: 0};
         vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
         vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
 
@@ -159,6 +160,7 @@ class OrbitSystem {
         let vis = this;
 
         vis.selectedSatCategory = selectedSatCategory;
+        vis.ageFilter = ageFilter;
 
         // ****************************************
         //             Satellites
@@ -181,19 +183,29 @@ class OrbitSystem {
         // set color based on selected Category
         // pull random sats
         let pulledData = [];
-        for (let ii = 0; ii < vis.displayAmount; ii++) {
-            pulledData.push(vis.filteredData[Math.floor(Math.random() * vis.filteredData.length)]);
-        }
-        vis.filteredData = pulledData;
+        if (vis.ageFilter = "default"){
 
+            for (let ii = 0; ii < vis.displayAmount; ii++) {
+                pulledData.push(vis.filteredData[Math.floor(Math.random() * vis.filteredData.length)]);
+            }
+
+
+        } else if (vis.ageFilter == "allAge"){
+            vis.displayAmount = 3000;
+            for (let ii = 0; ii < vis.displayAmount; ii++) {
+                pulledData.push(vis.filteredData[Math.floor(Math.random() * vis.filteredData.length)]);
+            }
+        }
+
+        vis.filteredData = pulledData;
         //set up filter by Date
 
         vis.satellites = []
 
         // create scale to match orbiting velocity to period time
-        vis.periodScale = d3.scaleLinear()
-            .range([-0.5, -10])
-            .domain([0, 12000])
+        // vis.periodScale = d3.scaleLinear()
+        //     .range([-0.5, -10])
+        //     .domain([0, 12000])
 
         vis.filteredData.forEach((d, i) => {
             // console.log(d)
@@ -297,7 +309,7 @@ class OrbitSystem {
             vis.orbitLegendText= vis.orbitLegendTextAll[3]
         }
 
-        vis.displayData = vis.satellites;
+        // vis.displayData = vis.satellites;
         vis.updateColor()
     }
 
@@ -306,9 +318,11 @@ class OrbitSystem {
 
         // draw planets and moon clusters
         vis.circle = vis.container.selectAll("circle")
-            .data(vis.displayData, d => d.name);
+            .data(vis.satellites, d => d.name);
 
-        vis.circle.enter().append('circle')
+        vis.circle
+            .enter()
+            .append('circle')
             .attr("class", "planet")
             .merge(vis.circle)
             .attr("r", d=>d.r)
@@ -319,7 +333,6 @@ class OrbitSystem {
             .attr("transform", function (d) {
                 return "rotate(" + d.phi0 + ")";
             })
-            .transition().duration(1000)
             .style("fill", d=>d.color)
             .selection()
             .on("mouseover", function (event, d) {
@@ -387,10 +400,11 @@ class OrbitSystem {
             .attr("x", 20)
             .attr("width", size)
             .attr("height", size)
+            .transition().duration(1000)
             .attr("y", function (d, i) {
                 return 100 + i * (size + 5)
             }) // 100 is where the first dot appears. 25 is the distance between dots
-            .transition().duration(1000)
+
             .style("fill", function (d) {
                 return vis.color(d)
             })
@@ -403,10 +417,11 @@ class OrbitSystem {
             .attr("class", "legendLabel")
             .merge(vis.orbitLegendLabels)
             .attr("x", 60)
+            .transition().duration(1000)
             .attr("y", function (d, i) {
                 return 100 + i * (size + 5) + (size / 2)
             })
-            .transition().duration(1000)
+
             .style("fill", function (d) {
                 return vis.color(d)
             })
@@ -454,7 +469,7 @@ class OrbitSystem {
 
         // draw planets and moon clusters
         vis.circle = vis.container.selectAll("circle")
-            .data(vis.displayData, d => d.name);
+            .data(vis.satellites, d => d.name);
 
         vis.circle.enter().append('circle')
             .attr("class", "planet")

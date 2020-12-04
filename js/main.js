@@ -119,6 +119,7 @@ function toggleButton(button) {
 
 var selectedCategory = $('#categorySelector').val();
 var selectedSatCategory = $('#satColor').val();
+var ageFilter = $('#satAge').val();
 var selectedCountry = $('#countrySelector').val();
 var selectedSpaceAge = $('#countrySelector').val();
 // var selectedCategory = $('#categorySelector').val();
@@ -134,6 +135,17 @@ function satCategoryChange(){
 	// console.log(selectedSatCategory)
 	orbitSystem.updateLegend();
 	// orbitSystem.updateColor();
+}
+
+function satAgeFilter(){
+	orbitSystem.ageFilter = $('#satAge').val()
+	orbitSystem.wrangleData();
+
+}
+
+function satSearchFilter(){
+	console.log( $('#searchFilter').value)
+
 }
 
 function animateMap () {
