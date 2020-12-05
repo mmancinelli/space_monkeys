@@ -15,6 +15,13 @@ h1{
     color: #fff;
 }
 
+#section21 h2{
+    font-size: 28pt;
+}
+#section21 h3{
+    font-size: 16pt;
+    font-family:  a-space_light_demoregular;
+}
 .image-block {
     padding-top: 5vh;
     padding-bottom: 5vh;
