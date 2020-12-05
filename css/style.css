@@ -342,9 +342,31 @@ p {
     max-height: 40vh;
 }
 
-.end-notes {
-    text-align: left;
+.endnoteTitle{
+    font-family: a-space_light_demoregular;
+    color: #ffb700;
+    text-align: center;
 }
+
+.end-notes h3 {
+    font-family: a-space_light_demoregular;
+    text-align: center;
+    padding: 20pt;
+
+}
+/*.end-notes p{*/
+/*    margin-left: 20vw;*/
+/*    font-size:14pt;*/
+/*    text-align: center;*/
+/*}*/
+
+.end-notes{
+    margin-top: 5vh;
+    text-align: center;
+}
+
+
+
 
 /* Video sections*/
 

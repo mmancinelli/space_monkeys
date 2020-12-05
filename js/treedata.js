@@ -9,7 +9,7 @@
  */
 
 
-loadData();
+// loadData();
 
 var totalLaunches=[];
 var successRatiosList=[];

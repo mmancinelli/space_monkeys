@@ -9,7 +9,7 @@
  * contributions: Zane is responsible for the bulk of the code and Michael swooped in to solve enter/update/exit issues by separating the code out into separate functions and changing the animation procedure, and added the sat hover info table.
  * modified from: http://bl.ocks.org/codybuell/fc2426aedabef2d69873
  * date created: 11/19/2020
- * date last modified:
+ * date last modified: 12/4/2020
  */
 class OrbitSystem {
 
@@ -20,7 +20,6 @@ class OrbitSystem {
         this.geoData = geoData;
         this.satData = satelliteData;
         this.selectedSatCategory = "default";
-        this.ageFilter = "default";
 
         // number of sats to display
         this.displayAmount = 1500;
@@ -169,7 +168,6 @@ class OrbitSystem {
         let vis = this;
 
         vis.selectedSatCategory = selectedSatCategory;
-        vis.ageFilter = ageFilter;
 
         // ****************************************
         //             Satellites
@@ -193,7 +191,7 @@ class OrbitSystem {
         // pull random sats
 
         // filter the data
-        vis.filterData(vis.filteredData, vis.ageFilter)
+        vis.filterData(vis.filteredData)
 
 
         vis.drawfirstCircles();
