@@ -53,7 +53,7 @@ class LaunchVis {
         });
 
 
-        console.log("Unique Countries/States: " + this.countries_list)
+        // console.log("Unique Countries/States: " + this.countries_list)
 
         this.initVis();
     }

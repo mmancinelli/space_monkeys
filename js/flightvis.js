@@ -120,7 +120,7 @@ class FlightVis {
         vis.selectedAge = selectedSpaceAge;
         vis.factClick = clicks;
 
-        console.log(vis.factClick)
+        // console.log(vis.factClick)
         //console.log(vis.selectedCountry);
 
         vis.legendTextAll=[
@@ -277,7 +277,7 @@ class FlightVis {
 
         //console.log(vis.series2)
 
-        console.log(vis.newData);
+        // console.log(vis.newData);
 
         //console.log(vis.filteredData)
         //console.log(vis.dataByRocketCat)
@@ -297,7 +297,7 @@ class FlightVis {
     updateVis() {
         let vis = this;
 
-        console.log(vis.newData)
+        // console.log(vis.newData)
 
         vis.xScale.domain(d3.extent(vis.newData.dates))
 
