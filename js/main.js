@@ -137,11 +137,12 @@ function satCategoryChange(){
 	// orbitSystem.updateColor();
 }
 
-function satAgeFilter(){
-	orbitSystem.ageFilter = $('#satAge').val()
-	orbitSystem.wrangleData();
-
-}
+// function satAgeFilter(){
+// 	console.log($('#satAge').val())
+// 	orbitSystem.ageFilter = $('#satAge').val()
+// 	// orbitSystem.initVis();
+//
+// }
 
 function satSearchFilter(){
 	console.log( $('#searchFilter').value)
