@@ -509,7 +509,7 @@
 						<div class="col-3" style="height: 15vh; padding-left: 20pt; padding-top: 1vh;" >
 							<div class="row" style="height: 5vh; padding-top: 5pt">
 								<select id='countrySelector' class="custom-select" style="width: 75%" onchange="countryChange()">
-									<option value="default" selected>Default (all)</option>
+									<option value="default" selected>All Countries</option>
 									<option value="USA">U.S.A.</option>
 									<option value="China">China</option>
 									<option value="Russia">Russia</option>
@@ -523,39 +523,34 @@
 									<option value="Brazil">Brazil</option>
 								</select>
 							</div>
-							<div class="row" style="height: 5vh; padding-top: 5pt">
+							<div class="row" style="height: 5vh; padding-top: 10pt">
 								<select id='AgeSelector' class="custom-select" style="width: 75%" onchange="AgeChange()">
-									<option value="all" selected>All Ages</option>
-									<option value="space_race">Space Race (1957-1985)</option>
-									<option value="exploration">Exploration (1981-Present)</option>
-									<option value="commercial">Commercialization (2011-Present)</option>
+									<option value="all">All Ages</option>
+									<option value="space_race" selected>Space Race (1957-1975)</option>
+									<option value="exploration">Exploration (1976-2011)</option>
+									<option value="commercial">Commercialization (2012-Present)</option>
 								</select>
-								<!--<div class="btn-group">
-									<button id = "labelToggle" class="btn btn-light" type="button" value="OFF" onclick="toggleButton(this);" style="border: thin solid grey;";>Labels</button>
-									<button value="all" id="button1" onclick="AgeChange1()" selected>All Ages</button>
-									<button value="space_race" id="button2" onclick="AgeChange2()">Space Race</button>
-									<button value="exploration" id="button3" onclick="AgeChange3()">Exploration</button>
-									<button value="commercialization" id="button4" onclick="AgeChange4()">Commercialization</button>
-								</div>-->
-								<!--<select id='AgeSelector' class="custom-select" style="width: 75%" onchange="AgeChange()">
-									<option value="all" selected>All Ages</option>
-									<option value="space_race">Space Race</option>
-									<option value="exploration">Exploration</option>
-									<option value="commercialization">Commercialization</option>
-								</select>-->
 							</div>
-							<div class="row" style="height: 50vh; padding-top: 5pt">
+							<!--<div class="row" style="height: 50vh; padding-top: 5pt">
 								<div id="FlightLegend-vis">
 								</div>
+							</div>-->
+							<div class="row" style="height: 5vh; padding-top: 50pt">
+								<button id="factbutton" onclick="FactClick()">Click for Fact</button>
 							</div>
-							<div class ="row" style="height:40vh; padding-top: 10pt; text-align: left;">
+							<div class ="row" style="height:40vh; padding-top: 70pt; text-align: left;">
 								<div id = "FlightText">
 								</div>
 							</div>
 						</div>
-						<div class="col-9" style="padding-top: 1vh;">
+						<div class="col-7" style="padding-top: 1vh;">
 							<div class="align-self-center vis-holder">
 								<div id="launches-vis"></div>
+							</div>
+						</div>
+						<div class="col-2" style="padding-top: 1vh;">
+							<div class="align-self-center vis-holder">
+								<div id="FlightLegend-vis"></div>
 							</div>
 						</div>
 					</div>
@@ -841,6 +836,15 @@
         navigationPosition: 'right',
         navigationTooltips: ['First page', 'Second page', 'Third page', 'Forth page', 'Fifth page']
     });
+</script>
+
+<script>
+	var clicks = 0;
+	function FactClick() {
+		clicks += 1;
+		console.log(clicks)
+		flightVis.wrangleData();
+	};
 </script>
 
 <script src="js/movies.js"></script>

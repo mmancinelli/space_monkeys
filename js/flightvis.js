@@ -7,9 +7,10 @@
 class FlightVis {
 
 
-    constructor(_parentElement,_legendElement, _data) {
+    constructor(_parentElement,_legendElement, _textElement, _data) {
         this.parentElement = _parentElement;
         this.legendElement = _legendElement;
+        this.textElement = _textElement
         this.data = _data[0];
 
         this.data.forEach(d => d.date = new Date(d.Datum));
@@ -38,6 +39,11 @@ class FlightVis {
             .style("overflow", "visible");
 
         vis.svg2 = d3.select("#" + vis.legendElement).append("svg")
+            .attr("width", vis.widthLegend + vis.marginLegend.left + vis.marginLegend.right)
+            .attr("height", vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom)
+            .append('g')
+
+        vis.svg3 = d3.select("#" + vis.textElement).append("svg")
             .attr("width", vis.widthLegend + vis.marginLegend.left + vis.marginLegend.right)
             .attr("height", vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom)
             .append('g')
@@ -92,6 +98,9 @@ class FlightVis {
         vis.legend = vis.svg2.append("g")
             .attr("class", "FlightLegend")
 
+        vis.textbox = vis.svg3.append("g")
+            .attr("class", "TextBox")
+
         vis.legendData = [];
 
         // (Filter, aggregate, modify data)
@@ -109,7 +118,22 @@ class FlightVis {
 
         vis.selectedCountry = selectedCountry;
         vis.selectedAge = selectedSpaceAge;
+        vis.factClick = clicks;
+
+        console.log(vis.factClick)
         //console.log(vis.selectedCountry);
+
+        vis.legendTextAll=[
+            ["The top 9 countries with rocket-launching capabilities are USA, China, Russia, Japan, France (ESA), India, Israel, Iran, and North Korea. Russia, China, and the USA make up a solid two-thirds of the space launch industry to-date, but more countries have launched experimental rockets, like Kenya."],
+            ["Launching rockets into space is, actually, rocket science. Mistakes will be, and have been, made. Partial failures were counted as failures, and the average success percentage across the entire board is 76.9%. Some of the less-experienced countries such as Brazil, Mexico, and North Korea (thank goodness), incidentally, have the lowest success percentages."],
+            ["Choosing the best color scale here was tricky, because most of the rockets are launched 100 times or less....AND then there's Russia crushing it with 200-588 launches for some of its rockets. In comparison, the most-launched shuttle for the US is the Space Shuttle at 135 times."],
+            ["KEEP EXPLORING"]];
+
+        if(vis.factClick >= 3){
+            vis.legendText = vis.legendTextAll[3];
+        }else{
+            vis.legendText = vis.legendTextAll[vis.factClick];
+        }
 
         vis.color = d3.scaleOrdinal()
             //.range(["#fbb4ae","#b3cde3","#ccebc5","#decbe4","#fed9a6","#ffffcc","#e5d8bd","#fddaec","#f2f2f2"])
@@ -177,7 +201,7 @@ class FlightVis {
             if(vis.selectedAge === "space_race"){
                 vis.years=d3.range(new Date (1957),new Date(1975))
             }else if(vis.selectedAge === "exploration"){
-                vis.years=d3.range(new Date (1975),new Date(2011))
+                vis.years=d3.range(new Date (1981),new Date(2011))
             }else if(vis.selectedAge === "commercial"){
                 vis.years=d3.range(new Date (2011),new Date(2020))
             }else{
@@ -263,13 +287,7 @@ class FlightVis {
     updateVis() {
         let vis = this;
 
-        //vis.selectedAge === selectedAge;
-
-        //vis.xScale.domain([new Date(1957), new Date(1975)])
-        //vis.xScale.domain(d3.extent(vis.newData, d=> d.dates.getFullYear()))
-        //vis.xScale.domain([d3.min(vis.data,d=>d.date), d3.max(vis.data,d=>d.date)])
         vis.xScale.domain(d3.extent(vis.newData.dates))
-        //vis.xScale.domain(d3.extent(vis.data, d=> d.date.getFullYear()))
 
         vis.yScale.domain([0, d3.max(vis.filteredData,d=>d.total)])
 
@@ -279,33 +297,6 @@ class FlightVis {
             .defined(function(d) { return d != null; })
             .x((d,i) => vis.xScale(vis.newData.dates[i]));
 
-        //let row = vis.filteredData[10];
-        //console.log(row)
-        //vis.dataRocket = []
-        //row.years.forEach((jj,i) => {vis.dataRocket.push({year: row.years[i], flights: row.cumsum[i]});});
-
-        //console.log(vis.dataRocket)
-
-        //vis.color = d3.scaleSqrt()
-        //    .interpolate(() => d3.interpolateYlGnBu)
-        //    .domain
-       // vis.svg.selectAll(".line").remove()
-
-        //vis.svg.select("g").selectAll("path").remove()
-
-        // vis.line_group = vis.svg.append("g")
-        //         .attr("fill","none")
-        //         .attr("stroke","white")
-        //         .attr("stroke-width", 5)
-        //         .attr("stroke-linejoin", "round")
-        //         .attr("stroke-linecap", "round")
-        //         .selectAll("path")
-        //     .data(vis.newData.series)
-        //     .join("path")
-        //
-        // vis.line_group
-        //     .style("mix-blend-mode", "multiply")
-        //     .attr("d", d => vis.line(d.values))
 
         vis.line_group = vis.svg.selectAll(".rockets")
             .data(vis.newData.series)
@@ -341,62 +332,51 @@ class FlightVis {
 
         vis.body = d3.select("#legendText")
 
+        vis.body2 = d3.select("#FlightText").data(vis.legendText).attr("class", "networkLegendText")
+        vis.body2.enter().append("p").merge(vis.body2).text(vis.legendText[0])
+
         var size = 20;
 
-        vis.legendSquares
-            .enter()
-            .append("rect")
-            .attr("class", "legendSquare")
-            .merge(vis.legendSquares)
-            .attr("x", 20)
-            .attr("y", function (d, i) {
-                return 100 + i * (size + 5)
-            }) // 100 is where the first dot appears. 25 is the distance between dots
-            .attr("width", size)
-            .attr("height", size)
-            .style("fill", function (d) {
-                return vis.color(d)
-            });
+        if(vis.factClick >=3){
+            vis.legendSquares
+                .enter()
+                .append("rect")
+                .attr("class", "legendSquare")
+                .merge(vis.legendSquares)
+                .attr("x", 20)
+                .attr("y", function (d, i) {
+                    return 100 + i * (size + 5)
+                }) // 100 is where the first dot appears. 25 is the distance between dots
+                .attr("width", size)
+                .attr("height", size)
+                .style("fill", function (d) {
+                    return vis.color(d)
+                });
 
-        vis.legendLabels
-            .enter()
-            .append("text")
-            .attr("class", "legendLabel")
-            .merge(vis.legendLabels)
-            .attr("x", 60)
-            .attr("y", function (d, i) {
-                return 100 + i * (size + 5) + (size / 2)
-            })
-            .style("fill", function (d) {
-                return vis.color(d)
-            })
-            .text(d => d);
+            vis.legendLabels
+                .enter()
+                .append("text")
+                .attr("class", "legendLabel")
+                .merge(vis.legendLabels)
+                .attr("x", 60)
+                .attr("y", function (d, i) {
+                    return 100 + i * (size + 5) + (size / 2)
+                })
+                .style("fill", function (d) {
+                    return vis.color(d)
+                })
+                .text(d => d);
+
+            // update legend stuffs
+            vis.legendSquares.exit().remove();
+            vis.legendLabels.exit().remove();
+        }
 
         //remove the current text box if there is one
         vis.body.selectAll("p").remove();
 
         // add new text info
         //vis.body.append("p").text(vis.legendText[0])
-
-        // update legend stuffs
-        vis.legendSquares.exit().remove();
-        vis.legendLabels.exit().remove();
-
-        // vis.lines = vis.svg.selectAll("linesGroup")
-        //     .data(vis.newData.series)
-        //
-        // vis.linesGroup = vis.lines
-        //     .enter()
-        //     .append("g")
-        //     .attr("class", (d,i) => 'linesGroup')
-        //     .merge(vis.lines)
-        //     .attr("d", d => vis.line(d.values))
-
-        //vis.line_group
-            //.join("path")
-              //  .style("mix-blend-mode", "multiply")
-                //.attr("d", d => vis.line(d.values))
-
 
         vis.yAxis_Pointer.call(vis.yAxis);
         vis.xAxis_Pointer.attr("transform", "translate(0," + (vis.height) + ")")
