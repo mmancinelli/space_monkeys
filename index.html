@@ -193,7 +193,7 @@
 								</div>
 								<div class="row" style="height: 5vh; padding-top: 5pt">
 									<select id='categorySelector' class="custom-select" style="width: 75%" onchange="categoryChange()">
-										<option value="default" selected>Default (none)</option>
+										<option value="default" selected>Default</option>
 										<option value="country">by Country</option>
 										<option value="status">by Status</option>
 										<option value="success">by % Successful Launches</option>
@@ -644,53 +644,59 @@
 	<!-- Orbits -->
 	<div class="section " id="section13">
 		<div class="star-section">
-			<div class = "stars"></div>
-			<div class = "stars2"></div>
-			<div class = "stars3"></div>
+			<div id="orbitStar1" class = "stars"></div>
+			<div id="orbitStar2" class = "stars2"></div>
+			<div id="orbitStar3" class = "stars3"></div>
 			<div class="container-fluid">
 				<div class="row main-body">
 					<div class="col">
 <!--						<div class="row">-->
-							<div class="row" style="height: 5vh; padding-left: 20pt; padding-top: 1vh;" >
-								<div class="col-3" style="height: 5vh; padding-top: 5pt">
-									<select id='satColor' class="custom-select" style="width: 75%" onchange="satCategoryChange()">
-										<option value="default" selected >Default (none)</option>
+							<div class="row " style="height: 5vh; padding-top: 1vh;" >
+								<div class="col-2" style="height: 5vh; padding-top: 5pt;">
+									<button id = "starButton" type="button" class="btn btn-light">Toggle Stars</button>
+								</div>
+								<div class="col-2 justify-content-start" style="height: 5vh; padding-top: 5pt; ">
+									<select id='satColor' class="custom-select" style="width:100%" onchange="satCategoryChange()">
+										<option value="default" selected>Default (none)</option>
 										<option value="country">by Country </option>
 										<option value="purpose">by Purpose</option>
 <!--										<option value="use">by Use</option>-->
-										<option value="orbit">by Orbit</option>
+										<option value="orbit" >by Orbit</option>
+										<option value ="age"> by Age</option>
 									</select>
 								</div>
-								<div class="col-6 offset-2" style="height: 10vh; padding-top: 5pt">
-									<div id="slider"></div>
-<!--									<div class="row align-items-center">-->
-<!--										<div class="col-sm"><p id="startdate">1930-2014</p></div>-->
-<!--										<div class="col-md"><div id="slider-range"></div></div>-->
-<!--									</div>-->
-<!--									<form class="form-inline">-->
-<!--										<div class="form-group">-->
-<!--											<p> Time Period: </p>-->
-<!--											<input type="number" maxlength = "4" class="form-control" id="time-period-min" placeholder="1974">- -->
-<!--											<input type="number" maxlength = "4" class="form-control" id="time-period-max" placeholder="2020">-->
-<!--											<span id="time-period-filter" class="btn btn-primary" onclick = "updateVisualization()"> Filter</span>-->
-<!--										</div>-->
-<!--									</form>-->
-								</div>
 
+<!--								<div class="col-4 offset-1" style="height: 5vh; padding-top: 5pt; ">-->
+<!--									<form class="form-inline">-->
+<!--										<input id = "searchFilter" class="form-control mr-sm-2" type="search" placeholder="(e.g. Starlink)" aria-label="Search">-->
+<!--										<button id="searchFilterButton" class="btn btn-light" onchange="satSearchFilter()">Search</button>-->
+<!--									</form>-->
+<!--								</div>-->
+							</div>
+							<div class="row" style="padding-top: 1vh;">
+								<div class="col-3" style="height: 75vh; padding-top: 1vh;">
+<!--									<div id="orbitLegend-vis">-->
+<!--									</div>-->
+<!--								</div>-->
 <!--								<div class ="row" style="height:40vh; padding-top: 10pt; text-align: left;">-->
 <!--									<div id = "legendText">-->
 <!--									</div>-->
 
 <!--								</div>-->
-							</div>
-							<div class="row" style="padding-top: 1vh;">
-								<div class="col-3" style="height: 75vh; padding-top: 1vh;padding-left: 50pt;">
-									<div id="orbitLegend-vis">
+									<div class="row" style="height: 47vh; ">
+										<div id="orbitLegend-vis">
+										</div>
+									</div>
+									<hr style="width: 100%; background-color: white;">
+									<div class ="row" style="height:43vh; padding-top: 1vh; padding-left: 15pt;text-align: left;">
+										<div id = "orbitLegendText">
+										</div>
+
 									</div>
 								</div>
 								<div class="col-9"style="height: 85vh;">
-								<div id="orbit-vis">
-								</div>
+									<div id="orbit-vis">
+									</div>
 								</div>
 							</div>
 <!--						</div>-->
@@ -804,6 +810,14 @@
 <script src="js/main.js"></script>
 
 <script type="text/javascript">
+
+	$("#starButton").click(function(){
+		$("#orbitStar1").toggleClass("stars");
+		$("#orbitStar2").toggleClass("stars2");
+		$("#orbitStar3").toggleClass("stars3");
+	});
+
+
     var myFullpage = new fullpage('#fullpage', {
         anchors: ['firstPage', 'secondPage', '3rdPage'],
         sectionsColor: ['#C63D0F', '#1BBC9B', '#7E8F7C'],

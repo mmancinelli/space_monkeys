@@ -139,7 +139,7 @@ p {
 }
 
 /* NETWORK VIS CSS */
-#network-vis, #orbit-vis, #orbit-vis2{
+#network-vis, #orbit-vis{
     border: none;
     border-radius: 5px;
     height: 100vh;
@@ -159,7 +159,7 @@ p {
     color: black;
 }
 
-.networkLegendText{
+.networkLegendText, .orbitLegendText{
     color: white;
 }
 

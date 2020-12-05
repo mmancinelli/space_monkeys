@@ -46,17 +46,25 @@ Promise.all(promises)
 			d["LaunchMass"]=+d["Launch Mass (kg.)"];
 			d["Country"] = d["Country of Operator/Owner"];
 			d["Owner"]= d["Operator/Owner"];
-			d["Date"] = dateParser(d["Date of Launch"])
+			d["Purpose2"]=d["Purpose"];
+			d["Date"] = dateParser(d["Date of Launch"]);
 
-
-			if (d.Country != "USA" & d.Country != "China" & d.Country != "United Kingdom"& d.Country != "Russia" &d.Country != "Japan" ){
+			let str=d.Country
+			// console.log(str, str.includes('/'))
+			if (d.Country != "USA" & d.Country != "China" & d.Country != "United Kingdom"& d.Country != "Russia" &d.Country != "Japan" & d.Country!= d.Country.includes("/") ){
 				d.Country = "Other"
 			}
+			if (str.includes('/')==true){
+				// console.log(d.Country.includes('/'))
+				// console.log("here")
+				d.Country = "Collaboration"
+			}
+
 			if (d.Purpose == "Communications" | d.Purpose == "Communications/Maritime Tracking" |d.Purpose == "Communications/Navigation" |d.Purpose == "Communications/Technology Development" ){
 				d.Purpose = "Communications"
 			} else if (d.Purpose == "Earth Observation" |d.Purpose == "Earth Observation/Communications" |d.Purpose == "Earth Observation/Communication/Space Science" |d.Purpose == "Earth Observation/Earth Science" |d.Purpose == "Earth Observation/Space Science" |d.Purpose == "Earth Observation/Technology Development" |d.Purpose == "Earth Science" |d.Purpose == "Earth Science/Earth Observation" |d.Purpose == "Earth/Space Observation") {
 				d.Purpose = "Earth Science"
-			} else if (d.Purpose == "Navigation/Global Positioning" |d.Purpose == "Navigation/Regional Postioning"){
+			} else if (d.Purpose == "Navigation/Global Positioning" |d.Purpose == "Navigation/Regional Positioning"){
 				d.Purpose = "Navigation"
 			} else if (d.Purpose == "Space Observation" |d.Purpose == "Space Science" |d.Purpose == "Space Science/Technology Demonstration" |d.Purpose == "Space Science/Technology Development"){
 				d.Purpose = "Space Science"
@@ -112,6 +120,7 @@ function toggleButton(button) {
 
 var selectedCategory = $('#categorySelector').val();
 var selectedSatCategory = $('#satColor').val();
+var ageFilter = $('#satAge').val();
 var selectedCountry = $('#countrySelector').val();
 var selectedSpaceAge = $('#countrySelector').val();
 // var selectedCategory = $('#categorySelector').val();
@@ -126,7 +135,19 @@ function satCategoryChange(){
 	orbitSystem.selectedSatCategory = $('#satColor').val();
 	// console.log(selectedSatCategory)
 	orbitSystem.updateLegend();
-	orbitSystem.updateColor();
+	// orbitSystem.updateColor();
+}
+
+// function satAgeFilter(){
+// 	console.log($('#satAge').val())
+// 	orbitSystem.ageFilter = $('#satAge').val()
+// 	// orbitSystem.initVis();
+//
+// }
+
+function satSearchFilter(){
+	console.log( $('#searchFilter').value)
+
 }
 
 function animateMap () {
