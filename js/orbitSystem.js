@@ -80,35 +80,35 @@ class OrbitSystem {
             .attr("class","sat-info")
             .attr("id","sat-name")
             .attr("x",vis.marginLegend.left)
-            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.65)
+            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom)*0.7)
             .text("Hover over satellites for info!");
 
         vis.satelliteInfo.append("text")
             .attr("class","sat-info")
             .attr("id","sat-country")
             .attr("x",vis.marginLegend.left)
-            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.65 + 1*30)
+            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.7 + 1*30)
             .text("");
 
         vis.satelliteInfo.append("text")
             .attr("class","sat-info")
             .attr("id","sat-purpose")
             .attr("x",vis.marginLegend.left)
-            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.65 + 2*30)
+            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.7 + 2*30)
             .text("");
 
         vis.satelliteInfo.append("text")
             .attr("class","sat-info")
             .attr("id","sat-alt")
             .attr("x",vis.marginLegend.left)
-            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.65 + 3*30)
+            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.7 + 3*30)
             .text("");
 
         vis.satelliteInfo.append("text")
             .attr("class","sat-info")
             .attr("id","sat-year")
             .attr("x",vis.marginLegend.left)
-            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.65 + 4*30)
+            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.7 + 4*30)
             .text("");
 
         // ****************************************
@@ -237,7 +237,7 @@ class OrbitSystem {
         else if (vis.selectedSatCategory == "purpose"){
             vis.legendData = ["Communications", "Earth Science", "Navigation", "Space Science", "Other"]
             vis.color = d3.scaleOrdinal()
-                .range(["#ec0505", "#f58702", "#ffeb04", "#8eac07", "#12cee7"])
+                .range(["#ec0505", "#ff6a04", "#ffeb04", "#2cc601", "#12cee7"])
                 .domain(vis.legendData)
 
             vis.satellites.forEach((d,i)=>{
@@ -260,9 +260,9 @@ class OrbitSystem {
             vis.orbitLegendText= vis.orbitLegendTextAll[3]
         }
         else if (vis.selectedSatCategory == "age"){
-            vis.legendData = ["Space Race (1957-1975)", "Exploration (1976-2010)", "Commercialization (2011-2020)"]
+            vis.legendData = ["Space Race (1957-1975)", "Exploration (1976-2011)", "Commercialization (2012-Present)"]
             vis.color=d3.scaleOrdinal()
-                .range(["#ffd013","#BE1013", "#9e0cfd"])
+                .range(["#fa0202","#faf026", "#981af1"])
                 .domain([vis.legendData])
 
             // console.log(vis.color("Space Race (1957-1974)"))
@@ -375,7 +375,7 @@ class OrbitSystem {
             .attr("height", size)
             .transition().duration(1000)
             .attr("y", function (d, i) {
-                return 100 + i * (size + 5)
+                return 75 + i * (size + 5)
             }) // 100 is where the first dot appears. 25 is the distance between dots
 
             .style("fill", function (d) {
@@ -393,7 +393,7 @@ class OrbitSystem {
             .attr("x", 60)
             .transition().duration(1000)
             .attr("y", function (d, i) {
-                return 100 + i * (size + 5) + (size / 2)
+                return 75 + i * (size + 5) + (size / 2)
             })
 
             .style("fill", function (d) {
@@ -491,11 +491,11 @@ class OrbitSystem {
             // console.log(d.Date)
             if (d.Date >= dateParser("01/01/1957") & d.Date <= dateParser("12/31/1975")){
                 age = "Space Race (1957-1975)"
-            } else if (d.Date >= dateParser("01/01/1976") & d.Date <= dateParser("12/31/2010")){
-                age = "Exploration (1976-2010)"
+            } else if (d.Date >= dateParser("01/01/1976") & d.Date <= dateParser("12/31/2011")){
+                age = "Exploration (1976-2011)"
             }
-            else if (d.Date >= dateParser("01/01/2010") & d.Date <= dateParser("12/31/2020")){
-                age = "Commercialization (2011-Present)"
+            else if (d.Date >= dateParser("01/01/2012") & d.Date <= dateParser("12/31/2020")){
+                age = "Commercialization (2012-Present)"
             }
 
 

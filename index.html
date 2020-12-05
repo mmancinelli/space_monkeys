@@ -625,7 +625,10 @@
 				<div class="row main-body">
 					<div class="col">
 <!--						<div class="row">-->
-							<div class="row " style="height: 5vh; padding-top: 1vh; padding-left: -50pt;" >
+							<div class="row " style="height: 5vh; padding-top: 1vh;" >
+								<div class="col-2" style="height: 5vh; padding-top: 5pt;">
+									<button id = "starButton" type="button" class="btn btn-light">Toggle Stars</button>
+								</div>
 								<div class="col-2 justify-content-start" style="height: 5vh; padding-top: 5pt; ">
 									<select id='satColor' class="custom-select" style="width:100%" onchange="satCategoryChange()">
 										<option value="default" selected>Default (none)</option>
@@ -636,38 +639,12 @@
 										<option value ="age"> by Age</option>
 									</select>
 								</div>
-								<div class="col-2 justify-content-end" style="height: 5vh; padding-top: 5pt">
-									<button id = "starButton" type="button" class="btn btn-light">Toggle Stars</button>
-								</div>
-<!--								<div class="col-2 justify-content-start" style="height: 5vh; padding-top: 5pt; ">-->
-<!--									<select id='satAge' class="custom-select" style="width:100%" onchange="satAgeFilter()">-->
-<!--										<option value="default"selected>Random Subset</option>-->
-<!--										<option value="allAge" >All</option>-->
-<!--										<option value="spaceAge" >Space Race Age </option>-->
-<!--										<option value="expAge">Exploration Age</option>-->
-<!--										<option value="commAge" >Commercialization Age</option>-->
-<!--									</select>-->
-<!--								</div>-->
-								<div class="col-4 offset-1" style="height: 5vh; padding-top: 5pt; ">
-									<form class="form-inline">
-										<input id = "searchFilter" class="form-control mr-sm-2" type="search" placeholder="(e.g. Starlink)" aria-label="Search">
-										<button id="searchFilterButton" class="btn btn-light" onchange="satSearchFilter()">Search</button>
-									</form>
-								</div>
+
+<!--								<div class="col-4 offset-1" style="height: 5vh; padding-top: 5pt; ">-->
 <!--									<form class="form-inline">-->
-<!--										<div class="form-group">-->
-<!--											<p> Time Period: </p>-->
-<!--											<input type="number" maxlength = "4" class="form-control" id="time-period-min" placeholder="1974">- -->
-<!--											<input type="number" maxlength = "4" class="form-control" id="time-period-max" placeholder="2020">-->
-<!--											<span id="time-period-filter" class="btn btn-primary" onclick = "updateVisualization()"> Filter</span>-->
-<!--										</div>-->
+<!--										<input id = "searchFilter" class="form-control mr-sm-2" type="search" placeholder="(e.g. Starlink)" aria-label="Search">-->
+<!--										<button id="searchFilterButton" class="btn btn-light" onchange="satSearchFilter()">Search</button>-->
 <!--									</form>-->
-<!--								</div>-->
-
-<!--								<div class ="row" style="height:40vh; padding-top: 10pt; text-align: left;">-->
-<!--									<div id = "legendText">-->
-<!--									</div>-->
-
 <!--								</div>-->
 							</div>
 							<div class="row" style="padding-top: 1vh;">
@@ -680,12 +657,12 @@
 <!--									</div>-->
 
 <!--								</div>-->
-									<div class="row" style="height: 50vh; padding-top: 5pt">
+									<div class="row" style="height: 47vh; ">
 										<div id="orbitLegend-vis">
 										</div>
 									</div>
 									<hr style="width: 100%; background-color: white;">
-									<div class ="row" style="height:40vh; padding-top: 2vh; padding-left: 15pt;text-align: left;">
+									<div class ="row" style="height:43vh; padding-top: 1vh; padding-left: 15pt;text-align: left;">
 										<div id = "orbitLegendText">
 										</div>
 
