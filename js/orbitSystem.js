@@ -9,7 +9,7 @@
  * contributions: Zane is responsible for the bulk of the code and Michael swooped in to solve enter/update/exit issues by separating the code out into separate functions and changing the animation procedure, and added the sat hover info table.
  * modified from: http://bl.ocks.org/codybuell/fc2426aedabef2d69873
  * date created: 11/19/2020
- * date last modified:
+ * date last modified: 12/4/2020
  */
 class OrbitSystem {
 
@@ -20,7 +20,6 @@ class OrbitSystem {
         this.geoData = geoData;
         this.satData = satelliteData;
         this.selectedSatCategory = "default";
-        this.ageFilter = "default";
 
         // number of sats to display
         this.displayAmount = 1500;
@@ -69,7 +68,7 @@ class OrbitSystem {
             ["While we show the five countries with the most satellites in orbit explicitly, seventy-five different countries have sent satellites into orbit. Additionally, there have been at least 30 different collaborations between countries, the most popular of which is USA/Taiwan with 11 satellites."],
             ["The purposes have been binned into 5 major categories: Communication (1378), Earth Science (817), Other (344), Navigation (150), and Space Science (98). 'Other' includes such purposes as Education, Technology Development, and Surveillance."],
             ["The radii of the orbits correspond to the approximate ranges in kilometers: Lower Earth Orbit (LEO) < 2000km, Medium Earth Orbit (GEO) 2000-20,560km, and Geosynchronous Equatorial Orbit (GEO) <35,786km. To spread the satellites out in space and prevent overlap, each satellite was encoded with a random radius within its prescribed orbit range and a random starting angle. Satellites with elliptical orbits have been encoded with a regular orbit for animation purposes."],
-            ["The earliest satellite was launched by the USA in 1974 and is the only 'Space Race' satellite. The next satellite was launched in 1988. There were 529 satellites launched in the Exploration Age and 2,257 satellites so far during the Commercialization Age. Therefore, roughly 15 satellites were launched every year during the Exploration Age, and during the Commercialization Age that rate has jumped to roughly 250 satellites per year."]
+            ["Unfortunately, our satellite dataset begins with one record in 1977 before jumping straight into the middle of the Exploration Age in 1988. However, there were 116 satellites launched during the Space Race Age, 564 satellites launched in the Exploration Age (35 not included in data) and 2,257 satellites so far during the Commercialization Age. Therefore, roughly 16 satellites were launched every year during the Exploration Age, and during the Commercialization Age that rate has jumped to roughly 250 satellites per year."]
             ]
         vis.originalTimePeriod = d3.extent(vis.satData, d=>d.Date)
 
@@ -169,7 +168,6 @@ class OrbitSystem {
         let vis = this;
 
         vis.selectedSatCategory = selectedSatCategory;
-        vis.ageFilter = ageFilter;
 
         // ****************************************
         //             Satellites
@@ -193,7 +191,7 @@ class OrbitSystem {
         // pull random sats
 
         // filter the data
-        vis.filterData(vis.filteredData, vis.ageFilter)
+        vis.filterData(vis.filteredData)
 
 
         vis.drawfirstCircles();

@@ -1,5 +1,5 @@
-let launchData, rocketData, satelliteData, treeData, geoData, globeData, airportData
-let launchVis, brushVis, networkVis, flightVis, costVis, orbitVis, orbitVis3, orbitSystem
+let launchData, rocketData, satelliteData, treeData, geoData, globeData
+let launchVis, brushVis, networkVis, flightVis,  orbitSystem, mapBarVis
 
 let countries = ["USA", "China", "Russia", "Japan", "Israel", "New Zealand", "Iran", "France", "India", "Mexico", "Kazakhstan", "North Korea","South Korea", "Brazil", "Kenya", "Australia"]
 
@@ -27,17 +27,15 @@ var gRange = d3
 // (1) Load data with promises
 let promises = [
     d3.csv("data/prepared_launch_data.csv"),
-    d3.csv("data/prepared_rocket_data.csv"),
+    d3.csv("data/prepared_rocket_data.csv"), //we don't actually use this dataset, actually. :/
 	d3.csv("data/prepared_satellite_data.csv"),
-	d3.json("data/treeData.json"),
-	d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json"),
-	d3.json("https://gist.githubusercontent.com/mbostock/4090846/raw/d534aba169207548a8a3d670c9c2cc719ff05c47/world-110m.json"),
-	d3.json("data/flare.json")
+	d3.json("data/treeData.json"), //hierarchical version of launch_data
+	d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json")
 ];
 
 Promise.all(promises)
     .then( function(data){
-    	// clean up satellite data
+    	// clean up satellite data for orbit vis
     	data[2].forEach(d=>{
     		// console.log(d)
     		d["Apogee"]=+d["Apogee (km)"];
@@ -105,6 +103,7 @@ function createVis(data){
 	}
 }
 
+// label toggle for network vis
 function toggleButton(button) {
 	if (document.getElementById("labelToggle").value == "OFF") {
 		document.getElementById("labelToggle").value = "ON";
@@ -120,7 +119,6 @@ function toggleButton(button) {
 
 var selectedCategory = $('#categorySelector').val();
 var selectedSatCategory = $('#satColor').val();
-var ageFilter = $('#satAge').val();
 var selectedCountry = $('#countrySelector').val();
 var selectedSpaceAge = $('#AgeSelector').val();
 // var selectedCategory = $('#categorySelector').val();
@@ -130,25 +128,13 @@ function categoryChange() {
 
 	networkVis.wrangleData();
 }
+// update color of satellites based on selection
 function satCategoryChange(){
 
 	orbitSystem.selectedSatCategory = $('#satColor').val();
-	// console.log(selectedSatCategory)
 	orbitSystem.updateLegend();
-	// orbitSystem.updateColor();
 }
 
-// function satAgeFilter(){
-// 	console.log($('#satAge').val())
-// 	orbitSystem.ageFilter = $('#satAge').val()
-// 	// orbitSystem.initVis();
-//
-// }
-
-function satSearchFilter(){
-	console.log( $('#searchFilter').value)
-
-}
 
 function animateMap () {
 	console.log("Button Pressed. Starting Animation");
@@ -184,12 +170,7 @@ function animateMap () {
 	}
 }
 
-function updateRangeSliderValues(values){
-	$("#time-period-min").text(parseInt(values[0]));
-	$("#time-period-max").text(parseInt(values[1]));
-	orbitVis.wrangleData();
-}
-
+// for flight vis
 function countryChange() {
 	selectedCountry = $('#countrySelector').val();
 	flightVis.wrangleData();
