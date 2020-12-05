@@ -6,7 +6,7 @@
 *
  *
  * author: Zane and Michael
- * contributions: Zane created the bulk of the code and Michael swooped in to solve enter/update/exit issues by separating the code out into separate functions and changing the animation procedure
+ * contributions: Zane is responsible for the bulk of the code and Michael swooped in to solve enter/update/exit issues by separating the code out into separate functions and changing the animation procedure, and added the sat hover info table.
  * modified from: http://bl.ocks.org/codybuell/fc2426aedabef2d69873
  * date created: 11/19/2020
  * date last modified:
