@@ -7,9 +7,10 @@
 class FlightVis {
 
 
-    constructor(_parentElement,_legendElement, _data) {
+    constructor(_parentElement,_legendElement, _textElement, _data) {
         this.parentElement = _parentElement;
         this.legendElement = _legendElement;
+        this.textElement = _textElement
         this.data = _data[0];
 
         this.data.forEach(d => d.date = new Date(d.Datum));
@@ -38,6 +39,11 @@ class FlightVis {
             .style("overflow", "visible");
 
         vis.svg2 = d3.select("#" + vis.legendElement).append("svg")
+            .attr("width", vis.widthLegend + vis.marginLegend.left + vis.marginLegend.right)
+            .attr("height", vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom)
+            .append('g')
+
+        vis.svg3 = d3.select("#" + vis.textElement).append("svg")
             .attr("width", vis.widthLegend + vis.marginLegend.left + vis.marginLegend.right)
             .attr("height", vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom)
             .append('g')
@@ -92,6 +98,9 @@ class FlightVis {
         vis.legend = vis.svg2.append("g")
             .attr("class", "FlightLegend")
 
+        vis.textbox = vis.svg3.append("g")
+            .attr("class", "TextBox")
+
         vis.legendData = [];
 
         // (Filter, aggregate, modify data)
@@ -109,7 +118,22 @@ class FlightVis {
 
         vis.selectedCountry = selectedCountry;
         vis.selectedAge = selectedSpaceAge;
+        vis.factClick = clicks;
+
+        console.log(vis.factClick)
         //console.log(vis.selectedCountry);
+
+        vis.legendTextAll=[
+            ["The most emblematic rockets of the Space Race were the Cosmos from the Soviet Union, which delivered multiple Soviet satellites to space.  On the American side, the Saturn V was and still is the most powerful rocket ever built.  Although it did not have as many cumulative flights as the Cosmos, this rocket delivered Neil Armstrong and Buzz Aldrin to the surface of the Moon on 1969."],
+            ["NASA's Space Shuttle became the first reusable vehicle.  Capable of launching like a rocket and landing like a plane, the Space Shuttle was one of the key rockets during the Exploration Era.  It had a total of 135 missions, taking astronauts and cargo to space.  It famously launched the Hubble Space Telescope, and constructed the International Space Station.  The Shuttle retired in 2011, marking the end of an era of exploration."],
+            ["SpaceX's Falcon 9 delivered the first set of cargo to the International Space Station in 2012, marking the beginning of a new era led by the private sector.  The Falcon 9 developed new reusable booster technology with autonomous landing, dramatically reducing the cost of launching satellites and cargo to space.  The European launch provider , Arianepace, also increased the frequency of its rocket launches aboard the Ariane 5."],
+            ["Use the options above and KEEP EXPLORING rockets by Country and Era!"]];
+
+        if(vis.factClick >= 3){
+            vis.legendText = vis.legendTextAll[3];
+        }else{
+            vis.legendText = vis.legendTextAll[vis.factClick];
+        }
 
         vis.color = d3.scaleOrdinal()
             //.range(["#fbb4ae","#b3cde3","#ccebc5","#decbe4","#fed9a6","#ffffcc","#e5d8bd","#fddaec","#f2f2f2"])
@@ -174,15 +198,25 @@ class FlightVis {
             vis.yearsinflight = []
             //vis.years = d3.range(d3.min(row.value, d => d.date).getFullYear(),d3.max(row.value, d => d.date).getFullYear()+1);
             //vis.years = d3.range(d3.min(vis.master,d=>d.date).getFullYear(), d3.max(vis.master,d=>d.date).getFullYear())
-            if(vis.selectedAge === "space_race"){
+
+            if(vis.factClick === 0){
                 vis.years=d3.range(new Date (1957),new Date(1975))
-            }else if(vis.selectedAge === "exploration"){
-                vis.years=d3.range(new Date (1975),new Date(2011))
-            }else if(vis.selectedAge === "commercial"){
-                vis.years=d3.range(new Date (2011),new Date(2020))
+            }else if(vis.factClick === 1){
+                vis.years=d3.range(new Date (1976),new Date(2011))
+            }else if(vis.factClick === 2){
+                vis.years=d3.range(new Date (2012),new Date(2020))
             }else{
-                vis.years = d3.range(d3.min(vis.master,d=>d.date).getFullYear(), d3.max(vis.master,d=>d.date).getFullYear())
-            }
+                if(vis.selectedAge === "space_race"){
+                    vis.years=d3.range(new Date (1957),new Date(1975))
+                }else if(vis.selectedAge === "exploration"){
+                    vis.years=d3.range(new Date (1976),new Date(2011))
+                }else if(vis.selectedAge === "commercial"){
+                    vis.years=d3.range(new Date (2012),new Date(2020))
+                }else{
+                    vis.years = d3.range(d3.min(vis.master,d=>d.date).getFullYear(), d3.max(vis.master,d=>d.date).getFullYear())
+                }
+            };
+
             vis.years.forEach(function (y) {
                 vis.launch_year = row.value.filter(function (d) { return (d.date.getFullYear() == y) });
                 if(vis.launch_year.length > 0 ){
@@ -263,13 +297,9 @@ class FlightVis {
     updateVis() {
         let vis = this;
 
-        //vis.selectedAge === selectedAge;
+        console.log(vis.newData)
 
-        //vis.xScale.domain([new Date(1957), new Date(1975)])
-        //vis.xScale.domain(d3.extent(vis.newData, d=> d.dates.getFullYear()))
-        //vis.xScale.domain([d3.min(vis.data,d=>d.date), d3.max(vis.data,d=>d.date)])
         vis.xScale.domain(d3.extent(vis.newData.dates))
-        //vis.xScale.domain(d3.extent(vis.data, d=> d.date.getFullYear()))
 
         vis.yScale.domain([0, d3.max(vis.filteredData,d=>d.total)])
 
@@ -279,40 +309,65 @@ class FlightVis {
             .defined(function(d) { return d != null; })
             .x((d,i) => vis.xScale(vis.newData.dates[i]));
 
-        //let row = vis.filteredData[10];
-        //console.log(row)
-        //vis.dataRocket = []
-        //row.years.forEach((jj,i) => {vis.dataRocket.push({year: row.years[i], flights: row.cumsum[i]});});
-
-        //console.log(vis.dataRocket)
-
-        //vis.color = d3.scaleSqrt()
-        //    .interpolate(() => d3.interpolateYlGnBu)
-        //    .domain
-       // vis.svg.selectAll(".line").remove()
-
-        //vis.svg.select("g").selectAll("path").remove()
-
-        // vis.line_group = vis.svg.append("g")
-        //         .attr("fill","none")
-        //         .attr("stroke","white")
-        //         .attr("stroke-width", 5)
-        //         .attr("stroke-linejoin", "round")
-        //         .attr("stroke-linecap", "round")
-        //         .selectAll("path")
-        //     .data(vis.newData.series)
-        //     .join("path")
-        //
-        // vis.line_group
-        //     .style("mix-blend-mode", "multiply")
-        //     .attr("d", d => vis.line(d.values))
-
         vis.line_group = vis.svg.selectAll(".rockets")
             .data(vis.newData.series)
 
         vis.line_group.exit().remove()
 
-        vis.line_group.enter().insert("g", ".focus").append("path")
+        vis.rockettext = vis.svg.selectAll(".rockettext")//append("g")
+            .data(vis.newData.series);
+
+        vis.rockettext.exit().remove()
+
+        vis.dot2 = vis.svg.append("g")
+            .data(vis.newData.series)
+            //.attr("display", "none");
+
+        vis.dot2.append("circle")
+            .attr("r", 5);
+
+        vis.dot2.append("text")
+            .attr("font-family", "sans-serif")
+            .attr("font-size", 16)
+            .attr("text-anchor", "middle")
+            .attr("y", -8);
+
+        //vis.rocket.attr("transform", `translate(${vis.xScale(vis.newData.dates[i])},${vis.yScale(s.values[i])})`);
+        //vis.rocket.select("text").text([s.name,s.company,ym.toFixed(0)]);
+
+        if(vis.factClick>=3){
+            vis.line_group.enter().insert("g", ".focus").append("path")
+                .attr("class","lines rockets")
+                .attr("fill", "none")
+                .attr("stroke-width", 3)
+                .merge(vis.line_group)
+                .transition().duration(1000)
+                //.style("mix-blend-mode", "multiply")
+                .attr("d", d => vis.line(d.values))
+                .attr("stroke", d => {
+                    if (vis.selectedCountry === "default") {
+                        return vis.color(d.country)
+                    }else {
+                        return vis.color(d.company)
+                    }});
+        } else{
+            vis.line_group.enter().insert("g", ".focus").append("path")
+                .attr("class","lines rockets")
+                .attr("fill", "none")
+                .attr("stroke-width", 3)
+                .merge(vis.line_group)
+                .transition().duration(1000)
+                //.style("mix-blend-mode", "multiply")
+                .attr("d", d => vis.line(d.values))
+                .attr("stroke", d => {
+                    if (d.name === "Saturn V" || d.name === "Cosmos" || d.name === "Space Shuttle" || d.name === "Falcon 9" || d.name === "Ariane 5") {
+                        return "white"
+                    }else {
+                        return "blue"
+                    }});
+        }
+
+        /*vis.line_group.enter().insert("g", ".focus").append("path")
             .attr("class","lines rockets")
             .attr("fill", "none")
             .attr("stroke-width", 3)
@@ -325,9 +380,14 @@ class FlightVis {
                     return vis.color(d.country)
                 }else {
                     return vis.color(d.company)
-                }});
+                }});*/
 
         vis.line_group.style("mix-blend-mode", "multiply")
+
+        if(vis.factClick<3){
+            vis.hover2()
+        }
+
 
         vis.legendSquares = vis.legend
             .attr("class", "legendSquares")
@@ -341,36 +401,47 @@ class FlightVis {
 
         vis.body = d3.select("#legendText")
 
+        vis.body2 = d3.select("#FlightText").data(vis.legendText).attr("class", "networkLegendText")
+        vis.body2.enter().append("p").merge(vis.body2).text(vis.legendText[0])
+
         var size = 20;
 
-        vis.legendSquares
-            .enter()
-            .append("rect")
-            .attr("class", "legendSquare")
-            .merge(vis.legendSquares)
-            .attr("x", 20)
-            .attr("y", function (d, i) {
-                return 100 + i * (size + 5)
-            }) // 100 is where the first dot appears. 25 is the distance between dots
-            .attr("width", size)
-            .attr("height", size)
-            .style("fill", function (d) {
-                return vis.color(d)
-            });
+        if(vis.factClick >=3){
+            vis.legendSquares
+                .enter()
+                .append("rect")
+                .attr("class", "legendSquare")
+                .merge(vis.legendSquares)
+                .attr("x", 20)
+                .attr("y", function (d, i) {
+                    return 100 + i * (size + 5)
+                }) // 100 is where the first dot appears. 25 is the distance between dots
+                .attr("width", size)
+                .attr("height", size)
+                .style("fill", function (d) {
+                    return vis.color(d)
+                });
 
-        vis.legendLabels
-            .enter()
-            .append("text")
-            .attr("class", "legendLabel")
-            .merge(vis.legendLabels)
-            .attr("x", 60)
-            .attr("y", function (d, i) {
-                return 100 + i * (size + 5) + (size / 2)
-            })
-            .style("fill", function (d) {
-                return vis.color(d)
-            })
-            .text(d => d);
+            vis.legendLabels
+                .enter()
+                .append("text")
+                .attr("class", "legendLabel")
+                .merge(vis.legendLabels)
+                .attr("x", 60)
+                .attr("y", function (d, i) {
+                    return 100 + i * (size + 5) + (size / 2)
+                })
+                .style("fill", function (d) {
+                    return vis.color(d)
+                })
+                .text(d => d);
+
+            // update legend stuffs
+            vis.legendSquares.exit().remove();
+            vis.legendLabels.exit().remove();
+
+            vis.hover()
+        }
 
         //remove the current text box if there is one
         vis.body.selectAll("p").remove();
@@ -378,31 +449,10 @@ class FlightVis {
         // add new text info
         //vis.body.append("p").text(vis.legendText[0])
 
-        // update legend stuffs
-        vis.legendSquares.exit().remove();
-        vis.legendLabels.exit().remove();
-
-        // vis.lines = vis.svg.selectAll("linesGroup")
-        //     .data(vis.newData.series)
-        //
-        // vis.linesGroup = vis.lines
-        //     .enter()
-        //     .append("g")
-        //     .attr("class", (d,i) => 'linesGroup')
-        //     .merge(vis.lines)
-        //     .attr("d", d => vis.line(d.values))
-
-        //vis.line_group
-            //.join("path")
-              //  .style("mix-blend-mode", "multiply")
-                //.attr("d", d => vis.line(d.values))
-
-
         vis.yAxis_Pointer.call(vis.yAxis);
         vis.xAxis_Pointer.attr("transform", "translate(0," + (vis.height) + ")")
             .call(vis.xAxis.tickFormat(d3.format("d")));
 
-        vis.hover()
         //vis.mouseflight()
 
     }
@@ -453,6 +503,13 @@ class FlightVis {
                         return "#184264"
                     }}).filter(d => d === s).raise();
             dot.attr("transform", `translate(${vis.xScale(vis.newData.dates[i])},${vis.yScale(s.values[i])})`);
+            /*dot.select("text").html(`
+                     <div style="border: thin solid grey; border-radius: 5px; background: darkgray; padding: 20px">
+                         <p> <strong>Name: </strong>${s.name}</p>
+                         <p> <strong>Company: </strong>${s.company}</p>
+                         <p> <strong>Year: </strong>${vis.newData.dates[i]}</p>
+                         <p> <strong>Flight: </strong>${ym.toFixed(0)}</p>              
+                     </div>`);*/
             dot.select("text").text([s.name,s.company,ym.toFixed(0)]);
         }
 
@@ -475,113 +532,72 @@ class FlightVis {
         }
     }
 
-    mouseflight(){
-            let vis = this;
+    hover2() {
 
-            vis.mouseG = vis.svg.append("g")
-                .attr("class", "mouse-over-effects");
+        let vis = this;
 
-            vis.mouseG.append("path") // this is the black vertical line to follow mouse
-                .attr("class", "mouse-line")
-                .style("stroke", "black")
-                .style("stroke-width", "1px")
-                .style("opacity", "0");
+        if ("ontouchstart" in document) vis.svg
+            .style("-webkit-tap-highlight-color", "transparent")
+            .on("touchmove", moved)
+            .on("touchstart", entered)
+            .on("touchend", left)
+        else vis.svg
+            .on("mousemove", moved)
+            .on("mouseenter", entered)
+            .on("mouseleave", left);
 
-            vis.lines = document.getElementsByClassName("lines rockets");
-            //console.log(vis.lines)
+        const dot = vis.svg.append("g")
+            .attr("display", "none");
 
-            vis.mousePerLine = vis.mouseG.selectAll('.mouse-per-line')
-                .data(vis.newData.series)
-                .enter()
-                .append("g")
-                .attr("class", "mouse-per-line");
+        dot.append("circle")
+            .attr("r", 5);
 
-            vis.mousePerLine.append("circle")
-                .attr("r", 7)
-                .style("stroke", d => {
-                    if (vis.selectedCountry === "default") {
-                        return vis.color(d.country)
-                    }else {
-                        return vis.color(d.company)
-                    }})
-                .style("fill", "none")
-                .style("stroke-width", "1px")
-                .style("opacity", "0");
+        dot.append("text")
+            .attr("font-family", "sans-serif")
+            .attr("font-size", 16)
+            .attr("text-anchor", "middle")
+            .attr("y", -8);
 
-           vis.mousePerLine.append("text")
-                .attr("transform", "translate(10,3)");
-
-            vis.mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
-                .attr('width', vis.width) // can't catch mouse events on a g element
-                .attr('height', vis.height)
-                .attr('fill', 'none')
-                .attr('pointer-events', 'all')
-                .on('mouseout', function() { // on mouse out hide line, circles and text
-                    d3.select(".mouse-line")
-                        .style("opacity", "0");
-                    d3.selectAll(".mouse-per-line circle")
-                        .style("opacity", "0");
-                    d3.selectAll(".mouse-per-line text")
-                        .style("opacity", "0");
-                })
-                .on('mouseover', function() { // on mouse in show line, circles and text
-                    d3.select(".mouse-line")
-                        .style("opacity", "1");
-                    d3.selectAll(".mouse-per-line circle")
-                        .style("opacity", "1");
-                    d3.selectAll(".mouse-per-line text")
-                        .style("opacity", "1");
-                })
-                .on('mousemove', function() { // mouse moving over canvas
-                    vis.mouse = d3.pointer(event, this);
-                    //console.log(vis.mouse[0])
-                    d3.select(".mouse-line")
-                        .attr("d", function() {
-                            var d = "M" + vis.mouse[0] + "," + vis.height;
-                            d += " " + vis.mouse[0] + "," + 0;
-                            return d;
-                        });
-
-                    d3.selectAll(".mouse-per-line")
-                        .attr("transform", function(d, i) {
-                            //console.log(vis.width/vis.mouse[0])
-                            var xDate = vis.xScale.invert(vis.mouse[0]);
-                            //console.log(xDate)
-                            //var bisect = d3.bisector(function(d) { return d.date; }).right;
-                            var idx = d3.bisectCenter(vis.newData.dates, xDate)
-                            //console.log(idx);
-                            //var idx = bisect(d.values, xDate);
-
-                            var beginning = 0,
-                                end = vis.lines[i].getTotalLength(),
-                                target = null;
-
-                            while (true){
-                                target = Math.floor((beginning + end) / 2);
-                                vis.pos = vis.lines[i].getPointAtLength(target);
-                                if ((target === end || target === beginning) && vis.pos.x !== vis.mouse[0]) {
-                                    break;
-                                }
-                                if (vis.pos.x > vis.mouse[0])      end = target;
-                                else if (vis.pos.x < vis.mouse[0]) beginning = target;
-                                else break; //position found
-                            }
-                            const pointer = d3.pointer(event, this);
-                            //console.log(pointer)
-                            const xm = vis.xScale.invert(pointer[0]);
-                            const ym = vis.yScale.invert(pointer[1]);
-                            const ii = d3.bisectCenter(vis.newData.dates, xm);
-                            const s = d3.least(vis.newData.series, d => Math.abs(d.values[ii] - ym));
-
-                            console.log(vis.pos.y)
-
-                            d3.select(this).select('text')
-                                .text(vis.yScale.invert(vis.pos.y).toFixed(2));
-                                //.text([s.name,s.company]);
-
-                            return "translate(" + vis.mouse[0] + "," + vis.pos.y +")";
-                        });
-                });
+        function moved(event) {
+            event.preventDefault();
+            const pointer = d3.pointer(event, this);
+            //console.log(pointer)
+            const xm = vis.xScale.invert(pointer[0]);
+            const ym = vis.yScale.invert(pointer[1]);
+            const i = d3.bisectCenter(vis.newData.dates, xm);
+            //console.log(xm)
+            //console.log(ym)
+            //console.log(i)
+            const s = d3.least(vis.newData.series, d => Math.abs(d.values[i] - ym));
+            //vis.line_group.attr("stroke", d => d === s ? null : "#ecf1f5").filter(d => d === s).raise();
+            //vis.line_group.attr("stroke","#ecf1f5")
+            vis.line_group.attr("stroke", d => {
+                if (d === s) {
+                    return "#ffb700"
+                }else {
+                    return "blue"
+                }}).filter(d => d === s).raise();
+            dot.attr("transform", `translate(${vis.xScale(vis.newData.dates[i])},${vis.yScale(s.values[i])})`);
+            dot.select("text").text(s.name);
         }
+
+        function entered() {
+            //vis.line_group.style("mix-blend-mode", null).attr("stroke", "#0e59a7");
+            vis.line_group.attr("stroke","#ffb700")
+            dot.attr("display", null);
+        }
+
+        function left() {
+            //vis.line_group.style("mix-blend-mode", "multiply").attr("stroke", null);
+            //vis.line_group.attr("stroke","#ecf1f5")
+            vis.line_group.attr("stroke", d => {
+                if (d.name === "Saturn V" || d.name === "Cosmos" || d.name === "Space Shuttle" || d.name === "Falcon 9" || d.name === "Ariane 5") {
+                    return "white"
+                }else {
+                    return "blue"
+                }})
+            dot.attr("display", "none");
+        }
+    }
 
 }

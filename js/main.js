@@ -94,7 +94,7 @@ function createVis(data){
 	launchVis = new LaunchVis("world-map", launchData, geoData);
 	mapBarVis = new MapBarVis("world-bar", launchData, geoData);
 	brushVis   = new Brushvis("brush-plot", launchData);
-	flightVis = new FlightVis("launches-vis", "FlightLegend-vis", data);
+	flightVis = new FlightVis("launches-vis", "FlightLegend-vis", "FlightText", data);
 
 
 	//loop through orbits after 10 seconds and continue for a few hours
@@ -122,7 +122,7 @@ var selectedCategory = $('#categorySelector').val();
 var selectedSatCategory = $('#satColor').val();
 var ageFilter = $('#satAge').val();
 var selectedCountry = $('#countrySelector').val();
-var selectedSpaceAge = $('#countrySelector').val();
+var selectedSpaceAge = $('#AgeSelector').val();
 // var selectedCategory = $('#categorySelector').val();
 
 function categoryChange() {

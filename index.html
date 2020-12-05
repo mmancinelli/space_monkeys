@@ -91,6 +91,7 @@
 								<p>The Space Race culminated in 1975, with the docking of the Russian Soyuz and American Apollo vehicles in Low-Earth Orbit.</p>
 								<!-- Use a button to pause/play the video with JavaScript -->
 								<button id="myBtn1" onclick="toggleVideo1()">Pause</button>
+								<p style="margin-bottom:2.5em; font-size:10px"><br><br>Video Source: videvo.net<br><br></p>
 							</div>
 						</div>
 					</div>
@@ -100,7 +101,11 @@
 	</div>
 
 	<!-- Cold War Images and Facts -->
+
 	<div class="section " id="section3">
+
+	<!-- <div class="section " id="section2">
+>>>>>>> 8bb6e19236c3353a56bf38d2739036ccdbbfa37b
 		<div class="star-section">
 			<div class = "stars"></div>
 			<div class = "stars2"></div>
@@ -125,6 +130,31 @@
 							<div class="align-self-center">
 								<h3>"We choose to go to the moon. We choose to go to the moon in this decade and do the other things, not because they are easy, but because they are hard, because that goal will serve to organize and measure the best of our energies and skills, because that challenge is one that we are willing to accept, one we are unwilling to postpone, and one which we intend to win, and the others, too."</h3>
 								<h3>-John F. Kennedy</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>-->
+
+<!--	<div class="section" id="section2">-->
+		<div class="star-section">
+			<div class = "stars"></div>
+			<div class = "stars2"></div>
+			<div class = "stars3"></div>
+			<div class="container-fluid h-100 video-parent">
+				<div class="video-container">
+					<!-- <video autoplay muted loop id="myVideo2">
+						<source src="videos/Shuttle.mp4" type="video/mp4">
+					</video> -->
+					<img src="images/Apollo11.jpg" id="bg">
+					<!-- Optional: some overlay text to describe the video -->
+					<div class="content_image">
+						<div class="row align-items-center">
+							<div class="col">
+								<p>"We choose to go to the moon. We choose to go to the moon in this decade and do the other things, not because they are easy, but because they are hard, because that goal will serve to organize and measure the best of our energies and skills, because that challenge is one that we are willing to accept, one we are unwilling to postpone, and one which we intend to win, and the others, too."</p>
+								<p>- John F. Kennedy</p>
 							</div>
 						</div>
 					</div>
@@ -263,6 +293,7 @@
 								<p>The Shuttle would launch from the Kennedy Space Center in Cape Canaveral, Florida.</p>
 								<!-- Use a button to pause/play the video with JavaScript -->
 								<button id="myBtn2" onclick="toggleVideo2()">Pause</button>
+								<p style="margin-bottom:2.5em; font-size:10px"><br><br>Video Source: videvo.net<br><br></p>
 							</div>
 						</div>
 					</div>
@@ -405,7 +436,7 @@
 			<div class="container-fluid h-100 video-parent">
 				<div class="video-container">
 					<video autoplay muted loop id="myVideo3">
-						<source src="videos/Rocket1.mp4" type="video/mp4">
+						<source src="videos/SpaceX.mp4" type="video/mp4">
 					</video>
 					<!-- Optional: some overlay text to describe the video -->
 					<div class="content_video">
@@ -414,10 +445,11 @@
 								<h2>Commercial Space Age</h2>
 								<h2 class="date-range">(2011-Present)</h2>
 								<p>In 2011, SpaceX became the first private company to launch a rocket, the Falcon 9.</p>
-								<p>Since then, other companies and nations have joined the space industry.</p>
+								<p>Since then, other nations and companies, like Blue Origin and Virgin Galactic, have joined the space industry.</p>
 								<p>Their goal: get a share of the growing space economy which is projected to hit the $1.1 trillion mark by 2040, according to Morgan Stanley.</p>
 								<!-- Use a button to pause/play the video with JavaScript -->
 								<button id="myBtn3" onclick="toggleVideo3()">Pause</button>
+								<p style="margin-bottom:2.5em; font-size:10px"><br><br>Video Source: images.nasa.gov<br><br></p>
 							</div>
 						</div>
 					</div>
@@ -480,8 +512,8 @@
 					<div class="row" style="height: 5vh; padding-top: 5pt">
 						<div class="col-3" style="height: 15vh; padding-left: 20pt; padding-top: 1vh;" >
 							<div class="row" style="height: 5vh; padding-top: 5pt">
-								<select id='countrySelector' class="custom-select" style="width: 75%" onchange="countryChange()">
-									<option value="default" selected>Default (all)</option>
+								<select id='countrySelector' class="custom-select" style="width: 75%; display:none;" onchange="countryChange()">
+									<option value="default" selected>All Countries</option>
 									<option value="USA">U.S.A.</option>
 									<option value="China">China</option>
 									<option value="Russia">Russia</option>
@@ -495,39 +527,34 @@
 									<option value="Brazil">Brazil</option>
 								</select>
 							</div>
-							<div class="row" style="height: 5vh; padding-top: 5pt">
-								<select id='AgeSelector' class="custom-select" style="width: 75%" onchange="AgeChange()">
-									<option value="all" selected>All Ages</option>
-									<option value="space_race">Space Race (1957-1985)</option>
-									<option value="exploration">Exploration (1981-Present)</option>
-									<option value="commercial">Commercialization (2011-Present)</option>
+							<div class="row" style="height: 5vh; padding-top: 10pt">
+								<select id='AgeSelector' class="custom-select" style="width: 75%; display:none;" onchange="AgeChange()">
+									<option value="all">All Ages</option>
+									<option value="space_race" selected>Space Race (1957-1975)</option>
+									<option value="exploration">Exploration (1976-2011)</option>
+									<option value="commercial">Commercialization (2012-Present)</option>
 								</select>
-								<!--<div class="btn-group">
-									<button id = "labelToggle" class="btn btn-light" type="button" value="OFF" onclick="toggleButton(this);" style="border: thin solid grey;";>Labels</button>
-									<button value="all" id="button1" onclick="AgeChange1()" selected>All Ages</button>
-									<button value="space_race" id="button2" onclick="AgeChange2()">Space Race</button>
-									<button value="exploration" id="button3" onclick="AgeChange3()">Exploration</button>
-									<button value="commercialization" id="button4" onclick="AgeChange4()">Commercialization</button>
-								</div>-->
-								<!--<select id='AgeSelector' class="custom-select" style="width: 75%" onchange="AgeChange()">
-									<option value="all" selected>All Ages</option>
-									<option value="space_race">Space Race</option>
-									<option value="exploration">Exploration</option>
-									<option value="commercialization">Commercialization</option>
-								</select>-->
 							</div>
-							<div class="row" style="height: 50vh; padding-top: 5pt">
+							<!--<div class="row" style="height: 50vh; padding-top: 5pt">
 								<div id="FlightLegend-vis">
 								</div>
+							</div>-->
+							<div class="row" style="height: 5vh; padding-top: 50pt">
+								<button id="factbutton" onclick="FactClick()">Click for Fact</button>
 							</div>
-							<div class ="row" style="height:40vh; padding-top: 10pt; text-align: left;">
+							<div class ="row" style="height:40vh; padding-top: 70pt; text-align: left;">
 								<div id = "FlightText">
 								</div>
 							</div>
 						</div>
-						<div class="col-9" style="padding-top: 1vh;">
+						<div class="col-7" style="padding-top: 1vh;">
 							<div class="align-self-center vis-holder">
 								<div id="launches-vis"></div>
+							</div>
+						</div>
+						<div class="col-2" style="padding-top: 1vh;">
+							<div class="align-self-center vis-holder">
+								<div id="FlightLegend-vis"></div>
 							</div>
 						</div>
 					</div>
@@ -614,6 +641,7 @@
 								<p>Although the USA and USSR set the stage back in Space Race, the current ecosystem is contributed to by over a dozen countries.</p>
 								<!-- Use a button to pause/play the video with JavaScript -->
 								<button id="myBtn4" onclick="toggleVideo4()">Pause</button>
+								<p style="margin-bottom:2.5em; font-size:10px"><br><br>Video Source: videvo.net<br><br></p>
 							</div>
 						</div>
 					</div>
@@ -729,6 +757,7 @@
 								<p>Their goal: continue to push the boundaries of human knowledge while exploring the Earth, Moon, Mars, and beyond.</p>
 								<!-- Use a button to pause/play the video with JavaScript -->
 								<button id="myBtn5" onclick="toggleVideo5()">Pause</button>
+								<p style="margin-bottom:2.5em; font-size:10px"><br><br>Video Source: videvo.net<br><br></p>
 							</div>
 						</div>
 					</div>
@@ -853,6 +882,21 @@
         navigationPosition: 'right',
         navigationTooltips: ['First page', 'Second page', 'Third page', 'Forth page', 'Fifth page']
     });
+</script>
+
+<script>
+	var clicks = 0;
+	function FactClick() {
+		clicks += 1;
+		console.log(clicks)
+		flightVis.wrangleData();
+
+		if(clicks>=3) {
+			console.log("IT WORKS!")
+			document.getElementById('AgeSelector').style.display = "block";
+			document.getElementById('countrySelector').style.display = "block";
+		}
+	};
 </script>
 
 <script src="js/movies.js"></script>
