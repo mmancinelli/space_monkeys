@@ -508,7 +508,7 @@
 					<div class="row" style="height: 5vh; padding-top: 5pt">
 						<div class="col-3" style="height: 15vh; padding-left: 20pt; padding-top: 1vh;" >
 							<div class="row" style="height: 5vh; padding-top: 5pt">
-								<select id='countrySelector' class="custom-select" style="width: 75%" onchange="countryChange()">
+								<select id='countrySelector' class="custom-select" style="width: 75%; display:none;" onchange="countryChange()">
 									<option value="default" selected>All Countries</option>
 									<option value="USA">U.S.A.</option>
 									<option value="China">China</option>
@@ -524,7 +524,7 @@
 								</select>
 							</div>
 							<div class="row" style="height: 5vh; padding-top: 10pt">
-								<select id='AgeSelector' class="custom-select" style="width: 75%" onchange="AgeChange()">
+								<select id='AgeSelector' class="custom-select" style="width: 75%; display:none;" onchange="AgeChange()">
 									<option value="all">All Ages</option>
 									<option value="space_race" selected>Space Race (1957-1975)</option>
 									<option value="exploration">Exploration (1976-2011)</option>
@@ -844,6 +844,12 @@
 		clicks += 1;
 		console.log(clicks)
 		flightVis.wrangleData();
+
+		if(clicks>=3) {
+			console.log("IT WORKS!")
+			document.getElementById('AgeSelector').style.display = "block";
+			document.getElementById('countrySelector').style.display = "block";
+		}
 	};
 </script>
 
