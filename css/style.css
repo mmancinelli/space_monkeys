@@ -133,7 +133,7 @@ p {
     width: 100%;
 }
 
-#world-map, #orbit-vis, #slider, #network-vis, #orbit-vis2, #launches-vis,#legendText,#orbitLegendText, #brush-plot,#networkLegend-vis, #orbitLegend-vis {
+#world-map, #world-bar, #orbit-vis, #slider, #network-vis, #orbit-vis2, #launches-vis,#legendText, #brush-plot,#networkLegend-vis, #orbitLegend-vis {
     height: 100%;
     width:  100%;
 }
@@ -174,9 +174,9 @@ p {
 /* Map Vis CSS */
 .circle {
     /*stroke: #d61111;*/
-    stroke-width: 2;
+    stroke-width: 3;
     /*fill: #d61111;*/
-    fill-opacity: 50%;
+    fill-opacity: 70%;
 }
 
 .d3-tip {
@@ -190,6 +190,10 @@ p {
     background: #262729;
     border-radius: 8px;
     stroke: grey;
+}
+
+#map_animation {
+
 }
 
 .map-title {
@@ -266,7 +270,7 @@ p {
 }
 
 .pathGroup path {
-    stroke: lightslategrey;
+    stroke: #778899;
     fill: #00ffd4;
     opacity: 80%;
 }
@@ -409,4 +413,30 @@ h5 {
     font-family: a-space_light_demoregular;
     color: #fff;
     margin:0;
+}
+
+.video-parent {
+    padding: 0vh;
+}
+
+.content_video > div {
+    margin: 20px;
+}
+
+.content_video .row {
+    height: 100%;
+}
+
+.date-range {
+    font-size: 3em;
+    color: #ffb700;
+    margin-bottom: 20px;
+}
+
+.content_video h2 {
+    text-align: left;
+}
+
+.content_video p {
+    text-align: left;
 }
