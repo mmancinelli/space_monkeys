@@ -9,7 +9,7 @@
  * contributions: Zane is responsible for the bulk of the code and Michael swooped in to solve enter/update/exit issues by separating the code out into separate functions and changing the animation procedure, and added the sat hover info table.
  * modified from: http://bl.ocks.org/codybuell/fc2426aedabef2d69873
  * date created: 11/19/2020
- * date last modified: 12/4/2020
+ * date last modified: 12/6/2020
  */
 class OrbitSystem {
 
@@ -54,7 +54,7 @@ class OrbitSystem {
             .attr('transform', `translate (${vis.margin.left}, ${vis.margin.top})`);
 
         // set up legend svg
-        vis.marginLegend = {top: 0, right: 0, bottom: 25, left: 15};
+        vis.marginLegend = {top: 0, right: 0, bottom: 10, left: 15};
         vis.widthLegend = $("#" + vis.legendElement).width() - vis.marginLegend.left - vis.marginLegend.right;
         vis.heightLegend = $("#" + vis.legendElement).height() - vis.marginLegend.top - vis.marginLegend.bottom;
 
@@ -79,35 +79,35 @@ class OrbitSystem {
             .attr("class","sat-info")
             .attr("id","sat-name")
             .attr("x",vis.marginLegend.left)
-            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom)*0.7)
+            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom)*0.65)
             .text("Hover over satellites for info!");
 
         vis.satelliteInfo.append("text")
             .attr("class","sat-info")
             .attr("id","sat-country")
             .attr("x",vis.marginLegend.left)
-            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.7 + 1*30)
+            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.65 + 1*25)
             .text("");
 
         vis.satelliteInfo.append("text")
             .attr("class","sat-info")
             .attr("id","sat-purpose")
             .attr("x",vis.marginLegend.left)
-            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.7 + 2*30)
+            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.65 + 2*25)
             .text("");
 
         vis.satelliteInfo.append("text")
             .attr("class","sat-info")
             .attr("id","sat-alt")
             .attr("x",vis.marginLegend.left)
-            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.7 + 3*30)
+            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.65 + 3*25)
             .text("");
 
         vis.satelliteInfo.append("text")
             .attr("class","sat-info")
             .attr("id","sat-year")
             .attr("x",vis.marginLegend.left)
-            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.7 + 4*30)
+            .attr("y", (vis.heightLegend + vis.marginLegend.top + vis.marginLegend.bottom) * 0.65 + 4*25)
             .text("");
 
         // ****************************************
@@ -373,7 +373,7 @@ class OrbitSystem {
             .attr("height", size)
             .transition().duration(1000)
             .attr("y", function (d, i) {
-                return 75 + i * (size + 5)
+                return 25 + i * (size + 5)
             }) // 100 is where the first dot appears. 25 is the distance between dots
 
             .style("fill", function (d) {
@@ -391,7 +391,7 @@ class OrbitSystem {
             .attr("x", 60)
             .transition().duration(1000)
             .attr("y", function (d, i) {
-                return 75 + i * (size + 5) + (size / 2)
+                return 25 + i * (size + 5) + (size / 2)
             })
 
             .style("fill", function (d) {
