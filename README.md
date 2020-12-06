@@ -1,7 +1,7 @@
 # The History of Space Flight
 *team members:* Juan Carlos Lopez, Michael Mancinelli, and Zane Wolf
 
-*link to website: https://mmancinelli.github.io/space_monkeys/
+* link to website: https://mmancinelli.github.io/space_monkeys/
 
 
 ## Description
