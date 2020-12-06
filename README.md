@@ -14,9 +14,9 @@ For CS171, we found and cleaned data from two locations (Kaggle's All Rocket Lau
 * main.js
 * mapbarvis.js
 * networkvis.js
-** heavily modified from [Observable: Radial Dendrogram](https://observablehq.com/@d3/radial-dendrogram)
+  * heavily modified from [Observable: Radial Dendrogram](https://observablehq.com/@d3/radial-dendrogram)
 * orbitSystem.js
-** heavily modified from [Blocks: Orbits](http://bl.ocks.org/codybuell/fc2426aedabef2d69873)
+  * heavily modified from [Blocks: Orbits](http://bl.ocks.org/codybuell/fc2426aedabef2d69873)
 * treedata.js 
 
 ## Libraries
